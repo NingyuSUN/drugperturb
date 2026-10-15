@@ -16,9 +16,9 @@
   "renamed_file_identity": "Renamed entries retain their untouched original SHA256 under the public filename.",
   "omitted_source_file_count": 2,
   "summary": {
-    "unchanged": 94,
-    "modified": 23,
-    "added": 2,
+    "unchanged": 90,
+    "modified": 27,
+    "added": 4,
     "renamed": 3,
     "renamed_and_modified": 1
   },
@@ -45,11 +45,18 @@
       "public_sha256": "a1f9b4147d9c4ee217eb53dff91643395a151a57b5914e0c58285847e202fb1d"
     },
     {
+      "path": "LICENSE",
+      "classification": "publication_metadata",
+      "status": "added",
+      "original_sha256": null,
+      "public_sha256": "522f52ca66991e1411a22d3baf46df8f34743428e0933337e91c8d275b9e1af8"
+    },
+    {
       "path": "README.md",
       "classification": "documentation_or_local_usage",
       "status": "modified",
       "original_sha256": "cd5ef33804e15e49777b2d838abd55b067b4fbc8db7527c4e4af3445dbc9e879",
-      "public_sha256": "1641d52342b7862e14f86c0c9b1282f0f4272c412dd38c87ae9b5bbb4432dcce"
+      "public_sha256": "209559da213573ad43f1b1169dd81df68083cd6a979273da4ebdf1e6bf46bd77"
     },
     {
       "path": "conf/docker.config",
@@ -140,21 +147,21 @@
       "classification": "documentation_or_local_usage",
       "status": "modified",
       "original_sha256": "4e9f41947a6ed39e2009ce3fb5a0769e5395fa39e657f39d3694c7b525492b2e",
-      "public_sha256": "c44f6b8e3b716f5f5ab4773d40b3dfec255e82b2e37dd48d85d6f8eb62221c8f"
+      "public_sha256": "63968c4b013d5e33699aa0b370a09e44cca55d53604b5a6f36403fb4b439d2c1"
     },
     {
       "path": "docs/PUBLICATION_PROVENANCE.md",
       "classification": "publication_metadata",
       "status": "added",
       "original_sha256": null,
-      "public_sha256": "9fbd7dfc99e86387c859bb05f5f028bc5878ff6b0c69e78cf347902ac7a1dcfc"
+      "public_sha256": "fe49414e010946b93fcda5b447497458d96c980c879692ca61d14debcfb4b506"
     },
     {
       "path": "docs/REPRODUCIBILITY.md",
       "classification": "documentation_or_local_usage",
       "status": "modified",
       "original_sha256": "60ac0932975bbf0569f918f05ca09f7fad2e5bf6a4f973fa02568d80941aa020",
-      "public_sha256": "e2f0bb49139ff9c7dfe40cd737e0eb558a20cbd9a512d76d395b414e3a204953"
+      "public_sha256": "a2548f5aac54b950f7e94a05b62302f0d8a7e6c7c5dec9801e0380945ecd1f55"
     },
     {
       "path": "docs/RESEARCH_DECISIONS.md",
@@ -257,9 +264,9 @@
     {
       "path": "pyproject.toml",
       "classification": "scientific_or_engineering_artifact",
-      "status": "unchanged",
+      "status": "modified",
       "original_sha256": "e67149e567ef8b586e036998a57fe97f3a2e65f3237b2eaba39fab658425da73",
-      "public_sha256": "e67149e567ef8b586e036998a57fe97f3a2e65f3237b2eaba39fab658425da73"
+      "public_sha256": "8413fb486869dd70930b904a85b4b7d5160c87ae68a01dd09be801538aaa8b30"
     },
     {
       "path": "receipts/cell_state_execution.json",
@@ -739,10 +746,10 @@
     },
     {
       "path": "scripts/score.py",
-      "classification": "scientific_or_engineering_artifact",
-      "status": "unchanged",
+      "classification": "provenance_validation_code",
+      "status": "modified",
       "original_sha256": "fff817c6e888a63197308723a63ba9edd05c42b99de32ea3b8c0afba70bc40d1",
-      "public_sha256": "fff817c6e888a63197308723a63ba9edd05c42b99de32ea3b8c0afba70bc40d1"
+      "public_sha256": "7447aa36e886a6e5dee8aaec93f7409630cddce6199856554b6c1ea8ebc6780b"
     },
     {
       "path": "scripts/sensitivity.py",
@@ -760,10 +767,10 @@
     },
     {
       "path": "scripts/train.py",
-      "classification": "scientific_or_engineering_artifact",
-      "status": "unchanged",
+      "classification": "provenance_validation_code",
+      "status": "modified",
       "original_sha256": "d1520ec35e6426870e9b2e86d89e6f9dac89b10392e2600c5ceed72898487fcf",
-      "public_sha256": "d1520ec35e6426870e9b2e86d89e6f9dac89b10392e2600c5ceed72898487fcf"
+      "public_sha256": "6f26dc80f6c42bf70727ce53f7b731710c030e59771c12ee9c614c63188efffb"
     },
     {
       "path": "src/drugperturb/__init__.py",
@@ -802,10 +809,10 @@
     },
     {
       "path": "src/drugperturb/provenance.py",
-      "classification": "scientific_or_engineering_artifact",
-      "status": "unchanged",
+      "classification": "provenance_validation_code",
+      "status": "modified",
       "original_sha256": "1caeaab4aa66d9099c6f3c6687e3c05a17d9d87ecbddcdf733fd77dd599c797e",
-      "public_sha256": "1caeaab4aa66d9099c6f3c6687e3c05a17d9d87ecbddcdf733fd77dd599c797e"
+      "public_sha256": "dcf9dc5e0e4c688e469c8d3ccd4db3dcaa776fecf7404bca45ee356d78c36575"
     },
     {
       "path": "src/drugperturb/response.py",
@@ -813,6 +820,13 @@
       "status": "unchanged",
       "original_sha256": "080175b94845ef57f62e117bd24c0669a718f7bc58b14d0ae91b40039d233a38",
       "public_sha256": "080175b94845ef57f62e117bd24c0669a718f7bc58b14d0ae91b40039d233a38"
+    },
+    {
+      "path": "tests/test_cached_reuse.py",
+      "classification": "provenance_validation_code",
+      "status": "added",
+      "original_sha256": null,
+      "public_sha256": "1f19f071a77beb53500f0c3ee03e975af46f555280d0eb5c1b45fa83d38c753a"
     },
     {
       "path": "tests/test_chemistry.py",

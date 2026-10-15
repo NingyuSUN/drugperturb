@@ -2,6 +2,10 @@
 
 This DSL2 workflow contains **one snapshot process**. The scientific scripts currently derive the project root from their own paths; the wrapper copies source, configuration and declared input bytes into an isolated task-local project before executing them. It never executes scientific scripts in the live checkout. Each snapshot runs the scientific chain sequentially; the workflow does not represent each scientific step as a separate Nextflow process.
 
+## View the published reports
+
+Clone the complete repository, or choose **Code → Download ZIP** on GitHub and extract the archive while preserving its directory structure. Open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report depends on `reports/figures/` and links to tables, receipts and documentation elsewhere in the repository; an individually downloaded HTML file does not include these resources. No Python, R or Nextflow setup is required to read the published reports.
+
 ## Runtime and evidence
 
 Use Nextflow **25.10.2**, Java 21, Python **3.12.14**, and the exact CPU packages in `locks/python-cpu.txt`. Runtime package versions (including Matplotlib for rendering), raw-mode Rscript version/executable SHA256, and Python executable SHA256 enter the host cache key and final receipt. Container runs require an immutable image ID or digest. Used package versions are checked against the lock before computation. The lock pins versions, not wheel distribution hashes; record the resulting image ID and preserve the image for stronger distribution-byte reproducibility.

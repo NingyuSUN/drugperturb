@@ -7,6 +7,7 @@ import torch, yaml, joblib
 from sklearn.linear_model import Ridge
 from drugperturb.models import MLP, MolecularGNN, fit_network, predict_network
 from drugperturb.response import baseline_predictions
+from drugperturb.provenance import verify_training_inputs
 
 ROOT=Path(__file__).resolve().parents[1]
 def sha(path):
@@ -24,16 +25,11 @@ def main():
     out=ROOT/'models/run_v1';out.mkdir(parents=True,exist_ok=True)
     seal=ROOT/'receipts/prediction_seal.json'
     if seal.exists():
-        old=json.loads(seal.read_text())
-        for f,h in old['artifact_hashes'].items():
-            if sha(ROOT/f)!=h:raise ValueError(f'Prediction seal mismatch: {f}')
+        verify_training_inputs(ROOT, completed=True)
         print('Existing prediction seal verified; no training repeated.');return
+    verify_training_inputs(ROOT)
     protocol=yaml.safe_load((ROOT/'configs/protocol_v1.yaml').read_text()); cfg=protocol['models']
     if protocol['status']!='FROZEN_BEFORE_TRAINING':raise ValueError('Protocol is not frozen')
-    freeze=json.loads((ROOT/'receipts/dataset_freeze.json').read_text())
-    needed=['configs/protocol_v1.yaml','manifests/split_manifest.tsv','data/processed/development.npz','data/processed/target_transform.joblib','data/processed/test_features.npz',*[f'data/processed/graphs_{s}.json' for s in ['train','validation','test']]]
-    for f in needed:
-        if sha(ROOT/f)!=freeze['artifact_hashes'][f]:raise ValueError(f'Frozen input changed: {f}')
     split=pd.read_csv(ROOT/'manifests/split_manifest.tsv',sep='\t')
     test_split=split[split.split.eq('test')]
     if len(split)<100 or len(test_split)<20 or test_split.loc[test_split.scaffold_group.str.startswith('murcko:'),'scaffold_group'].nunique()<10:

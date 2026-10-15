@@ -4,25 +4,17 @@ import datetime, hashlib, json
 import numpy as np
 import pandas as pd
 from drugperturb.evaluation import compound_metrics, summarize_compound_metrics, paired_scaffold_bootstrap
+from drugperturb.provenance import verify_evaluation_inputs
 ROOT=Path(__file__).resolve().parents[1]
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def save_json(path,value):path.write_text(json.dumps(value,indent=2,allow_nan=False)+'\n')
 def main():
     final=ROOT/'receipts/final_evaluation.json'
     if final.exists():
-        old=json.loads(final.read_text())
-        for f,h in old['output_hashes'].items():
-            if sha(ROOT/f)!=h:raise ValueError(f'Evaluation output changed: {f}')
+        verify_evaluation_inputs(ROOT, completed=True)
         print('Existing final evaluation verified; no scoring repeated.');return
-    seal=json.loads((ROOT/'receipts/prediction_seal.json').read_text())
-    freeze=json.loads((ROOT/'receipts/dataset_freeze.json').read_text())
-    if sha(ROOT/'receipts/dataset_freeze.json')!=seal['dataset_freeze_sha256']:raise ValueError('Dataset freeze is not bound to prediction seal')
-    for f,h in freeze['artifact_hashes'].items():
-        if sha(ROOT/f)!=h:raise ValueError(f'Frozen evaluation dependency changed: {f}')
-    for f,h in seal['artifact_hashes'].items():
-        if sha(ROOT/f)!=h:raise ValueError(f'Prediction seal changed: {f}')
+    verify_evaluation_inputs(ROOT)
     truth_path='data/processed/sealed_test_truth.npz'
-    if sha(ROOT/truth_path)!=freeze['artifact_hashes'][truth_path]:raise ValueError('Frozen truth changed')
     # Labels are loaded only after the model, configuration and prediction checks.
     t=np.load(ROOT/truth_path,allow_pickle=False);p=np.load(ROOT/'models/run_v1/test_predictions.npz',allow_pickle=False)
     split=pd.read_csv(ROOT/'manifests/split_manifest.tsv',sep='\t');s=split[split.split.eq('test')].reset_index(drop=True)

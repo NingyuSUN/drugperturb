@@ -6,7 +6,9 @@
 
 Public sci-Plex3 data · A549 · 24 hours · 1 µM · 171 distinct parent compounds · six methods
 
-[Biological report — HTML, download and open locally](reports/report.html) · [Two-page summary — HTML, download and open locally](reports/biologist_summary.html) · [Model card](docs/MODEL_CARD.md) · [Reproduce](docs/REPRODUCIBILITY.md)
+[Biological report](reports/report.html) · [Two-page summary](reports/biologist_summary.html) · [Model card](docs/MODEL_CARD.md) · [Reproduce](docs/REPRODUCIBILITY.md)
+
+To view the reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
 ## Result at a glance
 
@@ -98,3 +100,7 @@ This is a single-context research benchmark. It does not establish drug efficacy
 Raw third-party data and generated binary models are excluded from Git. Recreate fitted artifacts through the isolated workflow before using the inference CLI. Source terms and project implementation are documented separately.
 
 Historical source IDs in the execution evidence label pre-publication source snapshots; they are not commit IDs in this public repository. [Publication provenance](docs/PUBLICATION_PROVENANCE.md) records original-file SHA256 to public-copy SHA256 mappings and distinguishes historical execution records from the public source history.
+
+## License
+
+The project's original code and accompanying documentation are available under the [MIT License](LICENSE), copyright 2026 Ningyu Sun. Third-party data, annotations, author code and dependencies retain their own terms; this license does not relicense them. See the [data card](docs/DATA_CARD.md) for source attribution and redistribution boundaries.
