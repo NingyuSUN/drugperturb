@@ -1,0 +1,21 @@
+{
+  "evaluated_utc": "2026-10-14T09:44:01.056716+00:00",
+  "prediction_seal_sha256": "5cf6ab17dff9d19dc64c1899efeeac07a6df12661cd0da6c9aad6f0881998bb3",
+  "test_truth_sha256": "aa1942b403b3a31c6559e3bcb327c0444e10b6affb38b81e02169e8839e1b5e9",
+  "biology_sha256": "92799ec33e9f816c6b354c96d5546a2cd767a48537ec979c407eea36dbfc6451",
+  "evaluation_source_sha256": "fff817c6e888a63197308723a63ba9edd05c42b99de32ea3b8c0afba70bc40d1",
+  "n_test_compounds": 26,
+  "test_used_for_selection": false,
+  "output_hashes": {
+    "reports/final_test/compound_context.tsv": "2cb911d7dac8a40b754e01dca0eda92523f07487f7690902c4e205bd5f37454b",
+    "reports/final_test/errors_by_structure_group.tsv": "14d11195c22361c247a2f1d217d28ce1187b3f4adbde3cfc8ef67f98a794fe9c",
+    "reports/final_test/fixed_rule_cases.tsv": "4d45b1c40a548077d115aeb6ff2e3a249ee39415c6384c167cd8ae386bf47537",
+    "reports/final_test/metrics_by_compound.tsv": "a8fa9f2f91b38a1b18d0d1a857f139979ab934af9bfd956308e33f5af221fc6c",
+    "reports/final_test/metrics_summary.tsv": "81f5f8e625d24fa29dfa82d7455d580d2c404192a52331fbe910e7ec3f133644",
+    "reports/final_test/paired_comparisons.json": "90d8c5b18633bd6c4164a67de353e08f10ece5b05fe660342cb2d8c1354fadff",
+    "reports/final_test/pathway_coverage.tsv": "51332775f2f5b67ca711f948e935d48d9d44d62d7d854249e176459c2e699ab5",
+    "reports/final_test/pathway_response.tsv": "2521a7476a0ceb6a2baee2b895840470b58f1d7759b432c0e56e2f6bc8225101",
+    "reports/final_test/replicate_plate_errors.tsv": "bb5d3c64e7db3dc9abd8a6e980b7b57f33d990c68fd0b65df786a16a965b5eed",
+    "reports/final_test/summary.json": "4d37fff70bef1c3ca266d0b24c501e8a6d95afa0010a6fb6a6932f67acc53eda"
+  }
+}

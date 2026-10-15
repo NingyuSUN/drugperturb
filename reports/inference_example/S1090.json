@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-10-14T09:50:49.751063+00:00",
+  "model": "M3",
+  "candidate": 3,
+  "training_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "prediction_policy": "three_seed_arithmetic_mean",
+  "input_smiles": "CN(C)Cc1c(C(=O)NCCOc2ccc(C(=O)NO)cc2)oc2ccccc12",
+  "canonical_parent_smiles": "CN(C)Cc1c(C(=O)NCCOc2ccc(C(=O)NO)cc2)oc2ccccc12",
+  "standardization_policy": "rdkit_cleanup_explicit_counterions_fragmentparent_uncharger_v1",
+  "cell_type": "A549",
+  "time_hours": 24.0,
+  "dose_nM": 1000.0,
+  "n_selected_genes": 2000,
+  "max_training_tanimoto": 0.29850746268656714,
+  "nearest_training_compound": "S2779",
+  "n_training_compounds": 119,
+  "test_outcomes_loaded": false,
+  "source_commit": "4847c26e05c0283d704a5fab9a85f272d0a5981a",
+  "scope": "Predicted treated-minus-matched-vehicle log1p(CPM) delta in the training-selected genes; A549 24h 1000nM only. Chemical similarity is training-set support, not calibrated uncertainty. No efficacy, clinical, target-engagement or cell-phase claim.",
+  "prediction_seal_sha256": "5cf6ab17dff9d19dc64c1899efeeac07a6df12661cd0da6c9aad6f0881998bb3",
+  "dataset_freeze_sha256": "597daae4f3f515afa0ccb00a0904142aa0a999fc9de89f56b145f3d99a811a77",
+  "inference_source_sha256": "892be379bfca125dcf1c990b32e894edfab889f8aff390abafc9ffcc2afde2b9",
+  "checkpoint_sha256": {
+    "models/run_v1/M3_c3_s42.pt": "4b698b4a369c06abce44088df98f18c30bd99f0042f8f7a467f3aa5addb0139f",
+    "models/run_v1/M3_c3_s123.pt": "a6f24279c16842b1c12deaf727e66186428341179ee2911bcd0a0e58f1e5fdc9",
+    "models/run_v1/M3_c3_s2026.pt": "62c4258ff37eb189f1b1bdec1477a91d73317d1d37ae81ee464c37164906662a"
+  },
+  "input_artifact_sha256": {
+    "configs/protocol_v1.yaml": "ca697121838d0fda78127f43e222dfa014c5f21d9b5fc580f0e20dd45fefafdf",
+    "data/processed/target_transform.joblib": "100f582d0e80d25cb4c58b810b042e3dd4337c4a7c57983de28b42e305d2be11",
+    "data/processed/development.npz": "c22400aecc23ff832f5d13353ed846563633167692e24f61cceca1e01ae5ac0d",
+    "manifests/selected_genes.tsv": "26d0a1f220db8a29acdc3553802d0cfe9c2e8245c3cf6b4dfba0a224d0c578e1",
+    "manifests/split_manifest.tsv": "442687ae16120a6371b83231607086553646d99afc6f72ac6840187ef6624e38"
+  },
+  "prediction_tsv_sha256": "e311c111cd3385a18e03d1e3bfc531b20063a1119ffcae1eaef855b393c02d65"
+}

@@ -1,0 +1,4 @@
+minimum_cells	source_labels_denominator	cell_qualified_labels	unique_parent_representatives	source	new_compound_predictions	eligibility_definition
+20	188	180	178	existing_dataset_freeze	False	both treatment replicates and their strict controls satisfy cutoff; then chemistry qualification
+30	188	173	171	existing_dataset_freeze	False	both treatment replicates and their strict controls satisfy cutoff; then chemistry qualification
+50	188	152	150	existing_dataset_freeze	False	both treatment replicates and their strict controls satisfy cutoff; then chemistry qualification

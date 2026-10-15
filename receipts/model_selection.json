@@ -1,0 +1,41 @@
+{
+  "selected": {
+    "M1": {
+      "candidate": 3,
+      "alpha": 100.0
+    },
+    "M2": {
+      "candidate": 3,
+      "hidden_dim": 128,
+      "lr": 0.003,
+      "dropout": 0.2,
+      "mean_seed_validation_RMSE": 1.2460629013822793
+    },
+    "M3": {
+      "candidate": 3,
+      "hidden_dim": 64,
+      "lr": 0.003,
+      "dropout": 0.1,
+      "mean_seed_validation_RMSE": 1.20740705963214
+    }
+  },
+  "selection_metric": "mean_seed_validation_mean_compound_gene_delta_RMSE",
+  "validation_scores": {
+    "B0": 1.3029246895912634,
+    "B1": 1.2569674289342814,
+    "B2": 1.663395372293831,
+    "M1": 1.243226408818186,
+    "M2": 1.2453548911612389,
+    "M2_s42": 1.2469746126035568,
+    "M2_s123": 1.2437955832264491,
+    "M2_s2026": 1.247418508316832,
+    "M3": 1.2066470389911497,
+    "M3_s42": 1.2064067979511903,
+    "M3_s123": 1.208837246629091,
+    "M3_s2026": 1.2069771343161386
+  },
+  "simple_reference": "M1",
+  "primary_model": "M3",
+  "prediction_policy": "three_seed_arithmetic_mean_for_M2_M3",
+  "test_outcomes_loaded": false
+}

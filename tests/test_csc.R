@@ -1,0 +1,22 @@
+source("scripts/csc_utils.R")
+csc <- list(i=as.integer(c(0,2,1,2,0)),p=as.integer(c(0,2,3,4,5)),x=c(2,3,4,5,6),Dim=as.integer(c(3,4)))
+expect_error <- function(expr) stopifnot(inherits(tryCatch({force(expr);NULL},error=function(e)e),"error"))
+validate_csc(csc)
+r <- aggregate_csc(csc,c("a","b","a","unused"),c("a","b","empty"))
+stopifnot(identical(unname(r$counts),matrix(c(2,0,8,0,4,0,0,0,0),3,3)))
+stopifnot(identical(unname(r$n_cells),c(2L,1L,0L)))
+stopifnot(sum(r$counts)==14, identical(r$library_sizes,c(5,4,5,NA_real_)))
+for (bad in c(-1,1.5,Inf)) {z<-csc;z$x[1]<-bad;expect_error(validate_csc(z))}
+z<-csc;z$p[5]<-6L;expect_error(validate_csc(z))
+z<-csc;z$i[1]<-3L;expect_error(validate_csc(z))
+z<-csc;z$i[2]<-0L;expect_error(aggregate_csc(z,c("a","b","a","unused"),c("a","b")))
+expect_error(aggregate_csc(csc,c("a","b"),c("a","b")))
+expect_error(aggregate_csc(csc,c("a","b","a","unused"),c("a","a")))
+cat("CSC aggregation, source-count conservation and invalid-input tests passed\n")
+
+# A complete gzip stream must be readable and pass CRC/trailer verification.
+f <- tempfile(fileext=".gz")
+write_gzip_table(data.frame(x=1:3,y=c("a","b","c")),f)
+stopifnot(identical(read.delim(gzfile(f))$x,1:3),system2("gzip",c("-t",f))==0L)
+unlink(f)
+cat("Closed gzip stream CRC and trailer test passed\n")

@@ -1,0 +1,3 @@
+filename	url	bytes	sha256	verified_utc	public_source
+GSM4150378_sciPlex3_A549_24hrs.RDS.gz	https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_A549_24hrs.RDS.gz	572534814	07357f6b9c3e20d0ca88d7770ab9db80e215c64297c508e4f7832d4162fa16e3	2026-10-14T09:20:29.900561+00:00	True
+GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz	https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz	64715	98a65191d343d149c5742cf6e7b734d403e853d165da800fa2daea41b978a2ff	2026-10-14T09:20:29.907580+00:00	True

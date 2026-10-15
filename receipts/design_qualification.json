@@ -1,0 +1,31 @@
+{
+  "metadata_wells": 4992,
+  "drug_wells": 376,
+  "treatment_labels": 188,
+  "relevant_plates": 8,
+  "strict_control_wells": 8,
+  "same_plate_vehicle_wells": 16,
+  "selected_wells": 392,
+  "valid_structure_labels_before_parent_dedup": 186,
+  "unique_parent_representatives": 185,
+  "exclusions": [
+    {
+      "compound_id": "S1703",
+      "name": "Divalproex Sodium",
+      "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+    },
+    {
+      "compound_id": "S2018",
+      "name": "ENMD-2076 L-(+)-Tartaric acid ",
+      "exclusion_reason": "duplicate_parent_represented_by:S1181"
+    },
+    {
+      "compound_id": "S4246",
+      "name": "Tranylcypromine (2-PCPA) HCl",
+      "exclusion_reason": "undefined or query atom in SMILES"
+    }
+  ],
+  "expression_outcomes_inspected": false,
+  "final_cell_QC_done": false,
+  "models_trained": false
+}

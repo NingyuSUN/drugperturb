@@ -1,0 +1,70 @@
+{
+  "verified_utc": "2026-10-14T09:51:27.993406+00:00",
+  "compound_id": "S1090",
+  "compound_name": "Abexinostat (PCI-24781)",
+  "source_split": "test_already_opened",
+  "canonical_smiles": "CN(C)Cc1c(C(=O)NCCOc2ccc(C(=O)NO)cc2)oc2ccccc12",
+  "inference_invocation": "Python subprocess.run(argv, shell=False), fixed project interpreter and PYTHONPATH",
+  "argv": [
+    "/work/drugperturb/.venv/bin/python",
+    "/work/drugperturb/scripts/predict.py",
+    "--smiles",
+    "CN(C)Cc1c(C(=O)NCCOc2ccc(C(=O)NO)cc2)oc2ccccc12",
+    "--cell-type",
+    "A549",
+    "--time-hours",
+    "24",
+    "--dose-nM",
+    "1000",
+    "--model",
+    "M3",
+    "--output-prefix",
+    "/work/drugperturb/reports/inference_example/S1090"
+  ],
+  "inference_exit_code": 0,
+  "model": "M3",
+  "training_seeds": [
+    42,
+    123,
+    2026
+  ],
+  "n_genes": 2000,
+  "gene_order_matches_selected_genes": true,
+  "reference_prediction": "models/run_v1/test_predictions.npz M3 row S1090",
+  "all_predictions_within_atol": 1e-06,
+  "rtol": 0,
+  "maximum_absolute_difference": 1.7666947738081973e-08,
+  "mean_absolute_difference": 4.342791812517497e-09,
+  "max_training_tanimoto": 0.29850746268656714,
+  "nearest_training_compound": "S2779",
+  "training_similarity_exactly_matches_independent_fingerprint_replay": true,
+  "training_similarity_matches_final_context_atol": 1e-07,
+  "context": {
+    "cell_type": "A549",
+    "time_hours": 24,
+    "dose_nM": 1000
+  },
+  "frozen_artifacts_modified": false,
+  "training_performed": false,
+  "test_truth_loaded_for_this_replay": false,
+  "scope": "Inference-interface replay of one already opened test compound; not external validation, new-drug discovery, efficacy or clinical validation.",
+  "artifact_hashes": {
+    "reports/inference_example/S1090.tsv": "e311c111cd3385a18e03d1e3bfc531b20063a1119ffcae1eaef855b393c02d65",
+    "reports/inference_example/S1090.json": "8ff187aa1b19509a1d8c7de87120400b04975107c0570711cbe28f02fd3ac96e",
+    "scripts/predict.py": "892be379bfca125dcf1c990b32e894edfab889f8aff390abafc9ffcc2afde2b9",
+    "models/run_v1/test_predictions.npz": "8768ae3f3217eacbbb93b7eb70032257fbfd327e6b4676a1dab8f9a05b8a33b2",
+    "data/processed/test_features.npz": "8fcc38fba034288993bb0f97c9752c900f22068c9af509be69c28318662585b7",
+    "data/processed/development.npz": "c22400aecc23ff832f5d13353ed846563633167692e24f61cceca1e01ae5ac0d",
+    "manifests/selected_genes.tsv": "26d0a1f220db8a29acdc3553802d0cfe9c2e8245c3cf6b4dfba0a224d0c578e1",
+    "manifests/split_manifest.tsv": "442687ae16120a6371b83231607086553646d99afc6f72ac6840187ef6624e38",
+    "reports/final_test/compound_context.tsv": "2cb911d7dac8a40b754e01dca0eda92523f07487f7690902c4e205bd5f37454b",
+    "receipts/prediction_seal.json": "5cf6ab17dff9d19dc64c1899efeeac07a6df12661cd0da6c9aad6f0881998bb3",
+    "receipts/final_evaluation.json": "26a0643b90c8783957271c977d60034a7f17fb3f98d4cd3ddc3f6c2742e97e3b"
+  },
+  "_publication": {
+    "kind": "sanitized presentation copy",
+    "original_sha256": "58ec658de5f8b9c551b32119dbce3efa8a404f1bbe819600dd971a86927cdabd",
+    "changes": "Machine-specific paths and runtime names replaced with generic equivalents; numerical results and historical artifact hashes retained. See docs/PUBLICATION_PROVENANCE.md.",
+    "original_hash_references_retained": true
+  }
+}

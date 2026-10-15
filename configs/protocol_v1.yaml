@@ -1,0 +1,133 @@
+schema_version: 1
+status: FROZEN_BEFORE_TRAINING
+source:
+  geo_series: GSE139944
+  geo_sample: GSM4150378
+  author_code_commit: 079639c50811dd43a206a779ab2f0199a147c98f
+scope:
+  cell_type: A549
+  time_hours: 24
+  dose_nM: 1000
+  dose_pattern: '2'
+  public_data_only: true
+  wet_experiments: false
+controls:
+  matching_keys:
+  - cell_type
+  - time_point
+  - replicate
+  - plate_oligo
+  - dose_pattern
+  sensitivity: same_plate_both_vehicle_wells
+qc:
+  use_author_hash_qc: true
+  minimum_cells_per_treatment_replicate: 30
+  minimum_cells_per_matched_vehicle: 30
+  require_two_replicates: true
+  developer_sensitivity_cell_cutoffs:
+  - 20
+  - 50
+response:
+  unit: compound
+  aggregate: sum_raw_UMI_per_well
+  normalization: library_size_CPM_then_log1p
+  scale_factor: 1000000
+  delta: treated_minus_matched_vehicle
+  replicate_combination: equal_weight_mean_of_two_deltas
+  max_training_selected_genes: 2000
+  max_training_target_pcs: 20
+  fit_transformations_on: training_compounds_only
+  score_truth: measured_delta_not_PCA_reconstruction
+split:
+  method: canonical_parent_and_Bemis_Murcko_scaffold_grouped
+  seed: 42
+  fractions:
+  - 0.7
+  - 0.15
+  - 0.15
+  minimum_eligible_compounds: 100
+  minimum_test_compounds: 20
+  minimum_test_scaffolds: 10
+models:
+  methods:
+  - B0_zero
+  - B1_train_mean
+  - B2_chemical_nearest_neighbor
+  - M1_fingerprint_ridge
+  - M2_fingerprint_MLP
+  - M3_molecular_GNN
+  fingerprint_radius: 2
+  fingerprint_bits: 2048
+  max_hyperparameter_candidates: 4
+  training_seeds:
+  - 42
+  - 123
+  - 2026
+  selection: mean_validation_RMSE
+  max_development_folds: 3
+  learning_curve_fractions:
+  - 0.25
+  - 0.5
+  - 1.0
+  ridge_alphas:
+  - 0.1
+  - 1.0
+  - 10.0
+  - 100.0
+  mlp_candidates:
+  - hidden_dim: 64
+    lr: 0.001
+    dropout: 0.1
+  - hidden_dim: 64
+    lr: 0.003
+    dropout: 0.1
+  - hidden_dim: 128
+    lr: 0.001
+    dropout: 0.2
+  - hidden_dim: 128
+    lr: 0.003
+    dropout: 0.2
+  gnn_candidates:
+  - hidden_dim: 32
+    lr: 0.001
+    dropout: 0.1
+  - hidden_dim: 32
+    lr: 0.003
+    dropout: 0.1
+  - hidden_dim: 64
+    lr: 0.001
+    dropout: 0.1
+  - hidden_dim: 64
+    lr: 0.003
+    dropout: 0.1
+  max_epochs: 250
+  patience: 30
+  batch_size: 32
+  gnn_layers: 2
+  weight_decay: 0.0001
+  neural_selection: lowest_mean_seed_validation_mean_compound_RMSE_tie_first_candidate
+  neural_final_prediction: arithmetic_mean_of_three_seed_predictions
+  strong_simple_reference: validation_best_of_B0_B1_B2_M1
+  implementation: pure_PyTorch_bond_aware_message_passing
+  development_diagnostics: primary_training_compounds_only_refit_preprocessing_each_fold
+evaluation:
+  primary: compound_equal_weight_delta_RMSE
+  secondary:
+  - delta_Spearman
+  - pathway_response
+  - replicate_agreement
+  - error_vs_chemical_similarity
+  bootstrap_unit: scaffold_group
+  bootstrap_repetitions: 2000
+  bootstrap_seed: 2026
+  test_labels_used_for_model_selection: false
+  independent_external_dataset: false
+compute:
+  primary_device: cpu
+  cloud_execution: not_performed
+chemistry:
+  duplicate_parent_representative: fewest_removed_fragments_then_catalog_id
+  acyclic_group: nonisomeric_canonical_parent
+  stereochemistry_encoded: false
+  unresolved_active_mixtures: exclude
+  scaffold_groups_include_acyclic_parents: true

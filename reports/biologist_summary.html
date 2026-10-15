@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>DrugPerturb | Two-page biological summary</title><style>body{font:16px/1.6 system-ui,sans-serif;color:#183044;background:#f4f7f8;margin:0}main{max-width:1120px;margin:auto;padding:40px;background:white}h1{font-size:40px;line-height:1.15}h2{margin-top:42px;color:#0f766e}p{max-width:95ch}.eyebrow{color:#0f766e;font-weight:700;letter-spacing:.12em}table{border-collapse:collapse;width:100%;font-size:13px;display:block;overflow-x:auto}td,th{padding:9px;border-bottom:1px solid #dbe4e8;text-align:left}th{background:#ecf4f2}img{width:100%;height:auto;margin:20px 0}.callout{padding:20px;background:#eef6f4;border-left:4px solid #0f766e}.muted{color:#526471;font-size:14px}a{color:#087f8c}code{font-size:13px} @media print{body,main{background:white;padding:0}.page{break-after:page}h2{break-after:avoid}img,table{break-inside:avoid}}main{max-width:850px}@page{size:A4;margin:16mm}@media print{body{font-size:11pt}h1{font-size:26pt}h2{margin-top:18px}td,th{padding:5px}}</style><main><section class="page"><p class="eyebrow">DRUGPERTURB · BIOLOGICAL SUMMARY · 1/2</p><h1>Chemical structure to transcriptional response</h1><p>Public sci-Plex3 data · A549 · 24 hours · 1 µM</p><h2>Question</h2><p>Can a small molecular graph model predict the expression changes caused by compounds whose structural groups were absent from training?</p><h2>Evidence</h2><p>171 distinct standardized parent compounds; 119 training / 26 validation / 26 final test. Two biological experiment replicates per compound. Training-only selection of 2,000 genes; six methods evaluated against identical measured changes.</p><div class="callout">The molecular GNN achieved a mean compound RMSE of 1.214, compared with 1.243 for the validation-selected fingerprint ridge reference (2.3% lower point estimate).<p>The paired 95% structure-group interval includes zero; this experiment does not establish a reliable GNN advantage over the selected reference.</p></div><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Method</th>
+      <th>Description</th>
+      <th>Mean compound RMSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>B0</td>
+      <td>Zero change</td>
+      <td>1.2694</td>
+    </tr>
+    <tr>
+      <td>B1</td>
+      <td>Training mean</td>
+      <td>1.2170</td>
+    </tr>
+    <tr>
+      <td>B2</td>
+      <td>Chemical neighbor</td>
+      <td>1.7149</td>
+    </tr>
+    <tr>
+      <td>M1</td>
+      <td>Fingerprint ridge</td>
+      <td>1.2430</td>
+    </tr>
+    <tr>
+      <td>M2</td>
+      <td>Fingerprint MLP</td>
+      <td>1.2532</td>
+    </tr>
+    <tr>
+      <td>M3</td>
+      <td>Molecular GNN</td>
+      <td>1.2144</td>
+    </tr>
+  </tbody>
+</table><p>The training-mean baseline achieved 1.217. The GNN-minus-mean difference was -0.0026 (95% interval -0.0475 to 0.0419); compound-specific added value remains unestablished.</p></section><section><p class="eyebrow">BIOLOGICAL SUMMARY · 2/2</p><h2>What the biology says</h2><p>No prespecified gene set met the frozen coverage rule, so the study makes no claim of pathway recovery. Single-cell S and G2/M marker summaries provide experimental context independently of model outputs.</p><h2>Why confidence is limited</h2><p>Using two same-plate vehicle wells changes the point-estimate ranking: zero-change and training-mean references outperform the GNN under that response definition. GNN also has higher error than Ridge in all three exploratory development folds.</p><p>Only 26 drugs form the final test. The 24 structure groups include two acyclic parent groups. Shared vehicles and two experimental replicates limit independence. The model is restricted to one cell line, time and dose; there is no external dataset validation.</p><h2>Practical interpretation</h2><p>The study establishes a reproducible model-training and evaluation implementation. It does not yet establish that chemical structure predicts drug-specific response better than a strong mean-response baseline. The inconclusive added-value result is retained with all drug errors, seeds and training records.</p><h2>Next scientific test</h2><p>Define a new protocol using training-only expression-quality filtering and adequate fixed pathway coverage; evaluate it against untouched public data. The v1 test set is already used and must not become a tuning set disguised as new validation.</p><p>Full methods, figures and tables: <a href="report.html">report.html</a>. AWS execution, therapeutic efficacy and antibody discovery are not demonstrated.</p></section></main></html>

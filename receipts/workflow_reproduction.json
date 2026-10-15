@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "scope": "Engineering replay evidence; not independent biological validation; primary CPU results remain unchanged",
+  "source_commit": "ccbb7594cf0b49f98036628d16036a15ed208cd9",
+  "source_assets_match_commit": true,
+  "source_hashes": {
+    "src/drugperturb/chemistry.py": "0a059a1ec5528ff140ad5634a277f6fb96022acbfec4ab9aa8f3bb450698627b",
+    "src/drugperturb/design.py": "07a16b827717f52785f88a55af247a6475fd8ff5460aeb03b206ca58a7940be3",
+    "src/drugperturb/evaluation.py": "a8cf3d290f6edcad32fe99cae3664635094f7d5947e85e9ce8fe3ffe8d1ef744",
+    "src/drugperturb/models.py": "0b1829acca053186facc2ad070fae50f9611b8e7ce72adf5faf245114ddbc502",
+    "src/drugperturb/provenance.py": "1caeaab4aa66d9099c6f3c6687e3c05a17d9d87ecbddcdf733fd77dd599c797e",
+    "src/drugperturb/response.py": "080175b94845ef57f62e117bd24c0669a718f7bc58b14d0ae91b40039d233a38",
+    "src/drugperturb/__init__.py": "0f2605081822336166b187beb914abe523a7082ff18bb08d853befea8941e0d4",
+    "scripts/cell_state_qc.R": "1684d5ad49b276826ea40de1db1ae0de6c05f8825095ccdc85269ac5a09c3b99",
+    "scripts/csc_utils.R": "7d0f05230d9afc2c2af70f76dad026fe1d136bd34355edfa1daf1ea4170db6a3",
+    "scripts/development_diagnostics.py": "39125b1842833eb9b03d1fd1b869010e39528853251c71ac9a885a2359f04987",
+    "scripts/export_rds.R": "1ac5055e0614ccf760445fcb1c489071cdda67e79adada9e1278357b530e1b7e",
+    "scripts/fetch_public.py": "20df17039a99e06b313a3b1376fd3ef8dc48ff08933a2c9d7bdb1fe03ed66ba2",
+    "scripts/freeze_biology.py": "9334079a7670b304ceee76744743877d59589b4f90b70c5cf31911f0a4ef6f86",
+    "scripts/predict.py": "892be379bfca125dcf1c990b32e894edfab889f8aff390abafc9ffcc2afde2b9",
+    "scripts/prepare_dataset.py": "9609e023ce571a16426e25d37910497646b5c9585cced576784c519cf7369e71",
+    "scripts/prepare_design.py": "3f7eaa3dc4dde7710c888148cb8b9769703f2211f20d749c0bd5806e09672e12",
+    "scripts/report.py": "b976e8818afc09e3de23e05499dd4a1bb1fadace5004159254757f2905529399",
+    "scripts/score.py": "fff817c6e888a63197308723a63ba9edd05c42b99de32ea3b8c0afba70bc40d1",
+    "scripts/sensitivity.py": "aedf256a668897116214f4a5d1da34d82dd2f1cca9df5c0c4680f8c1a2cc0cd7",
+    "scripts/smoke_pipeline.py": "f3dda4580b6971bef337708a5d5d3fe4cebbd729a34aa21c22bc4d3f708d320f",
+    "scripts/train.py": "d1520ec35e6426870e9b2e86d89e6f9dac89b10392e2600c5ceed72898487fcf",
+    "configs/biology_v1.json": "92799ec33e9f816c6b354c96d5546a2cd767a48537ec979c407eea36dbfc6451",
+    "configs/protocol_v1.yaml": "ca697121838d0fda78127f43e222dfa014c5f21d9b5fc580f0e20dd45fefafdf",
+    "locks/python-cpu.txt": "ed98295cd5a08de6535823ba58b9c3f509d6bc55576787e11f9a01ccde1b2c5a",
+    "conf/docker.config": "de439ca341d945f6d3ded49050a3db9cd8e585ead82e4187cc888df6b9a0c369",
+    "conf/ec2.config": "3478833b907b4806ba1d9d2fe8b27fcdb34745868307d2e7e203649c51094411",
+    "conf/local.config": "ea8133c0a4615031942d2199274ce4a6f1178c8b4ddf057e2fc1d9bef4fff892",
+    "conf/test.config": "05b03880ed668f188fc2b95186cc404e5fc598657a8dc70096b72cb2d86ed9c7",
+    "containers/Dockerfile": "94e2550763aa00a5151795d95bdd68f590204d974bd543ff709ccea943499b80",
+    "docs/AWS_DEPLOYMENT.md": "e068c7c037a351a0ebb87981324f5fc59fda8acb733607c65ab2aff1e1cf9319",
+    "docs/BIOLOGY_METHODS.md": "158e6ffe6a5c7795d5d554902aaeac0e4651082e734dfd79dab4c85ce8de8714",
+    "docs/DATA_CARD.md": "3a266ecc842af3d5ba9ce4180a9d6a7092b8cddc22215aa2330b84f35aab77c2",
+    "docs/DIAGNOSTICS_METHODS.md": "38cf2efb295b7e846fb949ab8167af574115944b49f54c61743965467964c030",
+    "docs/EXECUTION_EVIDENCE.md": "a5e9995d173b023e5efc15671365b6f8d443c9c57fe0dee82a2c6fa7dac2dd2f",
+    "docs/MODEL_CARD.md": "1c76a361fe653d3ab47b334fa561adf9bdc54a0b84f49d7ac02d18c5079839b5",
+    "docs/REPRODUCIBILITY.md": "48f704a986f6c5fefc19e1cd7aac2966447ef345cc2f8f499d53d47abcee7370",
+    "docs/RESEARCH_DECISIONS.md": "1c1574e08a5921231cf37191783f5b6bfcaccafa6a4d70cbb7f40e0c26477f1c",
+    "docs/SENSITIVITY_METHODS.md": "4316e2abce06ea3190e316257caa0ea6af4f47ccdee6a5f78f5f2dc26604e020",
+    "main.nf": "6c0f1e6c834ca0056a5140789b2e58c91ea37495ed08200eecaeff1b0714b4a1",
+    "nextflow.config": "1a196684b429f03637f1a3322aa5d09fddfe1efdaf159f582b403b09afd05d36",
+    "pyproject.toml": "e67149e567ef8b586e036998a57fe97f3a2e65f3237b2eaba39fab658425da73",
+    "AGENTS.md": "ccefc1147f05e090b0b64d3d8504a4053e0e9240a877b6f7d312ec4e9288e6ba",
+    "README.md": "56c8ffa0a222c0724c6df2d293ab5d5bb0a8328c8ffbc591e06f7728f023ae37"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "executable": "/usr/local/bin/python3.12",
+    "executable_sha256": "4dbf3143240288fb2170257ffaa7bd030cdda5d2703d1f5f30b627042267e2e3",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "rdkit": "2026.9.1",
+      "torch": "2.5.1+cpu",
+      "PyYAML": "6.0.3",
+      "joblib": "1.6.0",
+      "matplotlib": "3.11.2"
+    }
+  },
+  "hardware": {
+    "primary": "GenuineIntel Intel(R) Core(TM) i9-7980XE CPU @2.60GHz",
+    "container_host": "AuthenticAMD AMD Ryzen 7 1700 Eight-Core Processor",
+    "observation": "CPU identities were recorded with lscpu; hardware differs but the exact numerical operator cause is not established."
+  },
+  "container": {
+    "image_id": "sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea",
+    "base": "python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e",
+    "server_version": "29.1.3",
+    "data_root": "/var/lib/docker",
+    "image_created": "2026-10-14T19:09:16.774382173+09:00",
+    "architecture": "amd64",
+    "os": "linux",
+    "layers": [
+      "sha256:34467cc93912af891dfee8a3902adf9b4f355a9bca4eaa46f658d1181a21de0d",
+      "sha256:16df0073c13c96653ee2b601b16e514321513eb4af983de156c2d4e17df8a5d9",
+      "sha256:9639007baab8a136bc468bd5d757fdf79cf5d77b6ff2a87889071252e334fab3",
+      "sha256:abca6d63c9dbe51fa3bc42e75e0387da12803ef64430ad151814e468d5e1c203",
+      "sha256:9c5eaaa9873eb39352d3dfe561674f43853a1456ee361bc4b2e408423a03fb5c",
+      "sha256:1f4f0dac8a1adf47c5bc8ef5d4ecdc6881c2e84bf2a4138f70001491ef8d4ec9",
+      "sha256:0afbd43113cb6371000b1629c848a1ece77dad86b95db225519c1f264edbf377"
+    ],
+    "build_context": "Only containers/Dockerfile and locks/python-cpu.txt; 4KB context",
+    "build_commands": [
+      "docker build --progress plain -f /work/drugperturb/.runtime/workflow/docker-context/containers/Dockerfile -t drugperturb:cpu /work/drugperturb/.runtime/workflow/docker-context",
+      "docker run --rm --network none drugperturb:cpu python -m pip check"
+    ],
+    "build_logs": {
+      "logs/docker-build-workflow.log": "e9b6438997dfcff8365d5436ec28c8a2a94907f86b0652cf5819da68a9021c14",
+      "logs/docker-build-pinned-workflow.log": "7fb40480e72bfe78ec32cb5f994ec0d2137ac83253c037561f1bdb51fd763a22"
+    },
+    "pip_check": "No broken requirements found."
+  },
+  "input_manifest": {
+    "path": "manifests/workflow_core_inputs.json",
+    "sha256": "49aca48248a8097313d3875909cdbdafab92d7683e3225b1220dbc93f9d60b4a",
+    "schema_version": 1,
+    "mode": "core",
+    "description": "Verified well-count extraction and fixed single-cell summaries derived from the public sci-Plex3 A549 RDS; no fitted targets, test labels, predictions or model selection supplied.",
+    "artifact_hashes": {
+      "data/raw/GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz": "98a65191d343d149c5742cf6e7b734d403e853d165da800fa2daea41b978a2ff",
+      "data/processed/pseudobulk_counts.tsv.gz": "c8413f0529bb15277810b3109c4aa24d9eb0a020d901a5dbad2e684194236d61",
+      "data/processed/well_qc.tsv": "6eee2646d270911f7aa16db31078cac4530d1f7bd29e3e76b3146358b50b0ea4",
+      "data/processed/gene_metadata.tsv": "a7f2df38a65846b28195883950aa09fdff7aa795a0f16c34c56e82091309e27c",
+      "data/processed/extraction_summary.tsv": "d11f319061ccbe0f6aed146542df171e9991da2ac18eccbaa33b1bf0ce35a31f",
+      "data/processed/selected_cell_qc.tsv.gz": "8223a57d1e8c9a8a9c17ddbdd17f6d58164c0bb03379c4ffcd507da33d9bbf3d",
+      "data/processed/cell_state_well_summary.tsv": "c0337dad8ea5fc0b638c556c119b78d7e08aa086833dc037f691abe49e093495",
+      "manifests/source_manifest.tsv": "9473f2c13860cfe0a154f7b13882122d7b36a96aefb80a70397e4e927acade4a"
+    },
+    "upstream_sources": [
+      {
+        "filename": "GSM4150378_sciPlex3_A549_24hrs.RDS.gz",
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_A549_24hrs.RDS.gz",
+        "bytes": "572534814",
+        "sha256": "07357f6b9c3e20d0ca88d7770ab9db80e215c64297c508e4f7832d4162fa16e3"
+      },
+      {
+        "filename": "GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz",
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz",
+        "bytes": "64715",
+        "sha256": "98a65191d343d149c5742cf6e7b734d403e853d165da800fa2daea41b978a2ff"
+      }
+    ]
+  },
+  "pipeline": {
+    "top_level_exit_code": 0,
+    "first": {
+      "status": "COMPLETED",
+      "success": true,
+      "run_name": "lonely_dijkstra",
+      "session_id": "20eead1f-77e9-4c49-b0e8-5eb659cfbeed",
+      "duration": "4m 24s",
+      "completed_tasks": 1,
+      "cached_tasks": 0,
+      "failed_tasks": 0,
+      "resource_metrics": "UNAVAILABLE explicitly disabled",
+      "reason": "Portable mode: kernel may lack /proc/PID/io; no CPU/memory/IO values claimed",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_core_6gb.log run /work/drugperturb/main.nf -profile local,docker --project_root /work/drugperturb --mode core --input_manifest /work/drugperturb/manifests/workflow_core_inputs.json --source_commit ccbb7594cf0b49f98036628d16036a15ed208cd9 --allow_real_execution --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --memory '6 GB' --outdir /work/drugperturb/work/docker_core_6gb -work-dir /work/drugperturb/work/nf-docker-core-6gb"
+    },
+    "repeat": {
+      "status": "COMPLETED",
+      "success": true,
+      "run_name": "gigantic_lamarck",
+      "session_id": "5e31b16d-bbaf-4591-b9df-41494f3c5cc6",
+      "duration": "4m 26s",
+      "completed_tasks": 1,
+      "cached_tasks": 0,
+      "failed_tasks": 0,
+      "resource_metrics": "UNAVAILABLE explicitly disabled",
+      "reason": "Portable mode: kernel may lack /proc/PID/io; no CPU/memory/IO values claimed",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_core_repeat.log run /work/drugperturb/main.nf -profile local,docker --project_root /work/drugperturb --mode core --input_manifest /work/drugperturb/manifests/workflow_core_inputs.json --source_commit ccbb7594cf0b49f98036628d16036a15ed208cd9 --allow_real_execution --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --memory '6 GB' --outdir /work/drugperturb/work/docker_core_repeat -work-dir /work/drugperturb/work/nf-docker-core-repeat"
+    },
+    "first_elapsed_seconds": 245.08557410700087,
+    "repeat_elapsed_seconds": 245.98314524199668,
+    "first_output_hash_count": 239,
+    "repeat_output_hash_count": 239,
+    "commands": [
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/prepare_design.py"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 2.4845520980015863,
+        "log": "logs/00_prepare_design.log"
+      },
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/prepare_dataset.py"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 15.565877066997928,
+        "log": "logs/01_prepare_dataset.log"
+      },
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/train.py",
+          "--source-commit",
+          "ccbb7594cf0b49f98036628d16036a15ed208cd9"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 177.87386084900209,
+        "log": "logs/02_train.log"
+      },
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/development_diagnostics.py",
+          "--source-commit",
+          "ccbb7594cf0b49f98036628d16036a15ed208cd9"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 23.867067030001635,
+        "log": "logs/03_development_diagnostics.log"
+      },
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/score.py"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 6.873698976000014,
+        "log": "logs/04_score.log"
+      },
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/sensitivity.py"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 6.352403799999593,
+        "log": "logs/05_sensitivity.log"
+      },
+      {
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/report.py"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 8.166222191000998,
+        "log": "logs/06_report.log"
+      }
+    ],
+    "all_seven_steps_succeeded": true,
+    "single_snapshot_process": true,
+    "resource_metrics": "Explicitly unavailable; operational trace/report/timeline; official DAG retained"
+  },
+  "cross_runtime_retraining": {
+    "status": "FAIL_predeclared_numeric_tolerance",
+    "passed": false,
+    "atol": 1e-06,
+    "rtol": 0,
+    "passed_arrays": 16,
+    "failed_arrays": 8,
+    "total_arrays": 24,
+    "table": "receipts/replay_prediction_comparison.tsv",
+    "table_sha256": "b203713009cc92c78cebcc520f80fdc2be226c98469c4a7e501ec95daa9f2ce7",
+    "selection": {
+      "M1": {
+        "primary": {
+          "candidate": 3,
+          "alpha": 100.0
+        },
+        "replay": {
+          "candidate": 3,
+          "alpha": 100.0
+        },
+        "selected_candidate_and_hyperparameters_identical": true
+      },
+      "M2": {
+        "primary": {
+          "candidate": 3,
+          "hidden_dim": 128,
+          "lr": 0.003,
+          "dropout": 0.2,
+          "mean_seed_validation_RMSE": 1.2460629013822793
+        },
+        "replay": {
+          "candidate": 3,
+          "hidden_dim": 128,
+          "lr": 0.003,
+          "dropout": 0.2,
+          "mean_seed_validation_RMSE": 1.2460629010882036
+        },
+        "selected_candidate_and_hyperparameters_identical": true
+      },
+      "M3": {
+        "primary": {
+          "candidate": 3,
+          "hidden_dim": 64,
+          "lr": 0.003,
+          "dropout": 0.1,
+          "mean_seed_validation_RMSE": 1.20740705963214
+        },
+        "replay": {
+          "candidate": 3,
+          "hidden_dim": 64,
+          "lr": 0.003,
+          "dropout": 0.1,
+          "mean_seed_validation_RMSE": 1.2076887108162147
+        },
+        "selected_candidate_and_hyperparameters_identical": true
+      }
+    },
+    "identity": {
+      "selected_genes": {
+        "n_genes": 2000,
+        "same_order": true,
+        "ordered_gene_ids_sha256": "70cd1cb38325132281b4110359886e2355c9e4776450a62b2a42d3f9ad517dfa"
+      },
+      "partitions": {
+        "validation": {
+          "n_compounds": 26,
+          "same_order": true,
+          "ordered_ids_sha256": "f9b7a7b01b060b4660fd8b5ca6cb778b60eeb2fb04c67310aabff34b9df194ff",
+          "ids": [
+            "S1004",
+            "S1007",
+            "S1028",
+            "S1068",
+            "S1085",
+            "S1141",
+            "S1142",
+            "S1156",
+            "S1191",
+            "S1233",
+            "S1264",
+            "S1319",
+            "S1463",
+            "S1624",
+            "S1848",
+            "S2012",
+            "S2014",
+            "S2627",
+            "S2770",
+            "S2919",
+            "S3001",
+            "S7165",
+            "S7570",
+            "S7634",
+            "S7792",
+            "S8323"
+          ]
+        },
+        "test": {
+          "n_compounds": 26,
+          "same_order": true,
+          "ordered_ids_sha256": "49baaabd80fce89fe4822e5e15e438d530b49aac7ae7ea5612c498cbd33da149",
+          "ids": [
+            "S1014",
+            "S1033",
+            "S1056",
+            "S1090",
+            "S1103",
+            "S1143",
+            "S1168",
+            "S1169",
+            "S1193",
+            "S1209",
+            "S1289",
+            "S1327",
+            "S1378",
+            "S1577",
+            "S1672",
+            "S1692",
+            "S1802",
+            "S2013",
+            "S2178",
+            "S2179",
+            "S2666",
+            "S2686",
+            "S2818",
+            "S2851",
+            "S2902",
+            "S7574"
+          ]
+        }
+      },
+      "train_ids": {
+        "n_compounds": 119,
+        "ordered_ids_sha256": "3c48b1262d62005180a33291dc35fb177f3d398634441f8c496d37f1f5042012"
+      },
+      "val_ids": {
+        "n_compounds": 26,
+        "ordered_ids_sha256": "f9b7a7b01b060b4660fd8b5ca6cb778b60eeb2fb04c67310aabff34b9df194ff"
+      }
+    },
+    "training_grid": {
+      "n_fits": 28,
+      "validation_RMSE_max_abs_difference": 0.0011608191505094734,
+      "best_epoch_identical": false,
+      "epochs_executed_identical": false
+    },
+    "interpretation": "Byte-identical frozen inputs and scientific source; GNN training trajectories differ across CPU environments. Exact numerical operator cause not established. No tolerance/seed/model changes or primary replacement."
+  },
+  "same_runtime_replay": {
+    "status": "PASS",
+    "atol": 1e-06,
+    "rtol": 0,
+    "passed_arrays": 24,
+    "total_arrays": 24,
+    "all28_fit_records_except_timings_identical": true,
+    "selected_configs_and_scores_identical": true,
+    "source_hashes_identical": true,
+    "frozen_dataset_hashes_identical": true,
+    "table": "receipts/same_runtime_prediction_comparison.tsv",
+    "table_sha256": "ad0511de28145731b75a80ef7d527571da9fd57c557ce7ccff9aa7477eef852f"
+  },
+  "input_audit": {
+    "path": "receipts/replay_input_audit.json",
+    "sha256": "409def413f0d199bec593351c564c5c0e06f1cb9c2aa9f751df2ff17a04893d0",
+    "all15_frozen_artifact_hashes_equal": true,
+    "no_new_fit": true,
+    "no_test_truth_arrays_loaded": true
+  },
+  "synthetic": {
+    "first": {
+      "status": "COMPLETED",
+      "success": true,
+      "run_name": "distracted_cuvier",
+      "session_id": "1ba46b35-5f4b-4a71-aee2-4a00b8ed095e",
+      "duration": "21.2s",
+      "completed_tasks": 1,
+      "cached_tasks": 0,
+      "failed_tasks": 0,
+      "resource_metrics": "UNAVAILABLE explicitly disabled",
+      "reason": "Portable mode: kernel may lack /proc/PID/io; no CPU/memory/IO values claimed",
+      "command": "nextflow -C /work/drugperturb/.runtime/workflow/test_source_v2/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_test_green.log run /work/drugperturb/.runtime/workflow/test_source_v2/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source_v2 --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --outdir /work/drugperturb/work/docker_test_green -work-dir /work/drugperturb/work/nf-docker-green"
+    },
+    "resume": {
+      "status": "CACHED",
+      "success": true,
+      "run_name": "hopeful_hilbert",
+      "session_id": "1ba46b35-5f4b-4a71-aee2-4a00b8ed095e",
+      "duration": "3.9s",
+      "completed_tasks": 0,
+      "cached_tasks": 1,
+      "failed_tasks": 0,
+      "resource_metrics": "UNAVAILABLE explicitly disabled",
+      "reason": "Portable mode: kernel may lack /proc/PID/io; no CPU/memory/IO values claimed",
+      "command": "nextflow -C /work/drugperturb/.runtime/workflow/test_source_v2/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_test_resume.log run /work/drugperturb/.runtime/workflow/test_source_v2/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source_v2 --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --outdir /work/drugperturb/work/docker_test_resume -work-dir /work/drugperturb/work/nf-docker-green -resume"
+    },
+    "snapshot_receipt_sha256": "8494daca46e4452d7ff55dc92812886702d7ce3f788ac94a91f8c27783fa5f72",
+    "n_compounds": 24,
+    "n_synthetic_genes": 12,
+    "selected_genes": 8,
+    "compute_seconds": 7.410119167998346,
+    "cached_output_tamper_test": {
+      "expected_failure": true,
+      "exit_code": 1,
+      "cached_task_observed": true,
+      "hash_mismatch_observed": true,
+      "scope": "Synthetic report only; no real data or model refitting",
+      "command": "cd /work/drugperturb/.runtime/workflow; source /work/drugperturb/.runtime/workflow/env.sh; nextflow -C /work/drugperturb/.runtime/workflow/test_source_v2/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_test_tamper.log run /work/drugperturb/.runtime/workflow/test_source_v2/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source_v2 --container_image sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea --resource_metrics false --outdir /work/drugperturb/work/docker_test_tamper -work-dir /work/drugperturb/work/nf-docker-green -resume 1ba46b35-5f4b-4a71-aee2-4a00b8ed095e",
+      "original_synthetic_report_restored_sha256": "1d84221041e038d10955b95f8f04ad0674b6451d5f690a21997d28014989140e"
+    },
+    "scope": "Artificial software fixtures only; no biological evidence"
+  },
+  "software_tests": {
+    "command": "/work/drugperturb/.venv/bin/python -m pytest -q",
+    "passed": 108,
+    "elapsed_seconds": 97.48,
+    "hosted_CI": "Static checks only; no hosted execution"
+  },
+  "failed_attempts_preserved": [
+    "Missing /proc/PID/io made official Nextflow resource wrapper fail after computation; explicit portable mode replaces all metrics observers with labeled operational summaries",
+    "Temporary Torch module vanished at interpreter exit; excluded only temporary directory from persistent output hashes",
+    "First Docker invocation had empty image ID and failed before computation; corrected with literal verified ID",
+    "First real scheduler request8GB exceeded7.8GB available and performed no computation; corrected explicit6GB; original scheduling logs retained"
+  ],
+  "exact_nextflow_commands": [
+    {
+      "log": ".runtime/workflow/launch/docker_core_6gb.log",
+      "sha256": "bd744719019f6f74f1642f0bac5203254ee087182647ca525673504bc76f5ea0",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_core_6gb.log run /work/drugperturb/main.nf -profile local,docker --project_root /work/drugperturb --mode core --input_manifest /work/drugperturb/manifests/workflow_core_inputs.json --source_commit ccbb7594cf0b49f98036628d16036a15ed208cd9 --allow_real_execution --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --memory '6 GB' --outdir /work/drugperturb/work/docker_core_6gb -work-dir /work/drugperturb/work/nf-docker-core-6gb"
+    },
+    {
+      "log": ".runtime/workflow/launch/docker_core_first.log",
+      "sha256": "3990323e1d5f0b672ad6213acd6a2bdbc9cfcde8c4ce1c97f074fd0c238bd513",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_core_first.log run /work/drugperturb/main.nf -profile local,docker --project_root /work/drugperturb --mode core --input_manifest /work/drugperturb/manifests/workflow_core_inputs.json --source_commit ccbb7594cf0b49f98036628d16036a15ed208cd9 --allow_real_execution --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --outdir /work/drugperturb/work/docker_core_first -work-dir /work/drugperturb/work/nf-docker-core"
+    },
+    {
+      "log": ".runtime/workflow/launch/docker_core_repeat.log",
+      "sha256": "83e36b4c5f0c2161eea23b82f934245f63dc72e8f9661c2f8c476a38a4e4ee6a",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_core_repeat.log run /work/drugperturb/main.nf -profile local,docker --project_root /work/drugperturb --mode core --input_manifest /work/drugperturb/manifests/workflow_core_inputs.json --source_commit ccbb7594cf0b49f98036628d16036a15ed208cd9 --allow_real_execution --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --memory '6 GB' --outdir /work/drugperturb/work/docker_core_repeat -work-dir /work/drugperturb/work/nf-docker-core-repeat"
+    },
+    {
+      "log": ".runtime/workflow/launch/docker_test_first.log",
+      "sha256": "466e31bc1c50fea060211c0f73c399647a300609cb6cc360a6ce8788fb7d71a6",
+      "command": "nextflow -C test_source/nextflow.config -log launch/docker_test_first.log run test_source/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source --container_image  --resource_metrics false --outdir /work/drugperturb/work/docker_test_first -work-dir /work/drugperturb/work/nf-docker-test"
+    },
+    {
+      "log": ".runtime/workflow/launch/docker_test_green.log",
+      "sha256": "0f6e2efdf429bf40f9cd7a480cf640c146476f7134113b4040cc9b6490707be3",
+      "command": "nextflow -C /work/drugperturb/.runtime/workflow/test_source_v2/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_test_green.log run /work/drugperturb/.runtime/workflow/test_source_v2/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source_v2 --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --outdir /work/drugperturb/work/docker_test_green -work-dir /work/drugperturb/work/nf-docker-green"
+    },
+    {
+      "log": ".runtime/workflow/launch/docker_test_resume.log",
+      "sha256": "d8d2c3039eeb6ad5260b1d53b8290655ded38f830576ce5a6a1c8deeae960d2d",
+      "command": "nextflow -C /work/drugperturb/.runtime/workflow/test_source_v2/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_test_resume.log run /work/drugperturb/.runtime/workflow/test_source_v2/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source_v2 --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --outdir /work/drugperturb/work/docker_test_resume -work-dir /work/drugperturb/work/nf-docker-green -resume"
+    },
+    {
+      "log": ".runtime/workflow/launch/docker_test_tamper.log",
+      "sha256": "b164a6f12d6af59adb80d79ee443c43560cbfd3ac0e5e6da3bf27d46ab2ef836",
+      "command": "nextflow -C /work/drugperturb/.runtime/workflow/test_source_v2/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/docker_test_tamper.log run /work/drugperturb/.runtime/workflow/test_source_v2/main.nf -profile test,docker --project_root /work/drugperturb/.runtime/workflow/test_source_v2 --container_image 'sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea' --resource_metrics false --outdir /work/drugperturb/work/docker_test_tamper -work-dir /work/drugperturb/work/nf-docker-green -resume 1ba46b35-5f4b-4a71-aee2-4a00b8ed095e"
+    },
+    {
+      "log": ".runtime/workflow/launch/test_green_v1.log",
+      "sha256": "f1187b275f10ed628fb8e665f713d3992871678aeea42e8e0f62cb07645be1e0",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/test_green_v1.log run /work/drugperturb/main.nf -profile test --project_root /work/drugperturb --python /work/drugperturb/.venv/bin/python --outdir /work/drugperturb/work/workflow_green_v1 -work-dir /work/drugperturb/work/nf-green-v1"
+    },
+    {
+      "log": ".runtime/workflow/launch/test_green_v2.log",
+      "sha256": "e64bd54768375b583602789ba7f91a77eaede0d78dcd166b2b751d145b5751bd",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/test_green_v2.log run /work/drugperturb/main.nf -profile test --project_root /work/drugperturb --python /work/drugperturb/.venv/bin/python --outdir /work/drugperturb/work/workflow_green_v2 -work-dir /work/drugperturb/work/nf-green-v2"
+    },
+    {
+      "log": ".runtime/workflow/launch/test_portable_green.log",
+      "sha256": "fb36e83b08a7bd59d4b4ed9376eb7d9a13e2497dbb63c4e175a4bb0fe4eddbd1",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/test_portable_green.log run /work/drugperturb/main.nf -profile test --project_root /work/drugperturb --python /work/drugperturb/.venv/bin/python --resource_metrics false --outdir /work/drugperturb/work/workflow_portable_green -work-dir /work/drugperturb/work/nf-portable"
+    },
+    {
+      "log": ".runtime/workflow/launch/test_portable_green_v2.log",
+      "sha256": "f08a090ee750080c508cd2ca69998f35df75cebf539e9706a69cfe41229baaa6",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/test_portable_green_v2.log run /work/drugperturb/main.nf -profile test --project_root /work/drugperturb --python /work/drugperturb/.venv/bin/python --resource_metrics false --outdir /work/drugperturb/work/workflow_portable_green_v2 -work-dir /work/drugperturb/work/nf-portable-v2"
+    },
+    {
+      "log": ".runtime/workflow/launch/test_red.log",
+      "sha256": "30c003c084a9071f1d45398e27fa33bb0034eb989be121eb2deab1048077d6b8",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/test_red.log run /work/drugperturb/main.nf -profile test --project_root /work/drugperturb --python /work/drugperturb/.venv/bin/python --outdir /work/drugperturb/work/workflow_red -work-dir /work/drugperturb/work/nf-red"
+    },
+    {
+      "log": ".runtime/workflow/launch/test_red_v2.log",
+      "sha256": "fcb028df766dd787cd1be0d88bace9bfa3707905f055bf331649c0ba5383c367",
+      "command": "nextflow -C /work/drugperturb/nextflow.config -log /work/drugperturb/.runtime/workflow/launch/test_red_v2.log run /work/drugperturb/main.nf -profile test --project_root /work/drugperturb --python /work/drugperturb/.venv/bin/python --outdir /work/drugperturb/work/workflow_red_v2 -work-dir /work/drugperturb/work/nf-red"
+    }
+  ],
+  "limitations": [
+    "No EC2 execution or paid resources",
+    "Raw R conversion was not rerun by this core container",
+    "Same public dataset replay does not constitute independent biological or efficacy validation",
+    "Cross-runtime GNN retraining does not meet1e-6 tolerance",
+    "Underlying Nextflow work retained; published snapshot links depend on it"
+  ],
+  "fixed_weight_cross_runtime_inference": {
+    "path": "receipts/cross_runtime_inference.json",
+    "sha256": "1a889c1a499c7c97e945e94142cdd208a21e744b7d3a5012d4cd5eceb4d33eae"
+  },
+  "workflow_runtime": {
+    "nextflow_version": "25.10.2",
+    "java_version": "21.0.12.1+1",
+    "source": "official public GitHub release assets; verified before extraction",
+    "asset_sha256": {
+      "nextflow-25.10.2-dist": "59c6f48fce6139157b2e8a28fdca8166bc502a22d9ef1a0a70065ecc9c3ae4a3",
+      "OpenJDK21U-jre_x64_linux_hotspot_21.0.12.1_1.tar.gz": "2413149700df0f7d440500a84a8f764c535f21e5a5e87d38328b64eec2c5b500"
+    }
+  },
+  "_publication": {
+    "kind": "sanitized presentation copy",
+    "original_sha256": "902900081a8dc5ef6bb98ac2edfa6b046516fbbded2fc1342b26237a9bdf46dd",
+    "changes": "Machine identifiers and unrelated operational context removed; scientific values and historical artifact hashes retained. See docs/PUBLICATION_PROVENANCE.md.",
+    "original_hash_references_retained": true
+  }
+}

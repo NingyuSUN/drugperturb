@@ -1,0 +1,189 @@
+compound_id	name	eligible	exclusion_reason	rep1_cells	rep2_cells	minimum_control_cells
+S1001	Navitoclax (ABT-263)	True		115	161	89
+S1002	ABT-737	True		85	100	89
+S1003	Linifanib (ABT-869)	True		107	126	89
+S1004	Veliparib (ABT-888)	True		98	115	89
+S1007	Roxadustat (FG-4592)	True		53	158	86
+S1010	Nintedanib (BIBF 1120)	True		81	162	89
+S1012	BMS-536924	True		75	91	89
+S1014	Bosutinib (SKI-606)	True		87	129	89
+S1017	Cediranib (AZD2171)	True		68	106	89
+S1021	Dasatinib	True		58	89	99
+S1028	Lapatinib (GW-572016) Ditosylate	True		80	147	89
+S1029	Lenalidomide (CC-5013)	True		102	114	89
+S1030	Panobinostat (LBH589)	True		34	70	86
+S1032	Motesanib Diphosphate (AMG-706)	True		108	109	89
+S1033	Nilotinib (AMN-107)	True		106	122	89
+S1040	Sorafenib Tosylate	True		101	98	99
+S1044	Temsirolimus (CCI-779, NSC 683864)	True		110	76	99
+S1045	Trichostatin A (TSA)	True		80	118	99
+S1046	Vandetanib (ZD6474)	True		123	105	99
+S1048	Tozasertib (VX-680, MK-0457)	True		57	91	86
+S1053	Entinostat (MS-275)	True		115	129	99
+S1055	Enzastaurin (LY317615)	True		98	97	99
+S1056	AC480 (BMS-599626)	True		103	118	99
+S1057	Obatoclax Mesylate (GX15-070)	True		120	127	99
+S1066	SL-327	True		98	83	99
+S1067	SB431542	True		93	83	99
+S1068	Crizotinib (PF-02341066)	True		92	125	99
+S1069	Luminespib (AUY-922, NVP-AUY922)	True		99	44	99
+S1085	Belinostat (PXD101)	True		59	131	86
+S1087	Iniparib (BSI-201)	True		43	161	86
+S1090	Abexinostat (PCI-24781)	True		62	119	86
+S1095	Dacinostat (LAQ824)	True		39	69	86
+S1096	Quisinostat (JNJ-26481585) 2HCl	False	low_treatment_cells	24	64	86
+S1098	Rucaparib (AG-014699,PF-01367338) phosphate	True		40	106	86
+S1100	MLN8054	False	low_treatment_cells	12	66	86
+S1103	ZM 447439	True		44	100	86
+S1107	Danusertib (PHA-739358)	False	low_treatment_cells	29	97	86
+S1122	Mocetinostat (MGCD0103)	True		46	135	86
+S1124	BMS-754807	True		67	89	89
+S1129	SRT1720 HCl	True		107	115	89
+S1130	YM155 (Sepantronium Bromide)	False	low_treatment_cells	20	16	89
+S1132	INO-1001 (3-Aminobenzamide)	True		91	113	89
+S1133	Alisertib (MLN8237)	False	low_treatment_cells	24	84	86
+S1134	AT9283	True		54	65	86
+S1140	Andarine	True		101	117	89
+S1141	Tanespimycin (17-AAG)	True		63	70	89
+S1142	Alvespimycin (17-DMAG) HCl	True		48	35	89
+S1143	AG-490 (Tyrphostin B42)	True		103	82	89
+S1147	Barasertib (AZD1152-HQPA)	True		46	61	86
+S1153	Roscovitine (Seliciclib,CYC202)	True		96	110	89
+S1154	SNS-314 Mesylate	True		58	60	89
+S1155	S3I-201	True		95	116	89
+S1156	Capecitabine 	True		98	128	89
+S1168	Valproic acid sodium salt (Sodium valproate)	True		122	97	99
+S1169	TGX-221	True		108	92	99
+S1171	CYC116	True		87	50	99
+S1172	JNJ-26854165 (Serdemetan)	True		91	126	99
+S1177	PD98059	True		116	90	99
+S1178	Regorafenib (BAY 73-4506)	True		119	108	99
+S1180	XAV-939	True		97	150	99
+S1181	ENMD-2076	True		74	85	99
+S1191	Fulvestrant	True		100	84	99
+S1192	Raltitrexed	True		83	45	99
+S1193	Thalidomide	True		60	123	99
+S1194	CUDC-101	True		70	124	99
+S1200	Decitabine	True		52	113	86
+S1209	Fluorouracil (5-Fluoracil, 5-FU)	True		85	114	99
+S1216	PFI-1 (PF-6405761)	False	low_treatment_cells	24	134	86
+S1233	2-Methoxyestradiol (2-MeOE2)	True		66	122	86
+S1249	JNJ-7706621	True		48	116	86
+S1259	Ramelteon	True		95	155	89
+S1261	Celecoxib	True		94	96	89
+S1262	Avagacestat (BMS-708163)	True		93	114	89
+S1264	PD173074	True		101	101	89
+S1278	Altretamine	True		92	180	89
+S1280	Amisulpride	True		100	123	89
+S1289	Carmofur	True		78	115	89
+S1297	Epothilone A	False	low_treatment_cells	10	43	89
+S1305	Mercaptopurine (6-MP)	True		95	150	89
+S1312	Streptozotocin (STZ)	True		110	126	89
+S1315	Ki16425	True		87	129	89
+S1319	Costunolide	True		83	129	89
+S1327	Ellagic acid	True		53	156	86
+S1361	Glesatinib(MGCD265)	True		120	120	99
+S1362	Rigosertib (ON-01910)	True		31	56	99
+S1363	Ki8751	True		93	115	99
+S1364	Patupilone (EPO906, Epothilone B)	True		96	84	99
+S1378	Ruxolitinib (INCB018424)	True		45	141	86
+S1392	Pelitinib (EKB-569)	True		83	98	99
+S1393	Pirarubicin	True		68	44	99
+S1396	Resveratrol	True		42	122	86
+S1422	Droxinostat	True		96	142	99
+S1443	Zileuton	True		118	143	99
+S1451	Aurora A Inhibitor I	False	low_treatment_cells	8	149	86
+S1454	PHA-680632	True		38	84	86
+S1463	Ofloxacin	True		40	127	86
+S1484	MC1568	True		74	139	86
+S1515	Pracinostat (SB939)	True		62	129	86
+S1529	Hesperadin	True		53	68	86
+S1541	Selisistat (EX 527)	True		67	147	86
+S1573	Fasudil (HA-1077) HCl	False	low_treatment_cells	27	133	86
+S1577	Tie2 kinase inhibitor	True		98	109	89
+S1622	Prednisone 	True		88	139	89
+S1624	Alendronate sodium trihydrate	True		68	91	89
+S1628	Triamcinolone Acetonide	True		106	92	89
+S1672	Aminoglutethimide 	True		115	129	89
+S1680	Disulfiram 	True		93	143	89
+S1689	Meprednisone	True		92	125	89
+S1692	Busulfan 	True		89	129	89
+S1703	Divalproex Sodium	False	low_treatment_cells;unresolved active mixture: multiple non-counterion fragments	5	101	86
+S1735	Mesna 	True		72	89	89
+S1775	Thiotepa	True		67	121	89
+S1776	Toremifene Citrate	True		71	122	89
+S1782	Azacitidine 	True		66	135	86
+S1802	AICAR (Acadesine)	True		116	115	99
+S1840	Lomustine 	True		97	144	99
+S1845	Cimetidine 	True		41	115	99
+S1848	Curcumin	True		94	109	99
+S1973	Cyclocytidine HCl	True		74	77	99
+S2003	Maraviroc	True		96	99	99
+S2012	PCI-34051	True		62	91	86
+S2013	PF-573228	True		90	111	99
+S2014	BMS-265246	True		81	96	99
+S2018	ENMD-2076 L-(+)-Tartaric acid 	False	duplicate_parent_represented_by:S1181	90	64	67
+S2158	KW-2449	True		70	76	67
+S2162	AZD1480	True		82	70	67
+S2170	Givinostat (ITF2357)	True		77	115	67
+S2178	AG-14361	True		65	97	67
+S2179	Gandotinib (LY2784544)	True		76	117	67
+S2198	SGI-1776 free base	True		91	124	67
+S2214	AZ 960	True		92	102	67
+S2219	Momelotinib (CYT387)	True		125	121	67
+S2244	AR-42	True		54	93	67
+S2391	Quercetin	True		104	104	67
+S2554	Daphnetin	True		103	122	67
+S2627	Tubastatin A HCl	True		88	133	67
+S2660	MK-0752	True		110	113	99
+S2666	PF-3845	True		116	92	99
+S2673	Trametinib (GSK1120212)	True		58	138	99
+S2679	Flavopiridol HCl	False	low_treatment_cells	95	21	99
+S2686	NVP-BSK805 2HCl	True		75	145	67
+S2692	TG101209	True		72	105	67
+S2693	Resminostat	True		89	104	67
+S2718	TAK-901	True		63	66	67
+S2719	AMG-900	True		67	63	67
+S2736	Fedratinib (SAR302503, TG101348)	True		67	104	67
+S2740	GSK1070916	True		43	80	67
+S2759	CUDC-907	True		64	82	67
+S2770	MK-5108 (VX-689)	True		86	128	67
+S2779	M344	True		87	107	67
+S2796	WP1066	True		127	105	67
+S2804	Sirtinol	True		75	129	67
+S2806	CEP-33779	True		94	137	67
+S2818	Tacedinaline (CI994)	True		72	135	67
+S2821	RG108	True		107	150	67
+S2851	Baricitinib (LY3009104, INCB028050)	True		64	121	67
+S2867	WHI-P154	True		102	137	67
+S2886	PJ34	True		75	132	67
+S2902	S-Ruxolitinib (INCB018424)	True		111	130	67
+S2919	IOX2	True		60	133	67
+S3001	Clevudine 	True		83	130	67
+S3147	Entacapone	True		89	129	67
+S4125	Sodium Phenylbutyrate	True		101	141	67
+S4246	Tranylcypromine (2-PCPA) HCl	False	undefined or query atom in SMILES	64	131	67
+S5001	Tofacitinib (CP-690550) Citrate	True		93	118	67
+S7110	(+)-JQ1	True		83	107	86
+S7128	Tazemetostat (EPZ-6438)	True		44	130	86
+S7144	BMS-911543	True		50	141	86
+S7165	UNC1999	True		71	127	86
+S7207	Bisindolylmaleimide IX (Ro 31-8220 Mesylate)	True		44	116	86
+S7239	G007-LK	True		56	87	86
+S7259	FLLL32	False	low_treatment_cells	27	147	86
+S7570	UNC0379	True		109	127	67
+S7572	A-366	True		52	125	67
+S7574	GSK-LSD1 2HCl	True		88	128	67
+S7581	GSK J1	True		88	130	67
+S7582	Anacardic Acid	True		88	135	67
+S7591	BRD4770	True		78	129	67
+S7605	Filgotinib (GLPG0634)	True		72	109	67
+S7610	UNC0631	True		90	116	67
+S7634	Cerdulatinib (PRT062070, PRT2070)	True		116	106	67
+S7792	SRT2104 (GSK2245840)	True		57	123	86
+S8206	Ivosidenib (AG-120)	False	low_treatment_cells	6	110	99
+S8323	ITSA-1 (ITSA1)	True		72	88	86
+S8481	SRT3025 HCl	False	low_treatment_cells	12	109	86
+S8496	EED226	True		62	138	86
+S8502	TMP195	False	low_treatment_cells	10	127	86
+S8567	Tucidinostat (Chidamide)	True		51	122	86

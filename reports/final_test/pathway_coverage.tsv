@@ -1,0 +1,6 @@
+set_id	name	original_members	mapped_unique_genes	selected_genes	fraction_original	quantitatively_evaluable
+author_s_phase	Author S-phase markers	43	43	2	0.046511627906976744	False
+author_g2m_phase	Author G2/M markers	54	54	9	0.16666666666666666	False
+R-HSA-3214815	HDACs deacetylate histones	60	59	5	0.08333333333333333	False
+R-HSA-3214847	HATs acetylate histones	108	107	6	0.05555555555555555	False
+R-HSA-2262752	Cellular responses to stress	791	783	55	0.0695322376738306	False

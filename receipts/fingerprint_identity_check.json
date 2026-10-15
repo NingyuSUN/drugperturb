@@ -1,0 +1,7 @@
+{
+  "n_compounds": 171,
+  "fingerprint_bits": 2048,
+  "identical_fingerprint_groups_crossing_partitions": [],
+  "n_cross_partition_identical_groups": 0,
+  "interpretation": "Fixed representation identity check; not a guarantee of low chemical similarity or independent errors."
+}

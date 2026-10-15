@@ -1,0 +1,10 @@
+92K	.venv/bin
+1.2G	.venv/lib
+20K	.venv/share
+1.2G	.venv
+109M	.python/cpython-3.12.14-linux-x86_64-gnu
+4.0K	.python/.temp
+109M	.python
+13M	.cache/uv
+13M	.cache
+48M	bin

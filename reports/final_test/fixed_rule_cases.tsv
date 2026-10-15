@@ -1,0 +1,4 @@
+case_rule	compound_id	name	scaffold_group	max_train_tanimoto	nearest_training_compound	response_rms	replicate_rmse	replicate_spearman	rep1_cells	rep2_cells	minimum_control_cells	rep1_plate	rep2_plate	gnn_rmse
+highest_GNN_error	S1090	Abexinostat (PCI-24781)	murcko:O=C(NCCOc1ccccc1)c1cc2ccccc2o1	0.2985074520111084	S2779	1.6476594937682958	2.1017328705499843	0.4144981125045184	62	119	86	plate9	plate33	1.5870335606349195
+lowest_response	S1209	Fluorouracil (5-Fluoracil, 5-FU)	murcko:O=c1cc[nH]c(=O)[nH]1	0.1599999964237213	S2821	1.1761529210727841	2.008846225781114	0.16907683848977714	85	114	99	plate15	plate39	1.1362338414502955
+lowest_training_similarity	S7574	GSK-LSD1 2HCl	murcko:c1ccc(C2CC2NC2CCNCC2)cc1	0.1587301641702652	S2158	1.3069688679837022	2.133109419388629	0.22942027044446184	88	128	67	plate11	plate35	1.206670325272673

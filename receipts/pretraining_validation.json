@@ -1,0 +1,23 @@
+{
+  "verified_utc": "2026-10-14T09:38:05.017443+00:00",
+  "python_tests": {
+    "passed": 87,
+    "failed": 0,
+    "seconds": 58.74,
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -m pytest -q -p no:cacheprovider"
+  },
+  "R_checks": [
+    "CSC toy aggregation",
+    "source UMI conservation",
+    "invalid inputs rejected",
+    "explicitly closed gzip CRC and trailer"
+  ],
+  "scope": "Software verification, not scientific predictive validation",
+  "gzip_repair": {
+    "initial_failure": "unclosed R gzfile connections; truncated compressed outputs",
+    "fix": "explicit close before atomic publication",
+    "rerun_elapsed_seconds": 171.87,
+    "rerun_peak_RSS_KiB": 4629040,
+    "source_unchanged": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "status": "COMPLETE_FROZEN_PREDICTION_SENSITIVITY",
+  "completed_utc": "2026-10-14T09:49:36.353448+00:00",
+  "config": {
+    "control_sensitivity": "mean_of_two_separately_CPM_log1p_normalized_same_plate_vehicles",
+    "matching_keys": [
+      "cell_type",
+      "time_point",
+      "replicate",
+      "plate_oligo"
+    ],
+    "number_of_vehicles": 2,
+    "require_distinct_dose_patterns": true,
+    "require_explicit_vehicle_true_and_dose_zero": true,
+    "minimum_cells_per_alternate_vehicle": 30,
+    "replicate_combination": "equal_weight_mean_of_two_deltas",
+    "normalization_library": "all_human_genes_before_selected_gene_subsetting",
+    "cutoff50_definition": "both treatment replicates >=50; primary truth/control requirements unchanged",
+    "models_retrained": false,
+    "predictions_changed": false,
+    "selected_genes_changed": false,
+    "primary_test_compounds": 26,
+    "alternate_qualified_compounds": 26,
+    "alternate_excluded_compounds": 0,
+    "cutoff50_test_compounds": 24,
+    "methods": [
+      "B0",
+      "B1",
+      "B2",
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "n_frozen_output_genes": 2000
+  },
+  "input_hashes": {
+    "configs/protocol_v1.yaml": "ca697121838d0fda78127f43e222dfa014c5f21d9b5fc580f0e20dd45fefafdf",
+    "manifests/selected_wells.tsv": "29138d802b4a4b17e6cf35a0b69dda8180186b21b75a1b2052f9a90fb657609b",
+    "manifests/qualified_well_mapping.tsv": "93fb7f7ab33d1219d9283d672324ea5cf84b9d3b24efe9aa1ae3f84d7344ff3f",
+    "manifests/selected_genes.tsv": "26d0a1f220db8a29acdc3553802d0cfe9c2e8245c3cf6b4dfba0a224d0c578e1",
+    "manifests/split_manifest.tsv": "442687ae16120a6371b83231607086553646d99afc6f72ac6840187ef6624e38",
+    "data/processed/pseudobulk_counts.tsv.gz": "c8413f0529bb15277810b3109c4aa24d9eb0a020d901a5dbad2e684194236d61",
+    "data/processed/well_qc.tsv": "6eee2646d270911f7aa16db31078cac4530d1f7bd29e3e76b3146358b50b0ea4",
+    "data/processed/sealed_test_truth.npz": "aa1942b403b3a31c6559e3bcb327c0444e10b6affb38b81e02169e8839e1b5e9",
+    "models/run_v1/test_predictions.npz": "8768ae3f3217eacbbb93b7eb70032257fbfd327e6b4676a1dab8f9a05b8a33b2",
+    "receipts/prediction_seal.json": "5cf6ab17dff9d19dc64c1899efeeac07a6df12661cd0da6c9aad6f0881998bb3",
+    "receipts/final_evaluation.json": "26a0643b90c8783957271c977d60034a7f17fb3f98d4cd3ddc3f6c2742e97e3b",
+    "receipts/dataset_freeze.json": "597daae4f3f515afa0ccb00a0904142aa0a999fc9de89f56b145f3d99a811a77",
+    "scripts/sensitivity.py": "aedf256a668897116214f4a5d1da34d82dd2f1cca9df5c0c4680f8c1a2cc0cd7",
+    "src/drugperturb/evaluation.py": "a8cf3d290f6edcad32fe99cae3664635094f7d5947e85e9ce8fe3ffe8d1ef744"
+  },
+  "prediction_seal_sha256": "5cf6ab17dff9d19dc64c1899efeeac07a6df12661cd0da6c9aad6f0881998bb3",
+  "final_evaluation_sha256": "26a0643b90c8783957271c977d60034a7f17fb3f98d4cd3ddc3f6c2742e97e3b",
+  "primary_response_reconstruction_verified": true,
+  "output_hashes": {
+    "reports/sensitivity/compound_sensitivity_context.tsv": "a0c1565272fee4caf4213a75f1ae4f71da87b8759570d99a18a6257629276a6f",
+    "reports/sensitivity/control_qualification.tsv": "9e0819d541d1e982d8f2efe3f2ddf86cb42e7f34c70248121be81edbc4f58e10",
+    "reports/sensitivity/metrics_by_compound.tsv": "11b86ab10e338fb9906273429d6451c9e48066cceeaaef2f0a0dc7b4424787e7",
+    "reports/sensitivity/metrics_summary.tsv": "3c09c50321312c99810a8c7a25c98224e936cec66485db80ffe44e0bd78e7379",
+    "reports/sensitivity/paired_control_RMSE_changes.tsv": "f85afa6aad331814cfd3e71e219b699c304fd8b11f1b2e1550eb6c604002a701",
+    "reports/sensitivity/source_cutoff_eligibility.tsv": "f8d0b31994aa82cb311f1f0f96de01d7e5695c3222ae11bc989360d4c00b3719",
+    "reports/sensitivity/summary.json": "8039775cf91633bd98d64bf7edf71c4d286e6d471134200e82ced24dc7035cf4"
+  },
+  "elapsed_seconds": 6.906907780001347,
+  "python": "3.12.14",
+  "limitations": [
+    "Changing the evaluation reference changes truth, not fitted predictions.",
+    "Two controls are equally weighted after separate normalization, not pooled by library or cell count.",
+    "Cutoff50 is a technical subset of the primary test set; selective survival can change its composition.",
+    "No new predictions for newly eligible cutoff20 compounds; source counts are historical frozen eligibility only.",
+    "Shared vehicles, plate effects and two biological replicates do not provide independent validation."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "verified_utc": "2026-10-14T10:36:18.040395+00:00",
+  "scope": "Final delivery integrity; not scientific efficacy or external validation",
+  "primary_provenance_inputs_verified": 166,
+  "report_inputs_verified": 168,
+  "report_outputs_verified": 9,
+  "snapshots": [
+    {
+      "receipt": "work/nf-docker-core-6gb/52/c32c156b21710af8d65952ab82a4a0/snapshot/receipts/workflow_run.json",
+      "receipt_sha256": "56894f75b05bd30140d13271cac93449fdcaf786ded0784511d8bdd4609946dd",
+      "verified_outputs": 239,
+      "verified_source_files": 43
+    },
+    {
+      "receipt": "work/nf-docker-core-repeat/a3/33ab947f82e993613ada4db906663b/snapshot/receipts/workflow_run.json",
+      "receipt_sha256": "889e85c1d862ad0615767b97d7f3f83b61ca9d4be99fc88a4b5e67e4bf4a14bb",
+      "verified_outputs": 239,
+      "verified_source_files": 43
+    }
+  ],
+  "same_runtime_prediction_arrays_exact": 24,
+  "cross_runtime_GNN_retraining": "FAIL_predeclared_1e-6_preserved",
+  "fixed_weight_inference_receipt_sha256": "1a889c1a499c7c97e945e94142cdd208a21e744b7d3a5012d4cd5eceb4d33eae",
+  "local_markdown_links": "all_resolve",
+  "primary_results_replaced": false,
+  "hosted_CI": "NOT_EXECUTED",
+  "AWS": "NOT_EXECUTED",
+  "local_python_test_suite": {
+    "command": "/work/drugperturb/.venv/bin/python -m pytest -q",
+    "passed": 108,
+    "elapsed_seconds": 97.48,
+    "hosted_CI": "Static checks only; no hosted execution"
+  },
+  "_publication": {
+    "kind": "sanitized presentation copy",
+    "original_sha256": "75904b754154650eff0fda5fe2e3e19ba5b70204ac38925de99a51d97434d171",
+    "changes": "Machine-specific paths and runtime names replaced with generic equivalents; numerical results and historical artifact hashes retained. See docs/PUBLICATION_PROVENANCE.md.",
+    "original_hash_references_retained": true
+  }
+}

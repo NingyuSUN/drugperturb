@@ -1,0 +1,50 @@
+{
+  "completed_utc": "2026-10-14T09:38:30.507701+00:00",
+  "server_project": "/work/drugperturb",
+  "command": "/opt/r-runtime/bin/Rscript scripts/cell_state_qc.R data/raw/GSM4150378_sciPlex3_A549_24hrs.RDS.gz data/processed/selected_cell_qc.tsv.gz receipts/cell_state_fixed_marker_ids.tsv data/processed/well_qc.tsv data/processed/cell_state_well_summary.tsv",
+  "cwd": "/work/drugperturb",
+  "R_runtime": "/opt/r-runtime",
+  "biology_config_path": "configs/biology_v1.json",
+  "biology_config_sha256": "92799ec33e9f816c6b354c96d5546a2cd767a48537ec979c407eea36dbfc6451",
+  "marker_input_policy": "Exact mapped_unique_gene_ids for author_s_phase and author_g2m_phase from frozen biology_v1.json",
+  "mapped_marker_counts": {
+    "author_s_phase": 43,
+    "author_g2m_phase": 54
+  },
+  "formula": "log1p(10000 * marker_set_raw_UMI / all_human_raw_UMI)",
+  "genes_in_denominator": 58347,
+  "cells": 36848,
+  "wells": 392,
+  "sets": 2,
+  "summary_rows": 784,
+  "all_human_UMI": 59281450,
+  "zero_library_cells": 0,
+  "each_cell_library_matches_existing_QC": true,
+  "each_well_cell_count_and_library_match_existing_QC": true,
+  "synthetic_CSC_selftest_passed": true,
+  "quartile_method": "R quantile type 7",
+  "author_Size_Factor_used": false,
+  "phase_classification_performed": false,
+  "condition_differences_inspected": false,
+  "models_trained_by_this_script": false,
+  "elapsed_wall": "1:27.26",
+  "peak_RSS_KiB": 4609644,
+  "exit_status": 0,
+  "artifact_hashes": {
+    "scripts/cell_state_qc.R": "1684d5ad49b276826ea40de1db1ae0de6c05f8825095ccdc85269ac5a09c3b99",
+    "scripts/csc_utils.R": "7d0f05230d9afc2c2af70f76dad026fe1d136bd34355edfa1daf1ea4170db6a3",
+    "data/raw/GSM4150378_sciPlex3_A549_24hrs.RDS.gz": "07357f6b9c3e20d0ca88d7770ab9db80e215c64297c508e4f7832d4162fa16e3",
+    "data/processed/selected_cell_qc.tsv.gz": "8223a57d1e8c9a8a9c17ddbdd17f6d58164c0bb03379c4ffcd507da33d9bbf3d",
+    "data/processed/well_qc.tsv": "6eee2646d270911f7aa16db31078cac4530d1f7bd29e3e76b3146358b50b0ea4",
+    "receipts/cell_state_fixed_marker_ids.tsv": "d0c3e282125e2fa5e7d36206d18b5f7e96ce333e18759f4a47f2a0da3a03049d",
+    "data/processed/cell_state_well_summary.tsv": "c0337dad8ea5fc0b638c556c119b78d7e08aa086833dc037f691abe49e093495",
+    "logs/cell_state_execution.log": "ee6526ff24e3a3222805b4327d10af11bab048976e6cda72976dd221e74bfa35",
+    "logs/cell_state_runtime.txt": "d3aa6649325a087ccefd47965d831f223739986144c9c6990237ed1f9dd62e90"
+  },
+  "_publication": {
+    "kind": "sanitized presentation copy",
+    "original_sha256": "3a28e4ad6326d4c4f8b265a02c95b65f1b7a03fdf8aa3340738ec420ceb5ecaa",
+    "changes": "Machine-specific paths and runtime names replaced with generic equivalents; numerical results and historical artifact hashes retained. See docs/PUBLICATION_PROVENANCE.md.",
+    "original_hash_references_retained": true
+  }
+}

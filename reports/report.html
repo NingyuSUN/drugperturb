@@ -1,0 +1,331 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DrugPerturb | Results and methods</title><style>body{font:16px/1.6 system-ui,sans-serif;color:#183044;background:#f4f7f8;margin:0}main{max-width:1120px;margin:auto;padding:40px;background:white}h1{font-size:40px;line-height:1.15}h2{margin-top:42px;color:#0f766e}p{max-width:95ch}.eyebrow{color:#0f766e;font-weight:700;letter-spacing:.12em}table{border-collapse:collapse;width:100%;font-size:13px;display:block;overflow-x:auto}td,th{padding:9px;border-bottom:1px solid #dbe4e8;text-align:left}th{background:#ecf4f2}img{width:100%;height:auto;margin:20px 0}.callout{padding:20px;background:#eef6f4;border-left:4px solid #0f766e}.muted{color:#526471;font-size:14px}a{color:#087f8c}code{font-size:13px} @media print{body,main{background:white;padding:0}.page{break-after:page}h2{break-after:avoid}img,table{break-inside:avoid}}</style><main><p class="eyebrow">DRUGPERTURB · FROZEN BENCHMARK v1</p><h1>Can chemical structure predict transcriptional change?</h1><p>A public-data study of A549 cells exposed for 24 hours at 1 µM, comparing simple references with fingerprint and molecular-graph models.</p><div class="callout"><b>The molecular GNN achieved a mean compound RMSE of 1.214, compared with 1.243 for the validation-selected fingerprint ridge reference (2.3% lower point estimate).</b><p>The paired 95% structure-group interval includes zero; this experiment does not establish a reliable GNN advantage over the selected reference.</p><p>The training-mean baseline achieved 1.217. The GNN-minus-mean difference was -0.0026 (95% interval -0.0475 to 0.0419); compound-specific added value remains unestablished.</p></div>
+<h2>1. Data and experimental units</h2><p>188 source treatment labels were evaluated. 173 met the two-replicate cell-count rule; chemical qualification and duplicate-parent handling left 171 distinct standardized parent compounds. These contributed 33,055 treatment nuclei and 886 nuclei in eight unique matched vehicle wells. The broader QC extract contains 36,848 nuclei across 392 wells, including excluded treatments and additional vehicle wells. Cells improve response measurement; they are not additional independent drugs.</p><p>The frozen split contains 119 training, 26 validation and 26 test compounds. The test comprises 22 ring-scaffold groups and two acyclic parent groups. No canonical parent or defined structure group crosses a split.</p><img src="figures/01_data_quality.png">
+<h2>2. Prediction task and chemical support</h2><p>For each well, raw human-gene UMI counts were summed, scaled to counts per million, and log1p transformed. The response is treated minus its exact plate, replicate and dose-pattern vehicle; the two replicate differences receive equal weight. Input features contain chemical structure only. Author embeddings, global size factors and measured treated-cell expression are never model inputs.</p><p>Only the training compounds selected the 2,000 most variable genes, standardization and 20 target principal components. The retained components explain 67.9% of standardized training variance. Predictions return to the actual selected-gene scale for every validation and test score; measured truth is never PCA-smoothed. The absence of a low-expression filter and the small compound sample can favor noisy variable genes and limit biological coverage.</p><img src="figures/02_chemical_support.png">
+<h2>3. Model comparison</h2><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Method</th>
+      <th>Description</th>
+      <th>Mean compound RMSE</th>
+      <th>Mean gene-rank correlation</th>
+      <th>Undefined rank correlations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>B0</td>
+      <td>Zero change</td>
+      <td>1.2694</td>
+      <td>NA</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>B1</td>
+      <td>Training mean</td>
+      <td>1.2170</td>
+      <td>0.2698</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>B2</td>
+      <td>Chemical neighbor</td>
+      <td>1.7149</td>
+      <td>0.0725</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>M1</td>
+      <td>Fingerprint ridge</td>
+      <td>1.2430</td>
+      <td>0.2127</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>M2</td>
+      <td>Fingerprint MLP</td>
+      <td>1.2532</td>
+      <td>0.1920</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>M3</td>
+      <td>Molecular GNN</td>
+      <td>1.2144</td>
+      <td>0.2755</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table><p>RMSE measures error in the size of expression change; lower is better. Each drug first receives its own RMSE across 2,000 genes, then drugs are weighted equally. Spearman measures gene-change ranking, not amplitude. The zero-response baseline has undefined ranking correlation for all 26 drugs and is retained as NA.</p><p>Ridge used four fixed penalties. Each neural model used four fixed configurations and three seeds; checkpoint selection used actual validation gene-space error. The chosen candidate averages three seed predictions, with all individual seed results retained. GNN has two bond-aware message-passing layers with mean neighborhood and molecular pooling. No pretrained model or external training data were used.</p><img src="figures/03_model_comparison.png"><p>GNN minus M1: -0.0286, 95% interval [-0.0680, 0.0087]. Intervals resample 24 structure groups 2,000 times, retaining all compounds within sampled groups. They are conditional on this split and fitted models; shared controls, plate effects, retraining and external-study variation are not fully covered. Three random seeds are computational repeats, not new biological samples.</p>
+<h2>4. Biological interpretation and coverage</h2><p>Cell-cycle markers and Reactome 97 acetylation, deacetylation and stress sets were frozen before evaluation. Exact symbols were mapped first, followed by official HGNC mappings to the original gene annotation. A quantitative pathway comparison requires at least 10 selected genes and at least 25% of original members. None of the five sets passed both gates. Pathway recovery is therefore not evaluated; missing coverage is not repaired after inspecting test results.</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>original_members</th>
+      <th>mapped_unique_genes</th>
+      <th>selected_genes</th>
+      <th>fraction_original</th>
+      <th>quantitatively_evaluable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Author S-phase markers</td>
+      <td>43</td>
+      <td>43</td>
+      <td>2</td>
+      <td>0.0465</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>Author G2/M markers</td>
+      <td>54</td>
+      <td>54</td>
+      <td>9</td>
+      <td>0.1667</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>HDACs deacetylate histones</td>
+      <td>60</td>
+      <td>59</td>
+      <td>5</td>
+      <td>0.0833</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>HATs acetylate histones</td>
+      <td>108</td>
+      <td>107</td>
+      <td>6</td>
+      <td>0.0556</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>Cellular responses to stress</td>
+      <td>791</td>
+      <td>783</td>
+      <td>55</td>
+      <td>0.0695</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table><img src="figures/04_pathway_coverage.png"><p>Scores use all fixed 43 S and 54 G2/M marker genes at single-cell resolution, independently of model output selection. Each cell is normalized by total human UMI. The paired plots describe marker-expression shifts across two experiments; they are not phase assignments or evidence of causal pathway activity.</p><img src="figures/06_cell_state_replicates.png">
+<h2>5. Error cases and experimental reliability</h2><p>Three cases follow fixed rules: highest GNN error, lowest measured response magnitude, and lowest similarity to training chemicals, with distinct compounds. Every scatter includes all 2,000 output genes. These cases illustrate error patterns; they did not change the model or test protocol.</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>case_rule</th>
+      <th>compound_id</th>
+      <th>name</th>
+      <th>rep1_cells</th>
+      <th>rep2_cells</th>
+      <th>max_train_tanimoto</th>
+      <th>replicate_rmse</th>
+      <th>gnn_rmse</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>highest_GNN_error</td>
+      <td>S1090</td>
+      <td>Abexinostat (PCI-24781)</td>
+      <td>62</td>
+      <td>119</td>
+      <td>0.2985</td>
+      <td>2.1017</td>
+      <td>1.5870</td>
+    </tr>
+    <tr>
+      <td>lowest_response</td>
+      <td>S1209</td>
+      <td>Fluorouracil (5-Fluoracil, 5-FU)</td>
+      <td>85</td>
+      <td>114</td>
+      <td>0.1600</td>
+      <td>2.0088</td>
+      <td>1.1362</td>
+    </tr>
+    <tr>
+      <td>lowest_training_similarity</td>
+      <td>S7574</td>
+      <td>GSK-LSD1 2HCl</td>
+      <td>88</td>
+      <td>128</td>
+      <td>0.1587</td>
+      <td>2.1331</td>
+      <td>1.2067</td>
+    </tr>
+  </tbody>
+</table><img src="figures/05_fixed_rule_cases.png"><p>Across the26 test compounds, median replicate Spearman is 0.180 and median replicate RMSE is 2.101. Two-replicate disagreement combines measurement noise and experimental variation; it is not a precise estimate of irreducible error. Low cell yield is not automatically evidence of toxicity. Per-replicate and plate-level errors are available in the downloadable tables.</p>
+<h2>6. Development diagnostics</h2><p>Three compound-level folds and nested 25%, 50%, 100% learning subsets use only the original development data. Each fits preprocessing again. GNN uses the selected settings and a fixed epoch budget derived from validation; no evaluation-fold label controls training. GNN had higher error than Ridge in all three exploratory compound folds. These comparisons can use different gene sets and compound compositions, so a score difference cannot be attributed solely to chemical novelty or training size. This is a single-seed diagnostic, not a replacement for the primary frozen test.</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>diagnostic</th>
+      <th>run</th>
+      <th>method</th>
+      <th>n_train_compounds</th>
+      <th>n_evaluation_compounds</th>
+      <th>mean_compound_RMSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>compound_cv</td>
+      <td>cv_fold_1</td>
+      <td>M1</td>
+      <td>79</td>
+      <td>40</td>
+      <td>1.2412</td>
+    </tr>
+    <tr>
+      <td>compound_cv</td>
+      <td>cv_fold_1</td>
+      <td>M3</td>
+      <td>79</td>
+      <td>40</td>
+      <td>1.2577</td>
+    </tr>
+    <tr>
+      <td>compound_cv</td>
+      <td>cv_fold_2</td>
+      <td>M1</td>
+      <td>79</td>
+      <td>40</td>
+      <td>1.2378</td>
+    </tr>
+    <tr>
+      <td>compound_cv</td>
+      <td>cv_fold_2</td>
+      <td>M3</td>
+      <td>79</td>
+      <td>40</td>
+      <td>1.2751</td>
+    </tr>
+    <tr>
+      <td>compound_cv</td>
+      <td>cv_fold_3</td>
+      <td>M1</td>
+      <td>80</td>
+      <td>39</td>
+      <td>1.2300</td>
+    </tr>
+    <tr>
+      <td>compound_cv</td>
+      <td>cv_fold_3</td>
+      <td>M3</td>
+      <td>80</td>
+      <td>39</td>
+      <td>1.2366</td>
+    </tr>
+    <tr>
+      <td>learning_curve</td>
+      <td>learning_25</td>
+      <td>M1</td>
+      <td>30</td>
+      <td>26</td>
+      <td>1.2270</td>
+    </tr>
+    <tr>
+      <td>learning_curve</td>
+      <td>learning_25</td>
+      <td>M3</td>
+      <td>30</td>
+      <td>26</td>
+      <td>1.2279</td>
+    </tr>
+    <tr>
+      <td>learning_curve</td>
+      <td>learning_50</td>
+      <td>M1</td>
+      <td>60</td>
+      <td>26</td>
+      <td>1.2317</td>
+    </tr>
+    <tr>
+      <td>learning_curve</td>
+      <td>learning_50</td>
+      <td>M3</td>
+      <td>60</td>
+      <td>26</td>
+      <td>1.2284</td>
+    </tr>
+    <tr>
+      <td>learning_curve</td>
+      <td>learning_100</td>
+      <td>M1</td>
+      <td>119</td>
+      <td>26</td>
+      <td>1.2432</td>
+    </tr>
+    <tr>
+      <td>learning_curve</td>
+      <td>learning_100</td>
+      <td>M3</td>
+      <td>119</td>
+      <td>26</td>
+      <td>1.2130</td>
+    </tr>
+  </tbody>
+</table>
+<h2>7. Sensitivity analyses</h2><p>Frozen predictions are compared with an alternative same-plate vehicle definition and with the subset passing a 50-cell threshold. On the same 26 test compounds, the alternative two-vehicle definition changed point-estimate rankings: zero-change RMSE 1.0131, training mean 1.0150, Ridge 1.0368 and GNN 1.0395. Lower absolute errors here reflect changed reference responses, not better models. The result is sensitive to the control definition. The 50-cell check retains 24 of26 compounds. These checks alter the reference or evaluated subset; they are not independently retrained benchmarks or external validation.</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>method</th>
+      <th>scenario</th>
+      <th>n_compounds</th>
+      <th>B0</th>
+      <th>B1</th>
+      <th>B2</th>
+      <th>M1</th>
+      <th>M2</th>
+      <th>M3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>alternate_two_vehicle_mean</td>
+      <td>26</td>
+      <td>1.0131</td>
+      <td>1.0150</td>
+      <td>1.5970</td>
+      <td>1.0368</td>
+      <td>1.0448</td>
+      <td>1.0395</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>primary_all_test</td>
+      <td>26</td>
+      <td>1.2694</td>
+      <td>1.2170</td>
+      <td>1.7149</td>
+      <td>1.2430</td>
+      <td>1.2532</td>
+      <td>1.2144</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>primary_on_alternate_qualified</td>
+      <td>26</td>
+      <td>1.2694</td>
+      <td>1.2170</td>
+      <td>1.7149</td>
+      <td>1.2430</td>
+      <td>1.2532</td>
+      <td>1.2144</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>primary_treatment_both_replicates_ge50</td>
+      <td>24</td>
+      <td>1.2660</td>
+      <td>1.2110</td>
+      <td>1.6988</td>
+      <td>1.2333</td>
+      <td>1.2434</td>
+      <td>1.2051</td>
+    </tr>
+  </tbody>
+</table>
+<h2>8. What the study supports</h2><table><tr><th>Testable hypothesis</th><th>Observed evidence</th><th>Alternative explanation</th><th>Still required</th></tr><tr><td>Structure helps predict drug-specific responses</td><td>GNN has a slightly lower point error than the mean baseline</td><td>Intervals overlap zero; shared control/plate effects, average responses and experimental noise may contribute</td><td>Prespecified independent perturbation dataset and stronger compound coverage</td></tr><tr><td>Epigenetic mechanisms are recovered</td><td>Fixed pathways have insufficient output coverage</td><td>Training variance selection emphasizes other/noisy genes</td><td>A new protocol with training-defined expression filtering and adequate pathway coverage, evaluated on fresh heldout data</td></tr><tr><td>Predictions transfer across biological contexts</td><td>Only A549/24h/1µM was studied</td><td>Cell-state and dose dependence are untested</td><td>Separate public dose/cell-line datasets; no private or wet-lab inputs are assumed</td></tr></table><p>This model does not establish drug efficacy, target engagement, toxicity, clinical benefit or antibody-binding/design performance. Its drug-discovery contribution is an auditable molecular-learning and perturbation-response evaluation workflow.</p>
+<h2>9. Reproducibility and sources</h2><p>Real main training ran on the primary CPU host in approximately 3.7 minutes. Source revision: <code>4847c26e05c0283d704a5fab9a85f272d0a5981a</code>. Inputs, split, selected genes, model weights, configuration, trajectories and predictions have SHA256 receipts. Final evaluation verifies the prediction seal before loading test truth. No paid AWS execution or independent external dataset is claimed. Subsequent verification established identical predictions in two fresh runs on one fixed host/container and consistent Docker inference from the saved primary weights. Cross-host GNN retraining failed the prespecified numerical tolerance; see the separate <a href="../docs/EXECUTION_EVIDENCE.md">execution evidence</a>. These checks do not replace the primary scientific results.</p><p><a href="../manifests/source_manifest.tsv">Source manifest</a> · <a href="../manifests/split_manifest.tsv">Frozen split</a> · <a href="final_test/metrics_by_compound.tsv">All compound metrics</a> · <a href="final_test/paired_comparisons.json">Paired intervals</a> · <a href="../receipts/training_runs.tsv">Every training run</a> · <a href="../docs/REPRODUCIBILITY.md">Reproduction instructions</a></p><p>Public sources: <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE139944">GEO GSE139944</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7289078/">Srivatsan et al., Science 2020</a>; <a href="https://github.com/cole-trapnell-lab/sci-plex/tree/079639c50811dd43a206a779ab2f0199a147c98f">Pinned author preprocessing</a>; <a href="https://download.reactome.org/97/">Reactome 97</a>; <a href="https://www.genenames.org/">HGNC</a>. Public download availability does not imply that the project code license applies to third-party source data.</p></main></html>

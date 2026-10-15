@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "mode": "core",
+  "description": "Verified well-count extraction and fixed single-cell summaries derived from the public sci-Plex3 A549 RDS; no fitted targets, test labels, predictions or model selection supplied.",
+  "artifact_hashes": {
+    "data/raw/GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz": "98a65191d343d149c5742cf6e7b734d403e853d165da800fa2daea41b978a2ff",
+    "data/processed/pseudobulk_counts.tsv.gz": "c8413f0529bb15277810b3109c4aa24d9eb0a020d901a5dbad2e684194236d61",
+    "data/processed/well_qc.tsv": "6eee2646d270911f7aa16db31078cac4530d1f7bd29e3e76b3146358b50b0ea4",
+    "data/processed/gene_metadata.tsv": "a7f2df38a65846b28195883950aa09fdff7aa795a0f16c34c56e82091309e27c",
+    "data/processed/extraction_summary.tsv": "d11f319061ccbe0f6aed146542df171e9991da2ac18eccbaa33b1bf0ce35a31f",
+    "data/processed/selected_cell_qc.tsv.gz": "8223a57d1e8c9a8a9c17ddbdd17f6d58164c0bb03379c4ffcd507da33d9bbf3d",
+    "data/processed/cell_state_well_summary.tsv": "c0337dad8ea5fc0b638c556c119b78d7e08aa086833dc037f691abe49e093495",
+    "manifests/source_manifest.tsv": "9473f2c13860cfe0a154f7b13882122d7b36a96aefb80a70397e4e927acade4a"
+  },
+  "upstream_sources": [
+    {
+      "filename": "GSM4150378_sciPlex3_A549_24hrs.RDS.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_A549_24hrs.RDS.gz",
+      "bytes": "572534814",
+      "sha256": "07357f6b9c3e20d0ca88d7770ab9db80e215c64297c508e4f7832d4162fa16e3"
+    },
+    {
+      "filename": "GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz",
+      "bytes": "64715",
+      "sha256": "98a65191d343d149c5742cf6e7b734d403e853d165da800fa2daea41b978a2ff"
+    }
+  ]
+}
