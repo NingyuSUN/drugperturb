@@ -24,3 +24,6 @@ Original prediction seals also bind the training source bytes. Combining histori
 
 Same-environment training repeatability, saved-model inference portability and cross-environment retraining remain separately reported. The GNN cross-environment retraining comparison failed the original numeric tolerance and is not changed by publication.
 
+## Hosted software validation
+
+The [historical hosted CI receipt](../receipts/hosted_ci.json) and workflow receipt under `receipts/ci/` are labeled presentation copies. Former run, commit and archive locators and the JUnit runner hostname are omitted. Original test outcomes, timings, dependency versions, source/output hashes and archive digest are preserved; untouched originals are archived separately. Original evidence hashes and public-copy hashes are listed separately. These historical checks are not attributed to a rewritten or later source revision; the README badge links current GitHub Actions results. The original dated `delivery_verification.json` retains its then-current `NOT_EXECUTED` hosted-CI field. Synthetic verification does not add a new real-data model result.

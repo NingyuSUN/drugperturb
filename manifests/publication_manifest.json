@@ -17,8 +17,8 @@
   "omitted_source_file_count": 2,
   "summary": {
     "unchanged": 94,
-    "modified": 20,
-    "added": 1,
+    "modified": 23,
+    "added": 2,
     "renamed": 3,
     "renamed_and_modified": 1
   },
@@ -49,7 +49,7 @@
       "classification": "documentation_or_local_usage",
       "status": "modified",
       "original_sha256": "cd5ef33804e15e49777b2d838abd55b067b4fbc8db7527c4e4af3445dbc9e879",
-      "public_sha256": "336c50c3fd3bfedd70cd597659ee9c9b6cb7b8a4217e295f5150240b9952fb2d"
+      "public_sha256": "1641d52342b7862e14f86c0c9b1282f0f4272c412dd38c87ae9b5bbb4432dcce"
     },
     {
       "path": "conf/docker.config",
@@ -133,7 +133,7 @@
       "classification": "documentation_or_local_usage",
       "status": "modified",
       "original_sha256": "cea0e9dc8ba50c3c8f7628992995a53e9c420ac1217eb97867bf04e43342b432",
-      "public_sha256": "f84a8ffd48d0099124edc5a65cea4792340c026b551de37432e7a14045131ac3"
+      "public_sha256": "2671ddfff1468002281932605bdd0ce01afe6dc9df407ed1616bf060fa5e26af"
     },
     {
       "path": "docs/MODEL_CARD.md",
@@ -147,7 +147,7 @@
       "classification": "publication_metadata",
       "status": "added",
       "original_sha256": null,
-      "public_sha256": "a5b6eed6349712ce465020031b06c124a10142462fa7b9d314f7a279fd35e0d5"
+      "public_sha256": "9fbd7dfc99e86387c859bb05f5f028bc5878ff6b0c69e78cf347902ac7a1dcfc"
     },
     {
       "path": "docs/REPRODUCIBILITY.md",
@@ -276,6 +276,27 @@
       "public_sha256": "d0c3e282125e2fa5e7d36206d18b5f7e96ce333e18759f4a47f2a0da3a03049d"
     },
     {
+      "path": "receipts/ci/pytest.xml",
+      "classification": "historical_test_results_with_generic_execution_metadata",
+      "status": "modified",
+      "original_sha256": "e62667a12d884915168f67e1cce62ab20661969b7f5203db42e34ad8ad1411e6",
+      "public_sha256": "3ed2bd69017bb564622d8d4e3511a042c864c6b78971aa98cb056a0b9d23e19b"
+    },
+    {
+      "path": "receipts/ci/trace.tsv",
+      "classification": "publication_metadata",
+      "status": "added",
+      "original_sha256": null,
+      "public_sha256": "811dc99741df3ff21cd613eccd630c6351700e0b0057681e99171eedd3a3e58b"
+    },
+    {
+      "path": "receipts/ci/workflow_run.json",
+      "classification": "sanitized_execution_metadata",
+      "status": "modified",
+      "original_sha256": "e2197dbc7fda30d46670520356979e66df2af125b199cef0651f0b18945585a9",
+      "public_sha256": "39331997e7852413cc440de6b3796e6d59b4c4457cd57f2d7805aa5d744d7753"
+    },
+    {
       "path": "receipts/cpu_runtime_disk_usage.txt",
       "classification": "scientific_or_engineering_artifact",
       "status": "renamed",
@@ -365,6 +386,13 @@
       "status": "unchanged",
       "original_sha256": "dd8aaf8cf35863a997451e33851d97d7eca6d77e0ff31f76a153a3309acaa30c",
       "public_sha256": "dd8aaf8cf35863a997451e33851d97d7eca6d77e0ff31f76a153a3309acaa30c"
+    },
+    {
+      "path": "receipts/hosted_ci.json",
+      "classification": "sanitized_execution_metadata",
+      "status": "modified",
+      "original_sha256": "fddcd6713adff9028b8ff2bd8352fee0901c8bc8806462add094e0959e783e53",
+      "public_sha256": "22d8ad00725e71ff1b70b0d839f49fe4be871b331fd7d79b9a196b8d97a7ca3f"
     },
     {
       "path": "receipts/inference_replay.json",

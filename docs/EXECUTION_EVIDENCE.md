@@ -31,7 +31,8 @@ AWS: **NOT EXECUTED**. External-study validation: **NOT EXECUTED**. GPU training
 | Same host and image, newly trained predictions |24/24 aligned arrays exact; 28 fit records identical except timing|
 | Primary CPU host versus Container host retraining |16/24 arrays meet 1e-6; 8 GNN arrays fail; test-ensemble maximum absolute difference 0.01175557|
 | Fixed primary GNN weights, Docker inference |8/8 arrays pass 1e-6; maximum absolute difference 4.44e-16|
-| Hosted GitHub Actions / AWS / GPU training |Not executed|
+| Hosted GitHub Actions |108 tests passed; synthetic Nextflow completed with standard Linux resource trace and verified output hashes; [historical receipt](../receipts/hosted_ci.json)|
+| AWS / GPU training |Not executed|
 
 Core-replay source: `ccbb7594cf0b49f98036628d16036a15ed208cd9`. Image: `sha256:1ea9b4f7f2880f8c42f35559d15f9d17b950438e09c97c51c1625a1f343716ea`. Exact commands, source/runtime/input hashes, per-step logs and preserved failed attempts are indexed in [workflow_reproduction.json](../receipts/workflow_reproduction.json).
 
@@ -44,3 +45,5 @@ The recorded Container host did not expose the `/proc/PID/io` counters required 
 Source acquisition and base-R conversion were independently executed upstream. The core Python container starts from verified extracted counts and does not claim an R extraction inside Docker. The workflow is one isolated snapshot process, not a distributed or parallel scientific DAG.
 
 Historical source IDs and source hashes identify original execution snapshots, not commits in the public repository. See [publication provenance](PUBLICATION_PROVENANCE.md) for the original-to-public file hash mapping.
+
+The [historical hosted receipt](../receipts/hosted_ci.json) records a run before publication-history cleanup. Original JUnit outcomes, Nextflow trace, runtime versions and source/output hashes remain available; runner and former run/commit locators are omitted in the labeled public copies. It does not establish that a later source revision passed. The README badge links the current hosted run. These synthetic checks are separate from the real-data model evaluation.

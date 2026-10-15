@@ -71,7 +71,7 @@ The real seven-step core workflow ran twice from fresh snapshots in the fixed Do
 
 Reproducibility has an explicit boundary: retraining from the same inputs on the Primary CPU host versus the Container host passed the strict `1e-6` comparison for 16/24 arrays; the eight GNN arrays did not. Deploying the **saved primary GNN weights** in Docker passed all eight inference comparisons (maximum difference 4.44×10⁻¹⁶). The original scientific results above remain unchanged. See [execution evidence](docs/EXECUTION_EVIDENCE.md) and the [machine-readable replay receipt](receipts/workflow_reproduction.json).
 
-The [CI workflow](.github/workflows/ci.yml) runs the Python tests and synthetic Nextflow smoke. The badge links to current hosted status; only local/static verification was available at publication. AWS execution has not been performed.
+The [historical hosted CI evidence](receipts/hosted_ci.json) records **108 Python tests** and a successful synthetic Nextflow workflow on GitHub-hosted Ubuntu. Original output hashes were independently verified. Public receipt copies omit former run locators and are explicitly labeled; they do not certify a later source revision. The badge links current hosted tests and workflow results. AWS execution has not been performed.
 
 ## Evidence to review
 
