@@ -1,0 +1,57 @@
+{
+  "code_files_attested_by_hash": true,
+  "code_hashes": {
+    "configs/protocol_v2.yaml": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3",
+    "scripts/audit_v2_metadata.py": "bc82da781df3f5a03f47541759757981cad671f39d86587830935b8e6b1f959f",
+    "src/drugperturb/chemistry.py": "0a059a1ec5528ff140ad5634a277f6fb96022acbfec4ab9aa8f3bb450698627b",
+    "src/drugperturb/context_design.py": "ca40f49ad86213ff1eaaf0ab53a4d087162463f42b452cf9863c479340a58365",
+    "src/drugperturb/design.py": "07a16b827717f52785f88a55af247a6475fd8ff5460aeb03b206ca58a7940be3"
+  },
+  "code_revision": "ddebc2d8559cdd418a1a732ec6aaff593c405276",
+  "code_revision_is_base": true,
+  "context_role_rows": 2256,
+  "contexts": 12,
+  "count_qc_done": false,
+  "extraction_policy": "Deduplicate Combo across contexts; preserve all same-plate vehicle rows",
+  "input_contract": {
+    "basename": "v2_metadata_inputs.json",
+    "bytes": 1055,
+    "sha256": "3120bf69ab3fd3a984cd5603a94e90b8b0259aea2e4f584ac34be33717babadf"
+  },
+  "limitation": "Metadata capacity only; no count-QC eligibility or scientific performance established",
+  "models_trained": false,
+  "new_test_expression_read": false,
+  "output_hashes": {
+    "manifests/v2/context_roles.tsv": "d558a3dbd9178989a96de720ca6ac89e754835a303a999937369c8b8b85b2ec4",
+    "manifests/v2/well_mapping.tsv": "ea852abfdac9e1145ada89e0081102de607b2a46922a4e3c472a27383ef47d0f",
+    "reports/v2/design_inventory.tsv": "4559df9cf4e380844328fccff7453b7dd0ceddc808ac0b6294c24428fc871763"
+  },
+  "role_policy": "Frozen v1 identity/split only; no expression-dependent assignment",
+  "schema_version": 1,
+  "source_inputs": {
+    "chemistry": {
+      "basename": "chemistry_manifest.tsv",
+      "bytes": 61784,
+      "sha256": "4565672b80108256679b57e858d9c34e46dd2032d0594ed1467092a42bfae378"
+    },
+    "metadata": {
+      "basename": "GSM4150378_sciPlex3_A549_MCF7_K562_hashTable_metadata.txt.gz",
+      "bytes": 64715,
+      "sha256": "98a65191d343d149c5742cf6e7b734d403e853d165da800fa2daea41b978a2ff"
+    },
+    "protocol": {
+      "basename": "protocol_v2.yaml",
+      "bytes": 6482,
+      "sha256": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3"
+    },
+    "split": {
+      "basename": "split_manifest.tsv",
+      "bytes": 58618,
+      "sha256": "442687ae16120a6371b83231607086553646d99afc6f72ac6840187ef6624e38"
+    }
+  },
+  "source_metadata_wells": 4992,
+  "status": "METADATA_ONLY_COMPLETE",
+  "unique_selected_wells": 4608,
+  "well_mapping_rows": 4704
+}

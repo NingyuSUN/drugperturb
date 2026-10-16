@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "filename": "GSM4150378_sciPlex3_MCF7_24hrs.RDS.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_MCF7_24hrs.RDS.gz",
+      "bytes": 1720242644,
+      "sha256": "2d285a7946452128f5f069d0bd18056fdbd4bdfc5e949e7a4fa14310043021bb",
+      "started_utc": "2026-10-16T02:47:10.890680+00:00",
+      "completed_utc": "2026-10-16T02:49:11.487819+00:00",
+      "mode": "downloaded",
+      "gzip_integrity_checked": true,
+      "source_RDS_deserialized": false,
+      "test_response_effects_inspected": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+context_id	cell_type	time_hours	dose_nM	source_treatment_labels	source_drug_wells	chemistry_accepted_parents	source_structure_excluded	not_in_frozen_v1_cohort	frozen_cohort_compounds	frozen_test_compounds	frozen_test_structure_groups	strict_control_wells	same_plate_vehicle_wells	metadata_test_capacity_gate_met	count_qc_done	evaluation_ready	role_source_train	role_source_validation	role_source_test_locked	role_primary_test	role_secondary_test	role_metadata_only	role_excluded
+A549_24h_10nM	A549	24	10	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	0	171	17
+A549_24h_100nM	A549	24	100	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	0	171	17
+A549_24h_1000nM	A549	24	1000	188	376	185	3	14	171	26	24	8	16	True	False	False	119	26	26	0	0	0	17
+A549_24h_10000nM	A549	24	10000	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	0	171	17
+K562_24h_10nM	K562	24	10	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	0	171	17
+K562_24h_100nM	K562	24	100	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	0	171	17
+K562_24h_1000nM	K562	24	1000	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	26	145	17
+K562_24h_10000nM	K562	24	10000	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	0	171	17
+MCF7_24h_10nM	MCF7	24	10	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	26	145	17
+MCF7_24h_100nM	MCF7	24	100	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	26	145	17
+MCF7_24h_1000nM	MCF7	24	1000	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	26	0	145	17
+MCF7_24h_10000nM	MCF7	24	10000	188	376	185	3	14	171	26	24	8	16	True	False	False	0	0	0	0	26	145	17
