@@ -1,0 +1,168 @@
+{
+  "limits": [
+    "No fresh R extraction replay",
+    "No fresh v2 training replay",
+    "No v2 cross-runtime equivalence",
+    "No independent-study biological validation",
+    "Existing Nextflow and Docker execution records cover v1"
+  ],
+  "presentation_checks": {
+    "all_three_figures_visually_inspected": true,
+    "bilingual_reports_numeric_values_compared": true,
+    "broken_relative_links": 0,
+    "relative_links_checked_in_six_entry_documents": true
+  },
+  "python_tests": {
+    "command_template": "python -m pytest -q --junitxml=TEST_LOG",
+    "duration_seconds": 136.72,
+    "environment": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "ambient_PYTHONPATH_required": false
+    },
+    "errors": 0,
+    "failures": 0,
+    "original_junit_log": {
+      "basename": "final_pytest_public.xml",
+      "bytes": 46880,
+      "sha256": "f91173658414671ac6b400bd1c1490704576ddd3a84c72772963b8ec4994bef4"
+    },
+    "scope": "Full Python suite, primarily synthetic fixtures; no claim of independent biological validation.",
+    "skipped": 0,
+    "tests": 330
+  },
+  "r_checks": {
+    "runtime": "R 4.3.1",
+    "scope": "Context exporter, sparse CSC aggregation and gzip integrity fixtures; actual target extraction separately bound in v2_context_extraction.json.",
+    "status": "PASSED"
+  },
+  "schema_version": 1,
+  "scoring_replays": {
+    "matched_scientific_outputs_each": 6,
+    "new_fits": 0,
+    "original_archive": {
+      "bytes": 3189,
+      "sha256": "7f87da65e2d051bba51e495f93ae399411bafc983ef6ca469abd63678d5ee058"
+    },
+    "public_prediction_only": {
+      "bytes": 17026,
+      "sha256": "4d4e3a0903d115d4d05f6c56c9d31f89d9e3938ba09fcda900ec18758e905d7e"
+    },
+    "public_snapshot_A549_data_present": false,
+    "public_snapshot_fitted_models_present": false,
+    "public_source_snapshot": "c8c3b1b977c3532e35cd7bad01318ff66c5539e4",
+    "reused_target_extraction_outputs": true
+  },
+  "source_file_records": {
+    "configs/protocol_v2.yaml": {
+      "bytes": 6482,
+      "sha256": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3"
+    },
+    "configs/v2_metadata_inputs.json": {
+      "bytes": 1055,
+      "sha256": "3120bf69ab3fd3a984cd5603a94e90b8b0259aea2e4f584ac34be33717babadf"
+    },
+    "scripts/audit_lincs_v2.py": {
+      "bytes": 3898,
+      "sha256": "d5df497d8c339aa419e18ffb15881e1c22cb1e27f5c2388ce3c5416b0a9601f5"
+    },
+    "scripts/audit_v2_metadata.py": {
+      "bytes": 5958,
+      "sha256": "bc82da781df3f5a03f47541759757981cad671f39d86587830935b8e6b1f959f"
+    },
+    "scripts/evaluate_transfer_v2.py": {
+      "bytes": 23191,
+      "sha256": "ae2b64ff9eef6bf405bbc6b0f710d3833138eff730581be6dfe5389615ba4f43"
+    },
+    "scripts/export_context_rds.R": {
+      "bytes": 13206,
+      "sha256": "2c43f915f7002af5f583083f5243c254b97a086c79f86dfa6ae7e45864f3e03e"
+    },
+    "scripts/fetch_v2_sources.py": {
+      "bytes": 7945,
+      "sha256": "f882bdd69a7aa47d2f8a056d4dc23e72974e7dd8cafa2afdf6862448f5cc4c31"
+    },
+    "scripts/plot_transfer_v2.py": {
+      "bytes": 17514,
+      "sha256": "a9d5fa250981e1f69423d7bb257a7d034731051405b0f09a5c8097bb9e540495"
+    },
+    "scripts/prepare_transfer_inputs_v2.py": {
+      "bytes": 9343,
+      "sha256": "97704b7e339337b8939bf0ec1483da0aac9d34aed34d4a43564ff77b4bf59d00"
+    },
+    "scripts/qualify_contexts_v2.py": {
+      "bytes": 6515,
+      "sha256": "257fa0054049d0f4d8c390865e164b16d5ef74253ab2899ee9a808e62451813c"
+    },
+    "scripts/replay_public_transfer_v2.py": {
+      "bytes": 19232,
+      "sha256": "84ba5172d454b1497c903b79d53356f0d25f89ade09e9d9bb101eec3ca7185e8"
+    },
+    "scripts/train_biology_v2.py": {
+      "bytes": 11493,
+      "sha256": "9a3e1c5eae7d9073e401638ee09ccad2ceb438d49fdcb002112984e3064deb1e"
+    },
+    "src/drugperturb/biology_v2.py": {
+      "bytes": 12313,
+      "sha256": "b3c31802599865d9858093bce8860d70d443e9cc8d3f87deec4c029d31877c58"
+    },
+    "src/drugperturb/context_design.py": {
+      "bytes": 11672,
+      "sha256": "ca40f49ad86213ff1eaaf0ab53a4d087162463f42b452cf9863c479340a58365"
+    },
+    "src/drugperturb/context_qc.py": {
+      "bytes": 10320,
+      "sha256": "2d6fe42b2c25430c2ab72b13e1013f33f3f6d8b47d2c59af713e0a6bb8a4124f"
+    },
+    "src/drugperturb/external_v2.py": {
+      "bytes": 8676,
+      "sha256": "52708c8475350eb17891911274f42d9a738b7d06e69b8d77b60bc85463d03dc1"
+    },
+    "src/drugperturb/transfer_v2.py": {
+      "bytes": 22976,
+      "sha256": "ec7cbdcbb0d5ecb44c8cc983c01ffff9e06306a2e722dd5e9c4e74d33caf7403"
+    },
+    "tests/test_biology_v2.py": {
+      "bytes": 12295,
+      "sha256": "c8761839f4f39cf398bb9e9a9de7235c7d8c35851926efa5792d87de41531bef"
+    },
+    "tests/test_context_design.py": {
+      "bytes": 13655,
+      "sha256": "d1c626ef841181220b7e9f51cbcf0786ea17e82cb739e8883327403d6256dde1"
+    },
+    "tests/test_context_export.R": {
+      "bytes": 7406,
+      "sha256": "ce909f2f6a9ec15ac0541169f4c68952eb897d739c71b4d3e94c48fcde13c560"
+    },
+    "tests/test_context_qc.py": {
+      "bytes": 8725,
+      "sha256": "c615c182b633c256ac04412902b9ac4b5aa4a5497ebc04c5fc1cdb855715bb4a"
+    },
+    "tests/test_external_v2.py": {
+      "bytes": 4317,
+      "sha256": "a129b1bb6330519690d113ea0bbc37dd4fb3c2362b6c03790cee666771f8cf44"
+    },
+    "tests/test_fetch_v2_sources.py": {
+      "bytes": 9133,
+      "sha256": "2244ff77f27c7a377573e3f9485d75ed45028b4251e87ded6828232901b0c4ee"
+    },
+    "tests/test_prepare_transfer_inputs_v2.py": {
+      "bytes": 9296,
+      "sha256": "3dfc7d867d487a10f6dbe5011a7e5d8efed3355ca6e770a32548aa94bb2f7190"
+    },
+    "tests/test_public_transfer_replay_v2.py": {
+      "bytes": 14054,
+      "sha256": "aa33bca29fbc590ab8712e6aff1f0a053244097895c35bc2ea678e2215b5241b"
+    },
+    "tests/test_transfer_v2.py": {
+      "bytes": 17251,
+      "sha256": "40971444aadb214bb79c4b321bffd0e0774d315735131663b3e1e59afb0dcace"
+    }
+  },
+  "source_revision": "c8c3b1b977c3532e35cd7bad01318ff66c5539e4",
+  "status": "VERIFIED_LOCAL_VALIDATION",
+  "unchanged_v1_scientific_files": true,
+  "verified_utc": "2026-10-16T04:23:39.917651+00:00"
+}

@@ -59,6 +59,8 @@ qc_hash=$(sha256sum receipts/v2_context_qc.json | cut -d' ' -f1)
   --output-root work/v2-public-replay
 ```
 
+The [recorded public replay](../receipts/v2_public_replay.json) ran in a source-only snapshot of `c8c3b1b977c3532e35cd7bad01318ff66c5539e4`, with relocated verified MCF7/K562 extraction outputs and no A549 data or fitted model directory. All six scientific files matched. This was a new scoring execution using existing extraction outputs, not a fresh R extraction run.
+
 Use a new output directory. The replay checks the source seals, prediction bytes and identifiers, gene/set order, original split, protocol, count-QC chain and target extraction provenance. It scores the fixed five contexts with the original two-control definitions and bootstrap settings, then requires all six scientific output files to match the published evaluation. A failed comparison is a failure, not permission to retune or replace the reference. Its scope is fixed-prediction scoring from public inputs; the internal full-training-archive checks remain a separate operation.
 
 The SHA256 arguments pin the files selected for the invocation. They detect accidental drift after that selection; they are not a signed security attestation. To compare with the published reference, start from a verified repository revision and preserve its committed files.
@@ -121,4 +123,4 @@ This checks exact numeric dose, time, cell identity and standardized parent stru
 
 ## Validation boundaries
 
-Python tests use synthetic fixtures for leakage, identity alignment, missing values, controls, provenance and overwrite protection. R tests cover sparse count aggregation, count conservation, gene IDs and compressed-output integrity. The actual scoring replay addresses computational repeatability. None establishes independent-study transport, mechanism, drug efficacy, clinical performance, AWS execution or GPU training. The scientific conclusions are in the [English](../reports/v2/report.md) and [Chinese](../reports/v2/report.zh-CN.md) reports.
+The [local validation record](../receipts/v2_validation.json) reports 330 passing Python tests. Python tests use synthetic fixtures for leakage, identity alignment, missing values, controls, provenance and overwrite protection. R tests cover sparse count aggregation, count conservation, gene IDs and compressed-output integrity. The actual scoring replay addresses computational repeatability. None establishes independent-study transport, mechanism, drug efficacy, clinical performance, AWS execution or GPU training. The scientific conclusions are in the [English](../reports/v2/report.md) and [Chinese](../reports/v2/report.zh-CN.md) reports.

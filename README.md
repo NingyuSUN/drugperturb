@@ -27,7 +27,7 @@ For gene-level transport, GNN error exceeded Ridge by +0.04654 [95% interval +0.
 
 The evaluation adds K562 at 1 µM and MCF7 at 10 nM, 100 nM and 10 µM. Eligible cohorts contain 18–26 compounds; the 10 µM cohort fails the prespecified sample-count gate and is reported descriptively without an interval. Matched-control sensitivity uses identical compound subsets. LINCS Phase I had **0/26 test compounds** under the exact independent-study condition, so no external expression-performance claim is made.
 
-Read the [English](reports/v2/report.md) or [Chinese](reports/v2/report.zh-CN.md) report for every baseline, biological readout, denominator and limitation. The [scoring replay](receipts/v2_scoring_replay.json) reproduced all six scientific result files exactly using the same sealed inputs; it does not establish fresh extraction or retraining equivalence.
+Read the [English](reports/v2/report.md) or [Chinese](reports/v2/report.zh-CN.md) report for every baseline, biological readout, denominator and limitation. Both the [original-archive scoring replay](receipts/v2_scoring_replay.json) and a [public-files-only replay](receipts/v2_public_replay.json) reproduced all six scientific result files exactly. The latter uses the published prediction archives and verified extracted counts, with no private fitted models. **330 Python tests passed** in the [local validation](receipts/v2_validation.json). These checks do not establish fresh extraction or retraining equivalence.
 
 ## Original A549 results (v1)
 
