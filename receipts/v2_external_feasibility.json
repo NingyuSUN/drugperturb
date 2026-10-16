@@ -1,0 +1,758 @@
+{
+  "schema_version": 1,
+  "gate_decision": "NO_GO_EXACT_CONDITION_COHORT",
+  "counts": {
+    "source_signature_records": 473647,
+    "coarse_label_signatures": 115,
+    "coarse_label_pert_ids": 89,
+    "exact_condition_signatures": 3,
+    "exact_condition_pert_ids": 3,
+    "structurally_resolved_exact_pert_ids": 3,
+    "frozen_source_compounds": 171,
+    "frozen_test_compounds": 26,
+    "matched_test_compounds": 0,
+    "matched_test_structure_groups": 0,
+    "selected_output_genes": 2000,
+    "direct_landmark_records": 978,
+    "exact_unambiguous_landmark_genes": 73
+  },
+  "criteria": {
+    "minimum_test_compounds": 20,
+    "minimum_test_structure_groups": 10,
+    "minimum_direct_landmark_genes": 100
+  },
+  "condition": {
+    "cell_type": "A549",
+    "time_hours": 24,
+    "actual_dose_uM": 1.0
+  },
+  "exact_condition_signature_metadata": [
+    {
+      "sig_id": "CPC006_A549_24H:BRD-K04010869-001-02-6:1",
+      "pert_id": "BRD-K04010869",
+      "pert_iname": "prostaglandin-a1",
+      "pert_type": "trt_cp",
+      "cell_id": "A549",
+      "pert_dose": "1.0",
+      "pert_dose_unit": "\u00b5M",
+      "pert_idose": "1 \u00b5M",
+      "pert_time": "24",
+      "pert_time_unit": "h",
+      "pert_itime": "24 h",
+      "distil_id": "CPC006_A549_24H_X1_B3_DUO52HI53LO:I14|CPC006_A549_24H_X2_B3_DUO52HI53LO:I14|CPC006_A549_24H_X3_B3_DUO52HI53LO:I14"
+    },
+    {
+      "sig_id": "CPC006_A549_24H:BRD-K23363278-001-01-3:1",
+      "pert_id": "BRD-K23363278",
+      "pert_iname": "CYT-997",
+      "pert_type": "trt_cp",
+      "cell_id": "A549",
+      "pert_dose": "1.0",
+      "pert_dose_unit": "\u00b5M",
+      "pert_idose": "1 \u00b5M",
+      "pert_time": "24",
+      "pert_time_unit": "h",
+      "pert_itime": "24 h",
+      "distil_id": "CPC006_A549_24H_X1_B3_DUO52HI53LO:A13|CPC006_A549_24H_X2_B3_DUO52HI53LO:A13|CPC006_A549_24H_X3_B3_DUO52HI53LO:A13"
+    },
+    {
+      "sig_id": "CPC006_A549_24H:BRD-K27316855-001-02-6:1",
+      "pert_id": "BRD-K27316855",
+      "pert_iname": "calcitriol",
+      "pert_type": "trt_cp",
+      "cell_id": "A549",
+      "pert_dose": "1.0",
+      "pert_dose_unit": "\u00b5M",
+      "pert_idose": "1 \u00b5M",
+      "pert_time": "24",
+      "pert_time_unit": "h",
+      "pert_itime": "24 h",
+      "distil_id": "CPC006_A549_24H_X1_B3_DUO52HI53LO:I03|CPC006_A549_24H_X2_B3_DUO52HI53LO:I03|CPC006_A549_24H_X3_B3_DUO52HI53LO:I03"
+    }
+  ],
+  "exact_condition_structures": [
+    {
+      "pert_id": "BRD-K04010869",
+      "name": "prostaglandin-a1",
+      "original_smiles": "CCCCC[C@H](O)/C=C/[C@H]1C=CC(=O)[C@@H]1CCCCCCC(=O)O",
+      "canonical_smiles": "CCCCC[C@H](O)/C=C/[C@H]1C=CC(=O)[C@@H]1CCCCCCC(=O)O"
+    },
+    {
+      "pert_id": "BRD-K23363278",
+      "name": "CYT-997",
+      "original_smiles": "CCC[C@H](Nc1nc(ncc1C)-c1ccc(NC(=O)NCC)c(OC)c1)c1cccnc1",
+      "canonical_smiles": "CCC[C@H](Nc1nc(-c2ccc(NC(=O)NCC)c(OC)c2)ncc1C)c1cccnc1"
+    },
+    {
+      "pert_id": "BRD-K27316855",
+      "name": "calcitriol",
+      "original_smiles": "C[C@H](CCCC(C)(C)O)[C@H]1CC[C@@H]2[C@]1(C)CCC\\C2=C/C=C1/C[C@@H](O)C[C@H](O)C1=C",
+      "canonical_smiles": "C=C1/C(=C\\C=C2/CCC[C@]3(C)[C@@H]([C@H](C)CCCC(C)(C)O)CC[C@@H]23)C[C@@H](O)C[C@@H]1O"
+    }
+  ],
+  "coarsened_label_actual_dose_counts": {
+    "1.25": 1,
+    "1.0": 3,
+    "1.94": 1,
+    "1.11111": 14,
+    "1.2333": 9,
+    "1.11": 78,
+    "1.1111": 7,
+    "2": 1,
+    "1.1681": 1
+  },
+  "identity_issues": [],
+  "test_compounds": [
+    {
+      "compound_id": "S1014",
+      "split": "test",
+      "scaffold_group": "murcko:c1ccc(Nc2ccnc3cc(OCCCN4CCNCC4)ccc23)cc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1033",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(Nc1cccc(-n2ccnc2)c1)c1cccc(Nc2nccc(-c3cccnc3)n2)c1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1056",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(Nc1cc2c(Nc3ccc4c(cnn4Cc4ccccc4)c3)ncnn2c1)OCC1COCCN1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1090",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(NCCOc1ccccc1)c1cc2ccccc2o1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1103",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(Nc1ccc(Nc2ncnc3cc(OCCCN4CCOCC4)ccc23)cc1)c1ccccc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1143",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(C=Cc1ccccc1)NCc1ccccc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1168",
+      "split": "test",
+      "scaffold_group": "acyclic:CCCC(CCC)C(=O)O",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1169",
+      "split": "test",
+      "scaffold_group": "murcko:O=c1cc(N2CCOCC2)nc2c(CNc3ccccc3)cccn12",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1193",
+      "split": "test",
+      "scaffold_group": "murcko:O=C1CCC(N2C(=O)c3ccccc3C2=O)C(=O)N1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1209",
+      "split": "test",
+      "scaffold_group": "murcko:O=c1cc[nH]c(=O)[nH]1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1289",
+      "split": "test",
+      "scaffold_group": "murcko:O=c1cc[nH]c(=O)[nH]1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1327",
+      "split": "test",
+      "scaffold_group": "murcko:O=c1oc2cccc3c(=O)oc4cccc1c4c23",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1378",
+      "split": "test",
+      "scaffold_group": "murcko:c1nc(-c2cnn(CC3CCCC3)c2)c2cc[nH]c2n1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1577",
+      "split": "test",
+      "scaffold_group": "murcko:c1ccc(-c2nc(-c3ccncc3)c(-c3ccc4ccccc4c3)[nH]2)cc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1672",
+      "split": "test",
+      "scaffold_group": "murcko:O=C1CCC(c2ccccc2)C(=O)N1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1692",
+      "split": "test",
+      "scaffold_group": "acyclic:CS(=O)(=O)OCCCCOS(C)(=O)=O",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S1802",
+      "split": "test",
+      "scaffold_group": "murcko:c1cn(C2CCCO2)cn1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2013",
+      "split": "test",
+      "scaffold_group": "murcko:O=C1CCc2cc(Nc3nccc(NCc4ccccc4)n3)ccc2N1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2178",
+      "split": "test",
+      "scaffold_group": "murcko:O=C1NCCn2c(-c3ccccc3)nc3cccc1c32",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2179",
+      "split": "test",
+      "scaffold_group": "murcko:c1ccc(Cc2cnc3c(CN4CCOCC4)cc(Nc4ccn[nH]4)nn23)cc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2666",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(Nc1cccnc1)N1CCC(Cc2cccc(Oc3ccccn3)c2)CC1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2686",
+      "split": "test",
+      "scaffold_group": "murcko:c1cc(-c2ccc(CN3CCOCC3)cc2)c2nc(-c3cnn(C4CCNCC4)c3)cnc2c1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2818",
+      "split": "test",
+      "scaffold_group": "murcko:O=C(Nc1ccccc1)c1ccccc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2851",
+      "split": "test",
+      "scaffold_group": "murcko:c1nc(-c2cnn(C3CNC3)c2)c2cc[nH]c2n1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S2902",
+      "split": "test",
+      "scaffold_group": "murcko:c1nc(-c2cnn(CC3CCCC3)c2)c2cc[nH]c2n1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    },
+    {
+      "compound_id": "S7574",
+      "split": "test",
+      "scaffold_group": "murcko:c1ccc(C2CC2NC2CCNCC2)cc1",
+      "matched_pert_ids": [],
+      "matched_sig_ids": [],
+      "status": "no_exact_parent_at_required_condition"
+    }
+  ],
+  "matched_compounds_by_split": {
+    "train": 0,
+    "validation": 0,
+    "test": 0
+  },
+  "direct_landmark_matches": [
+    {
+      "gene_id": "ENSG00000139318.7",
+      "gene_symbol": "DUSP6",
+      "lincs_gene_id": "1848"
+    },
+    {
+      "gene_id": "ENSG00000107338.9",
+      "gene_symbol": "SHB",
+      "lincs_gene_id": "6461"
+    },
+    {
+      "gene_id": "ENSG00000131188.11",
+      "gene_symbol": "PRR7",
+      "lincs_gene_id": "80758"
+    },
+    {
+      "gene_id": "ENSG00000010810.17",
+      "gene_symbol": "FYN",
+      "lincs_gene_id": "2534"
+    },
+    {
+      "gene_id": "ENSG00000164305.18",
+      "gene_symbol": "CASP3",
+      "lincs_gene_id": "836"
+    },
+    {
+      "gene_id": "ENSG00000240972.1",
+      "gene_symbol": "MIF",
+      "lincs_gene_id": "4282"
+    },
+    {
+      "gene_id": "ENSG00000105255.10",
+      "gene_symbol": "FSD1",
+      "lincs_gene_id": "79187"
+    },
+    {
+      "gene_id": "ENSG00000157014.10",
+      "gene_symbol": "TATDN2",
+      "lincs_gene_id": "9797"
+    },
+    {
+      "gene_id": "ENSG00000169598.15",
+      "gene_symbol": "DFFB",
+      "lincs_gene_id": "1677"
+    },
+    {
+      "gene_id": "ENSG00000123374.10",
+      "gene_symbol": "CDK2",
+      "lincs_gene_id": "1017"
+    },
+    {
+      "gene_id": "ENSG00000171467.15",
+      "gene_symbol": "ZNF318",
+      "lincs_gene_id": "24149"
+    },
+    {
+      "gene_id": "ENSG00000100911.15",
+      "gene_symbol": "PSME2",
+      "lincs_gene_id": "5721"
+    },
+    {
+      "gene_id": "ENSG00000164045.11",
+      "gene_symbol": "CDC25A",
+      "lincs_gene_id": "993"
+    },
+    {
+      "gene_id": "ENSG00000204209.11",
+      "gene_symbol": "DAXX",
+      "lincs_gene_id": "1616"
+    },
+    {
+      "gene_id": "ENSG00000102897.9",
+      "gene_symbol": "LYRM1",
+      "lincs_gene_id": "57149"
+    },
+    {
+      "gene_id": "ENSG00000106004.4",
+      "gene_symbol": "HOXA5",
+      "lincs_gene_id": "3202"
+    },
+    {
+      "gene_id": "ENSG00000145335.15",
+      "gene_symbol": "SNCA",
+      "lincs_gene_id": "6622"
+    },
+    {
+      "gene_id": "ENSG00000062038.13",
+      "gene_symbol": "CDH3",
+      "lincs_gene_id": "1001"
+    },
+    {
+      "gene_id": "ENSG00000134222.16",
+      "gene_symbol": "PSRC1",
+      "lincs_gene_id": "84722"
+    },
+    {
+      "gene_id": "ENSG00000066583.11",
+      "gene_symbol": "ISOC1",
+      "lincs_gene_id": "51015"
+    },
+    {
+      "gene_id": "ENSG00000165912.15",
+      "gene_symbol": "PACSIN3",
+      "lincs_gene_id": "29763"
+    },
+    {
+      "gene_id": "ENSG00000107140.15",
+      "gene_symbol": "TESK1",
+      "lincs_gene_id": "7016"
+    },
+    {
+      "gene_id": "ENSG00000259956.1",
+      "gene_symbol": "RBM15B",
+      "lincs_gene_id": "29890"
+    },
+    {
+      "gene_id": "ENSG00000000003.14",
+      "gene_symbol": "TSPAN6",
+      "lincs_gene_id": "7105"
+    },
+    {
+      "gene_id": "ENSG00000081041.8",
+      "gene_symbol": "CXCL2",
+      "lincs_gene_id": "2920"
+    },
+    {
+      "gene_id": "ENSG00000156587.15",
+      "gene_symbol": "UBE2L6",
+      "lincs_gene_id": "9246"
+    },
+    {
+      "gene_id": "ENSG00000135473.14",
+      "gene_symbol": "PAN2",
+      "lincs_gene_id": "9924"
+    },
+    {
+      "gene_id": "ENSG00000215251.3",
+      "gene_symbol": "FASTKD5",
+      "lincs_gene_id": "60493"
+    },
+    {
+      "gene_id": "ENSG00000175305.17",
+      "gene_symbol": "CCNE2",
+      "lincs_gene_id": "9134"
+    },
+    {
+      "gene_id": "ENSG00000147669.10",
+      "gene_symbol": "POLR2K",
+      "lincs_gene_id": "5440"
+    },
+    {
+      "gene_id": "ENSG00000243279.3",
+      "gene_symbol": "PRAF2",
+      "lincs_gene_id": "11230"
+    },
+    {
+      "gene_id": "ENSG00000188021.8",
+      "gene_symbol": "UBQLN2",
+      "lincs_gene_id": "29978"
+    },
+    {
+      "gene_id": "ENSG00000117308.14",
+      "gene_symbol": "GALE",
+      "lincs_gene_id": "2582"
+    },
+    {
+      "gene_id": "ENSG00000103066.12",
+      "gene_symbol": "PLA2G15",
+      "lincs_gene_id": "23659"
+    },
+    {
+      "gene_id": "ENSG00000168286.2",
+      "gene_symbol": "THAP11",
+      "lincs_gene_id": "57215"
+    },
+    {
+      "gene_id": "ENSG00000100577.18",
+      "gene_symbol": "GSTZ1",
+      "lincs_gene_id": "2954"
+    },
+    {
+      "gene_id": "ENSG00000213190.3",
+      "gene_symbol": "MLLT11",
+      "lincs_gene_id": "10962"
+    },
+    {
+      "gene_id": "ENSG00000007968.6",
+      "gene_symbol": "E2F2",
+      "lincs_gene_id": "1870"
+    },
+    {
+      "gene_id": "ENSG00000085872.14",
+      "gene_symbol": "CHERP",
+      "lincs_gene_id": "10523"
+    },
+    {
+      "gene_id": "ENSG00000108821.13",
+      "gene_symbol": "COL1A1",
+      "lincs_gene_id": "1277"
+    },
+    {
+      "gene_id": "ENSG00000127666.9",
+      "gene_symbol": "TICAM1",
+      "lincs_gene_id": "148022"
+    },
+    {
+      "gene_id": "ENSG00000094631.18",
+      "gene_symbol": "HDAC6",
+      "lincs_gene_id": "10013"
+    },
+    {
+      "gene_id": "ENSG00000143390.17",
+      "gene_symbol": "RFX5",
+      "lincs_gene_id": "5993"
+    },
+    {
+      "gene_id": "ENSG00000171791.12",
+      "gene_symbol": "BCL2",
+      "lincs_gene_id": "596"
+    },
+    {
+      "gene_id": "ENSG00000158234.12",
+      "gene_symbol": "FAIM",
+      "lincs_gene_id": "55179"
+    },
+    {
+      "gene_id": "ENSG00000164414.17",
+      "gene_symbol": "SLC35A1",
+      "lincs_gene_id": "10559"
+    },
+    {
+      "gene_id": "ENSG00000185499.16",
+      "gene_symbol": "MUC1",
+      "lincs_gene_id": "4582"
+    },
+    {
+      "gene_id": "ENSG00000105171.9",
+      "gene_symbol": "POP4",
+      "lincs_gene_id": "10775"
+    },
+    {
+      "gene_id": "ENSG00000095066.11",
+      "gene_symbol": "HOOK2",
+      "lincs_gene_id": "29911"
+    },
+    {
+      "gene_id": "ENSG00000175063.16",
+      "gene_symbol": "UBE2C",
+      "lincs_gene_id": "11065"
+    },
+    {
+      "gene_id": "ENSG00000153140.8",
+      "gene_symbol": "CETN3",
+      "lincs_gene_id": "1070"
+    },
+    {
+      "gene_id": "ENSG00000164362.18",
+      "gene_symbol": "TERT",
+      "lincs_gene_id": "7015"
+    },
+    {
+      "gene_id": "ENSG00000023330.14",
+      "gene_symbol": "ALAS1",
+      "lincs_gene_id": "211"
+    },
+    {
+      "gene_id": "ENSG00000053371.12",
+      "gene_symbol": "AKR7A2",
+      "lincs_gene_id": "8574"
+    },
+    {
+      "gene_id": "ENSG00000109107.13",
+      "gene_symbol": "ALDOC",
+      "lincs_gene_id": "230"
+    },
+    {
+      "gene_id": "ENSG00000072062.13",
+      "gene_symbol": "PRKACA",
+      "lincs_gene_id": "5566"
+    },
+    {
+      "gene_id": "ENSG00000137274.12",
+      "gene_symbol": "BPHL",
+      "lincs_gene_id": "670"
+    },
+    {
+      "gene_id": "ENSG00000125744.11",
+      "gene_symbol": "RTN2",
+      "lincs_gene_id": "6253"
+    },
+    {
+      "gene_id": "ENSG00000138798.11",
+      "gene_symbol": "EGF",
+      "lincs_gene_id": "1950"
+    },
+    {
+      "gene_id": "ENSG00000086827.8",
+      "gene_symbol": "ZW10",
+      "lincs_gene_id": "9183"
+    },
+    {
+      "gene_id": "ENSG00000155876.5",
+      "gene_symbol": "RRAGA",
+      "lincs_gene_id": "10670"
+    },
+    {
+      "gene_id": "ENSG00000028839.9",
+      "gene_symbol": "TBPL1",
+      "lincs_gene_id": "9519"
+    },
+    {
+      "gene_id": "ENSG00000002549.12",
+      "gene_symbol": "LAP3",
+      "lincs_gene_id": "51056"
+    },
+    {
+      "gene_id": "ENSG00000164167.10",
+      "gene_symbol": "LSM6",
+      "lincs_gene_id": "11157"
+    },
+    {
+      "gene_id": "ENSG00000104886.11",
+      "gene_symbol": "PLEKHJ1",
+      "lincs_gene_id": "55111"
+    },
+    {
+      "gene_id": "ENSG00000145386.9",
+      "gene_symbol": "CCNA2",
+      "lincs_gene_id": "890"
+    },
+    {
+      "gene_id": "ENSG00000142945.12",
+      "gene_symbol": "KIF2C",
+      "lincs_gene_id": "11004"
+    },
+    {
+      "gene_id": "ENSG00000102977.13",
+      "gene_symbol": "ACD",
+      "lincs_gene_id": "65057"
+    },
+    {
+      "gene_id": "ENSG00000156469.8",
+      "gene_symbol": "MTERF3",
+      "lincs_gene_id": "51001"
+    },
+    {
+      "gene_id": "ENSG00000149499.11",
+      "gene_symbol": "EML3",
+      "lincs_gene_id": "256364"
+    },
+    {
+      "gene_id": "ENSG00000026103.21",
+      "gene_symbol": "FAS",
+      "lincs_gene_id": "355"
+    },
+    {
+      "gene_id": "ENSG00000142082.14",
+      "gene_symbol": "SIRT3",
+      "lincs_gene_id": "23410"
+    },
+    {
+      "gene_id": "ENSG00000163659.12",
+      "gene_symbol": "TIPARP",
+      "lincs_gene_id": "25976"
+    }
+  ],
+  "gene_mapping_ambiguities": [],
+  "gene_mapping_scope": "exact symbols only; historical aliases not exhaustively resolved",
+  "expression_accessed": false,
+  "signature_quality_filter_applied": false,
+  "interpretation": "Dataset compatibility only; no external model-performance estimate",
+  "caveats": [
+    "L1000 and sci-Plex differ in platform, reference and scale.",
+    "No overlap in this condition does not establish absence in other conditions.",
+    "A metadata pass would not establish biological or clinical validity."
+  ],
+  "signature_metrics_columns": [
+    "sig_id",
+    "pert_id",
+    "pert_iname",
+    "pert_type",
+    "distil_cc_q75",
+    "distil_ss",
+    "ngenes_modulated_up_lm",
+    "ngenes_modulated_dn_lm",
+    "tas",
+    "pct_self_rank_q25",
+    "is_exemplar",
+    "distil_nsample"
+  ],
+  "source_files": [
+    {
+      "role": "signatures",
+      "filename": "GSE92742_Broad_LINCS_sig_info.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_sig_info.txt.gz",
+      "bytes": "11124404",
+      "sha256": "19da29c0ee12ddf27f9698cd0da40beaff58657dcde9d382aae068737e831299"
+    },
+    {
+      "role": "perturbations",
+      "filename": "GSE92742_Broad_LINCS_pert_info.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_pert_info.txt.gz",
+      "bytes": "1138509",
+      "sha256": "b1945b3fde51021865b12269929cc78ccf2665be27f53a4da9336e4ddcf4b42f"
+    },
+    {
+      "role": "genes",
+      "filename": "GSE92742_Broad_LINCS_gene_info.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_gene_info.txt.gz",
+      "bytes": "216692",
+      "sha256": "741216ccc53320119b47ab006de3bcad48963c57087c9e07f50f0d6cd088711a"
+    },
+    {
+      "role": "metrics",
+      "filename": "GSE92742_Broad_LINCS_sig_metrics.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_sig_metrics.txt.gz",
+      "bytes": "12520228",
+      "sha256": "54f19003e5e3445bc293347cca004eeb066e22e97f5eec50f1605b393e90f466"
+    }
+  ],
+  "project_input_hashes": {
+    "manifests/split_manifest.tsv": "442687ae16120a6371b83231607086553646d99afc6f72ac6840187ef6624e38",
+    "manifests/chemistry_manifest.tsv": "4565672b80108256679b57e858d9c34e46dd2032d0594ed1467092a42bfae378",
+    "configs/protocol_v2.yaml": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3",
+    "manifests/selected_genes.tsv": "26d0a1f220db8a29acdc3553802d0cfe9c2e8245c3cf6b4dfba0a224d0c578e1",
+    "configs/v2_metadata_inputs.json": "3120bf69ab3fd3a984cd5603a94e90b8b0259aea2e4f584ac34be33717babadf",
+    "receipts/dataset_freeze.json": "597daae4f3f515afa0ccb00a0904142aa0a999fc9de89f56b145f3d99a811a77",
+    "manifests/v2/lincs_sources.tsv": "9df5a259fc03b87839d5615b93dd1c100727dce7bc412a583cf7dac4ba90838b"
+  },
+  "code_revision": "2212575e5eafcce7aaffa6e53abb4acf51bf6b8f",
+  "code_revision_is_base": true,
+  "code_hashes": {
+    "src/drugperturb/external_v2.py": "52708c8475350eb17891911274f42d9a738b7d06e69b8d77b60bc85463d03dc1",
+    "scripts/audit_lincs_v2.py": "d5df497d8c339aa419e18ffb15881e1c22cb1e27f5c2388ce3c5416b0a9601f5",
+    "src/drugperturb/chemistry.py": "0a059a1ec5528ff140ad5634a277f6fb96022acbfec4ab9aa8f3bb450698627b"
+  },
+  "source_manifest_sha256": "9df5a259fc03b87839d5615b93dd1c100727dce7bc412a583cf7dac4ba90838b"
+}

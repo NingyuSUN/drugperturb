@@ -55,3 +55,14 @@ PYTHONPATH=src python scripts/audit_v2_metadata.py \
 ```
 
 The frozen input contract rejects changed source identities, splits or protocol bytes. [The inventory](design_inventory.tsv), [roles](../../manifests/v2/context_roles.tsv), [well mapping](../../manifests/v2/well_mapping.tsv) and [audit receipt](../../receipts/v2_metadata_audit.json) describe metadata-only outputs. Count extraction, biological-head training, prediction sealing and transfer evaluation are separate analysis stages.
+
+
+The independent-study gate is also executable from the four metadata files listed in [the pinned LINCS source manifest](../../manifests/v2/lincs_sources.tsv):
+
+```bash
+PYTHONPATH=src python scripts/audit_lincs_v2.py \
+  --metadata-dir data/raw/lincs_phase1 \
+  --output-root .
+```
+
+[The external feasibility receipt](../../receipts/v2_external_feasibility.json) records all three exact-condition signatures, their resolved structures, all 26 test-compound matching decisions and the 73 unambiguous direct-landmark mappings. The audit checks source bytes, frozen project identities and code hashes without accessing expression matrices. Its reproducible metadata result is 473,647 source signatures, three exact-condition candidates and zero matched test compounds.

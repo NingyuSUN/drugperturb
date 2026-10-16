@@ -1,0 +1,5 @@
+role	filename	url	bytes	sha256
+signatures	GSE92742_Broad_LINCS_sig_info.txt.gz	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_sig_info.txt.gz	11124404	19da29c0ee12ddf27f9698cd0da40beaff58657dcde9d382aae068737e831299
+perturbations	GSE92742_Broad_LINCS_pert_info.txt.gz	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_pert_info.txt.gz	1138509	b1945b3fde51021865b12269929cc78ccf2665be27f53a4da9336e4ddcf4b42f
+genes	GSE92742_Broad_LINCS_gene_info.txt.gz	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_gene_info.txt.gz	216692	741216ccc53320119b47ab006de3bcad48963c57087c9e07f50f0d6cd088711a
+metrics	GSE92742_Broad_LINCS_sig_metrics.txt.gz	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_sig_metrics.txt.gz	12520228	54f19003e5e3445bc293347cca004eeb066e22e97f5eec50f1605b393e90f466

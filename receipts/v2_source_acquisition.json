@@ -12,6 +12,18 @@
       "gzip_integrity_checked": true,
       "source_RDS_deserialized": false,
       "test_response_effects_inspected": false
+    },
+    {
+      "filename": "GSM4150378_sciPlex3_K562_24hrs.RDS.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM4150nnn/GSM4150378/suppl/GSM4150378_sciPlex3_K562_24hrs.RDS.gz",
+      "bytes": 555508050,
+      "sha256": "1e5d0763b3a4c262fedd8fd38c0f8389ef3f71bd268fa0f84da5802c4cda7990",
+      "started_utc": "2026-10-16T03:05:39.625162+00:00",
+      "completed_utc": "2026-10-16T03:06:29.629642+00:00",
+      "mode": "downloaded",
+      "gzip_integrity_checked": true,
+      "source_RDS_deserialized": false,
+      "test_response_effects_inspected": false
     }
   ]
 }
