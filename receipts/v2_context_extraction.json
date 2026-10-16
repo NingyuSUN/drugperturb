@@ -1,0 +1,138 @@
+{
+  "runtime": {
+    "R": "4.3.1"
+  },
+  "schema_version": 1,
+  "sources": {
+    "K562": {
+      "code_input_hashes": {
+        "configs/protocol_v2.yaml": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3",
+        "manifests/v2/well_mapping.tsv": "ea852abfdac9e1145ada89e0081102de607b2a46922a4e3c472a27383ef47d0f",
+        "scripts/csc_utils.R": "7d0f05230d9afc2c2af70f76dad026fe1d136bd34355edfa1daf1ea4170db6a3",
+        "scripts/export_context_rds.R": "2c43f915f7002af5f583083f5243c254b97a086c79f86dfa6ae7e45864f3e03e"
+      },
+      "completed_utc": "2026-10-16T03:49:54.604874+00:00",
+      "elapsed_seconds": 379.846,
+      "outputs": {
+        "extraction_summary.tsv": {
+          "bytes": 751,
+          "sha256": "0f16af866387df0e67a772027090f9a45fe01b8af85b6c518bb651750bdea3dd"
+        },
+        "gene_metadata.tsv": {
+          "bytes": 1574373,
+          "sha256": "a7f2df38a65846b28195883950aa09fdff7aa795a0f16c34c56e82091309e27c"
+        },
+        "pseudobulk_counts.tsv.gz": {
+          "bytes": 16121106,
+          "sha256": "03e020d6578c6a85ba5d6763249299324549464767cbb551a8ff8fbe1c39fa5c"
+        },
+        "selected_cell_qc.tsv.gz": {
+          "bytes": 6353643,
+          "sha256": "2e833d264f841054afdb4f8b08bf637a9fe8d1affbabc41de88c58706baba292"
+        },
+        "well_qc.tsv": {
+          "bytes": 70785,
+          "sha256": "91d06970bfdab676c3b5f1a931e4f9348aa8e22846d2897e4d64aae5bd9b39de"
+        }
+      },
+      "source": {
+        "basename": "GSM4150378_sciPlex3_K562_24hrs.RDS.gz",
+        "bytes": 555508050,
+        "sha256": "1e5d0763b3a4c262fedd8fd38c0f8389ef3f71bd268fa0f84da5802c4cda7990"
+      },
+      "started_utc": "2026-10-16T03:43:34.758371+00:00",
+      "status": "COMPLETE",
+      "summary": {
+        "UMI_conserved": "TRUE",
+        "all_human_gene_rows_exported": "TRUE",
+        "author_embeddings_reused": "FALSE",
+        "col_positional_binding_scope": "Exact assay Dimnames and colData cell_id order",
+        "context_cell_type": "K562",
+        "context_time_hours": "24",
+        "counts_cell_dimnames_present": "TRUE",
+        "counts_gene_dimnames_present": "TRUE",
+        "counts_nonnegative_integer": "TRUE",
+        "missing_selected_wells": "0",
+        "nonempty_selected_wells": "1536",
+        "row_positional_binding_scope": "Exact assay Dimnames and rowRanges gene_id order",
+        "selected_UMI": "190617962",
+        "selected_nuclei": "146752",
+        "selected_unique_wells": "1536",
+        "source_compression_layers": "2",
+        "source_hash_QC_all_pass": "TRUE",
+        "source_human_genes": "58347",
+        "source_nuclei": "146752",
+        "source_stored_count_entries": "125034887",
+        "source_total_UMI": "190617962",
+        "treatment_effects_computed": "FALSE",
+        "zero_library_selected_cells": "0"
+      },
+      "treatment_effects_computed": false
+    },
+    "MCF7": {
+      "code_input_hashes": {
+        "configs/protocol_v2.yaml": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3",
+        "manifests/v2/well_mapping.tsv": "ea852abfdac9e1145ada89e0081102de607b2a46922a4e3c472a27383ef47d0f",
+        "scripts/csc_utils.R": "7d0f05230d9afc2c2af70f76dad026fe1d136bd34355edfa1daf1ea4170db6a3",
+        "scripts/export_context_rds.R": "2c43f915f7002af5f583083f5243c254b97a086c79f86dfa6ae7e45864f3e03e"
+      },
+      "completed_utc": "2026-10-16T03:41:18.651364+00:00",
+      "elapsed_seconds": 732.867,
+      "outputs": {
+        "extraction_summary.tsv": {
+          "bytes": 753,
+          "sha256": "4020f3bdcf85052f9a693c7e56e72318bfb7164f191d3aba1e4a7c1d42b00d52"
+        },
+        "gene_metadata.tsv": {
+          "bytes": 1574373,
+          "sha256": "a7f2df38a65846b28195883950aa09fdff7aa795a0f16c34c56e82091309e27c"
+        },
+        "pseudobulk_counts.tsv.gz": {
+          "bytes": 26817159,
+          "sha256": "bf7c6343e434c36c9093afeacc31446e39f055ba38a3e6d537b7174759f0435c"
+        },
+        "selected_cell_qc.tsv.gz": {
+          "bytes": 12963377,
+          "sha256": "167a534d69508b9073c7cb8fab8dd476fed5899e49362caf16161ab4149c455e"
+        },
+        "well_qc.tsv": {
+          "bytes": 72875,
+          "sha256": "29827fb61692930c60fdbb0537f3e39e7e3c5534b14cf75817e7799044f93628"
+        }
+      },
+      "source": {
+        "basename": "GSM4150378_sciPlex3_MCF7_24hrs.RDS.gz",
+        "bytes": 1720242644,
+        "sha256": "2d285a7946452128f5f069d0bd18056fdbd4bdfc5e949e7a4fa14310043021bb"
+      },
+      "started_utc": "2026-10-16T03:29:05.784323+00:00",
+      "status": "COMPLETE",
+      "summary": {
+        "UMI_conserved": "TRUE",
+        "all_human_gene_rows_exported": "TRUE",
+        "author_embeddings_reused": "FALSE",
+        "col_positional_binding_scope": "Exact assay Dimnames and colData cell_id order",
+        "context_cell_type": "MCF7",
+        "context_time_hours": "24",
+        "counts_cell_dimnames_present": "TRUE",
+        "counts_gene_dimnames_present": "TRUE",
+        "counts_nonnegative_integer": "TRUE",
+        "missing_selected_wells": "1",
+        "nonempty_selected_wells": "1535",
+        "row_positional_binding_scope": "Exact assay Dimnames and rowRanges gene_id order",
+        "selected_UMI": "1070767512",
+        "selected_nuclei": "292010",
+        "selected_unique_wells": "1536",
+        "source_compression_layers": "2",
+        "source_hash_QC_all_pass": "TRUE",
+        "source_human_genes": "58347",
+        "source_nuclei": "292010",
+        "source_stored_count_entries": "501354699",
+        "source_total_UMI": "1070767512",
+        "treatment_effects_computed": "FALSE",
+        "zero_library_selected_cells": "0"
+      },
+      "treatment_effects_computed": false
+    }
+  }
+}

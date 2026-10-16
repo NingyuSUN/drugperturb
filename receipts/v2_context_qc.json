@@ -1,0 +1,54 @@
+{
+  "code_hashes": {
+    "scripts/qualify_contexts_v2.py": "257fa0054049d0f4d8c390865e164b16d5ef74253ab2899ee9a808e62451813c",
+    "src/drugperturb/context_qc.py": "2d6fe42b2c25430c2ab72b13e1013f33f3f6d8b47d2c59af713e0a6bb8a4124f",
+    "src/drugperturb/design.py": "07a16b827717f52785f88a55af247a6475fd8ff5460aeb03b206ca58a7940be3"
+  },
+  "code_revision": "6f0413a9e8c406e8194b7a292dc7e4239ac8a93a",
+  "code_revision_is_base": true,
+  "context_rows": 12,
+  "contexts_with_complete_count_qc": 9,
+  "expression_effects_read": false,
+  "frozen_input_hashes": {
+    "context_roles": "d558a3dbd9178989a96de720ca6ac89e754835a303a999937369c8b8b85b2ec4",
+    "input_contract": "3120bf69ab3fd3a984cd5603a94e90b8b0259aea2e4f584ac34be33717babadf",
+    "protocol": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3",
+    "well_mapping": "ea852abfdac9e1145ada89e0081102de607b2a46922a4e3c472a27383ef47d0f"
+  },
+  "limitation": "Sample count eligibility only; no predictive or biological validation",
+  "metadata_audit_sha256": "44bc362d48c32d3ec7309a472e82d28dfc6b68958d333bca75114ec9fb6abdae",
+  "models_trained": false,
+  "output_hashes": {
+    "manifests/v2/compound_count_qc.tsv": "6375034863b6e755bd9c53b17bcb18aa77c47b3c935c8eb18fd4baee8bc78414",
+    "manifests/v2/well_count_qc.tsv": "a58b00c12a5c1f4c93a360be1773ab0b3570bbe495a7b54e96c9bb371340ccd8",
+    "reports/v2/context_count_qc.tsv": "3dfd1042fd5a0c01cc78f6e581d74cdc0152dc5a0feeab4b6fbaf680e724d918"
+  },
+  "schema_version": 1,
+  "status": "COUNT_QC_ONLY_COMPLETE",
+  "thresholds": {
+    "minimum_cells_per_matched_vehicle": 30,
+    "minimum_cells_per_treatment_replicate": 30,
+    "minimum_primary_test_compounds": 20,
+    "minimum_primary_test_scaffold_groups": 10
+  },
+  "well_qc_inputs": [
+    {
+      "basename": "well_qc.tsv",
+      "bytes": 13093,
+      "sha256": "6eee2646d270911f7aa16db31078cac4530d1f7bd29e3e76b3146358b50b0ea4",
+      "well_records": 392
+    },
+    {
+      "basename": "well_qc.tsv",
+      "bytes": 72875,
+      "sha256": "29827fb61692930c60fdbb0537f3e39e7e3c5534b14cf75817e7799044f93628",
+      "well_records": 1536
+    },
+    {
+      "basename": "well_qc.tsv",
+      "bytes": 70785,
+      "sha256": "91d06970bfdab676c3b5f1a931e4f9348aa8e22846d2897e4d64aae5bd9b39de",
+      "well_records": 1536
+    }
+  ]
+}
