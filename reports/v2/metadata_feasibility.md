@@ -1,6 +1,6 @@
 # Cross-condition cohort qualification
 
-This report records metadata feasibility for the prespecified v2 study. It does not report model performance or count-level sample eligibility.
+This report records metadata capacity and completed count-level qualification for the prespecified v2 study. Model performance is evaluated separately.
 
 ## sci-Plex3 cohort capacity
 
@@ -20,7 +20,23 @@ Each context has 376 source treatment wells, eight strict matched vehicle wells 
 
 The original A549 test responses were previously evaluated in v1. MCF7 represents a new held-out response context for those compounds, not a new never-analyzed chemical test set. The fixed models use chemical structure alone; their predictions are constant across contexts. Transfer performance therefore measures transport of the learned source response, not learning of cell or dose dependence.
 
-**Pending:** treatment/control cell-count checks, two-replicate qualification and final eligible compound counts. Metadata capacity above the 20-compound/10-group gate is not proof that this gate will pass after count QC. No new-condition model-performance claim follows from this audit.
+## Count-qualified target cohorts
+
+Public source extraction retained 292,010 MCF7 nuclei and 146,752 K562 nuclei, each with all 58,347 supplied human genes. Source and aggregated UMI totals agree exactly. Each cell line has 1,536 selected physical wells; one MCF7 well is empty, while all K562 wells are nonempty. Gene and cell identifiers match the original assay dimension names exactly. These extraction totals include all four doses and all source treatments, not only the final test drugs.
+
+Both treatment replicates and their strictly matched vehicles must each contain at least 30 cells. The original test denominator is 26 compounds in every context:
+
+| Target condition, all 24 h | Eligible / original test compounds | Structure groups | Fixed evaluation gate |
+|---|---:|---:|---|
+| MCF7, 1 µM — primary | 26 / 26 | 24 | Passed |
+| K562, 1 µM | 25 / 26 | 23 | Passed |
+| MCF7, 0.01 µM | 25 / 26 | 23 | Passed |
+| MCF7, 0.1 µM | 26 / 26 | 24 | Passed |
+| MCF7, 10 µM | 18 / 26 | 17 | Descriptive only: fewer than 20 compounds |
+
+The high-dose condition retains its original role and thresholds. Its point estimates are descriptive, with no inferential interval. Low cell counts alone do not establish cytotoxicity. The same drugs recur across conditions; summing the row counts does not create independent chemical test samples.
+
+[Count qualification](context_count_qc.tsv), [compound exclusions](../../manifests/v2/compound_count_qc.tsv), [well-level checks](../../manifests/v2/well_count_qc.tsv), and [extraction provenance](../../receipts/v2_context_extraction.json) provide the exact denominators. Nine of twelve inventory contexts have complete count QC: existing A549 at 1 µM and all four doses in each target cell line. The other three A549 doses were not extracted and are outside the prespecified target evaluation. Count eligibility does not establish model accuracy.
 
 ## Independent-study feasibility
 

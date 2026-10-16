@@ -4,13 +4,32 @@
 
 **A reproducible benchmark for predicting compound-induced transcriptional responses from chemical structure.**
 
-Public sci-Plex3 data · A549 · 24 hours · 1 µM · 171 distinct parent compounds · six methods
+Public sci-Plex3 data · structure-based models · held-out compounds · cross-cell and cross-dose evaluation
 
-[Biological report](reports/report.html) · [Two-page summary](reports/biologist_summary.html) · [Model card](docs/MODEL_CARD.md) · [Reproduce](docs/REPRODUCIBILITY.md)
+[Cross-condition results](reports/v2/report.md) · [中文报告](reports/v2/report.zh-CN.md) · [v2 methods](docs/V2_METHODS.md) · [v2 reproducibility](docs/V2_REPRODUCIBILITY.md) · [Original A549 report](reports/report.html)
 
-To view the reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
+To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
-## Result at a glance
+## Cross-condition results
+
+**Models trained on A549 did not outperform zero-change predictions in any of the five evaluated target conditions.** The primary test is MCF7 at 24 hours and 1 µM, with **26 held-out compounds in 24 structure groups**. Original splits, gene outputs and predictions were frozen before scoring the new conditions.
+
+| Primary MCF7 endpoint ↓ | Zero change | Source mean | Fingerprint Ridge | Molecular GNN |
+|---|---:|---:|---:|---:|
+| 2,000-gene mean compound RMSE | **0.53251** | 0.65132 | 0.67322 | 0.71975 |
+| Five-set mean compound MAE | **0.08467** | 0.15744 | 0.14081 | Not fitted for this endpoint |
+
+The five-set row uses a **separately trained Ridge head**, selected from four fixed candidates using only the source validation set. All five predefined sets passed training-only coverage checks. Its primary error difference from the source mean was −0.01664, with a 95% paired structure-group interval of [−0.03569, +0.00345]; a reliable gain was not established. These two rows have different output spaces and error definitions and should not be compared numerically.
+
+For gene-level transport, GNN error exceeded Ridge by +0.04654 [95% interval +0.00235, +0.10479]. These are pointwise intervals conditional on the frozen models. Zero-change had the lowest mean error for both endpoints across all five conditions; this does **not** imply that the drugs have no biological effects.
+
+![Cross-condition prediction contrasts](reports/v2/figures/contrast_intervals.png)
+
+The evaluation adds K562 at 1 µM and MCF7 at 10 nM, 100 nM and 10 µM. Eligible cohorts contain 18–26 compounds; the 10 µM cohort fails the prespecified sample-count gate and is reported descriptively without an interval. Matched-control sensitivity uses identical compound subsets. LINCS Phase I had **0/26 test compounds** under the exact independent-study condition, so no external expression-performance claim is made.
+
+Read the [English](reports/v2/report.md) or [Chinese](reports/v2/report.zh-CN.md) report for every baseline, biological readout, denominator and limitation. The [scoring replay](receipts/v2_scoring_replay.json) reproduced all six scientific result files exactly using the same sealed inputs; it does not establish fresh extraction or retraining equivalence.
+
+## Original A549 results (v1)
 
 The molecular graph model achieved the lowest primary point estimate, but **a reliable advantage over strong simple baselines was not established**.
 
@@ -34,10 +53,11 @@ The control definition matters: using the average of two separately normalized s
 - **Traceable public data:** hash-verified source files, raw-count conservation, explicit cell/well mapping, two-replicate QC and matched vehicles.
 - **Chemical machine learning:** RDKit parent standardization, Morgan fingerprints, a small MLP and a two-layer bond-aware molecular GNN implemented in PyTorch.
 - **Controlled evaluation:** whole chemical structure groups held out; training-only gene selection and target transforms; four fixed candidates, three neural seeds, sealed predictions and compound-level uncertainty.
+- **Cross-condition evaluation:** fixed cell/dose tests, a direct five-set Ridge predictor, paired control sensitivity, count-based inference gates and an exact-condition external-data feasibility audit.
 - **Scientific diagnostics:** replicate consistency, chemical support, fixed-rule error cases, development learning curves, control sensitivity and prespecified biological coverage checks.
 - **Auditable delivery:** model weights and trajectories generated by the run, version-locked environments, Nextflow entrypoints, an inference CLI and input/output hash receipts.
 
-## Data and evaluation
+## Original data and evaluation
 
 The workflow starts with published sci-Plex3 nuclear-expression measurements. Of 188 source treatment labels, 171 distinct standardized parent compounds pass both chemical and paired-cell criteria. The primary response uses 33,055 treatment nuclei and 886 nuclei in eight unique matched vehicle wells. Cells estimate responses; they do not multiply the number of drug prediction units.
 
@@ -51,9 +71,11 @@ The test groups comprise 22 ring scaffolds and two acyclic parent groups. Canoni
 
 Raw counts are summed per well, converted to CPM and log1p transformed, then contrasted against the matched vehicle. Two replicate contrasts receive equal weight. Only training compounds select the 2,000 output genes and fit standardization/PCA. **Every model is scored against measured changes, not PCA-reconstructed truth.**
 
-All five biological gene sets failed the frozen coverage threshold. The project therefore makes no claim of pathway recovery. Full 43-gene S and 54-gene G2/M marker summaries remain available as separate single-cell descriptions.
+In v1, all five biological gene sets failed the frozen coverage threshold within the selected 2,000-gene output space; no pathway-recovery claim is made. The v2 direct head separately filters all measured genes using source training wells, yielding five eligible transcriptional readouts without changing the v1 gene space or its failed gates. Full 43-gene S and 54-gene G2/M marker summaries remain available as separate single-cell descriptions.
 
 ## Run and inspect
+
+The v2 extension has a [separate CLI recipe and execution scope](docs/V2_REPRODUCIBILITY.md). Existing Nextflow/container receipts below cover v1; they do not certify v2 extraction or fitting.
 
 See [reproducibility instructions](docs/REPRODUCIBILITY.md) for environment setup, the synthetic smoke workflow, a fresh public-data snapshot and execution receipts. The synthetic example is an engineering check; the results above come from the real public experiment.
 
@@ -67,7 +89,7 @@ PYTHONPATH=src .venv/bin/python -m pytest -q
 
 The prediction CLI accepts a valid SMILES string and the supported A549/24h/1000nM context; it returns gene-level deltas plus nearest-training chemical similarity. [S1090 inference replay](reports/inference_example/S1090.json) matches its sealed prediction within 1.8×10⁻⁸. The CLI rejects unsupported biological contexts.
 
-## Verified execution
+## Verified v1 execution
 
 The real seven-step core workflow ran twice from fresh snapshots in the fixed Docker environment. All **24 validation/test prediction arrays matched exactly**, and all 28 fit records matched apart from timing. Synthetic execution, cache recovery and rejection of modified cached output also passed.
 
@@ -88,7 +110,7 @@ The [historical hosted CI evidence](receipts/hosted_ci.json) records **108 Pytho
 
 ## Scope
 
-This is a single-context research benchmark. It does not establish drug efficacy, toxicity, target engagement, clinical benefit or antibody design. No pretrained foundation model, external validation dataset or paid AWS execution is claimed. Actual primary training used the Primary CPU host; GPU training was unnecessary for these small networks.
+The project comprises an original single-context benchmark and a fixed-prediction transport evaluation across five additional conditions within the same study. The models receive chemical structure, not cell identity or dose, so they do not learn condition-specific responses. It does not establish drug efficacy, toxicity, target engagement, clinical benefit or antibody design. No pretrained foundation model, external validation dataset or paid AWS execution is claimed. Actual primary training used the Primary CPU host; GPU training was unnecessary for these small networks.
 
 ## Sources
 

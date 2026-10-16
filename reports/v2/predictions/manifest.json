@@ -1,0 +1,53 @@
+{
+  "files": {
+    "biology_predictions.npz": {
+      "bytes": 3314,
+      "sha256": "ba6f588e8d43cac268e53f4bed3d44f56b794a95b31392e25dc66dcdbd03618c"
+    },
+    "gene_predictions.npz": {
+      "bytes": 3793702,
+      "sha256": "8768ae3f3217eacbbb93b7eb70032257fbfd327e6b4676a1dab8f9a05b8a33b2"
+    }
+  },
+  "schema_version": 1,
+  "scientific_inputs": {
+    "genes": {
+      "bytes": 60866,
+      "relative_path": "manifests/selected_genes.tsv",
+      "sha256": "26d0a1f220db8a29acdc3553802d0cfe9c2e8245c3cf6b4dfba0a224d0c578e1"
+    },
+    "members": {
+      "bytes": 30002,
+      "relative_path": "manifests/v2/biology_set_members.tsv",
+      "sha256": "1e81257f901bcb8de73dc106d201d26a2a33ad2cfc146040ff87c831c64b3668"
+    },
+    "protocol": {
+      "bytes": 6482,
+      "relative_path": "configs/protocol_v2.yaml",
+      "sha256": "eb698a944ce6436702969f0bd89429d1c4400618b4472018795d67a7261fc4c3"
+    },
+    "split": {
+      "bytes": 58618,
+      "relative_path": "manifests/split_manifest.tsv",
+      "sha256": "442687ae16120a6371b83231607086553646d99afc6f72ac6840187ef6624e38"
+    }
+  },
+  "scope": "Byte-identical copies of the original sealed test prediction archives. Contains public-compound identifiers and numerical predictions, including three-seed neural outputs; no raw cell counts, fitted weights or private paths. Intended for fixed-prediction scoring replay, not new-compound inference or independent training verification.",
+  "source_prediction_hashes": {
+    "biology": "ba6f588e8d43cac268e53f4bed3d44f56b794a95b31392e25dc66dcdbd03618c",
+    "v1": "8768ae3f3217eacbbb93b7eb70032257fbfd327e6b4676a1dab8f9a05b8a33b2"
+  },
+  "source_seals": {
+    "biology": {
+      "bytes": 10054,
+      "relative_path": "receipts/v2_biology_prediction_seal.json",
+      "sha256": "7f2ae110870d31cb49d8f6727bc53dfb5caeed7717e92c619f642f88dae226c6"
+    },
+    "v1": {
+      "bytes": 10483,
+      "relative_path": "receipts/prediction_seal.json",
+      "sha256": "b08080859817f5539fda67124a4dd13bd63bf4bfda13f27d92acfd9222a71ed6"
+    }
+  },
+  "status": "PUBLISHED_SEALED_PREDICTIONS"
+}

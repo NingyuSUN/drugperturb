@@ -1,0 +1,72 @@
+{
+  "code": {
+    "basename": "plot_transfer_v2.py",
+    "bytes": 17514,
+    "sha256": "a9d5fa250981e1f69423d7bb257a7d034731051405b0f09a5c8097bb9e540495"
+  },
+  "input_files": {
+    "evaluation_receipt": {
+      "basename": "v2_transfer_evaluation.json",
+      "bytes": 14291,
+      "sha256": "38d07b11f386ddced9b97541fb8fdabd366aacb0a049b31999be4b17150713f3"
+    },
+    "reports/v2/transfer/context_status.tsv": {
+      "basename": "context_status.tsv",
+      "bytes": 541,
+      "sha256": "5e3565c90574ca5de72531522a981ff3c3d1e9dad23df5f5740ddd707dd0a461"
+    },
+    "reports/v2/transfer/contrasts.tsv": {
+      "basename": "contrasts.tsv",
+      "bytes": 11566,
+      "sha256": "7815ff6bbc41ec3975795bae04ad39c58ab3b4d08bb5dfb60ad0bcbe0b2df143"
+    },
+    "reports/v2/transfer/per_compound.tsv": {
+      "basename": "per_compound.tsv",
+      "bytes": 848314,
+      "sha256": "a65ab09af2996ef429fe88c6789e393484b42a457422975e997e6bf5ebee4f34"
+    },
+    "reports/v2/transfer/per_set.tsv": {
+      "basename": "per_set.tsv",
+      "bytes": 1239814,
+      "sha256": "d414b7ba93e670c600c57d5148aa583506bfae658370709c39023aaa22440578"
+    },
+    "reports/v2/transfer/sensitivity_pairs.tsv": {
+      "basename": "sensitivity_pairs.tsv",
+      "bytes": 32690,
+      "sha256": "4a4816d1398f6e3f581b5ec91dda606cc17ec9a680effade3565509d1029d59c"
+    },
+    "reports/v2/transfer/summary.json": {
+      "basename": "summary.json",
+      "bytes": 172103,
+      "sha256": "d879da0a7a214c5f8a53f843fe1f49b47127bb65593d8dd25571846e86c4c964"
+    }
+  },
+  "output_files": {
+    "reports/v2/figures/biology_set_errors.png": {
+      "basename": "biology_set_errors.png",
+      "bytes": 199725,
+      "sha256": "29a5361b73338c78469b3a18e5d2a23adc81bedec626d64523b30cd73c2a80b3"
+    },
+    "reports/v2/figures/contrast_intervals.png": {
+      "basename": "contrast_intervals.png",
+      "bytes": 241416,
+      "sha256": "7f29f8229ca827a964825607bae6b3e762a2f6a1c62e99f66c6141e3b7ad8268"
+    },
+    "reports/v2/figures/control_sensitivity.png": {
+      "basename": "control_sensitivity.png",
+      "bytes": 354481,
+      "sha256": "26f01ab3fe37eb6879a967a97f511986a17be3ff6b045a797e550e70ec334215"
+    }
+  },
+  "primary_context": "MCF7_24h_1000nM",
+  "render_aggregations": "Equal-compound means of sealed per-set errors and paired-subset errors only.",
+  "rendered_utc": "2026-10-16T04:06:22.719765+00:00",
+  "runtime": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6"
+  },
+  "schema_version": 1,
+  "scientific_endpoints_recomputed": false,
+  "status": "VERIFIED_TRANSFER_FIGURES_RENDERED"
+}

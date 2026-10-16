@@ -1,6 +1,6 @@
 # DrugPerturb v2: methods and evaluation boundaries
 
-The v2 protocol separates transport of the frozen v1 expression predictors from a new, direct predictor of five predefined gene-set expression summaries. The study uses public data and includes no new wet-laboratory experiments. This document describes the fixed evaluation design, completed source-condition training, and the independent-study feasibility assessment. It does not report target-condition prediction performance or final target sample counts.
+The v2 protocol separates transport of the frozen v1 expression predictors from a new, direct predictor of five predefined gene-set expression summaries. The study uses public data and includes no new wet-laboratory experiments. This document describes the fixed evaluation design, completed source-condition training, and independent-study feasibility assessment. Target-condition results and count-qualified cohorts are reported separately.
 
 The machine-readable specification is [protocol_v2.yaml](../configs/protocol_v2.yaml). Model provenance and the interpretation of the original results are documented in the [v1 model card](MODEL_CARD.md).
 
@@ -10,7 +10,7 @@ The source is [sci-Plex3, GEO GSM4150378](https://www.ncbi.nlm.nih.gov/geo/query
 
 The original chemically qualified cohort and split are retained: 119 training, 26 validation, and 26 test parent compounds. Canonical-parent assignments, structural groups, and representative formulations are fixed. Neither a failed target sample nor an excluded formulation is replaced by another compound. Structural groups include Bemis–Murcko ring scaffolds and the original parent-based groups for acyclic compounds.
 
-The primary target cohort consists of the original 26 test compounds that satisfy the fixed target-condition quality criteria. Their A549 outcomes were examined in v1. The new evaluation therefore concerns previously withheld responses in a different condition; it does not establish that these compounds have never been examined by the investigators. Original test responses from A549 are excluded from development of the new biological predictor. Target responses are withheld from feature selection, gene filtering, parameter selection, and prediction sealing. At the time of this methods record, new target-condition effects have not been evaluated.
+The primary target cohort consists of the original 26 test compounds that satisfy the fixed target-condition quality criteria. Their A549 outcomes were examined in v1. The new evaluation therefore concerns previously withheld responses in a different condition; it does not establish that these compounds have never been examined by the investigators. Original test responses from A549 are excluded from development of the new biological predictor. Target responses are withheld from feature selection, gene filtering, parameter selection, and prediction sealing.
 
 ## Count aggregation, controls, and eligibility
 
@@ -30,7 +30,7 @@ These predictors receive molecular structure and do not receive cell identity or
 
 For each compound, the root mean squared error (RMSE) is calculated against its measured response across the fixed 2,000 genes. The primary summary is the arithmetic mean of these compound RMSEs. It is not a single RMSE pooled across all compound–gene entries. Prespecified comparisons are graph-network minus Ridge error and graph-network minus training-mean error. All six methods are reported. Measured responses, rather than principal-component reconstructions, define the reference values.
 
-The original v1 five-set coverage failures remain part of the v1 result. Genes predicted by the new auxiliary model are not added to the frozen v1 outputs.
+The original v1 five-set coverage failures remain part of the v1 result. Members used in the new five-readout predictor are not added to the frozen v1 gene-level outputs.
 
 ## B. Direct prediction of predefined gene-set mean changes
 

@@ -1,0 +1,6 @@
+gate_met	count_qc_done	original_test_compounds	eligible_test_compounds	eligible_test_structure_groups	status	context_id	context_role	sensitivity_compounds	sensitivity_groups
+True	True	26	26	24	COUNT_GATE_PASS	MCF7_24h_1000nM	primary_test	26	24
+True	True	26	25	23	COUNT_GATE_PASS	K562_24h_1000nM	secondary_test	25	23
+True	True	26	25	23	COUNT_GATE_PASS	MCF7_24h_10nM	secondary_test	18	17
+True	True	26	26	24	COUNT_GATE_PASS	MCF7_24h_100nM	secondary_test	26	24
+False	True	26	18	17	DESCRIPTIVE_NO_COUNT_GATE	MCF7_24h_10000nM	secondary_test	18	17

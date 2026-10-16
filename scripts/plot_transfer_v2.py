@@ -195,6 +195,7 @@ def draw_sensitivity(data, path):
     fig, axes = plt.subplots(2, 5, figsize=(18, 8.1), squeeze=False, sharey='row')
     for i, analysis in enumerate(['A', 'B']):
         metric = 'gene RMSE' if analysis == 'A' else 'five-set MAE'
+        row_maximum = 0.0
         for j, context in enumerate(CONTEXTS):
             ax = axes[i, j]; methods = METHODS[analysis]
             rows = table if table.empty else table[table.context_id.eq(context) & table.analysis.eq(analysis)
@@ -219,7 +220,9 @@ def draw_sensitivity(data, path):
                     raise ValueError('sensitivity methods must share the same compound subset')
                 cohort_ids = set(strict.index)
                 n, groups = len(strict), strict.scaffold_group.nunique()
-                ax.plot([0, 1], [strict.error.mean(), alternate.error.mean()],
+                means = [strict.error.mean(), alternate.error.mean()]
+                row_maximum = max(row_maximum, *means)
+                ax.plot([0, 1], means,
                         marker='o', linewidth=1.6, markersize=4, color=COLORS[method], label=method)
             if not n:
                 ax.text(.5, .5, 'No eligible paired subset', ha='center', va='center',
@@ -228,9 +231,11 @@ def draw_sensitivity(data, path):
             if context == PRIMARY:
                 ax.set_facecolor('#f2f6fb')
             ax.set_xticks([0, 1], ['Strict', 'Two vehicles']); ax.set_xlim(-.15, 1.15)
-            ax.set_ylim(bottom=0); prettify(ax, axis='y')
+            prettify(ax, axis='y')
             if j == 0:
                 ax.set_ylabel(f'{analysis} · Mean per-compound {metric}\n(log1p CPM delta units)')
+        # Set the shared scale after every context has contributed its values.
+        axes[i, 0].set_ylim(0, max(row_maximum * 1.08, 1e-12))
     legend = [Line2D([0], [0], color=COLORS[m], marker='o', markersize=4, label=METHOD_LABELS[m])
               for m in ['B0', 'B1', 'B2', 'M1', 'M2', 'M3', 'Ridge']]
     fig.legend(handles=legend, loc='lower center', bbox_to_anchor=(.5, .055), ncol=7, frameon=False)
