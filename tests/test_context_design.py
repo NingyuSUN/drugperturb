@@ -14,6 +14,14 @@ import yaml
 from drugperturb.chemistry import standardize_smiles
 
 
+def subprocess_environment():
+    # Exercise this checkout, independent of an ambient editable install.
+    environment = os.environ.copy()
+    source = str(Path(__file__).resolve().parents[1] / 'src')
+    environment['PYTHONPATH'] = source + os.pathsep + environment.get('PYTHONPATH', '')
+    return environment
+
+
 def fixtures():
     chemistry = []
     for compound, smiles in [('d1', 'CCO'), ('d2', 'CCC'), ('d3', 'CCN')]:
@@ -215,7 +223,7 @@ def test_cli_only_reads_declared_metadata_inputs_and_hides_absolute_paths(tmp_pa
     result = subprocess.run([sys.executable, str(script), '--metadata', str(inputs/'metadata.tsv.gz'),
                              '--split', str(inputs/'split.tsv'), '--chemistry', str(inputs/'chemistry.tsv'),
                              '--output-root', str(output), '--input-contract', str(contract)],
-                            text=True, capture_output=True, env=os.environ.copy())
+                            text=True, capture_output=True, env=subprocess_environment())
     assert result.returncode == 0, result.stderr
     receipt = json.loads((output/'receipts/v2_metadata_audit.json').read_text())
     assert receipt['new_test_expression_read'] is False
@@ -252,7 +260,7 @@ def test_cli_rejects_structurally_valid_split_swap_against_frozen_input_hash(tmp
     result = subprocess.run([sys.executable, str(root/'scripts/audit_v2_metadata.py'),
                              '--metadata', str(inputs/'metadata.tsv.gz'), '--split', str(inputs/'split.tsv'),
                              '--chemistry', str(inputs/'chemistry.tsv'), '--input-contract', str(contract),
-                             '--output-root', str(output)], capture_output=True, text=True, env=os.environ.copy())
+                             '--output-root', str(output)], capture_output=True, text=True, env=subprocess_environment())
     assert result.returncode != 0
     assert 'Frozen input hash/size mismatch: split' in result.stderr
     assert not (output/'receipts/v2_metadata_audit.json').exists()

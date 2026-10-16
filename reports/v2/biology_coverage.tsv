@@ -1,0 +1,6 @@
+set_id	source_member_count	mapped_unique_genes	n_retained	fraction_original_members	passed
+author_s_phase	43	43	43	1.0	True
+author_g2m_phase	54	54	54	1.0	True
+R-HSA-3214815	60	59	40	0.6666666666666666	True
+R-HSA-3214847	108	107	87	0.8055555555555556	True
+R-HSA-2262752	791	783	685	0.865992414664981	True
