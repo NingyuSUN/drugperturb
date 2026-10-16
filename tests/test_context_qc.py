@@ -150,10 +150,12 @@ def test_cli_requires_m0_lineage_and_only_count_summaries(tmp_path, mutate_roles
         roles.loc[0,'role'] = 'changed'
         roles.to_csv(sources['context_roles'],sep='\t',index=False)
     output = tmp_path/'public'
+    environment = os.environ.copy()
+    environment['PYTHONPATH'] = str(root/'src') + os.pathsep + environment.get('PYTHONPATH', '')
     result = subprocess.run([sys.executable,str(root/'scripts/qualify_contexts_v2.py'),
         '--well-mapping',str(sources['well_mapping']),'--context-roles',str(sources['context_roles']),
         '--metadata-audit',str(inputs/'metadata_audit.json'),'--well-qc',str(inputs/'well_qc.tsv'),
-        '--output-root',str(output)],capture_output=True,text=True,env=os.environ.copy())
+        '--output-root',str(output)],capture_output=True,text=True,env=environment)
     if mutate_roles:
         assert result.returncode!=0
         assert 'M0 output hash mismatch' in result.stderr
