@@ -96,6 +96,13 @@ def alternate_controls(wells, qualified, qc, compound_ids):
         if (len(rows) != 2 or set(rows.replicate) != {'rep1', 'rep2'}
                 or rows.Combo.duplicated().any() or not rows.eligible.all() or not rows.count_qc_done.all()):
             raise ValueError('expected two unique qualified replicate records')
+        # Unavailable contexts can make complete-context TSV count columns strings.
+        for name in ['treatment_cells', 'control_cells']:
+            values = pd.to_numeric(rows[name], errors='coerce')
+            if (not np.isfinite(values).all() or (values < 0).any()
+                    or not np.equal(values, np.floor(values)).all()):
+                raise ValueError('qualified cell counts must be finite nonnegative integers')
+            rows[name] = values
         for row in rows.itertuples(index=False):
             if row.Combo not in metadata.index or row.control_Combo not in metadata.index:
                 raise ValueError('qualified treatment/control absent from frozen metadata')

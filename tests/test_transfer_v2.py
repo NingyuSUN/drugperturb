@@ -1,5 +1,6 @@
 """Synthetic scientific-boundary checks; no real target effects are opened."""
 import importlib
+from io import StringIO
 import json
 from pathlib import Path
 
@@ -35,6 +36,40 @@ def fixture():
         'c2': [5, 5, 0], 'd1': [0, 100, 0], 'd2': [1, 9, 0]},
         index=['g1', 'g2', 'zero'])
     return counts, pd.DataFrame(rows), pd.DataFrame(qualified), pd.DataFrame(qc)
+
+
+def test_qualified_numeric_strings_preserve_control_qualification():
+    t = api(); _, wells, qualified, qc = fixture()
+    expected = t.alternate_controls(wells, qualified, qc, ['a', 'b'])
+    qualified[['treatment_cells', 'control_cells']] = qualified[
+        ['treatment_cells', 'control_cells']].astype(str)
+    actual = t.alternate_controls(wells, qualified, qc, ['a', 'b'])
+    pd.testing.assert_frame_equal(actual, expected)
+
+
+def test_missing_other_context_tsv_does_not_change_selected_numeric_qc():
+    t = api(); _, wells, qualified, qc = fixture()
+    expected = t.alternate_controls(wells, qualified, qc, ['a', 'b'])
+    unavailable = qualified.copy()
+    unavailable['context_id'] = 'A549_24h_10nM'
+    unavailable[['treatment_cells', 'control_cells']] = 'NA'
+    mixed = pd.concat([unavailable, qualified], ignore_index=True)
+    loaded = pd.read_csv(StringIO(mixed.to_csv(sep='\t', index=False)),
+                         sep='\t', keep_default_na=False)
+    selected = loaded[loaded.context_id.eq('MCF7_24h_1000nM')]
+    assert isinstance(selected.treatment_cells.iloc[0], str)
+    actual = t.alternate_controls(wells, selected, qc, ['a', 'b'])
+    pd.testing.assert_frame_equal(actual, expected)
+
+
+@pytest.mark.parametrize('column', ['treatment_cells', 'control_cells'])
+@pytest.mark.parametrize('value', ['-1', 'inf', '40.5', 'NA', ''])
+def test_qualified_counts_require_finite_nonnegative_integers(column, value):
+    t = api(); _, wells, qualified, qc = fixture()
+    qualified[column] = qualified[column].astype(str)
+    qualified.loc[0, column] = value
+    with pytest.raises(ValueError, match='qualified.*finite nonnegative integers'):
+        t.alternate_controls(wells, qualified, qc, ['a', 'b'])
 
 
 def test_truth_normalizes_all_genes_each_well_before_two_vehicle_mean():
