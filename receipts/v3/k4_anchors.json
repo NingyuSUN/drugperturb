@@ -1,0 +1,11 @@
+{
+  "system": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "cpu_count": 4,
+    "gpu": "unavailable: [Errno 2] No such file or directory: 'nvidia-smi'",
+    "disk_tmp": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         8.0T  7.0T  1.1T  87% /",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:              31           0          23           0           7          30\nSwap:              0           0           0"
+  },
+  "code_archive": "/kaggle/input/datasets/ningyusunny/drugperturb-v3-code/drugperturb-src.archive",
+  "written_utc": "2026-10-19T00:42:58.638523+00:00"
+}

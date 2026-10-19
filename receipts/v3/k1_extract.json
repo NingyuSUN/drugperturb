@@ -1,0 +1,30 @@
+{
+  "system": {
+    "python": "3.12.12 (main, Oct 10 2025, 08:52:57) [GCC 11.4.0]",
+    "cpu_count": 4,
+    "gpu": "unavailable: [Errno 2] No such file or directory: 'nvidia-smi'",
+    "disk_tmp": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         8.0T  7.0T  1.1T  87% /",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:              31           1          25           0           4          29\nSwap:              0           0           0"
+  },
+  "R": "Rscript (R) version 4.3.1 (2023-06-16)",
+  "code_archive": "/kaggle/input/datasets/ningyusunny/drugperturb-v3-code/drugperturb-src.archive",
+  "code_archive_sha256": "4ab53872db0d40548e9f495998af2ba5cc9d917ff3f552510765aae9c24e59d7",
+  "downloads": [
+    {
+      "filename": "GSM4150378_sciPlex3_A549_24hrs.RDS.gz",
+      "bytes": 572534814,
+      "sha256": "07357f6b9c3e20d0ca88d7770ab9db80e215c64297c508e4f7832d4162fa16e3"
+    },
+    {
+      "filename": "GSM4150378_sciPlex3_MCF7_24hrs.RDS.gz",
+      "bytes": 1720242644,
+      "sha256": "2d285a7946452128f5f069d0bd18056fdbd4bdfc5e949e7a4fa14310043021bb"
+    },
+    {
+      "filename": "GSM4150378_sciPlex3_K562_24hrs.RDS.gz",
+      "bytes": 555508050,
+      "sha256": "1e5d0763b3a4c262fedd8fd38c0f8389ef3f71bd268fa0f84da5802c4cda7990"
+    }
+  ],
+  "written_utc": "2026-10-19T00:27:16.047707+00:00"
+}

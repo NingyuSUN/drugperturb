@@ -1,0 +1,124 @@
+{
+  "method": "biolord",
+  "protocol": "Q1",
+  "status": "SEALED_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "predictions": {
+    "path": "biolord_Q1_predictions.npz",
+    "sha256": "80e201848c54eccd2d0b727414ecb217fdea60e3c54776cbba322c87b3b46cae"
+  },
+  "inputs": {
+    "protocol": {
+      "path": "/tmp/dp/configs/protocol_v3.yaml",
+      "sha256": "10f384bcb950be392878d8ed2a5a04b2e963076e02e3009283cad46968ec3dcb"
+    },
+    "model_cells": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v3-prepare/prepared/model_cells.npz",
+      "sha256": "37ccf4470d580483afd95375581f7af25e2a5ccbf469d7d7507ce125cb0542b9"
+    },
+    "queries": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v3-prepare/prepared/queries.tsv",
+      "sha256": "c7a7f6961c5491aa5aee6bd37caf2759eacc1845b95fbbd4e60e9cf253730863"
+    },
+    "validation_truth": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v3-prepare/prepared/validation_truth.npz",
+      "sha256": "3aa2fe4d18f3d5e5e25e591de0e5b985d8c7da03f15a0329f8d66326b29dde56"
+    },
+    "fit_L1_published_sciplex3_s42": {
+      "path": "/kaggle/working/fits/biolord_Q1_L1_published_sciplex3_s42.npz",
+      "sha256": "e19b67dda50e1a4ad2720c43b567445f7cfb95b1136a38d828efe17b119d2ff0"
+    },
+    "fit_L1_published_sciplex3_s123": {
+      "path": "/kaggle/working/fits/biolord_Q1_L1_published_sciplex3_s123.npz",
+      "sha256": "f557e66de22e9e9b4e2c1980de909da8237b837685b71e8e54d72ac3d1b289cc"
+    },
+    "fit_L1_published_sciplex3_s2026": {
+      "path": "/kaggle/working/fits/biolord_Q1_L1_published_sciplex3_s2026.npz",
+      "sha256": "121db67eb933613a01d85be6270f6ed1ba932633a4c5d7d8e342d25db85ba743"
+    }
+  },
+  "selected_candidate": "L1_published_sciplex3",
+  "candidate_mean_validation_rmse": {
+    "L1_published_sciplex3": 1.3235326314227789
+  },
+  "selection_metric": "mean_validation_compound_rmse_primary_contrast",
+  "final_prediction": "arithmetic_mean_of_three_seed_predicted_deltas",
+  "engineering_smoke": false,
+  "fits": [
+    {
+      "name": "biolord_Q1_L1_published_sciplex3_s42",
+      "method": "biolord",
+      "protocol": "Q1",
+      "candidate": "L1_published_sciplex3",
+      "seed": 42,
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 24486,
+      "n_validation_cells": 4982,
+      "n_validation_queries": 26,
+      "n_test_queries": 26,
+      "n_vehicle_wells": 8,
+      "descriptor_columns": 196,
+      "seconds": 890.2125382979993,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "epochs_executed": 199,
+      "validation_rmse": 1.321235259691053,
+      "validation_rmse_anchored": 1.115086312883548
+    },
+    {
+      "name": "biolord_Q1_L1_published_sciplex3_s123",
+      "method": "biolord",
+      "protocol": "Q1",
+      "candidate": "L1_published_sciplex3",
+      "seed": 123,
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 24486,
+      "n_validation_cells": 4982,
+      "n_validation_queries": 26,
+      "n_test_queries": 26,
+      "n_vehicle_wells": 8,
+      "descriptor_columns": 196,
+      "seconds": 792.9586590029994,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "epochs_executed": 177,
+      "validation_rmse": 1.3207667448029359,
+      "validation_rmse_anchored": 1.115785648711679
+    },
+    {
+      "name": "biolord_Q1_L1_published_sciplex3_s2026",
+      "method": "biolord",
+      "protocol": "Q1",
+      "candidate": "L1_published_sciplex3",
+      "seed": 2026,
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 24486,
+      "n_validation_cells": 4982,
+      "n_validation_queries": 26,
+      "n_test_queries": 26,
+      "n_vehicle_wells": 8,
+      "descriptor_columns": 196,
+      "seconds": 152.78438736099997,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "epochs_executed": 27,
+      "validation_rmse": 1.328595889774348,
+      "validation_rmse_anchored": 1.5507751537256291
+    }
+  ]
+}

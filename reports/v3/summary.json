@@ -1,0 +1,106 @@
+{
+  "pooled_fresh_contexts": {
+    "chemcpa_Q2_minus_B0": {
+      "point_estimate": -4.2420813925161736e-05,
+      "ci_lower": -0.00012199192759118911,
+      "ci_upper": 6.2733679981392625e-06,
+      "contexts": [
+        "A549_24h_10nM",
+        "A549_24h_100nM",
+        "A549_24h_10000nM",
+        "K562_24h_10nM",
+        "K562_24h_100nM",
+        "K562_24h_10000nM"
+      ],
+      "n_groups": 24,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "chemcpa_Q2_minus_M1c": {
+      "point_estimate": 0.05679664654011594,
+      "ci_lower": 0.03781050421450821,
+      "ci_upper": 0.07398414122873234,
+      "contexts": [
+        "A549_24h_10nM",
+        "A549_24h_100nM",
+        "A549_24h_10000nM",
+        "K562_24h_10nM",
+        "K562_24h_100nM",
+        "K562_24h_10000nM"
+      ],
+      "n_groups": 24,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "biolord_Q2_minus_B0": {
+      "point_estimate": -0.004727077146265634,
+      "ci_lower": -0.015840990525107387,
+      "ci_upper": 0.0013432954306233237,
+      "contexts": [
+        "A549_24h_10nM",
+        "A549_24h_100nM",
+        "A549_24h_10000nM",
+        "K562_24h_10nM",
+        "K562_24h_100nM",
+        "K562_24h_10000nM"
+      ],
+      "n_groups": 24,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "biolord_Q2_minus_M1c": {
+      "point_estimate": 0.05211199020777547,
+      "ci_lower": 0.03101727959470446,
+      "ci_upper": 0.07192920001412711,
+      "contexts": [
+        "A549_24h_10nM",
+        "A549_24h_100nM",
+        "A549_24h_10000nM",
+        "K562_24h_10nM",
+        "K562_24h_100nM",
+        "K562_24h_10000nM"
+      ],
+      "n_groups": 24,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    }
+  },
+  "selections": {
+    "chemcpa_Q1": {
+      "selected": "C1_repository_default",
+      "validation": {
+        "C1_repository_default": 1.3028747014992186,
+        "C2_biolord_reproducibility": 1.302948291218461
+      }
+    },
+    "chemcpa_Q2": {
+      "selected": "C1_repository_default",
+      "validation": {
+        "C1_repository_default": 0.915325732051834,
+        "C2_biolord_reproducibility": 0.9155395969845949
+      }
+    },
+    "biolord_Q1": {
+      "selected": "L1_published_sciplex3",
+      "validation": {
+        "L1_published_sciplex3": 1.3235326314227789
+      }
+    },
+    "biolord_Q2": {
+      "selected": "L1_published_sciplex3",
+      "validation": {
+        "L1_published_sciplex3": 0.9219578400861762
+      }
+    }
+  },
+  "superiority_rule": "interval_upper_bound_below_zero_against_both_comparators",
+  "anchors_max_abs_difference": 2.220446049250313e-16
+}
