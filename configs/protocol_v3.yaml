@@ -1,0 +1,191 @@
+schema_version: 3
+status: PRESPECIFIED_BEFORE_V3_CELL_MODEL_FITTING
+prespecified_date: '2026-10-16'
+scope:
+  public_data_only: true
+  wet_experiments: false
+  source:
+    geo_series: GSE139944
+    geo_sample: GSM4150378
+  contexts:
+    cell_types: [A549, MCF7, K562]
+    time_hours: 24
+    doses_nM: [10, 100, 1000, 10000]
+  questions:
+    Q1_source_benchmark: >-
+      Do two published single-cell perturbation models (chemCPA, biolord), given the
+      same A549 24 h 1 uM training compounds as the frozen v1 methods, predict the 26
+      held-out compound responses better than the frozen v1 methods?
+    Q2_context_aware: >-
+      Given cell-line and dose inputs and training-compound cells from all twelve
+      24 h contexts, do the same models predict held-out compounds better than
+      zero-change and information-matched simple baselines fitted per context?
+  claims_excluded: [drug_efficacy, toxicity, target_engagement, clinical_benefit, external_study_validation]
+known_test_exposure:
+  opened_before_v3:
+    - A549_24h_1000nM
+    - MCF7_24h_1000nM
+    - K562_24h_1000nM
+    - MCF7_24h_10nM
+    - MCF7_24h_100nM
+    - MCF7_24h_10000nM
+  never_scored_before_v3:
+    - A549_24h_10nM
+    - A549_24h_100nM
+    - A549_24h_10000nM
+    - K562_24h_10nM
+    - K562_24h_100nM
+    - K562_24h_10000nM
+  evidence_for_never_scored: manifests/v2/context_roles.tsv marks these test rows metadata_only
+  mitigation:
+    - published hyperparameter configurations only; no search beyond the listed candidates
+    - candidate, checkpoint and seed handling fixed here; validation compounds only
+    - predictions sealed with SHA256 before any scoring code reads test responses
+    - Q2 confirmatory endpoint uses only never-scored contexts
+split:
+  source_manifest: manifests/split_manifest.tsv
+  preserve_original_assignments: true
+  original_counts: {train: 119, validation: 26, test: 26}
+  test_compound_cells_in_training: forbidden_in_every_context
+  validation_compound_cells: selection_only_never_gradient_updates
+  excluded_source_compounds: never_used
+cells:
+  source_qc: author_hash_qc_as_v1_v2
+  wells: manifests/v2/well_mapping.tsv
+  vehicle_role: training_cells_and_counterfactual_source
+  gene_space: manifests/selected_genes.tsv
+  library_denominator: all_human_genes
+  model_input: log1p_of_counts_divided_by_all_gene_library_times_1e4_then_subset_to_frozen_genes
+  subsampling: none
+molecular_representation:
+  descriptors: RDKit2DNormalized
+  implementation: descriptastorus==2.8.0
+  scaling: z_score_fit_on_training_compounds_only
+  undefined_descriptor_values: training_compound_mean
+  zero_variance_training_columns: removed
+  vehicle: {name: DMSO, smiles: CS(C)=O}
+models:
+  seeds: [42, 123, 2026]
+  final_prediction: arithmetic_mean_of_three_seed_predicted_deltas
+  selection_metric: mean_validation_compound_rmse_primary_contrast
+  selection_tie: first_listed_candidate
+  chemCPA:
+    implementation: vendored ComPert from theislab/chemCPA@43e830eb0958c54e4aa64442c17ec0fed19b3f15 (MIT)
+    training_loop: reimplementation of chemCPA/lightning_module.py training_step and configure_optimizers
+    dose_input: dose_nM_divided_by_10000
+    vehicle_dose_input: 1.0
+    covariates: {Q1: none, Q2: cell_type}
+    lincs_pretraining: not_performed
+    max_epochs: 200
+    evaluate_every_epochs: 10
+    early_stopping_patience_evaluations: 5
+    checkpoint: lowest_validation_rmse_evaluation
+    max_minutes_per_fit: 90
+    candidates:
+      C1_repository_default:
+        source: config/model/hparams/default.yaml and config/model/additional_params/default.yaml
+        hparams: {adversary_depth: 3, adversary_lr: 0.0011926173789223548, adversary_steps: 3,
+          adversary_wd: 9.846738873614555e-06, adversary_width: 128, autoencoder_depth: 4,
+          autoencoder_lr: 0.0015751320499779737, autoencoder_wd: 6.251373574521742e-07,
+          autoencoder_width: 256, batch_size: 256, dim: 32, dosers_depth: 3,
+          dosers_lr: 0.0015751320499779737, dosers_wd: 6.251373574521742e-07, dosers_width: 64,
+          embedding_encoder_depth: 4, embedding_encoder_width: 128,
+          penalty_adversary: 0.4550475813202185, reg_adversary: 9.100951626404369,
+          reg_adversary_cov: 16.165583124257587, step_size_lr: 6}
+        additional: {doser_type: amortized, decoder_activation: ReLU}
+      C2_biolord_reproducibility:
+        source: nitzanlab/biolord_reproducibility scripts/chemCPA/config_sciplex_rdkit_nonpretrained.yml
+        hparams: {adversary_depth: 3, adversary_lr: 0.000806, adversary_steps: 2,
+          adversary_wd: 4.0e-06, adversary_width: 128, autoencoder_depth: 4,
+          autoencoder_lr: 0.0015751320499779737, autoencoder_wd: 6.251373574521742e-07,
+          autoencoder_width: 256, batch_size: 32, dim: 32, dosers_depth: 3,
+          dosers_lr: 0.0015751320499779737, dosers_wd: 6.251373574521742e-07, dosers_width: 64,
+          embedding_encoder_depth: 4, embedding_encoder_width: 128,
+          penalty_adversary: 0.4550475813202185, reg_adversary: 9.100951626404369,
+          reg_adversary_cov: 10.675229346653245, step_size_lr: 6}
+        additional: {doser_type: amortized, decoder_activation: ReLU}
+  biolord:
+    implementation: biolord==0.0.3 with scvi-tools==1.1.6.post2
+    ordered_attribute: rdkit2d_dose = [scaled descriptors, dose_nM_divided_by_10000]
+    vehicle_dose_input: 0.0
+    categorical_attributes: {Q1: none, Q2: [cell_type]}
+    candidates:
+      L1_published_sciplex3:
+        source: nitzanlab/biolord_reproducibility utils/parameters_sciplex3.py and 2_perturbations_sciplex3_evaluation.ipynb
+        n_latent: 256
+        module_params: {decoder_width: 4096, decoder_depth: 4, attribute_nn_width: 2048,
+          attribute_nn_depth: 2, use_batch_norm: false, use_layer_norm: false,
+          unknown_attribute_noise_param: 20.0, n_latent_attribute_ordered: 256,
+          n_latent_attribute_categorical: 3, gene_likelihood: normal,
+          reconstruction_penalty: 10000.0, unknown_attribute_penalty: 0.1,
+          attribute_dropout_rate: 0.1}
+        trainer_params: {n_epochs_warmup: 0, latent_lr: 0.0001, latent_wd: 0.0001,
+          decoder_lr: 0.0001, decoder_wd: 0.0001, attribute_nn_lr: 0.01,
+          attribute_nn_wd: 4.0e-08, step_size_lr: 45, cosine_scheduler: true,
+          scheduler_final_lr: 1.0e-05}
+        train: {max_epochs: 200, batch_size: 512, early_stopping: true,
+          early_stopping_patience: 20, check_val_every_n_epoch: 10, max_minutes_per_fit: 150}
+        biolord_validation_cells: validation_compound_cells
+responses:
+  truth: strict_matched_vehicle_delta_as_v1_v2
+  truth_code: drugperturb.transfer_v2.measured_responses
+  prediction_primary: counterfactual_contrast
+  prediction_definitions:
+    pseudobulk: library_weighted_mean_of_expm1_prediction_times_100_then_log1p
+    negative_cell_expression: clipped_to_zero_after_expm1_before_weighting
+    counterfactual_contrast: >-
+      For each test replicate well, apply the compound, dose and cell type to the
+      cells of its strict matched vehicle well; subtract the same cells passed
+      through the vehicle condition; average the two replicate deltas.
+    anchored_sensitivity: >-
+      Same treated pseudobulk minus the measured log1p CPM of the strict matched
+      vehicle well.
+  identity_check: an_identity_model_must_reproduce_zero_change_exactly
+simple_context_baselines:
+  fitted_per_context_on: training_compounds_eligible_in_that_context
+  methods:
+    B0: zero_change
+    B1c: context_training_mean
+    B2c: context_nearest_training_neighbor_binary_tanimoto
+    M1c: context_fingerprint_ridge_alpha_by_context_validation_rmse
+  ridge_alphas: [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+  features: Morgan radius 2, 2048 bits, as v1
+qc:
+  rule: same_as_v2_count_qc_two_replicates_30_cells_each_and_matched_vehicle_30_cells
+  gate: at_least_20_test_compounds_and_10_scaffold_groups
+  failed_gate: descriptive_only_no_interval
+  new_count_qc: A549_non_1000nM_contexts_from_cell_counts_before_effect_scoring
+evaluation:
+  unit: compound
+  weighting: equal_per_compound
+  metric: mean_compound_rmse_2000_frozen_genes
+  bootstrap: {unit: scaffold_group, draws: 2000, seed: 2026, interval: percentile_2.5_97.5}
+  Q1_primary:
+    context: A549_24h_1000nM
+    comparators: [M1, B1, B0]
+    frozen_comparator_predictions: reports/v2/predictions/gene_predictions.npz
+  Q2_primary_confirmatory:
+    contexts: never_scored_before_v3 passing the count gate
+    estimand: mean_over_contexts_of_context_mean_compound_rmse_difference
+    comparators: [B0, M1c]
+    bootstrap: same_scaffold_group_draw_applied_to_every_context
+  Q2_secondary:
+    - each never-scored context separately
+    - previously opened v2 target contexts, for comparability only
+  superiority_rule: interval_upper_bound_below_zero_against_both_comparators
+  anchored_sensitivity: reported_not_used_for_claims
+amendments:
+  A1_2026-10-19:
+    change: context Ridge (M1c) alpha grid extended from [0.1, 1, 10, 100] to [0.1, 1, 10, 100, 1000, 10000]
+    reason: all 12 contexts selected the upper boundary alpha 100 on validation compounds in the first K2 run
+    information_used: validation-compound RMSE only; no test truth computed for any v3 method or never-scored context
+    effect: strengthens a primary comparator; the earlier M1c seal is superseded and retained in the K2 version history
+  A2_2026-10-19:
+    change: biolord fits capped at 150 minutes each (Lightning max_time); chemCPA already had a 90-minute cap
+    reason: smoke timing on Kaggle T4 (about 2 minutes per Q2 epoch) put 200 epochs at 5-7 hours per seed, beyond the 12-hour session limit for three seeds on two GPUs
+    information_used: wall-clock timing of engineering smoke fits only; no validation or test outcome
+compute:
+  platform: Kaggle notebooks
+  accelerator: NVIDIA T4 x2
+  determinism: seeds_fixed_cudnn_nondeterminism_not_eliminated
+  record: gpu_name, driver, cuda, torch, package_versions, wall_time, input_and_output_sha256

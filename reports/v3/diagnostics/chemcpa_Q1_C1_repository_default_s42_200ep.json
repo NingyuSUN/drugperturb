@@ -1,0 +1,1451 @@
+{
+  "candidate": "C1_repository_default",
+  "seed": 42,
+  "epochs": 200,
+  "best_epoch": 30,
+  "test_outcomes_loaded": false,
+  "train": {
+    "n": 119,
+    "mean_abs_pred": 0.0009123684580236412,
+    "mean_abs_true": 1.050547372053126,
+    "rmse": 1.3161348761082396,
+    "rmse_zero": 1.3164320428745961,
+    "mean_gene_pearson_r": 0.021458550661885106,
+    "least_squares_scale": 2.5920364520258277
+  },
+  "validation": {
+    "n": 26,
+    "mean_abs_pred": 0.0009392243245502316,
+    "mean_abs_true": 1.0362467818479655,
+    "rmse": 1.302739857424836,
+    "rmse_zero": 1.3029246895912634,
+    "mean_gene_pearson_r": 0.01613578396360251,
+    "least_squares_scale": 1.5361511775023966
+  },
+  "latent": {
+    "basal_norm": 14.564766883850098,
+    "drug_term_norm": 0.08228892832994461
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "reconstruction": -0.9272476174713423,
+      "adversary_drug": 0.6983391406635443,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.08562906831666624
+    },
+    {
+      "epoch": 2,
+      "reconstruction": -1.1112635657191277,
+      "adversary_drug": 0.6713980796436468,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.16499808761666562
+    },
+    {
+      "epoch": 3,
+      "reconstruction": -1.157025580604871,
+      "adversary_drug": 0.6489178519695997,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.24609601676666745
+    },
+    {
+      "epoch": 4,
+      "reconstruction": -1.1965656926234562,
+      "adversary_drug": 0.6265780217945576,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.3288507383999994
+    },
+    {
+      "epoch": 5,
+      "reconstruction": -1.2343829050660133,
+      "adversary_drug": 0.6032416963328918,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.4118927470833341
+    },
+    {
+      "epoch": 6,
+      "reconstruction": -1.2481372393667698,
+      "adversary_drug": 0.5721468788882097,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.4921778637333337
+    },
+    {
+      "epoch": 7,
+      "reconstruction": -1.2942887544631958,
+      "adversary_drug": 0.5395402585466703,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.5730340609833339
+    },
+    {
+      "epoch": 8,
+      "reconstruction": -1.271168166771531,
+      "adversary_drug": 0.49142431871344644,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.654177686766667
+    },
+    {
+      "epoch": 9,
+      "reconstruction": -1.3780217779179413,
+      "adversary_drug": 0.4179951452339689,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.7352301711833339
+    },
+    {
+      "epoch": 10,
+      "reconstruction": -1.3123710968842108,
+      "adversary_drug": 0.33929134098192054,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.8150844623333342,
+      "validation_rmse": 1.3028810015159573
+    },
+    {
+      "epoch": 11,
+      "reconstruction": -1.4065651434163253,
+      "adversary_drug": 0.32249085574100417,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.914398546549999
+    },
+    {
+      "epoch": 12,
+      "reconstruction": -1.3376451215396326,
+      "adversary_drug": 0.35184418844679993,
+      "adversary_cell_type": 0.0,
+      "minutes": 0.9950638347666673
+    },
+    {
+      "epoch": 13,
+      "reconstruction": -1.4283247087150812,
+      "adversary_drug": 0.2607622475673755,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.0744817656500003
+    },
+    {
+      "epoch": 14,
+      "reconstruction": -1.5127545427531004,
+      "adversary_drug": 0.17937429280330738,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.154741571266667
+    },
+    {
+      "epoch": 15,
+      "reconstruction": -1.5674483428398769,
+      "adversary_drug": 0.1234266219350199,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.2346426108000004
+    },
+    {
+      "epoch": 16,
+      "reconstruction": -1.551596368663013,
+      "adversary_drug": 0.09279558450604479,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.3147047482666665
+    },
+    {
+      "epoch": 17,
+      "reconstruction": -1.614149412761132,
+      "adversary_drug": 0.07600695942528546,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.3961634672166667
+    },
+    {
+      "epoch": 18,
+      "reconstruction": -1.6169122283657391,
+      "adversary_drug": 0.06590821167143683,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.4776658885666658
+    },
+    {
+      "epoch": 19,
+      "reconstruction": -1.5946223996579647,
+      "adversary_drug": 0.059219986704799034,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.5598783670666667
+    },
+    {
+      "epoch": 20,
+      "reconstruction": -1.6571285898486774,
+      "adversary_drug": 0.054630944544139005,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.641390687466666,
+      "validation_rmse": 1.302831082541671
+    },
+    {
+      "epoch": 21,
+      "reconstruction": -1.7325670768817265,
+      "adversary_drug": 0.05107433818435917,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.7408596821833329
+    },
+    {
+      "epoch": 22,
+      "reconstruction": -1.750878384957711,
+      "adversary_drug": 0.047935432754457,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.8217215308500008
+    },
+    {
+      "epoch": 23,
+      "reconstruction": -1.7852432715396087,
+      "adversary_drug": 0.045416425835962095,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.9028192482166673
+    },
+    {
+      "epoch": 24,
+      "reconstruction": -1.7663005540768306,
+      "adversary_drug": 0.04349787595371405,
+      "adversary_cell_type": 0.0,
+      "minutes": 1.9834834988666672
+    },
+    {
+      "epoch": 25,
+      "reconstruction": -1.8060121623178322,
+      "adversary_drug": 0.042115249942677714,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.0639086050000004
+    },
+    {
+      "epoch": 26,
+      "reconstruction": -1.8456557802855968,
+      "adversary_drug": 0.04088730050716549,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.142557759316666
+    },
+    {
+      "epoch": 27,
+      "reconstruction": -1.8466458059847355,
+      "adversary_drug": 0.03983795456588268,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.2221654992999995
+    },
+    {
+      "epoch": 28,
+      "reconstruction": -1.8847167206307252,
+      "adversary_drug": 0.03894620144274086,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.302630455816666
+    },
+    {
+      "epoch": 29,
+      "reconstruction": -1.8840843153496583,
+      "adversary_drug": 0.03829901180385301,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.3826074357
+    },
+    {
+      "epoch": 30,
+      "reconstruction": -1.915251225233078,
+      "adversary_drug": 0.03799683984834701,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.4647734019333334,
+      "validation_rmse": 1.302739857424836
+    },
+    {
+      "epoch": 31,
+      "reconstruction": -1.9421710073947906,
+      "adversary_drug": 0.03778888801267991,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.5640911767333328
+    },
+    {
+      "epoch": 32,
+      "reconstruction": -1.9650323589642842,
+      "adversary_drug": 0.038192821045716606,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.6457030177499994
+    },
+    {
+      "epoch": 33,
+      "reconstruction": -1.9741976745426655,
+      "adversary_drug": 0.03842744456293682,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.727272458016667
+    },
+    {
+      "epoch": 34,
+      "reconstruction": -1.9931348202129204,
+      "adversary_drug": 0.03819408356988182,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.807352131233334
+    },
+    {
+      "epoch": 35,
+      "reconstruction": -2.0272437185049057,
+      "adversary_drug": 0.037727586032512285,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.8883213083000006
+    },
+    {
+      "epoch": 36,
+      "reconstruction": -1.9724159234513838,
+      "adversary_drug": 0.03722946209988246,
+      "adversary_cell_type": 0.0,
+      "minutes": 2.9694611988166666
+    },
+    {
+      "epoch": 37,
+      "reconstruction": -2.0170487531771264,
+      "adversary_drug": 0.036820233527881406,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.0503067134833333
+    },
+    {
+      "epoch": 38,
+      "reconstruction": -2.0339141127963862,
+      "adversary_drug": 0.03650286937287698,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.1321552989333328
+    },
+    {
+      "epoch": 39,
+      "reconstruction": -2.0884895448883376,
+      "adversary_drug": 0.03618874431898197,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.214278630400001
+    },
+    {
+      "epoch": 40,
+      "reconstruction": -2.0461801377435527,
+      "adversary_drug": 0.035923468957965575,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.2953864679166656,
+      "validation_rmse": 1.3028170275680668
+    },
+    {
+      "epoch": 41,
+      "reconstruction": -2.1029497111837068,
+      "adversary_drug": 0.03565746072369317,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.3949582476833333
+    },
+    {
+      "epoch": 42,
+      "reconstruction": -2.0812253368397555,
+      "adversary_drug": 0.03545154817402363,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.4758543244166673
+    },
+    {
+      "epoch": 43,
+      "reconstruction": -2.1314146456619105,
+      "adversary_drug": 0.03523773145085821,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.558608955116667
+    },
+    {
+      "epoch": 44,
+      "reconstruction": -2.1605819587906203,
+      "adversary_drug": 0.035092898683312036,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.6418058251833334
+    },
+    {
+      "epoch": 45,
+      "reconstruction": -2.1126361756275096,
+      "adversary_drug": 0.03494300375071665,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.725505615516666
+    },
+    {
+      "epoch": 46,
+      "reconstruction": -2.033478032797575,
+      "adversary_drug": 0.03482735176415493,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.807830482133333
+    },
+    {
+      "epoch": 47,
+      "reconstruction": -2.1519997231662273,
+      "adversary_drug": 0.03470629876634727,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.8908268512999995
+    },
+    {
+      "epoch": 48,
+      "reconstruction": -2.1500623306880393,
+      "adversary_drug": 0.03460405215931436,
+      "adversary_cell_type": 0.0,
+      "minutes": 3.9744958816166673
+    },
+    {
+      "epoch": 49,
+      "reconstruction": -2.1880301541338363,
+      "adversary_drug": 0.034514826683638,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.057945317166667
+    },
+    {
+      "epoch": 50,
+      "reconstruction": -2.1858539731862643,
+      "adversary_drug": 0.03443052421789616,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.1410289123,
+      "validation_rmse": 1.3027827118988289
+    },
+    {
+      "epoch": 51,
+      "reconstruction": -2.1810604482889175,
+      "adversary_drug": 0.034359846147708595,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.242951411216666
+    },
+    {
+      "epoch": 52,
+      "reconstruction": -2.2375998149315515,
+      "adversary_drug": 0.03429931627276043,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.326441418949999
+    },
+    {
+      "epoch": 53,
+      "reconstruction": -2.2361665846159062,
+      "adversary_drug": 0.03423260078610232,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.4094860596666665
+    },
+    {
+      "epoch": 54,
+      "reconstruction": -2.2775872660179934,
+      "adversary_drug": 0.0341592962310339,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.492212549666665
+    },
+    {
+      "epoch": 55,
+      "reconstruction": -2.2605127580463886,
+      "adversary_drug": 0.03409980384943386,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.5763265130666655
+    },
+    {
+      "epoch": 56,
+      "reconstruction": -2.2906636632978916,
+      "adversary_drug": 0.03405173545858512,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.660421875983333
+    },
+    {
+      "epoch": 57,
+      "reconstruction": -2.234279368072748,
+      "adversary_drug": 0.0340090652462095,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.7442734236
+    },
+    {
+      "epoch": 58,
+      "reconstruction": -2.330620172123114,
+      "adversary_drug": 0.03395711490884423,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.827863136683334
+    },
+    {
+      "epoch": 59,
+      "reconstruction": -2.2469324047366777,
+      "adversary_drug": 0.03392425105751803,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.911785339483333
+    },
+    {
+      "epoch": 60,
+      "reconstruction": -2.2683604434132576,
+      "adversary_drug": 0.033882281316133835,
+      "adversary_cell_type": 0.0,
+      "minutes": 4.996518722166667,
+      "validation_rmse": 1.3027964332139836
+    },
+    {
+      "epoch": 61,
+      "reconstruction": -2.3518505779405436,
+      "adversary_drug": 0.033841275105563305,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.100381276549999
+    },
+    {
+      "epoch": 62,
+      "reconstruction": -2.3604675444463887,
+      "adversary_drug": 0.03381558053661138,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.18500782255
+    },
+    {
+      "epoch": 63,
+      "reconstruction": -2.3772087320685387,
+      "adversary_drug": 0.03377762514476975,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.269860410733332
+    },
+    {
+      "epoch": 64,
+      "reconstruction": -2.3511126302182674,
+      "adversary_drug": 0.033745708176866174,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.3546925664
+    },
+    {
+      "epoch": 65,
+      "reconstruction": -2.3825037317971387,
+      "adversary_drug": 0.033714795291113354,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.439908896416667
+    },
+    {
+      "epoch": 66,
+      "reconstruction": -2.350391627599796,
+      "adversary_drug": 0.033693823109691344,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.5251754122
+    },
+    {
+      "epoch": 67,
+      "reconstruction": -2.397115639100472,
+      "adversary_drug": 0.03366623485150436,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.611357681283333
+    },
+    {
+      "epoch": 68,
+      "reconstruction": -2.4196278154850006,
+      "adversary_drug": 0.03363888982372979,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.69681315615
+    },
+    {
+      "epoch": 69,
+      "reconstruction": -2.414939448237419,
+      "adversary_drug": 0.03362049251639595,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.783455103283334
+    },
+    {
+      "epoch": 70,
+      "reconstruction": -2.435156182696422,
+      "adversary_drug": 0.03360184580863764,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.871551970683333,
+      "validation_rmse": 1.3028254683659786
+    },
+    {
+      "epoch": 71,
+      "reconstruction": -2.4432365397612252,
+      "adversary_drug": 0.033577575736368694,
+      "adversary_cell_type": 0.0,
+      "minutes": 5.980231143916666
+    },
+    {
+      "epoch": 72,
+      "reconstruction": -2.4301207096626363,
+      "adversary_drug": 0.03355841505496452,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.067087193516667
+    },
+    {
+      "epoch": 73,
+      "reconstruction": -2.437362613156438,
+      "adversary_drug": 0.03354251334288468,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.155417568333333
+    },
+    {
+      "epoch": 74,
+      "reconstruction": -2.4585801139473915,
+      "adversary_drug": 0.033516354858875275,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.245054370516666
+    },
+    {
+      "epoch": 75,
+      "reconstruction": -2.455338535209497,
+      "adversary_drug": 0.03349935791144768,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.333777961216667
+    },
+    {
+      "epoch": 76,
+      "reconstruction": -2.4479821659624577,
+      "adversary_drug": 0.03348548364980767,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.424736558933334
+    },
+    {
+      "epoch": 77,
+      "reconstruction": -2.484874608616034,
+      "adversary_drug": 0.033467719331383705,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.513637990383334
+    },
+    {
+      "epoch": 78,
+      "reconstruction": -2.494549217323462,
+      "adversary_drug": 0.03344747233980646,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.603409868866667
+    },
+    {
+      "epoch": 79,
+      "reconstruction": -2.5057201720774174,
+      "adversary_drug": 0.03343477041926235,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.691981498833333
+    },
+    {
+      "epoch": 80,
+      "reconstruction": -2.50271558513244,
+      "adversary_drug": 0.03341933188494295,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.782093548099999,
+      "validation_rmse": 1.3028763189365766
+    },
+    {
+      "epoch": 81,
+      "reconstruction": -2.5233254805207253,
+      "adversary_drug": 0.03340472669030229,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.888433204666666
+    },
+    {
+      "epoch": 82,
+      "reconstruction": -2.528637547045946,
+      "adversary_drug": 0.033389121294021606,
+      "adversary_cell_type": 0.0,
+      "minutes": 6.97717515895
+    },
+    {
+      "epoch": 83,
+      "reconstruction": -2.5177506431937218,
+      "adversary_drug": 0.03337489262533685,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.066003732416665
+    },
+    {
+      "epoch": 84,
+      "reconstruction": -2.544510136047999,
+      "adversary_drug": 0.03336425133359929,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.155380322300001
+    },
+    {
+      "epoch": 85,
+      "reconstruction": -2.529071159660816,
+      "adversary_drug": 0.03335385350510478,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.245847111133332
+    },
+    {
+      "epoch": 86,
+      "reconstruction": -2.5529847939809165,
+      "adversary_drug": 0.03334368191038569,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.33640532035
+    },
+    {
+      "epoch": 87,
+      "reconstruction": -2.5455920013288655,
+      "adversary_drug": 0.033329342297899224,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.42709403525
+    },
+    {
+      "epoch": 88,
+      "reconstruction": -2.5747582043210664,
+      "adversary_drug": 0.03332637060278406,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.5177983587999995
+    },
+    {
+      "epoch": 89,
+      "reconstruction": -2.572570296625296,
+      "adversary_drug": 0.033310703351162374,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.608913312983333
+    },
+    {
+      "epoch": 90,
+      "reconstruction": -2.563385395333171,
+      "adversary_drug": 0.03330058259113381,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.699326379233332,
+      "validation_rmse": 1.3029104570987529
+    },
+    {
+      "epoch": 91,
+      "reconstruction": -2.592813161512216,
+      "adversary_drug": 0.03329802913746486,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.8092418552666665
+    },
+    {
+      "epoch": 92,
+      "reconstruction": -2.5968259001771608,
+      "adversary_drug": 0.03328738772931198,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.900466525033335
+    },
+    {
+      "epoch": 93,
+      "reconstruction": -2.6045655409495034,
+      "adversary_drug": 0.033281217251593866,
+      "adversary_cell_type": 0.0,
+      "minutes": 7.9914419367333345
+    },
+    {
+      "epoch": 94,
+      "reconstruction": -2.597107097506523,
+      "adversary_drug": 0.0332734202578043,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.082815330166666
+    },
+    {
+      "epoch": 95,
+      "reconstruction": -2.592055980116129,
+      "adversary_drug": 0.03326104860752821,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.174525908100001
+    },
+    {
+      "epoch": 96,
+      "reconstruction": -2.578378011782964,
+      "adversary_drug": 0.03325743457147231,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.26678379965
+    },
+    {
+      "epoch": 97,
+      "reconstruction": -2.571115594357252,
+      "adversary_drug": 0.033248560852371156,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.358677424183334
+    },
+    {
+      "epoch": 98,
+      "reconstruction": -2.626121573150158,
+      "adversary_drug": 0.03324309554106245,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.452250355183333
+    },
+    {
+      "epoch": 99,
+      "reconstruction": -2.633450803657373,
+      "adversary_drug": 0.03324320136258999,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.544366572483334
+    },
+    {
+      "epoch": 100,
+      "reconstruction": -2.630211189389229,
+      "adversary_drug": 0.03323046960091839,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.637701321549999,
+      "validation_rmse": 1.302937269529641
+    },
+    {
+      "epoch": 101,
+      "reconstruction": -2.5959679211179414,
+      "adversary_drug": 0.0332195331575349,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.750272159066666
+    },
+    {
+      "epoch": 102,
+      "reconstruction": -2.647506025930246,
+      "adversary_drug": 0.033213428260448076,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.843319429683334
+    },
+    {
+      "epoch": 103,
+      "reconstruction": -2.6471714600920677,
+      "adversary_drug": 0.03321186852796624,
+      "adversary_cell_type": 0.0,
+      "minutes": 8.93731723725
+    },
+    {
+      "epoch": 104,
+      "reconstruction": -2.569726102054119,
+      "adversary_drug": 0.03319993778131902,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.030642859016666
+    },
+    {
+      "epoch": 105,
+      "reconstruction": -2.6616480872035027,
+      "adversary_drug": 0.033191147493198514,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.124913025816666
+    },
+    {
+      "epoch": 106,
+      "reconstruction": -2.664881939689318,
+      "adversary_drug": 0.03318316241105398,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.22001553115
+    },
+    {
+      "epoch": 107,
+      "reconstruction": -2.6471593560030064,
+      "adversary_drug": 0.033184298663400114,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.315164100016666
+    },
+    {
+      "epoch": 108,
+      "reconstruction": -2.6731013183792434,
+      "adversary_drug": 0.03317732934374362,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.412046184666668
+    },
+    {
+      "epoch": 109,
+      "reconstruction": -2.6792671705285707,
+      "adversary_drug": 0.033170098050807915,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.50874377015
+    },
+    {
+      "epoch": 110,
+      "reconstruction": -2.675649038205544,
+      "adversary_drug": 0.033164662891067564,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.607083893966667,
+      "validation_rmse": 1.3029266033555564
+    },
+    {
+      "epoch": 111,
+      "reconstruction": -2.6939856385191283,
+      "adversary_drug": 0.0331545789182807,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.723354554333332
+    },
+    {
+      "epoch": 112,
+      "reconstruction": -2.6909296487768493,
+      "adversary_drug": 0.03315167765443524,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.820045904833334
+    },
+    {
+      "epoch": 113,
+      "reconstruction": -2.681167500714461,
+      "adversary_drug": 0.03314654664912572,
+      "adversary_cell_type": 0.0,
+      "minutes": 9.917223382483334
+    },
+    {
+      "epoch": 114,
+      "reconstruction": -2.702719529469808,
+      "adversary_drug": 0.033141267873967685,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.013644635533334
+    },
+    {
+      "epoch": 115,
+      "reconstruction": -2.7112255121270814,
+      "adversary_drug": 0.03313584035883347,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.109943531333332
+    },
+    {
+      "epoch": 116,
+      "reconstruction": -2.707810794313749,
+      "adversary_drug": 0.033131724883181356,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.206543849733334
+    },
+    {
+      "epoch": 117,
+      "reconstruction": -2.70095939685901,
+      "adversary_drug": 0.03312701790127903,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.304234457066665
+    },
+    {
+      "epoch": 118,
+      "reconstruction": -2.7108272463083267,
+      "adversary_drug": 0.03312063100747764,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.403083758433334
+    },
+    {
+      "epoch": 119,
+      "reconstruction": -2.696480722477039,
+      "adversary_drug": 0.033114901666219033,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.50130286085
+    },
+    {
+      "epoch": 120,
+      "reconstruction": -2.7215162763992944,
+      "adversary_drug": 0.03311247786041349,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.6008031712,
+      "validation_rmse": 1.3029311089335083
+    },
+    {
+      "epoch": 121,
+      "reconstruction": -2.7040418907999992,
+      "adversary_drug": 0.033101358955415584,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.718444903033333
+    },
+    {
+      "epoch": 122,
+      "reconstruction": -2.7321463798483214,
+      "adversary_drug": 0.033097475223864116,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.817605442266665
+    },
+    {
+      "epoch": 123,
+      "reconstruction": -2.7407825142145157,
+      "adversary_drug": 0.03309118060860783,
+      "adversary_cell_type": 0.0,
+      "minutes": 10.915778670466667
+    },
+    {
+      "epoch": 124,
+      "reconstruction": -2.7388514429330826,
+      "adversary_drug": 0.03308440356825789,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.014635484683334
+    },
+    {
+      "epoch": 125,
+      "reconstruction": -2.7285811031858125,
+      "adversary_drug": 0.033080736097569265,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.114739368216666
+    },
+    {
+      "epoch": 126,
+      "reconstruction": -2.742208624879519,
+      "adversary_drug": 0.03307677782140672,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.215035700933333
+    },
+    {
+      "epoch": 127,
+      "reconstruction": -2.734195633480946,
+      "adversary_drug": 0.03307573376999547,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.316406219283332
+    },
+    {
+      "epoch": 128,
+      "reconstruction": -2.7481737161676087,
+      "adversary_drug": 0.03306888854907205,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.420153774483333
+    },
+    {
+      "epoch": 129,
+      "reconstruction": -2.739331608017286,
+      "adversary_drug": 0.03306690071864674,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.52319491315
+    },
+    {
+      "epoch": 130,
+      "reconstruction": -2.7541162048776946,
+      "adversary_drug": 0.033058438333682716,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.625646046733333,
+      "validation_rmse": 1.3029313403625455
+    },
+    {
+      "epoch": 131,
+      "reconstruction": -2.760886582235495,
+      "adversary_drug": 0.03305829448315004,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.746487429116666
+    },
+    {
+      "epoch": 132,
+      "reconstruction": -2.746936281522115,
+      "adversary_drug": 0.03305214818101376,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.847894269916667
+    },
+    {
+      "epoch": 133,
+      "reconstruction": -2.7629665806889534,
+      "adversary_drug": 0.033046850779404245,
+      "adversary_cell_type": 0.0,
+      "minutes": 11.949535988500001
+    },
+    {
+      "epoch": 134,
+      "reconstruction": -2.7709039052327475,
+      "adversary_drug": 0.03304130964291593,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.0498432202
+    },
+    {
+      "epoch": 135,
+      "reconstruction": -2.7750315219163895,
+      "adversary_drug": 0.03303954921041926,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.150489782449998
+    },
+    {
+      "epoch": 136,
+      "reconstruction": -2.771255540351073,
+      "adversary_drug": 0.033034154873651765,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.251134638149999
+    },
+    {
+      "epoch": 137,
+      "reconstruction": -2.7690264036258063,
+      "adversary_drug": 0.03303080704063177,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.351776807683333
+    },
+    {
+      "epoch": 138,
+      "reconstruction": -2.7783807714780173,
+      "adversary_drug": 0.03302196886700889,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.454429964233334
+    },
+    {
+      "epoch": 139,
+      "reconstruction": -2.7711635207136474,
+      "adversary_drug": 0.033020673358502485,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.556148074750002
+    },
+    {
+      "epoch": 140,
+      "reconstruction": -2.7808892031510672,
+      "adversary_drug": 0.033018593986829124,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.658129916266667,
+      "validation_rmse": 1.3029157063219476
+    },
+    {
+      "epoch": 141,
+      "reconstruction": -2.777034687499205,
+      "adversary_drug": 0.03301219882753988,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.780262768966669
+    },
+    {
+      "epoch": 142,
+      "reconstruction": -2.7855042020479837,
+      "adversary_drug": 0.03301044867839664,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.881751691366667
+    },
+    {
+      "epoch": 143,
+      "reconstruction": -2.789429205159346,
+      "adversary_drug": 0.03300996144146969,
+      "adversary_cell_type": 0.0,
+      "minutes": 12.984812068683334
+    },
+    {
+      "epoch": 144,
+      "reconstruction": -2.791311795512835,
+      "adversary_drug": 0.03300575240670393,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.0878134463
+    },
+    {
+      "epoch": 145,
+      "reconstruction": -2.7944517011443772,
+      "adversary_drug": 0.033000657839390136,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.192283863600002
+    },
+    {
+      "epoch": 146,
+      "reconstruction": -2.7964482232928276,
+      "adversary_drug": 0.03299931332003325,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.298270045033332
+    },
+    {
+      "epoch": 147,
+      "reconstruction": -2.796036253372828,
+      "adversary_drug": 0.032993856351822615,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.404490028416667
+    },
+    {
+      "epoch": 148,
+      "reconstruction": -2.7928812901178994,
+      "adversary_drug": 0.03298584530906131,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.509340018516665
+    },
+    {
+      "epoch": 149,
+      "reconstruction": -2.799818180501461,
+      "adversary_drug": 0.032988933458303414,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.6143934257
+    },
+    {
+      "epoch": 150,
+      "reconstruction": -2.8061672573288283,
+      "adversary_drug": 0.03298499318771064,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.718686422616667,
+      "validation_rmse": 1.302943561297123
+    },
+    {
+      "epoch": 151,
+      "reconstruction": -2.8091001907984414,
+      "adversary_drug": 0.03297779996258517,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.843454293566667
+    },
+    {
+      "epoch": 152,
+      "reconstruction": -2.813630186021328,
+      "adversary_drug": 0.03297917591407895,
+      "adversary_cell_type": 0.0,
+      "minutes": 13.94723512435
+    },
+    {
+      "epoch": 153,
+      "reconstruction": -2.80703005194664,
+      "adversary_drug": 0.03297207842115313,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.051516456333331
+    },
+    {
+      "epoch": 154,
+      "reconstruction": -2.8192213401198387,
+      "adversary_drug": 0.032972186842622854,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.155119782716667
+    },
+    {
+      "epoch": 155,
+      "reconstruction": -2.8057283349335194,
+      "adversary_drug": 0.032966619629102446,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.259383118466667
+    },
+    {
+      "epoch": 156,
+      "reconstruction": -2.826722241938114,
+      "adversary_drug": 0.03296401949288944,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.364267262066669
+    },
+    {
+      "epoch": 157,
+      "reconstruction": -2.8229116598765054,
+      "adversary_drug": 0.03295813671623667,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.469507994866667
+    },
+    {
+      "epoch": 158,
+      "reconstruction": -2.733572689195474,
+      "adversary_drug": 0.03295703414672365,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.573738656083332
+    },
+    {
+      "epoch": 159,
+      "reconstruction": -2.819756329059601,
+      "adversary_drug": 0.03295554271123061,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.676980721116669
+    },
+    {
+      "epoch": 160,
+      "reconstruction": -2.8195051165918508,
+      "adversary_drug": 0.0329500463946412,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.7820804884,
+      "validation_rmse": 1.3029220708217142
+    },
+    {
+      "epoch": 161,
+      "reconstruction": -2.833912449578444,
+      "adversary_drug": 0.032945608448547624,
+      "adversary_cell_type": 0.0,
+      "minutes": 14.905645121050002
+    },
+    {
+      "epoch": 162,
+      "reconstruction": -2.833889747659365,
+      "adversary_drug": 0.03294203523546457,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.012039777633333
+    },
+    {
+      "epoch": 163,
+      "reconstruction": -2.8323155467708907,
+      "adversary_drug": 0.032943455735221505,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.118111199883334
+    },
+    {
+      "epoch": 164,
+      "reconstruction": -2.8359981502095857,
+      "adversary_drug": 0.032939485584696136,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.224056342316665
+    },
+    {
+      "epoch": 165,
+      "reconstruction": -2.8236774429678917,
+      "adversary_drug": 0.03293686728769293,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.329921452483331
+    },
+    {
+      "epoch": 166,
+      "reconstruction": -2.8361100206772485,
+      "adversary_drug": 0.03293372376356274,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.435866936983333
+    },
+    {
+      "epoch": 167,
+      "reconstruction": -2.8369556789596877,
+      "adversary_drug": 0.03293049067724496,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.541170691400001
+    },
+    {
+      "epoch": 168,
+      "reconstruction": -2.8450512290000916,
+      "adversary_drug": 0.03292626367571453,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.646821085133334
+    },
+    {
+      "epoch": 169,
+      "reconstruction": -2.842783828576406,
+      "adversary_drug": 0.03292597127923121,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.752230472333334
+    },
+    {
+      "epoch": 170,
+      "reconstruction": -2.8430852070450783,
+      "adversary_drug": 0.03292077430523932,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.8569892148,
+      "validation_rmse": 1.3029350829152226
+    },
+    {
+      "epoch": 171,
+      "reconstruction": -2.8315098956227303,
+      "adversary_drug": 0.03291908046230674,
+      "adversary_cell_type": 0.0,
+      "minutes": 15.980999499883334
+    },
+    {
+      "epoch": 172,
+      "reconstruction": -2.84370519220829,
+      "adversary_drug": 0.032919993197234966,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.087868301516668
+    },
+    {
+      "epoch": 173,
+      "reconstruction": -2.8427524119615555,
+      "adversary_drug": 0.03292011500646671,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.19500471125
+    },
+    {
+      "epoch": 174,
+      "reconstruction": -2.838342495262623,
+      "adversary_drug": 0.032916449825279415,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.303652785533334
+    },
+    {
+      "epoch": 175,
+      "reconstruction": -2.845115544895331,
+      "adversary_drug": 0.0329113396583125,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.410377126733334
+    },
+    {
+      "epoch": 176,
+      "reconstruction": -2.8533660421768823,
+      "adversary_drug": 0.03290975117124617,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.51910609788333
+    },
+    {
+      "epoch": 177,
+      "reconstruction": -2.8542165234684944,
+      "adversary_drug": 0.03290591291928043,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.6264815413
+    },
+    {
+      "epoch": 178,
+      "reconstruction": -2.846825589736303,
+      "adversary_drug": 0.032902772926415004,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.734231852316668
+    },
+    {
+      "epoch": 179,
+      "reconstruction": -2.8549781863888106,
+      "adversary_drug": 0.032900325527104236,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.840428633933335
+    },
+    {
+      "epoch": 180,
+      "reconstruction": -2.8505213782191277,
+      "adversary_drug": 0.0328946584292377,
+      "adversary_cell_type": 0.0,
+      "minutes": 16.948222023583334,
+      "validation_rmse": 1.302915904785741
+    },
+    {
+      "epoch": 181,
+      "reconstruction": -2.855127381781737,
+      "adversary_drug": 0.032894392614252865,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.075238384566667
+    },
+    {
+      "epoch": 182,
+      "reconstruction": -2.8637508203585944,
+      "adversary_drug": 0.032892114288794495,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.18274112596667
+    },
+    {
+      "epoch": 183,
+      "reconstruction": -2.8595158209403357,
+      "adversary_drug": 0.03288877736000965,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.2900665201
+    },
+    {
+      "epoch": 184,
+      "reconstruction": -2.862859579424063,
+      "adversary_drug": 0.03288394530924658,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.396743028150002
+    },
+    {
+      "epoch": 185,
+      "reconstruction": -2.865585262576739,
+      "adversary_drug": 0.03288731696860244,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.50313141995
+    },
+    {
+      "epoch": 186,
+      "reconstruction": -2.8590786829590797,
+      "adversary_drug": 0.03288348682690412,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.612199607233332
+    },
+    {
+      "epoch": 187,
+      "reconstruction": -2.8574013660351434,
+      "adversary_drug": 0.0328794785697634,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.720499074766668
+    },
+    {
+      "epoch": 188,
+      "reconstruction": -2.8685575226942697,
+      "adversary_drug": 0.032879434137915574,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.829235061183333
+    },
+    {
+      "epoch": 189,
+      "reconstruction": -2.87087848285834,
+      "adversary_drug": 0.0328763514989987,
+      "adversary_cell_type": 0.0,
+      "minutes": 17.9373525423
+    },
+    {
+      "epoch": 190,
+      "reconstruction": -2.8670778597394624,
+      "adversary_drug": 0.03287222624445955,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.045653520149997,
+      "validation_rmse": 1.3029146962281595
+    },
+    {
+      "epoch": 191,
+      "reconstruction": -2.8599458585182824,
+      "adversary_drug": 0.03287171836321553,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.17371304208333
+    },
+    {
+      "epoch": 192,
+      "reconstruction": -2.8630699714024863,
+      "adversary_drug": 0.0328674914004902,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.28106909585
+    },
+    {
+      "epoch": 193,
+      "reconstruction": -2.871626762052377,
+      "adversary_drug": 0.03286245771838973,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.38821330495
+    },
+    {
+      "epoch": 194,
+      "reconstruction": -2.872917413711548,
+      "adversary_drug": 0.032865573768503964,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.49561623605
+    },
+    {
+      "epoch": 195,
+      "reconstruction": -2.8674947768449783,
+      "adversary_drug": 0.0328629599728932,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.603924292383333
+    },
+    {
+      "epoch": 196,
+      "reconstruction": -2.8740375712513924,
+      "adversary_drug": 0.032860410904201366,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.712021824316665
+    },
+    {
+      "epoch": 197,
+      "reconstruction": -2.835638390854001,
+      "adversary_drug": 0.03285713749937713,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.82189712485
+    },
+    {
+      "epoch": 198,
+      "reconstruction": -2.8603797356287637,
+      "adversary_drug": 0.03286068968009204,
+      "adversary_cell_type": 0.0,
+      "minutes": 18.930833425816665
+    },
+    {
+      "epoch": 199,
+      "reconstruction": -2.875832657019297,
+      "adversary_drug": 0.03285886607288072,
+      "adversary_cell_type": 0.0,
+      "minutes": 19.03846212768333
+    },
+    {
+      "epoch": 200,
+      "reconstruction": -2.8734563986460366,
+      "adversary_drug": 0.032852988496112324,
+      "adversary_cell_type": 0.0,
+      "minutes": 19.146635530233333,
+      "validation_rmse": 1.302905119980746
+    }
+  ]
+}

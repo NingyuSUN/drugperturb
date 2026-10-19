@@ -1,0 +1,13 @@
+context_id	cell_type	time_hours	dose_nM	source_treatment_labels	frozen_cohort_compounds	count_eligible_source_labels	eligible_frozen_compounds	frozen_test_compounds	eligible_test_compounds	eligible_test_structure_groups	primary_test_eligible_compounds	secondary_test_eligible_compounds	required_test_compounds	required_test_structure_groups	missing_well_qc_records	count_qc_done	predeclared_evaluation	frozen_test_count_gate_met	evaluation_gate_met	status
+A549_24h_10000nM	A549	24	10000	188	171	166	158	26	26	24	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+A549_24h_1000nM	A549	24	1000	188	171	173	171	26	26	24	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+A549_24h_100nM	A549	24	100	188	171	170	158	26	25	24	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+A549_24h_10nM	A549	24	10	188	171	180	163	26	26	24	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+K562_24h_10000nM	K562	24	10000	188	171	162	148	26	25	23	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+K562_24h_1000nM	K562	24	1000	188	171	182	167	26	25	23	0	25	20	10	0	True	True	True	True	COUNT_GATE_PASS
+K562_24h_100nM	K562	24	100	188	171	185	169	26	26	24	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+K562_24h_10nM	K562	24	10	188	171	187	170	26	26	24	0	0	20	10	0	True	False	True	False	COUNT_QC_ONLY
+MCF7_24h_10000nM	MCF7	24	10000	188	171	137	123	26	18	17	0	18	20	10	0	True	True	False	False	COUNT_GATE_FAIL
+MCF7_24h_1000nM	MCF7	24	1000	188	171	184	170	26	26	24	26	0	20	10	0	True	True	True	True	COUNT_GATE_PASS
+MCF7_24h_100nM	MCF7	24	100	188	171	181	166	26	26	24	0	26	20	10	0	True	True	True	True	COUNT_GATE_PASS
+MCF7_24h_10nM	MCF7	24	10	188	171	182	167	26	25	23	0	25	20	10	0	True	True	True	True	COUNT_GATE_PASS

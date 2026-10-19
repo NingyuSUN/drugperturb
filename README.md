@@ -10,6 +10,19 @@ Public sci-Plex3 data · structure-based models · held-out compounds · cross-c
 
 To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
+## v3: published single-cell perturbation models as baselines
+
+**chemCPA and biolord did not beat information-matched simple baselines.** Both models were trained on sci-Plex3 cells from 3 cell lines × 4 doses, ran on Kaggle T4 GPUs, and had their predictions sealed before test scoring. The confirmatory endpoint pooled six contexts never scored before. There, both were reliably worse than a per-context fingerprint Ridge, and neither was distinguishable from zero change:
+
+| Pooled over 6 never-scored contexts | ΔRMSE [95% interval] |
+|---|---|
+| chemCPA − per-context Ridge | +0.057 [+0.038, +0.074] |
+| biolord − per-context Ridge | +0.052 [+0.031, +0.072] |
+| chemCPA − zero change | −0.0000 [−0.0001, +0.0000] |
+| biolord − zero change | −0.005 [−0.016, +0.001] |
+
+Given target-context training data, even the per-context training mean beats zero change in all 12 contexts, which reverses the v2 result below. A training/validation-only diagnostic shows chemCPA collapsing to zero change: its drug term is about 0.6% of the latent norm, even for training compounds and after 200 epochs. The fresh extraction reproduced v2's MCF7/K562 outputs byte-for-byte. Recomputed test truth matches published per-compound RMSE to 2×10⁻¹⁶. See the [v3 report](reports/v3/report.md) and [v3 methods](docs/V3_METHODS.md).
+
 ## Cross-condition results
 
 **Models trained on A549 did not outperform zero-change predictions in any of the five evaluated target conditions.** The primary test is MCF7 at 24 hours and 1 µM, with **26 held-out compounds in 24 structure groups**. Original splits, gene outputs and predictions were frozen before scoring the new conditions.
@@ -110,7 +123,7 @@ The [historical hosted CI evidence](receipts/hosted_ci.json) records **108 Pytho
 
 ## Scope
 
-The project comprises an original single-context benchmark and a fixed-prediction transport evaluation across five additional conditions within the same study. The models receive chemical structure, not cell identity or dose, so they do not learn condition-specific responses. It does not establish drug efficacy, toxicity, target engagement, clinical benefit or antibody design. No pretrained foundation model, external validation dataset or paid AWS execution is claimed. Actual primary training used the Primary CPU host; GPU training was unnecessary for these small networks.
+The project comprises an original single-context benchmark, a fixed-prediction transport evaluation across five additional conditions within the same study (v2), and context-aware published single-cell baselines (v3). The v1/v2 models receive chemical structure, not cell identity or dose; the v3 chemCPA and biolord models receive both. It does not establish drug efficacy, toxicity, target engagement, clinical benefit or antibody design. No pretrained foundation model, external validation dataset or paid AWS execution is claimed. v1 training used the Primary CPU host; v3 cell-level models were trained on Kaggle NVIDIA T4 GPUs (Kaggle notebooks, not AWS).
 
 ## Sources
 
