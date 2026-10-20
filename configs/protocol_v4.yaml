@@ -1,0 +1,242 @@
+schema_version: 4
+status: PRESPECIFIED_BEFORE_V4_FITTING
+prespecified_date: '2026-10-20'
+question: >-
+  Does a principled change to chemCPA's training stop it collapsing to zero change,
+  and, if so, does the changed model then predict held-out compounds better than zero
+  change and information-matched simple baselines on data this project has never scored?
+scope:
+  public_data_only: true
+  wet_experiments: false
+  claims_excluded: [drug_efficacy, toxicity, target_engagement, clinical_benefit, mechanism_of_action]
+diagnosis_from_v3:
+  source: reports/v3/report.md, reports/v3/diagnostics
+  facts:
+    - chemCPA Q1 training compounds - mean |predicted delta| 0.0009 against 1.05 measured, gene-wise r 0.02
+    - latent drug-term norm 0.08 against 14.6 for the basal state of vehicle cells (about 0.6%)
+    - validation RMSE equal to zero change (1.3027-1.3029 vs 1.3029) at all 20 evaluations over 200 epochs
+    - Q2 sealed chemCPA predictions equal zero change to four decimals in all 12 contexts
+hypotheses:
+  H_likelihood: >-
+    The response is the log of a library-weighted pooled mean (log1p CPM of summed counts).
+    chemCPA fits a Gaussian with learned variance to per-cell log1p values, whose mean is not
+    the log of the pooled mean and in which a drug's shift is a tiny fraction of per-cell
+    variance; the learned variance can absorb it. A count likelihood with library offsets puts
+    the decoder mean on the scale of the response and lets evidence accumulate over cells.
+  H_shortcut: >-
+    Reconstruction lets the decoder explain each treated cell from its own basal encoding; the
+    drug term matters only for the population-mean shift, which per-cell losses barely reward.
+    The path used for prediction (vehicle cells plus the drug term) is never trained directly.
+    A well-level loss on that path cannot be reduced without the drug term.
+arms:
+  common:
+    base_configuration: v3 chemCPA C1_repository_default (hparams and additional copied below; v3 selected it in Q1 and Q2)
+    hparams: {adversary_depth: 3, adversary_lr: 0.0011926173789223548, adversary_steps: 3,
+      adversary_wd: 9.846738873614555e-06, adversary_width: 128, autoencoder_depth: 4,
+      autoencoder_lr: 0.0015751320499779737, autoencoder_wd: 6.251373574521742e-07,
+      autoencoder_width: 256, batch_size: 256, dim: 32, dosers_depth: 3,
+      dosers_lr: 0.0015751320499779737, dosers_wd: 6.251373574521742e-07, dosers_width: 64,
+      embedding_encoder_depth: 4, embedding_encoder_width: 128,
+      penalty_adversary: 0.4550475813202185, reg_adversary: 9.100951626404369,
+      reg_adversary_cov: 16.165583124257587, step_size_lr: 6}
+    doser_type: amortized
+    hyperparameter_search: none
+    encoder_input: log1p_of_counts_divided_by_all_gene_library_times_1e4_frozen_genes (v3)
+    adversaries_optimizers_schedules_clipping: unchanged from v3
+  A0_v3_reference:
+    role: reference; the unchanged v3 model refitted with v4 diagnostics
+    likelihood: gaussian
+    decoder_activation: ReLU
+    pseudobulk_weight: 0.0
+  I1_nb_likelihood:
+    rationale: H_likelihood
+    likelihood: negative_binomial_on_raw_frozen_gene_counts
+    mean: mu_ig = library_i * exp(min(eta_ig + b_g, 0)); eta is the decoder's first gene block
+    offset_b_g: log(max(sum of training-cell counts of gene g / sum of training-cell all-gene libraries, 1e-12)); training and vehicle cells of the setting only; fixed buffer
+    inverse_dispersion: softplus of the decoder's second gene block plus 1e-4 (per cell and gene, as the upstream NB option)
+    loss: vendored upstream chemCPA NBLoss (mean over cells and genes)
+    decoder_activation: linear
+    decoder_activation_reason: a ReLU would force eta >= 0, i.e. every gene at or above its training mean fraction
+    model_value_for_pseudobulk: log1p(1e4 * exp(min(eta + b, 0)))
+    pseudobulk_weight: 0.0
+  I2_counterfactual_pseudobulk:
+    rationale: H_shortcut
+    likelihood: gaussian
+    decoder_activation: ReLU
+    pseudobulk_weight: 1.0
+    pseudobulk_loss: >-
+      Added to every autoencoder/doser update: mean squared gene error between the measured
+      strict training-compound delta and the predicted counterfactual contrast of that
+      (compound, context), computed as at inference (vehicle cells under the compound minus the
+      same cells under the vehicle condition, library-weighted pseudobulk, equal-weight mean over
+      replicates) from cells drawn with replacement from each replicate's matched vehicle well,
+      with modules in evaluation mode (BatchNorm running statistics).
+    pairs_per_update: 8
+    cells_per_vehicle_well: 64
+    pairs_sampled_from: count-eligible training-compound (compound, context) pairs of the setting
+    sampling_generator: separate torch CPU generator seeded with seed + 1 (the cell-batch order equals A0)
+  I3_nb_plus_pseudobulk:
+    rationale: both hypotheses
+    definition: I1 likelihood and decoder with the I2 pseudobulk loss, weight 1.0
+  considered_not_selected:
+    LINCS_L1000_pretraining: >-
+      Recommended by the chemCPA authors and noted as missing in v3. Not selected: the v2 audit found
+      only 73 of the 2,000 frozen sci-Plex3 genes measured as L1000 landmarks, so pretraining could
+      transfer the perturbation encoder but not the gene decoder in which the drug term collapses;
+      v3 saw the collapse on training compounds, where pretraining's benefit (generalization to unseen
+      compounds) does not apply; and the published pretraining needs more GPU time than this week's
+      remaining Kaggle quota. It remains a limitation.
+training:
+  max_epochs: 200
+  evaluate_every_epochs: 10
+  early_stopping_patience_evaluations: 5
+  checkpoint: lowest_validation_rmse_evaluation
+  max_minutes_per_fit: 60
+  minutes_cap_reason: weekly GPU quota; v3 C1 fits stopped by patience within 46 minutes
+  validation_metric: mean over validation (compound, context) pairs of RMSE between counterfactual contrast and measured delta (v3)
+  seeds: {op3: [42, 123, 2026], sciplex_Q1: [42, 123, 2026], sciplex_Q2: [42]}
+  sciplex_Q2_single_seed_reason: compute; Q2 is exploratory
+  final_prediction: arithmetic mean of the seeds' predicted deltas
+datasets:
+  sciplex3:
+    role: exploratory_only
+    reason: all twelve 24 h contexts' test outcomes were opened in v1-v3
+    inputs: v3 K2 prepare outputs unchanged (kernel dp-v3-prepare; prepared/prepare_receipt.json)
+    settings:
+      sciplex_Q1: {contexts: [A549_24h_1000nM], covariates: none}
+      sciplex_Q2: {contexts: all twelve 24 h contexts, covariates: [cell_type]}
+    dose_input: dose_nM / 10000; vehicle 1.0 (v3)
+    training_pairs_for_pseudobulk: manifests/v2/well_mapping.tsv drug rows of training compounds in the setting's contexts, restricted to pairs in prepared train_truth.npz
+  op3:
+    role: confirmatory
+    source:
+      geo_series: GSE279945
+      title: 'OP3: single-cell multimodal dataset in PBMCs for perturbation prediction benchmarking'
+      file: GSE279945_sc_counts_processed.h5ad
+      url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE279nnn/GSE279945/suppl/GSE279945_sc_counts_processed.h5ad
+      bytes: 14202156609
+      sha256: record_on_first_download
+      sha256_provenance: >-
+        size pinned from the server's Content-Length; SHA256 recorded by the O1 extraction kernel at download
+        (receipts/v4/o1_extract.json) and compared with an independent local streamed download started
+        2026-10-20; later kernels use only O1 outputs, whose hashes are chained in every receipt
+      counts: raw/X (integer UMI counts, 298,087 cells x 21,265 genes); author cell QC and cell-type labels kept
+    exposure_before_this_protocol:
+      public_since: 2024-10 (GEO); analyzed by others in the NeurIPS 2023 Kaggle competition and the OP3 benchmark
+      this_project_read: >-
+        obs design columns only (plate, well, row, column, donor, library, compound name and LINCS ID,
+        SMILES, dose, time, control flag, split label, cell-type labels) and the cell-type counts of the
+        48 DMSO wells. No expression value and no cell count of any compound well was read.
+      receipt: receipts/v4/op3_design_audit.json
+    design:
+      cells: peripheral blood mononuclear cells from three donors (two male, one female); 24 h
+      plates: six; one donor per plate; two plates per donor
+      library_rows: each plate row is one library with one DMSO well (column 3)
+      compounds: 141 non-control compounds, each at 1 uM, one well per donor
+      positive_controls_excluded: Belinostat (0.1 uM) and Dabrafenib (1 uM), 48 wells each; different replicate structure and, for belinostat, dose
+      vehicle: DMSO wells (48)
+      contexts: {Tcells: T cells, NKcells: NK cells, Bcells: B cells, Myeloid: Myeloid cells}
+      context_labels: obs cell_type (authors' reannotated four types)
+      measurement_unit: cells of the context's type in one well
+      replicates: donors (three)
+      strict_matched_vehicle: DMSO well in the same plate row (same library and donor), same cell type
+    chemistry: v1 standardize_smiles; all 144 structures standardize; 141 compounds in 139 scaffold groups
+    split:
+      unit: whole scaffold groups
+      method: v1 split_by_structure procedure with prespecified fractions (drugperturb.v4.design.split_by_structure_fractions)
+      seed: 42
+      test_fraction: 0.25
+      validation_fraction: 0.15
+      min_test_compounds: 20
+      min_test_groups: 10
+      manifest: manifests/v4/op3_compounds.tsv
+      structure_only: true
+    count_qc:
+      rule: (compound, context) eligible when all three donor replicates have >= 30 treated cells and >= 30 cells in the matched vehicle unit
+      context_gate: at least 20 eligible test compounds in at least 10 scaffold groups
+      failed_gate: descriptive only, no interval, excluded from the pooled estimand
+      vehicle_feasibility_note: DMSO units have median 339 T, 91 B, 104 myeloid and 40.5 NK cells; 85% of NK vehicle units reach 30
+    truth:
+      definition: per donor, log1p CPM (all-gene library over 21,265 genes) of the treated unit minus the matched vehicle unit; equal-weight mean over the three donors
+      computed_for_test: only by the evaluation kernel after every prediction is sealed
+    gene_space:
+      n_genes: 2000
+      candidates: genes with nonzero counts in at least 5% of DMSO cells
+      ranking: population variance of training-compound strict deltas over all eligible training (compound, context) rows; stable descending (v1 rule)
+      information: training compounds and vehicle cells only
+    model_cells: all cells of training- and validation-compound wells and of DMSO wells; test-compound and control cells dropped before model code
+    library: all-gene UMI total of each cell
+    dose_input: 1000 nM / 10000 = 0.1; vehicle 1.0
+    covariates: [cell_type]
+descriptors: RDKit2DNormalized (descriptastorus 2.8.0), z-scored on each dataset's training compounds, as v3
+comparators:
+  fitted_per_context_on: training compounds eligible in that context
+  B0: zero change
+  B1c: context training mean
+  B2c: context nearest training compound (binary Tanimoto, Morgan r2 2048)
+  M1c: context fingerprint Ridge on 20 training-only principal components, alpha by context validation RMSE (v3 code)
+  ridge_alphas: [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+  sealed: before any chemCPA fit is scored
+diagnostics_before_test_scoring:
+  computed_on: training and validation (compound, context) pairs; best-checkpoint models
+  per_fit:
+    - effect_size_ratio = mean over pairs of the L2 norm of the predicted delta / mean over the same pairs of the L2 norm of that context's B1c training mean
+    - mean_gene_pearson_r between predicted and measured deltas (0 where a prediction is constant)
+    - compound_specific_r = mean over pairs of r(prediction minus the arm's mean prediction over that context's training pairs, measured minus B1c)
+    - rmse and zero-change rmse; least-squares scale
+    - latent_ratio = mean L2 norm of (drug term of the compound minus drug term of the vehicle) / mean L2 norm of the basal latent of vehicle cells; also the plain drug-term norm (v3 metric)
+  non_collapse_criteria:
+    applied_to: seed-averaged validation predictions, pooled over the setting's contexts
+    all_required:
+      effect_size_ratio: '>= 0.10'
+      mean_gene_pearson_r: '>= 0.10'
+      validation_rmse: below zero-change validation rmse
+  report: reports/v4/diagnostics.md, committed before the evaluation kernel runs
+primary_arm_selection:
+  dataset: op3
+  candidates: [I1_nb_likelihood, I2_counterfactual_pseudobulk, I3_nb_plus_pseudobulk]
+  rule: among candidates meeting the non-collapse criteria on OP3 validation compounds, the lowest mean over seeds of the per-seed validation rmse (v3 selection metric); ties by listed order
+  if_none_meets_criteria: the lowest-validation-rmse candidate is still evaluated, and the study reports that no intervention stopped the collapse
+  information: validation compounds only
+evaluation:
+  unit: compound
+  metric: mean over compounds of per-compound RMSE over the 2,000 frozen genes (v1-v3 code)
+  bootstrap: {unit: scaffold_group, draws: 2000, seed: 2026, interval: percentile_2.5_97.5, pooled: one draw shared by every context (v3 pooled_bootstrap)}
+  op3_confirmatory:
+    contexts: OP3 contexts passing the count gate
+    estimand: mean over contexts of the context mean compound RMSE difference
+    E1_non_collapse: selected arm minus B0; supported if the upper bound is below zero
+    E2_improvement: selected arm minus B1c and selected arm minus M1c; supported if both upper bounds are below zero
+    multiplicity: E1 and E2 for the single selected arm are the confirmatory tests; every other interval is secondary and unadjusted
+  op3_secondary:
+    - each gate-passing context separately for the selected arm
+    - every arm (A0, I1, I2, I3) against B0, B1c and M1c, pooled and per context
+    - A0 against B0 (does the v3 collapse replicate on OP3)
+    - test-compound effect_size_ratio and mean_gene_pearson_r per arm
+    - contexts failing the gate, descriptively
+  sciplex_exploratory:
+    Q1: each arm against frozen v1 B0, B1 and M1 in A549 1 uM
+    Q2: each arm against B0, B1c and M1c (v3 sealed context baselines) in each of the twelve contexts and pooled over the six contexts first scored in v3
+    label: exploratory; previously opened test outcomes
+truth_anchors:
+  sciplex3: in every context, per-compound RMSE of zero change, the v3 sealed B1c and M1c, and the v3 sealed chemCPA (Q1, Q2) recomputed from fresh truth must reproduce reports/v3/per_compound.tsv to 1e-9
+  op3: >-
+    No per-compound result in this response space has been published, so anchors are internal:
+    per-well cell-type counts must equal the authors' cell_count_by_well_celltype under the reannotated
+    or the original labels (which one matched is recorded); per-cell frozen-gene
+    counts must sum to the unit pseudobulk; an identity model must reproduce zero change exactly; the
+    regenerated design must equal the committed manifests. Whether log1p(raw / library x s) reproduces the
+    authors' normalized X for some s is reported, not required.
+sealing: SHA256 of every prediction archive written before the evaluation kernel reads any test response; the evaluator verifies each seal
+order_of_operations:
+  - commit this protocol with the OP3 design manifests and split
+  - OP3 extraction and preparation (CPU kernels); context baselines sealed
+  - fits of every arm (GPU kernels), training and validation outputs only
+  - diagnostics report from training and validation outputs, committed
+  - seal arm predictions; select the OP3 primary arm on validation
+  - evaluation kernel computes test truth and scores sealed predictions
+amendments: {}
+compute:
+  platform: Kaggle notebooks; CPU for extraction, preparation and evaluation; NVIDIA T4 x2 for fits
+  determinism: seeds fixed; cuDNN nondeterminism not eliminated
+  record: gpu_name, driver, cuda, torch and package versions, wall time, input and output sha256

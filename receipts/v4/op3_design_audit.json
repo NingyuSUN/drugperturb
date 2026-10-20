@@ -1,0 +1,88 @@
+{
+  "cells": 298087,
+  "wells": 567,
+  "compounds": 141,
+  "split": {
+    "seed": 42,
+    "test_fraction": 0.25,
+    "validation_fraction": 0.15,
+    "required_test_compounds": 20,
+    "required_test_groups": 10,
+    "compound_count_unit": "unique_canonical_parent",
+    "train": {
+      "n_compound_ids": 85,
+      "n_compounds": 85,
+      "n_groups": 84
+    },
+    "validation": {
+      "n_compound_ids": 21,
+      "n_compounds": 21,
+      "n_groups": 20
+    },
+    "test": {
+      "n_compound_ids": 35,
+      "n_compounds": 35,
+      "n_groups": 35
+    },
+    "test_minimum_met": true
+  },
+  "obs_columns_read": [
+    "plate_name",
+    "well",
+    "row",
+    "col",
+    "donor_id",
+    "library_id",
+    "sm_name",
+    "sm_lincs_id",
+    "SMILES",
+    "dose_uM",
+    "timepoint_hr",
+    "control",
+    "cell_type"
+  ],
+  "expression_read": false,
+  "vehicle_unit_cells": {
+    "Bcells": {
+      "count": 48.0,
+      "mean": 91.6,
+      "std": 28.8,
+      "min": 26.0,
+      "25%": 69.0,
+      "50%": 91.0,
+      "75%": 107.8,
+      "max": 156.0
+    },
+    "Myeloid": {
+      "count": 48.0,
+      "mean": 109.1,
+      "std": 35.9,
+      "min": 43.0,
+      "25%": 86.0,
+      "50%": 104.0,
+      "75%": 129.8,
+      "max": 255.0
+    },
+    "NKcells": {
+      "count": 48.0,
+      "mean": 40.8,
+      "std": 9.3,
+      "min": 23.0,
+      "25%": 37.8,
+      "50%": 40.5,
+      "75%": 45.0,
+      "max": 65.0
+    },
+    "Tcells": {
+      "count": 48.0,
+      "mean": 351.3,
+      "std": 97.1,
+      "min": 204.0,
+      "25%": 288.0,
+      "50%": 339.0,
+      "75%": 392.0,
+      "max": 643.0
+    }
+  },
+  "http_range_requests": 12
+}
