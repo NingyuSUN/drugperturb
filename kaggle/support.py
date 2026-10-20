@@ -70,6 +70,15 @@ def system_info():
     return info
 
 
+def file_sha256(path):
+    import hashlib
+    digest = hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(8 << 20), b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
 def fetch(url, target, sha256):
     """Download with curl and verify SHA256; a mismatch is fatal."""
     import hashlib

@@ -30,5 +30,5 @@ support.run([python, 'scripts/v4_evaluate_op3.py', '--extraction-root', op3_extr
 support.run([python, 'scripts/v4_evaluate_sciplex.py', '--extraction-root', sciplex_extraction,
              '--prepared', sciplex_prepared, '--output-root', support.WORKING/'reports_v4/sciplex', *roots],
             log='k5_v4_sciplex.log', env=env)
-support.write_receipt('k5_v4', dict(system=support.system_info(), sealed_roots=sealed, code_archive=archive[0]))
+support.write_receipt('k5_v4', dict(system=support.system_info(), sealed_roots=sealed, code_archive=archive[0], code_archive_sha256=support.file_sha256(archive[0])))
 print('K5 v4 complete')

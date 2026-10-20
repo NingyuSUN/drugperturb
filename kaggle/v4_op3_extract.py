@@ -49,7 +49,7 @@ support.run([python, 'scripts/v4_op3_design.py', '--h5ad', target, '--check',
 support.run([python, 'scripts/v4_op3_extract.py', '--h5ad', target, '--output-root', support.WORKING/'extraction'],
             log='o1_extract.log', env=env)
 target.unlink()
-support.write_receipt('o1_extract', dict(system=support.system_info(), code_archive=archive[0],
+support.write_receipt('o1_extract', dict(system=support.system_info(), code_archive=archive[0], code_archive_sha256=support.file_sha256(archive[0]),
                                          source=dict(url=source['url'], bytes=int(source['bytes']), sha256=sha256,
                                                      protocol_sha256=source['sha256'], download_attempts=attempts)))
 print('O1 complete')

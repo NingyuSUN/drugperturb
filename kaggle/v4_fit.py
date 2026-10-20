@@ -74,5 +74,5 @@ for setting in settings:
         command.append('--allow-smoke')
     support.run(command, log=f'seal_{setting}.log', env=env)
 support.write_receipt(f'k3_v4_{DATASET}', dict(system=support.system_info(), smoke_max_epochs=SMOKE, prepared=prepared,
-                                               code_archive=archive[0]))
+                                               code_archive=archive[0], code_archive_sha256=support.file_sha256(archive[0])))
 print('K3 v4 complete')

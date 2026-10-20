@@ -19,5 +19,5 @@ support.run([python, 'scripts/v4_op3_prepare.py', '--extraction-root', root,
              '--output-root', support.WORKING/'prepared'], log='o2_prepare.log', env=env)
 support.run([python, 'scripts/v4_context_baselines.py', '--prepared', support.WORKING/'prepared',
              '--output-root', support.WORKING/'sealed'], log='o2_context_baselines.log', env=env)
-support.write_receipt('o2_prepare', dict(system=support.system_info(), extraction_root=root, code_archive=archive[0]))
+support.write_receipt('o2_prepare', dict(system=support.system_info(), extraction_root=root, code_archive=archive[0], code_archive_sha256=support.file_sha256(archive[0])))
 print('O2 complete')
