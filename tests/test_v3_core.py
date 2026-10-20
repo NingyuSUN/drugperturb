@@ -1,5 +1,7 @@
-"""Synthetic engineering checks for v3 response mapping, cell roles and vendored code."""
+"""Synthetic engineering checks for v3 response mapping, cell roles, truth loading and vendored code."""
+import ast
 import hashlib
+import importlib.util
 from pathlib import Path
 
 import numpy as np
@@ -11,8 +13,10 @@ from drugperturb.v3 import runner
 from drugperturb.v3.cells import assign_roles, build_model_archive, load_model_archive, save_model_archive
 from drugperturb.v3.pseudobulk import (compound_delta, counterfactual_deltas, measured_log_cpm,
                                        normalize_counts, pseudobulk_log_cpm)
+from drugperturb.v4 import counterfactual
 
 ROOT = Path(__file__).resolve().parents[1]
+V3_TRUTH_SCRIPTS = ['v3_fit', 'v3_context_baselines', 'v3_diagnose_chemcpa']
 rng = np.random.default_rng(0)
 
 
@@ -101,3 +105,32 @@ def test_vendored_chemcpa_file_is_byte_identical():
     path = ROOT/'src/drugperturb/third_party/_chemcpa_model_upstream.py'
     assert hashlib.sha256(path.read_bytes()).hexdigest() == \
         '481fe1f447f1318e0446764d4dcfc8b7e6d6c21efe21cd156fceb8e693f75ae6'
+
+
+def test_single_load_truth_reads_delta_once(tmp_path, monkeypatch):
+    np.savez_compressed(tmp_path/'t.npz', keys=np.asarray([f'c{i}|K' for i in range(50)]),
+                        delta=np.arange(150.0).reshape(50, 3))
+    reads = []
+    getitem = np.lib.npyio.NpzFile.__getitem__
+    monkeypatch.setattr(np.lib.npyio.NpzFile, '__getitem__', lambda self, key: reads.append(key) or getitem(self, key))
+    with np.load(tmp_path/'t.npz', allow_pickle=False) as z:  # the former v3 pattern
+        per_row = {tuple(k.split('|')): z['delta'][i] for i, k in enumerate(z['keys'])}
+    assert reads.count('delta') == 50  # one full decompression per row
+    reads.clear()
+    truth = counterfactual.load_truth(tmp_path/'t.npz')
+    assert reads.count('delta') == 1
+    assert truth.keys() == per_row.keys() and all(np.array_equal(truth[k], per_row[k]) for k in truth)
+
+
+@pytest.mark.parametrize('name', V3_TRUTH_SCRIPTS)
+def test_v3_scripts_load_truth_through_the_single_load_helper(name):
+    path = ROOT/'scripts'/f'{name}.py'
+    tree = ast.parse(path.read_text(encoding='utf-8'))
+    # No np.load left in the script, so no npz member can be indexed per row.
+    assert not [node for node in ast.walk(tree) if isinstance(node, ast.Attribute) and node.attr == 'load'
+                and isinstance(node.value, ast.Name) and node.value.id == 'np']
+    pytest.importorskip('torch')
+    spec = importlib.util.spec_from_file_location(f'{name}_truth_check', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.load_truth is counterfactual.load_truth

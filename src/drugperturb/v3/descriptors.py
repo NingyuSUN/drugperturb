@@ -11,6 +11,12 @@ import numpy as np
 VEHICLE_ID = 'DMSO'
 VEHICLE_SMILES = 'CS(C)=O'
 
+# RDKit2DNormalized values lie in [0, 1]. A column that is constant on the training
+# compounds still gets a floating-point standard deviation of up to ~3e-15, while the
+# least variable informative column in the sci-Plex3 and OP3 training sets has 2e-3.
+# The v3/v4 rule (std > 0) keeps such columns; see docs/POST_V4_ENGINEERING.md.
+NOISE_STD_TOLERANCE = 1e-8
+
 
 def rdkit2d_normalized(smiles):
     """Raw descriptor matrix (NaN where a descriptor is undefined) and names."""
@@ -31,7 +37,16 @@ def rdkit2d_normalized(smiles):
 
 
 class TrainingDescriptorScaler:
-    """Drop zero-variance training columns, fill NaN with training means, z-score."""
+    """Drop training columns with std <= min_std, fill NaN with training means, z-score.
+
+    The default min_std=0 is the v3/v4 rule, which keeps columns that are constant up
+    to floating-point noise; min_std=NOISE_STD_TOLERANCE drops them.
+    """
+
+    def __init__(self, min_std=0.0):
+        if not min_std >= 0:
+            raise ValueError('min_std must be nonnegative')
+        self.min_std = float(min_std)
 
     def fit(self, train):
         values = np.asarray(train, dtype=np.float64)
@@ -40,7 +55,7 @@ class TrainingDescriptorScaler:
         mean = np.nanmean(values, axis=0)
         filled = np.where(np.isnan(values), mean, values)
         std = filled.std(axis=0)
-        keep = np.isfinite(mean) & (std > 0)
+        keep = np.isfinite(mean) & (std > self.min_std)
         if not keep.any():
             raise ValueError('no informative training descriptor columns')
         self.keep, self.mean, self.std = keep, mean[keep], std[keep]
@@ -56,8 +71,11 @@ class TrainingDescriptorScaler:
         return ((kept - self.mean) / self.std).astype(np.float32)
 
 
-def compound_table(compound_ids, smiles, train_ids):
-    """Scaled descriptors for every compound plus the DMSO vehicle, keyed by ID."""
+def compound_table(compound_ids, smiles, train_ids, min_std=0.0):
+    """Scaled descriptors for every compound plus the DMSO vehicle, keyed by ID.
+
+    min_std is passed to TrainingDescriptorScaler; the default reproduces v3/v4.
+    """
     ids = list(compound_ids)
     if VEHICLE_ID in ids or len(set(ids)) != len(ids) or len(ids) != len(smiles):
         raise ValueError('compound IDs must be unique, aligned with SMILES, and exclude DMSO')
@@ -66,7 +84,7 @@ def compound_table(compound_ids, smiles, train_ids):
         raise ValueError('training IDs must be a nonempty subset of the compound IDs')
     raw, names = rdkit2d_normalized([*smiles, VEHICLE_SMILES])
     order = [*ids, VEHICLE_ID]
-    scaler = TrainingDescriptorScaler().fit(raw[[i for i, cid in enumerate(ids) if cid in train]])
+    scaler = TrainingDescriptorScaler(min_std).fit(raw[[i for i, cid in enumerate(ids) if cid in train]])
     scaled = scaler.transform(raw)
     kept = [name for name, flag in zip(names, scaler.keep) if flag]
     return {cid: scaled[i] for i, cid in enumerate(order)}, kept

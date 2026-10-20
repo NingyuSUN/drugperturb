@@ -18,14 +18,10 @@ from drugperturb.v3 import chemcpa, runner
 from drugperturb.v3.cells import load_model_archive
 from drugperturb.v3.descriptors import VEHICLE_ID, compound_table
 from drugperturb.v3.pseudobulk import normalize_counts
+from drugperturb.v4.counterfactual import load_truth
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTEXT = 'A549_24h_1000nM'
-
-
-def truth_table(path):
-    with np.load(path, allow_pickle=False) as z:
-        return {tuple(k.split('|')): z['delta'][i] for i, k in enumerate(z['keys'])}
 
 
 def summarize(pred, truth):
@@ -60,7 +56,7 @@ def main():
     rows = wells[wells.context_id.eq(CONTEXT) & wells.row_kind.eq('drug') & wells.split.isin(['train', 'validation'])]
     query_table = pd.DataFrame(dict(compound_id=rows.treatment, context_id=CONTEXT, split=rows.split, replicate=rows.replicate,
                                     cell_type='A549', dose_nM=1000.0, vehicle_Combo=rows.control_Combo))
-    truth = {**truth_table(args.prepared/'train_truth.npz'), **truth_table(args.prepared/'validation_truth.npz')}
+    truth = {**load_truth(args.prepared/'train_truth.npz'), **load_truth(args.prepared/'validation_truth.npz')}
     queries = {s: {k: v for k, v in runner.build_queries(query_table, [CONTEXT], [s]).items() if k in truth}
                for s in ['train', 'validation']}
     wells_needed = [r['vehicle_well'] for q in queries.values() for v in q.values() for r in v]
