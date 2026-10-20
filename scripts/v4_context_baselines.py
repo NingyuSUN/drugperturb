@@ -18,7 +18,7 @@ import v3_context_baselines as v3  # noqa: E402
 from drugperturb.chemistry import morgan_fingerprint  # noqa: E402
 from drugperturb.response import baseline_predictions  # noqa: E402
 from drugperturb.v3 import runner  # noqa: E402
-from drugperturb.v4.counterfactual import SETTINGS  # noqa: E402
+from drugperturb.v4.counterfactual import SETTINGS, load_truth  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -34,7 +34,7 @@ def main():
         raise ValueError('v4 Ridge alpha grid must equal the v3 grid used by the shared estimator')
     compounds = pd.read_csv(ROOT/'manifests/v4/op3_compounds.tsv', sep='\t', keep_default_na=False)
     fps = {c: morgan_fingerprint(s).astype(float) for c, s in zip(compounds.compound_id, compounds.canonical_smiles)}
-    train, val = v3.load_truth(args.prepared/'train_truth.npz'), v3.load_truth(args.prepared/'validation_truth.npz')
+    train, val = load_truth(args.prepared/'train_truth.npz'), load_truth(args.prepared/'validation_truth.npz')
     queries = runner.read_query_table(args.prepared/'queries.tsv')
     tests = queries[queries.split.eq('test')]
     keys, val_keys, selection = [], [], {}

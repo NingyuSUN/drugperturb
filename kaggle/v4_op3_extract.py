@@ -5,8 +5,10 @@ No validation or test response is computed here. The h5ad is deleted after use.
 import glob
 import hashlib
 import re
+import subprocess
 import sys
 import tarfile
+import time
 from pathlib import Path
 
 archive = glob.glob('/kaggle/input/**/drugperturb-src.archive', recursive=True)
@@ -23,7 +25,16 @@ env = support.python_env()
 support.run([python, '-m', 'pytest', '-q', '-p', 'no:cacheprovider', 'tests/test_v4_core.py'], log='o1_tests.log', env=env)
 target = Path(f'/tmp/raw/{source["file"]}')
 target.parent.mkdir(parents=True, exist_ok=True)
-support.run(['curl', '-sSfL', '--retry', '3', '-o', target, source['url']], cwd='/tmp')
+attempts = []
+for attempt in range(20):  # NCBI drops long TLS transfers; resume until the pinned size is reached
+    result = subprocess.run(['curl', '-sSL', '--retry', '5', '-C', '-', '-o', str(target), source['url']],
+                            capture_output=True, text=True)
+    attempts.append(dict(exit=result.returncode, bytes=target.stat().st_size if target.exists() else 0,
+                         stderr=result.stderr.strip()[-300:]))
+    print(attempts[-1], flush=True)
+    if target.exists() and target.stat().st_size >= int(source['bytes']):
+        break
+    time.sleep(10)
 digest = hashlib.sha256()
 with target.open('rb') as stream:
     for block in iter(lambda: stream.read(8 << 20), b''):
@@ -40,5 +51,5 @@ support.run([python, 'scripts/v4_op3_extract.py', '--h5ad', target, '--output-ro
 target.unlink()
 support.write_receipt('o1_extract', dict(system=support.system_info(), code_archive=archive[0],
                                          source=dict(url=source['url'], bytes=int(source['bytes']), sha256=sha256,
-                                                     protocol_sha256=source['sha256'])))
+                                                     protocol_sha256=source['sha256'], download_attempts=attempts)))
 print('O1 complete')

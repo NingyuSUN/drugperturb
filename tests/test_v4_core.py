@@ -159,6 +159,15 @@ def test_three_donor_identity_model_reproduces_zero_change_exactly():
     assert counterfactual.build_queries(query_rows(2), ['K_24h_1000nM'], ['test'], 3) == {}
 
 
+def test_load_truth_decompresses_once(tmp_path):
+    delta = np.arange(12.0).reshape(3, 4)
+    np.savez_compressed(tmp_path/'t.npz', keys=np.asarray(['a|K', 'b|K', 'c|L']), delta=delta)
+    truth = counterfactual.load_truth(tmp_path/'t.npz')
+    assert np.array_equal(truth[('c', 'L')], delta[2])
+    bases = {id(v.base) for v in truth.values()}
+    assert len(bases) == 1  # every row is a view of one decompressed matrix
+
+
 def test_diagnostics_flag_collapse_and_select_primary_by_rule():
     rng = np.random.default_rng(3)
     truth = {(f'c{i}', 'K'): rng.normal(0.5, 1.0, 20) for i in range(10)}

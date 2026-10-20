@@ -27,9 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ARMS = ['A0_v3_reference', 'I1_nb_likelihood', 'I2_counterfactual_pseudobulk', 'I3_nb_plus_pseudobulk']
 
 
-def load_truth(path):
-    with np.load(path, allow_pickle=False) as z:
-        return {tuple(k.split('|')): z['delta'][i] for i, k in enumerate(z['keys'])}
+load_truth = counterfactual.load_truth
 
 
 def read(path):

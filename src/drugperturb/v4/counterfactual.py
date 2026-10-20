@@ -22,6 +22,17 @@ SETTINGS = {
 }
 
 
+def load_truth(path):
+    """(compound, context) -> delta row, decompressing the matrix once.
+
+    Indexing ``z['delta']`` per key would re-read the whole array for every
+    row and keep each copy alive through the row view.
+    """
+    with np.load(path, allow_pickle=False) as z:
+        keys, delta = z['keys'], z['delta']
+    return {tuple(k.split('|')): delta[i] for i, k in enumerate(keys)}
+
+
 def replicate_mean(deltas, n_replicates):
     values = np.asarray(deltas, dtype=np.float64)
     if values.ndim != 2 or values.shape[0] != n_replicates or not np.isfinite(values).all():
