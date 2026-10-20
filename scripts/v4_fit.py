@@ -89,6 +89,7 @@ def main():
     obs, counts, library, query_table, train_rows, vehicle_contexts, truth, compounds = load_setting(
         args.setting, args.prepared)
     contexts, R = spec['contexts'], spec['replicates']
+    truth = {s: {k: v for k, v in t.items() if k[1] in contexts} for s, t in truth.items()}
     train_mask, validation_mask, cell_types = counterfactual.setting_cells(obs, contexts, vehicle_contexts)
     keep = np.flatnonzero(train_mask | validation_mask)
     sub = obs.iloc[keep].reset_index(drop=True)
@@ -97,14 +98,14 @@ def main():
     for split, rows in [('train', train_rows), ('validation', query_table), ('test', query_table)]:
         built = counterfactual.build_queries(rows, contexts, [split], R)
         queries[split] = built if split == 'test' else {k: v for k, v in built.items() if k in truth[split]}
-    if set(truth['validation']) & set(queries['validation']) != set(k for k in truth['validation'] if k[1] in contexts):
+    if set(queries['validation']) != set(truth['validation']):
         raise ValueError('validation queries do not cover the validation truth')
     wells = sorted({r['vehicle_well'] for q in queries.values() for v in q.values() for r in v})
     vehicles = v3_runner.vehicle_wells(sub, sub_counts, sub_library, wells)
     if not set(sub.loc[sub.Combo.isin(wells), 'role']) <= {'vehicle'}:
         raise ValueError('counterfactual source wells must be vehicle wells')
     width = sub_counts.shape[1]
-    reference = diagnostics.context_means({k: v for k, v in truth['train'].items() if k[1] in contexts})
+    reference = diagnostics.context_means(truth['train'])
 
     train_ids = compounds.loc[compounds.split.eq('train'), 'compound_id'].tolist()
     descriptors, kept = compound_table(compounds.compound_id.tolist(), compounds.canonical_smiles.tolist(), train_ids)
