@@ -1,0 +1,34 @@
+sciplex_Q1 pairs 26
+  B1c                                    rmse 1.2570 zero 1.3029 r 0.266 r_vs_B1a -0.002
+  B1a                                    rmse 0.8389 zero 1.3029 r 0.769 r_vs_B1a 0.000
+  M1c                                    rmse 1.2432 zero 1.3029 r 0.294 r_vs_B1a 0.002
+  M1a                                    rmse 0.8588 zero 1.3029 r 0.761 r_vs_B1a 0.018
+  A0_v3_reference                        rmse 1.3029 zero 1.3029 r -0.008 r_vs_B1a 0.005
+  A0_v3_reference_anch                   rmse 1.8492 zero 1.3029 r 0.635 r_vs_B1a -0.012
+  I1_nb_likelihood                       rmse 1.3040 zero 1.3029 r 0.027 r_vs_B1a 0.010
+  I1_nb_likelihood_anch                  rmse 1.0178 zero 1.3029 r 0.762 r_vs_B1a 0.046
+  I2_counterfactual_pseudobulk           rmse 1.0326 zero 1.3029 r 0.635 r_vs_B1a 0.015
+  I2_counterfactual_pseudobulk_anch      rmse 1.3603 zero 1.3029 r 0.654 r_vs_B1a -0.002
+  I3_nb_plus_pseudobulk                  rmse 0.8731 zero 1.3029 r 0.748 r_vs_B1a 0.041
+  I3_nb_plus_pseudobulk_anch             rmse 1.1217 zero 1.3029 r 0.748 r_vs_B1a 0.011
+  A0_v3_reference                        vehicle-pass reproduction RMSE 1.8895
+  I1_nb_likelihood                       vehicle-pass reproduction RMSE 1.1328
+  I2_counterfactual_pseudobulk           vehicle-pass reproduction RMSE 1.2699
+  I3_nb_plus_pseudobulk                  vehicle-pass reproduction RMSE 0.7021
+sciplex_Q2 pairs 303
+  B1c                                    rmse 0.8687 zero 0.9154 r 0.323 r_vs_B1a 0.002
+  B1a                                    rmse 0.6574 zero 0.9154 r 0.692 r_vs_B1a 0.000
+  M1c                                    rmse 0.8621 zero 0.9154 r 0.339 r_vs_B1a 0.008
+  M1a                                    rmse 0.6665 zero 0.9154 r 0.686 r_vs_B1a 0.019
+  A0_v3_reference                        rmse 0.9153 zero 0.9154 r 0.001 r_vs_B1a 0.024
+  A0_v3_reference_anch                   rmse 1.7135 zero 0.9154 r 0.419 r_vs_B1a -0.011
+  I1_nb_likelihood                       rmse 0.9240 zero 0.9154 r 0.036 r_vs_B1a 0.028
+  I1_nb_likelihood_anch                  rmse 0.8578 zero 0.9154 r 0.639 r_vs_B1a 0.030
+  I2_counterfactual_pseudobulk           rmse 0.8935 zero 0.9154 r 0.180 r_vs_B1a 0.023
+  I2_counterfactual_pseudobulk_anch      rmse 1.6434 zero 0.9154 r 0.414 r_vs_B1a -0.010
+  I3_nb_plus_pseudobulk                  rmse 0.9420 zero 0.9154 r 0.153 r_vs_B1a 0.023
+  I3_nb_plus_pseudobulk_anch             rmse 1.1857 zero 0.9154 r 0.478 r_vs_B1a 0.008
+  A0_v3_reference                        vehicle-pass reproduction RMSE 1.7287
+  I1_nb_likelihood                       vehicle-pass reproduction RMSE 0.8144
+  I2_counterfactual_pseudobulk           vehicle-pass reproduction RMSE 1.6434
+  I3_nb_plus_pseudobulk                  vehicle-pass reproduction RMSE 1.0704

@@ -207,6 +207,7 @@ evaluation:
     estimand: mean over contexts of the context mean compound RMSE difference
     E1_non_collapse: selected arm minus B0; supported if the upper bound is below zero
     E2_improvement: selected arm minus B1c and selected arm minus M1c; supported if both upper bounds are below zero
+    E3_beyond_vehicle_anchoring: selected arm minus B1a and selected arm minus M1a; supported if both upper bounds are below zero (amendment A1)
     multiplicity: E1 and E2 for the single selected arm are the confirmatory tests; every other interval is secondary and unadjusted
   op3_secondary:
     - each gate-passing context separately for the selected arm
@@ -235,7 +236,30 @@ order_of_operations:
   - diagnostics report from training and validation outputs, committed
   - seal arm predictions; select the OP3 primary arm on validation
   - evaluation kernel computes test truth and scores sealed predictions
-amendments: {}
+amendments:
+  A1_2026-10-20:
+    change: >-
+      Add two vehicle-anchored comparators, information-matched for predictions that are conditioned on the
+      matched vehicle cells: B1a = B1c + Vbar_train(context) - mean_r V_r(query) and
+      M1a = M1c + Vbar_train(context) - mean_r V_r(query), where V_r is the measured log1p CPM of the query's
+      replicate-r matched vehicle well and Vbar_train the mean over the context's training pairs of their
+      replicate-mean vehicle level (drugperturb.v4.anchoring). Both are sealed before test scoring. Add
+      endpoint E3: selected arm minus B1a and selected arm minus M1a, supported if both upper bounds are
+      below zero. A claim that a chemCPA arm predicts compound responses better than simple baselines
+      requires E3; E2 without E3 is reported as beating delta-only baselines through the vehicle
+      measurement. Add B1a and M1a to the sci-Plex3 exploratory analyses and to the diagnostics, with the
+      compound-specific r computed against B1a. E1, E2, the arms and the selection rule are unchanged.
+    reason: >-
+      On sci-Plex3 validation compounds the pseudobulk arms met the non-collapse criteria with validation
+      RMSE far below B1c and M1c (Q1: I2 1.033, I3 0.873 against 1.257 and 1.243), a gain of the size v3
+      attributed to vehicle anchoring: the truth T - V contains the matched vehicle well's sampling noise,
+      which a model given those cells can cancel and a delta-only baseline cannot. The anchored training
+      mean reached 0.839 (Q1) and 0.657 (Q2), better than every arm, and the arms' correlation with
+      truth after removing B1a was 0.02-0.04.
+    information_used: >-
+      sci-Plex3 (exploratory dataset) training and validation compounds only. No OP3 fit output, OP3
+      validation result or any test truth for a v4 method had been read.
+    effect: adds comparators and a stricter endpoint; nothing prespecified is removed or weakened
 compute:
   platform: Kaggle notebooks; CPU for extraction, preparation and evaluation; NVIDIA T4 x2 for fits
   determinism: seeds fixed; cuDNN nondeterminism not eliminated
