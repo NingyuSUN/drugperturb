@@ -1,0 +1,390 @@
+{
+  "method": "I1_nb_likelihood",
+  "protocol": "sciplex_Q1",
+  "status": "SEALED_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "predictions": {
+    "path": "I1_nb_likelihood_sciplex_Q1_predictions.npz",
+    "sha256": "ae48c22ef70a27f4b00f464cb49071dfd20f2b047bf66074dfd6cedf2711ba63"
+  },
+  "inputs": {
+    "protocol": {
+      "path": "/tmp/dp/configs/protocol_v4.yaml",
+      "sha256": "0245697cf38224b6e933acf40ca402b56611d102ef242db8f524ea2ebe238a78"
+    },
+    "model_cells": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v3-prepare/prepared/model_cells.npz",
+      "sha256": "37ccf4470d580483afd95375581f7af25e2a5ccbf469d7d7507ce125cb0542b9"
+    },
+    "queries": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v3-prepare/prepared/queries.tsv",
+      "sha256": "c7a7f6961c5491aa5aee6bd37caf2759eacc1845b95fbbd4e60e9cf253730863"
+    },
+    "validation_truth": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v3-prepare/prepared/validation_truth.npz",
+      "sha256": "3aa2fe4d18f3d5e5e25e591de0e5b985d8c7da03f15a0329f8d66326b29dde56"
+    },
+    "fit_s42": {
+      "path": "/kaggle/working/fits/I1_nb_likelihood_sciplex_Q1_s42.npz",
+      "sha256": "18975f695d194d57d519e15be0609dfde07be95781573d9b9e342a0a23252683"
+    },
+    "fit_s123": {
+      "path": "/kaggle/working/fits/I1_nb_likelihood_sciplex_Q1_s123.npz",
+      "sha256": "f19cae5a3f667db605697e9de1159c57e287073917b17f1bb64a3759436292d8"
+    },
+    "fit_s2026": {
+      "path": "/kaggle/working/fits/I1_nb_likelihood_sciplex_Q1_s2026.npz",
+      "sha256": "2747b9fd558fec73877f4c3ceaaef80e50585875598436be7272060ee38834ad"
+    }
+  },
+  "setting": "sciplex_Q1",
+  "arm": "I1_nb_likelihood",
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "final_prediction": "arithmetic mean of the seeds' predicted deltas",
+  "mean_seed_validation_rmse": 1.3063920873710095,
+  "seed_averaged": {
+    "train": {
+      "n": 119,
+      "contexts": 1,
+      "mean_abs_pred": 0.07950912951206268,
+      "mean_abs_true": 1.050547372053126,
+      "rmse": 1.2905617415448254,
+      "rmse_zero": 1.3164320428745961,
+      "rmse_minus_zero": -0.025870301329770248,
+      "mean_gene_pearson_r": 0.13185904178228888,
+      "least_squares_scale": 1.5677398517774628,
+      "effect_size_ratio": 0.27705417729479104,
+      "reference_r": 0.28601022690517225,
+      "compound_specific_r": 0.16055166627734554
+    },
+    "validation": {
+      "n": 26,
+      "contexts": 1,
+      "mean_abs_pred": 0.07158946919810422,
+      "mean_abs_true": 1.0362467818479655,
+      "rmse": 1.3039589000691723,
+      "rmse_zero": 1.3029246895912634,
+      "rmse_minus_zero": 0.001034210477908637,
+      "mean_gene_pearson_r": 0.02720847869383373,
+      "least_squares_scale": 0.46832224067251316,
+      "effect_size_ratio": 0.25045549938718137,
+      "reference_r": 0.2660736461149026,
+      "compound_specific_r": 0.04746833096164381
+    }
+  },
+  "latent": {
+    "train": {
+      "basal_norm": 7.120753685633342,
+      "drug_term_norm": 1.0529114405314128,
+      "drug_contrast_norm": 1.1177626649538677,
+      "latent_ratio": 0.1961740762455962
+    },
+    "validation": {
+      "basal_norm": 7.12075408299764,
+      "drug_term_norm": 0.9234894712766012,
+      "drug_contrast_norm": 0.9905168016751608,
+      "latent_ratio": 0.1813656719860074
+    }
+  },
+  "non_collapse": {
+    "effect_size_ratio": true,
+    "mean_gene_pearson_r": false,
+    "rmse_below_zero_change": false,
+    "non_collapsed": false
+  },
+  "engineering_smoke": false,
+  "fits": [
+    {
+      "name": "I1_nb_likelihood_sciplex_Q1_s42",
+      "setting": "sciplex_Q1",
+      "arm": "I1_nb_likelihood",
+      "seed": 42,
+      "arm_spec": {
+        "likelihood": "nb",
+        "decoder_activation": "linear",
+        "pseudobulk_weight": 0.0
+      },
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 24486,
+      "n_validation_cells": 4982,
+      "n_train_queries": 119,
+      "n_validation_queries": 26,
+      "n_test_queries": 26,
+      "n_vehicle_wells": 8,
+      "descriptor_columns": 196,
+      "seconds": 176.86363899000025,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "diagnostics": {
+        "train": {
+          "n": 119,
+          "contexts": 1,
+          "mean_abs_pred": 0.1368700334952585,
+          "mean_abs_true": 1.050547372053126,
+          "rmse": 1.2877611200063472,
+          "rmse_zero": 1.3164320428745961,
+          "rmse_minus_zero": -0.02867092286824867,
+          "mean_gene_pearson_r": 0.12815568899140903,
+          "least_squares_scale": 1.0993996524857135,
+          "effect_size_ratio": 0.4671135085876182,
+          "reference_r": 0.28601022690517225,
+          "compound_specific_r": 0.15279343296967954
+        },
+        "validation": {
+          "n": 26,
+          "contexts": 1,
+          "mean_abs_pred": 0.11281557668402108,
+          "mean_abs_true": 1.0362467818479655,
+          "rmse": 1.3070044160909196,
+          "rmse_zero": 1.3029246895912634,
+          "rmse_minus_zero": 0.0040797264996562665,
+          "mean_gene_pearson_r": 0.03888173376501612,
+          "least_squares_scale": 0.38007075560958326,
+          "effect_size_ratio": 0.38429259616295736,
+          "reference_r": 0.2660736461149026,
+          "compound_specific_r": 0.04306711903078223
+        }
+      },
+      "latent": {
+        "train": {
+          "per_cell_type": {
+            "A549": {
+              "basal_norm": 11.249622344970703,
+              "drug_term_norm": 1.127471685409546,
+              "vehicle_term_norm": 0.23000602424144745,
+              "drug_contrast_norm": 1.1927238702774048,
+              "latent_ratio": 0.1060234587173167
+            }
+          },
+          "basal_norm": 11.249622344970703,
+          "drug_term_norm": 1.127471685409546,
+          "vehicle_term_norm": 0.23000602424144745,
+          "drug_contrast_norm": 1.1927238702774048,
+          "latent_ratio": 0.1060234587173167
+        },
+        "validation": {
+          "per_cell_type": {
+            "A549": {
+              "basal_norm": 11.24962329864502,
+              "drug_term_norm": 0.9282983541488647,
+              "vehicle_term_norm": 0.23000602424144745,
+              "drug_contrast_norm": 1.0071890354156494,
+              "latent_ratio": 0.08953091216280656
+            }
+          },
+          "basal_norm": 11.24962329864502,
+          "drug_term_norm": 0.9282983541488647,
+          "vehicle_term_norm": 0.23000602424144745,
+          "drug_contrast_norm": 1.0071890354156494,
+          "latent_ratio": 0.08953091216280656
+        }
+      },
+      "best_validation_rmse": 1.3070044160909196,
+      "best_epoch": 40,
+      "epochs_executed": 90,
+      "stopped": "patience",
+      "validation_rmse": 1.3070044160909196
+    },
+    {
+      "name": "I1_nb_likelihood_sciplex_Q1_s123",
+      "setting": "sciplex_Q1",
+      "arm": "I1_nb_likelihood",
+      "seed": 123,
+      "arm_spec": {
+        "likelihood": "nb",
+        "decoder_activation": "linear",
+        "pseudobulk_weight": 0.0
+      },
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 24486,
+      "n_validation_cells": 4982,
+      "n_train_queries": 119,
+      "n_validation_queries": 26,
+      "n_test_queries": 26,
+      "n_vehicle_wells": 8,
+      "descriptor_columns": 196,
+      "seconds": 124.73594544300067,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "diagnostics": {
+        "train": {
+          "n": 119,
+          "contexts": 1,
+          "mean_abs_pred": 0.07992577762351316,
+          "mean_abs_true": 1.050547372053126,
+          "rmse": 1.2957933497418062,
+          "rmse_zero": 1.3164320428745961,
+          "rmse_minus_zero": -0.020638693132789678,
+          "mean_gene_pearson_r": 0.06601436068410398,
+          "least_squares_scale": 1.2670349945225468,
+          "effect_size_ratio": 0.2780985021082968,
+          "reference_r": 0.28601022690517225,
+          "compound_specific_r": 0.11899942078585503
+        },
+        "validation": {
+          "n": 26,
+          "contexts": 1,
+          "mean_abs_pred": 0.07118786502682208,
+          "mean_abs_true": 1.0362467818479655,
+          "rmse": 1.3054177875544508,
+          "rmse_zero": 1.3029246895912634,
+          "rmse_minus_zero": 0.002493097963187487,
+          "mean_gene_pearson_r": -0.0016930944816344788,
+          "least_squares_scale": 0.402079819365364,
+          "effect_size_ratio": 0.24955694949512658,
+          "reference_r": 0.2660736461149026,
+          "compound_specific_r": 0.04320537654774974
+        }
+      },
+      "latent": {
+        "train": {
+          "per_cell_type": {
+            "A549": {
+              "basal_norm": 7.270185470581055,
+              "drug_term_norm": 1.1637486219406128,
+              "vehicle_term_norm": 0.3485785126686096,
+              "drug_contrast_norm": 1.2956489324569702,
+              "latent_ratio": 0.17821401361764957
+            }
+          },
+          "basal_norm": 7.270185470581055,
+          "drug_term_norm": 1.1637486219406128,
+          "vehicle_term_norm": 0.3485785126686096,
+          "drug_contrast_norm": 1.2956489324569702,
+          "latent_ratio": 0.17821401361764957
+        },
+        "validation": {
+          "per_cell_type": {
+            "A549": {
+              "basal_norm": 7.270185470581055,
+              "drug_term_norm": 0.978107213973999,
+              "vehicle_term_norm": 0.3485785126686096,
+              "drug_contrast_norm": 1.103858232498169,
+              "latent_ratio": 0.15183357246729845
+            }
+          },
+          "basal_norm": 7.270185470581055,
+          "drug_term_norm": 0.978107213973999,
+          "vehicle_term_norm": 0.3485785126686096,
+          "drug_contrast_norm": 1.103858232498169,
+          "latent_ratio": 0.15183357246729845
+        }
+      },
+      "best_validation_rmse": 1.3054177875544508,
+      "best_epoch": 10,
+      "epochs_executed": 60,
+      "stopped": "patience",
+      "validation_rmse": 1.3054177875544508
+    },
+    {
+      "name": "I1_nb_likelihood_sciplex_Q1_s2026",
+      "setting": "sciplex_Q1",
+      "arm": "I1_nb_likelihood",
+      "seed": 2026,
+      "arm_spec": {
+        "likelihood": "nb",
+        "decoder_activation": "linear",
+        "pseudobulk_weight": 0.0
+      },
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 24486,
+      "n_validation_cells": 4982,
+      "n_train_queries": 119,
+      "n_validation_queries": 26,
+      "n_test_queries": 26,
+      "n_vehicle_wells": 8,
+      "descriptor_columns": 196,
+      "seconds": 144.29237207300048,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "diagnostics": {
+        "train": {
+          "n": 119,
+          "contexts": 1,
+          "mean_abs_pred": 0.06435792177231865,
+          "mean_abs_true": 1.050547372053126,
+          "rmse": 1.3002656543333833,
+          "rmse_zero": 1.3164320428745961,
+          "rmse_minus_zero": -0.016166388541212322,
+          "mean_gene_pearson_r": 0.06981146486674349,
+          "least_squares_scale": 1.289826653042204,
+          "effect_size_ratio": 0.22403430219257647,
+          "reference_r": 0.28601022690517225,
+          "compound_specific_r": 0.10358151838539326
+        },
+        "validation": {
+          "n": 26,
+          "contexts": 1,
+          "mean_abs_pred": 0.07438111284683019,
+          "mean_abs_true": 1.0362467818479655,
+          "rmse": 1.3067540584676585,
+          "rmse_zero": 1.3029246895912634,
+          "rmse_minus_zero": 0.003829368876395016,
+          "mean_gene_pearson_r": 0.017124737456065353,
+          "least_squares_scale": 0.35264193556061757,
+          "effect_size_ratio": 0.25822996233688406,
+          "reference_r": 0.2660736461149026,
+          "compound_specific_r": 0.04254848130945217
+        }
+      },
+      "latent": {
+        "train": {
+          "per_cell_type": {
+            "A549": {
+              "basal_norm": 2.8424532413482666,
+              "drug_term_norm": 0.8675140142440796,
+              "vehicle_term_norm": 0.024091025814414024,
+              "drug_contrast_norm": 0.8649151921272278,
+              "latent_ratio": 0.3042847564018224
+            }
+          },
+          "basal_norm": 2.8424532413482666,
+          "drug_term_norm": 0.8675140142440796,
+          "vehicle_term_norm": 0.024091025814414024,
+          "drug_contrast_norm": 0.8649151921272278,
+          "latent_ratio": 0.3042847564018224
+        },
+        "validation": {
+          "per_cell_type": {
+            "A549": {
+              "basal_norm": 2.8424534797668457,
+              "drug_term_norm": 0.8640628457069397,
+              "vehicle_term_norm": 0.024091025814414024,
+              "drug_contrast_norm": 0.8605031371116638,
+              "latent_ratio": 0.30273253132791716
+            }
+          },
+          "basal_norm": 2.8424534797668457,
+          "drug_term_norm": 0.8640628457069397,
+          "vehicle_term_norm": 0.024091025814414024,
+          "drug_contrast_norm": 0.8605031371116638,
+          "latent_ratio": 0.30273253132791716
+        }
+      },
+      "best_validation_rmse": 1.3067540584676585,
+      "best_epoch": 10,
+      "epochs_executed": 60,
+      "stopped": "patience",
+      "validation_rmse": 1.3067540584676585
+    }
+  ]
+}
