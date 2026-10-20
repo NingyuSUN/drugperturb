@@ -19,14 +19,10 @@ from sklearn.preprocessing import StandardScaler
 from drugperturb.chemistry import morgan_fingerprint
 from drugperturb.response import baseline_predictions
 from drugperturb.v3 import runner
+from drugperturb.v4.counterfactual import load_truth
 
 ROOT = Path(__file__).resolve().parents[1]
 ALPHAS = [float(a) for a in yaml.safe_load((ROOT/'configs/protocol_v3.yaml').read_text())['simple_context_baselines']['ridge_alphas']]
-
-
-def load_truth(path):
-    with np.load(path, allow_pickle=False) as z:
-        return {tuple(k.split('|')): z['delta'][i] for i, k in enumerate(z['keys'])}
 
 
 def rmse(truth, prediction):

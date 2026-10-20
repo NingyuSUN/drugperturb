@@ -20,6 +20,7 @@ from drugperturb.v3 import runner
 from drugperturb.v3.cells import load_model_archive
 from drugperturb.v3.descriptors import VEHICLE_ID, compound_table
 from drugperturb.v3.pseudobulk import normalize_counts
+from drugperturb.v4.counterfactual import load_truth
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -28,8 +29,7 @@ def load_inputs(prepared):
     obs, counts, library = load_model_archive(prepared/'model_cells.npz')
     queries = runner.read_query_table(prepared/'queries.tsv')
     vehicle_contexts = pd.read_csv(prepared/'vehicle_contexts.tsv', sep='\t')
-    with np.load(prepared/'validation_truth.npz', allow_pickle=False) as z:
-        truth = {tuple(k.split('|')): z['delta'][i] for i, k in enumerate(z['keys'])}
+    truth = load_truth(prepared/'validation_truth.npz')
     return obs, counts, library, queries, vehicle_contexts, truth
 
 
