@@ -1,0 +1,91 @@
+{
+  "status": "PREPARED_RESPONSE_FREE_FOR_TEST",
+  "test_outcomes_computed": false,
+  "model_cells": 196311,
+  "model_cell_roles": [
+    {
+      "cell_type": "Bcells",
+      "role": "train",
+      "cells": 20321
+    },
+    {
+      "cell_type": "Bcells",
+      "role": "validation",
+      "cells": 5784
+    },
+    {
+      "cell_type": "Bcells",
+      "role": "vehicle",
+      "cells": 4396
+    },
+    {
+      "cell_type": "Myeloid",
+      "role": "train",
+      "cells": 19582
+    },
+    {
+      "cell_type": "Myeloid",
+      "role": "validation",
+      "cells": 5213
+    },
+    {
+      "cell_type": "Myeloid",
+      "role": "vehicle",
+      "cells": 5235
+    },
+    {
+      "cell_type": "NKcells",
+      "role": "train",
+      "cells": 9298
+    },
+    {
+      "cell_type": "NKcells",
+      "role": "validation",
+      "cells": 2461
+    },
+    {
+      "cell_type": "NKcells",
+      "role": "vehicle",
+      "cells": 1957
+    },
+    {
+      "cell_type": "Tcells",
+      "role": "train",
+      "cells": 82470
+    },
+    {
+      "cell_type": "Tcells",
+      "role": "validation",
+      "cells": 22730
+    },
+    {
+      "cell_type": "Tcells",
+      "role": "vehicle",
+      "cells": 16864
+    }
+  ],
+  "training_truth_pairs": 250,
+  "validation_truth_pairs": 69,
+  "queries": 1692,
+  "frozen_genes": 2000,
+  "outputs": {
+    "frozen_genes.tsv": "d281230a030798b99982035af73e51aa0f58e796923b48adc3e9919589000103",
+    "model_cells.npz": "876e8a6eef9467804ebe13598a0adbd44ca0ef3b49174494e5535ab67730ca0d",
+    "queries.tsv": "352b7161ede0a3f1f965deb3efe11421bcf7a071c7cf4ab59b6ad206fc8f7d8f",
+    "train_truth.npz": "9d5e54c4d02c502a549479e4b8823d3ef31686040756c01d13fb5aa117072920",
+    "validation_truth.npz": "97888c95e01335020b487b7d45321e00c8026175b8eec7903bcf4c99665e10d8",
+    "vehicle_contexts.tsv": "2310d325e6714905da17e08788d365cbfd2d004a59b6086995226248c76c1327"
+  },
+  "inputs": {
+    "cells/cells.tsv.gz": "e2a32c376f52f7f6f73aa792e8a8ba27fd60a79d65b8824cb9012089b4771abb",
+    "cells/frozen_counts.npz": "ddda4dc5cc7bc65570e40df534b8cd7c3f9fbc442ff80154f876e1d13d0067d8",
+    "count_qc/compound_qc.tsv": "be1bc4b4d948ce57672e5d04c301c07201f394021896d8d79def67e6f8e5ded9",
+    "count_qc/context_summary.tsv": "4d91542819a3978c6146acddafab50126bd882be5993bd21fdec3bf95468edfd",
+    "count_qc/replicate_qc.tsv": "07a416ee7a6a61f513d297e84994d2d152acbab7cfe9b364efbeaa4b40d1a3f2",
+    "extract_receipt.json": "60510b13d9c43adad0e0197cdb4c4e0caeea07212b172b2698934b5ae79213dd",
+    "frozen_genes.tsv": "ccd4d29fd1f12f6a9d9bc1c323345b68cbbc7c15c73639b437c7e9f7d0460dbe",
+    "genes.tsv": "425aaffd1316f212ed982414cfa32b2e87587758548f3da3866fa5b7fac2e966",
+    "unit_counts.npz": "f38c5fccc9a5f27036f71f2fb4d2b8965c5569aa0d8beaf31bcbb283eefeb895",
+    "units.tsv": "71c2a6a1f0cf57bec7f5b5c43bd05c2138513b777e92be9265303d6243bebd18"
+  }
+}
