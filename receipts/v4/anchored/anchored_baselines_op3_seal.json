@@ -1,0 +1,40 @@
+{
+  "method": "anchored_baselines",
+  "protocol": "op3",
+  "status": "SEALED_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "predictions": {
+    "path": "anchored_baselines_op3_predictions.npz",
+    "sha256": "a6095eb3a7f57b33c3ed8994028b9e9bec8aff1c94fea6d40acbf6a04107845b"
+  },
+  "inputs": {
+    "protocol": {
+      "path": "/tmp/dp/configs/protocol_v4.yaml",
+      "sha256": "e4c2742127117115f156784727e8a8e870ca3fdf5e5460f939748ce7d85151d9"
+    },
+    "model_cells": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared/model_cells.npz",
+      "sha256": "876e8a6eef9467804ebe13598a0adbd44ca0ef3b49174494e5535ab67730ca0d"
+    },
+    "queries": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared/queries.tsv",
+      "sha256": "352b7161ede0a3f1f965deb3efe11421bcf7a071c7cf4ab59b6ad206fc8f7d8f"
+    },
+    "train_truth": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared/train_truth.npz",
+      "sha256": "9d5e54c4d02c502a549479e4b8823d3ef31686040756c01d13fb5aa117072920"
+    },
+    "context_baselines": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/sealed/context_baselines_op3_predictions.npz",
+      "sha256": "af4fe3759da0435058e6c0d6330c2e5a131dbf05ab8fea1202190fccb8432183"
+    },
+    "context_baselines_seal": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/sealed/context_baselines_op3_seal.json",
+      "sha256": "c96c61d5649b80797eec9ab78baee047f3915469c92366ab83b524477ea5a7b6"
+    }
+  },
+  "amendment": "A1",
+  "definition": "delta baseline + Vbar_train(context) - mean_r V_r(query)",
+  "n_training_pairs": 250,
+  "n_vehicle_wells": 189
+}

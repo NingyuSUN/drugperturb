@@ -1,0 +1,2 @@
+role	filename	url	bytes	sha256	sha256_source
+sc_counts	GSE279945_sc_counts_processed.h5ad	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE279nnn/GSE279945/suppl/GSE279945_sc_counts_processed.h5ad	14202156609	591afcbfccedcb9b56f8d637a8629fb581170ca8637cee72d532b24a2b04e240	recorded by kernel dp-v4-op3-extract version 1 at download (receipts/v4/op3/o1_extract.json); identical for an independent resumable local download completed 2026-10-20T02:47Z (file deleted after hashing)

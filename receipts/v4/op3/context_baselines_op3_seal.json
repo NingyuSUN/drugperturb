@@ -1,0 +1,118 @@
+{
+  "method": "context_baselines",
+  "protocol": "op3",
+  "status": "SEALED_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "predictions": {
+    "path": "context_baselines_op3_predictions.npz",
+    "sha256": "af4fe3759da0435058e6c0d6330c2e5a131dbf05ab8fea1202190fccb8432183"
+  },
+  "inputs": {
+    "protocol": {
+      "path": "/tmp/dp/configs/protocol_v4.yaml",
+      "sha256": "0245697cf38224b6e933acf40ca402b56611d102ef242db8f524ea2ebe238a78"
+    },
+    "train_truth": {
+      "path": "/kaggle/working/prepared/train_truth.npz",
+      "sha256": "9d5e54c4d02c502a549479e4b8823d3ef31686040756c01d13fb5aa117072920"
+    },
+    "validation_truth": {
+      "path": "/kaggle/working/prepared/validation_truth.npz",
+      "sha256": "97888c95e01335020b487b7d45321e00c8026175b8eec7903bcf4c99665e10d8"
+    },
+    "queries": {
+      "path": "/kaggle/working/prepared/queries.tsv",
+      "sha256": "352b7161ede0a3f1f965deb3efe11421bcf7a071c7cf4ab59b6ad206fc8f7d8f"
+    }
+  },
+  "selection": {
+    "Tcells_24h_1000nM": {
+      "alpha": 100.0,
+      "validation_rmse": [
+        0.30240808983320056,
+        0.3005731549732421,
+        0.2901893593298154,
+        0.2798527704499498,
+        0.2823669326364668,
+        0.28332287964392827
+      ],
+      "n_components": 20,
+      "n_train": 83,
+      "validation_rmse_simple": {
+        "B0": 0.30212143048062995,
+        "B1": 0.2834476761307464,
+        "B2": 0.377820360545251
+      },
+      "n_validation": 21,
+      "n_test_queries": 35
+    },
+    "NKcells_24h_1000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.8815739049360027,
+        0.8802001557758198,
+        0.8707855013111578,
+        0.8547219693229344,
+        0.8525892653226214,
+        0.8526831282674001
+      ],
+      "n_components": 20,
+      "n_train": 29,
+      "validation_rmse_simple": {
+        "B0": 0.8684678108680954,
+        "B1": 0.8527016218864046,
+        "B2": 1.2549244376246018
+      },
+      "n_validation": 10,
+      "n_test_queries": 35
+    },
+    "Bcells_24h_1000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.5882541512900886,
+        0.5847311047234486,
+        0.5656757106047744,
+        0.5431648241473562,
+        0.5418063557428368,
+        0.5423858989465941
+      ],
+      "n_components": 20,
+      "n_train": 73,
+      "validation_rmse_simple": {
+        "B0": 0.561141249220198,
+        "B1": 0.5424721322466737,
+        "B2": 0.7701269840910429
+      },
+      "n_validation": 20,
+      "n_test_queries": 35
+    },
+    "Myeloid_24h_1000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.3667640640805097,
+        0.36524035005356953,
+        0.35432018106047297,
+        0.33134351859835615,
+        0.3266870284467322,
+        0.3267593896822262
+      ],
+      "n_components": 20,
+      "n_train": 65,
+      "validation_rmse_simple": {
+        "B0": 0.33263749616398913,
+        "B1": 0.32678501491273426,
+        "B2": 0.47508206518839785
+      },
+      "n_validation": 18,
+      "n_test_queries": 35
+    }
+  },
+  "alphas": [
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0,
+    10000.0
+  ]
+}

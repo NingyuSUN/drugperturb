@@ -1,0 +1,467 @@
+{
+  "endpoints": {
+    "selected_arm": "I1_nb_likelihood",
+    "selection_any_passing": true,
+    "E1_non_collapse": {
+      "estimate": {
+        "point_estimate": 0.17091459379540272,
+        "ci_lower": -0.004018639914913464,
+        "ci_upper": 0.5322754752863642,
+        "contexts": [
+          "Tcells_24h_1000nM",
+          "Bcells_24h_1000nM",
+          "Myeloid_24h_1000nM"
+        ],
+        "n_groups": 33,
+        "draws": 2000,
+        "valid_draws": 2000,
+        "seed": 2026,
+        "negative_favors": "candidate"
+      },
+      "supported": false
+    },
+    "E2_improvement": {
+      "estimates": {
+        "B1c": {
+          "point_estimate": 0.18342335681534427,
+          "ci_lower": 0.008609972031013264,
+          "ci_upper": 0.5439759406652362,
+          "contexts": [
+            "Tcells_24h_1000nM",
+            "Bcells_24h_1000nM",
+            "Myeloid_24h_1000nM"
+          ],
+          "n_groups": 33,
+          "draws": 2000,
+          "valid_draws": 2000,
+          "seed": 2026,
+          "negative_favors": "candidate"
+        },
+        "M1c": {
+          "point_estimate": 0.18372209074182833,
+          "ci_lower": 0.008683814174060063,
+          "ci_upper": 0.5456062634776313,
+          "contexts": [
+            "Tcells_24h_1000nM",
+            "Bcells_24h_1000nM",
+            "Myeloid_24h_1000nM"
+          ],
+          "n_groups": 33,
+          "draws": 2000,
+          "valid_draws": 2000,
+          "seed": 2026,
+          "negative_favors": "candidate"
+        }
+      },
+      "supported": false
+    },
+    "E3_beyond_vehicle_anchoring": {
+      "estimates": {
+        "B1a": {
+          "point_estimate": 0.2584332946101949,
+          "ci_lower": 0.08160126660359183,
+          "ci_upper": 0.6187517707835652,
+          "contexts": [
+            "Tcells_24h_1000nM",
+            "Bcells_24h_1000nM",
+            "Myeloid_24h_1000nM"
+          ],
+          "n_groups": 33,
+          "draws": 2000,
+          "valid_draws": 2000,
+          "seed": 2026,
+          "negative_favors": "candidate"
+        },
+        "M1a": {
+          "point_estimate": 0.25814404708707145,
+          "ci_lower": 0.08141683634345398,
+          "ci_upper": 0.618745040636916,
+          "contexts": [
+            "Tcells_24h_1000nM",
+            "Bcells_24h_1000nM",
+            "Myeloid_24h_1000nM"
+          ],
+          "n_groups": 33,
+          "draws": 2000,
+          "valid_draws": 2000,
+          "seed": 2026,
+          "negative_favors": "candidate"
+        }
+      },
+      "amendment": "A1",
+      "supported": false
+    },
+    "gate_passing_contexts": [
+      "Tcells_24h_1000nM",
+      "Bcells_24h_1000nM",
+      "Myeloid_24h_1000nM"
+    ]
+  },
+  "pooled": {
+    "A0_v3_reference_minus_B0": {
+      "point_estimate": -0.0005573541987066842,
+      "ci_lower": -0.002236949999950364,
+      "ci_upper": 0.000992103290698413,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "A0_v3_reference_minus_B1c": {
+      "point_estimate": 0.011951408821234874,
+      "ci_lower": 0.003532312204532417,
+      "ci_upper": 0.021085684937829783,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "A0_v3_reference_minus_M1c": {
+      "point_estimate": 0.012250142747718936,
+      "ci_lower": 0.003261467684160489,
+      "ci_upper": 0.022202197760324945,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "A0_v3_reference_minus_B1a": {
+      "point_estimate": 0.08696134661608555,
+      "ci_lower": 0.07573052668401958,
+      "ci_upper": 0.09990728231566053,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "A0_v3_reference_minus_M1a": {
+      "point_estimate": 0.08667209909296203,
+      "ci_lower": 0.0748291993201577,
+      "ci_upper": 0.10014323105884143,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I1_nb_likelihood_minus_B0": {
+      "point_estimate": 0.17091459379540272,
+      "ci_lower": -0.004018639914913464,
+      "ci_upper": 0.5322754752863642,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I1_nb_likelihood_minus_B1c": {
+      "point_estimate": 0.18342335681534427,
+      "ci_lower": 0.008609972031013264,
+      "ci_upper": 0.5439759406652362,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I1_nb_likelihood_minus_M1c": {
+      "point_estimate": 0.18372209074182833,
+      "ci_lower": 0.008683814174060063,
+      "ci_upper": 0.5456062634776313,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I1_nb_likelihood_minus_B1a": {
+      "point_estimate": 0.2584332946101949,
+      "ci_lower": 0.08160126660359183,
+      "ci_upper": 0.6187517707835652,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I1_nb_likelihood_minus_M1a": {
+      "point_estimate": 0.25814404708707145,
+      "ci_lower": 0.08141683634345398,
+      "ci_upper": 0.618745040636916,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I2_counterfactual_pseudobulk_minus_B0": {
+      "point_estimate": 0.0009565299349516748,
+      "ci_lower": -0.006486909287184624,
+      "ci_upper": 0.009829912176147045,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I2_counterfactual_pseudobulk_minus_B1c": {
+      "point_estimate": 0.01346529295489323,
+      "ci_lower": 0.005761538044443908,
+      "ci_upper": 0.02256376424254241,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I2_counterfactual_pseudobulk_minus_M1c": {
+      "point_estimate": 0.013764026881377296,
+      "ci_lower": 0.005987629008960644,
+      "ci_upper": 0.02292704631067615,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I2_counterfactual_pseudobulk_minus_B1a": {
+      "point_estimate": 0.08847523074974391,
+      "ci_lower": 0.0784071922177939,
+      "ci_upper": 0.09972072760594038,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I2_counterfactual_pseudobulk_minus_M1a": {
+      "point_estimate": 0.08818598322662037,
+      "ci_lower": 0.07826946159588717,
+      "ci_upper": 0.09990108752270212,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I3_nb_plus_pseudobulk_minus_B0": {
+      "point_estimate": 0.19588622136676023,
+      "ci_lower": 0.002002151735527552,
+      "ci_upper": 0.5880254223557693,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I3_nb_plus_pseudobulk_minus_B1c": {
+      "point_estimate": 0.2083949843867018,
+      "ci_lower": 0.0187998437312619,
+      "ci_upper": 0.5993192510877928,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I3_nb_plus_pseudobulk_minus_M1c": {
+      "point_estimate": 0.20869371831318584,
+      "ci_lower": 0.01962882521321033,
+      "ci_upper": 0.5993310525905374,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I3_nb_plus_pseudobulk_minus_B1a": {
+      "point_estimate": 0.2834049221815525,
+      "ci_lower": 0.09002586019779246,
+      "ci_upper": 0.6744218305595531,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "I3_nb_plus_pseudobulk_minus_M1a": {
+      "point_estimate": 0.28311567465842896,
+      "ci_lower": 0.09016672635355708,
+      "ci_upper": 0.6744811657635597,
+      "contexts": [
+        "Tcells_24h_1000nM",
+        "Bcells_24h_1000nM",
+        "Myeloid_24h_1000nM"
+      ],
+      "n_groups": 33,
+      "draws": 2000,
+      "valid_draws": 2000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    }
+  },
+  "selection": {
+    "status": "SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING",
+    "test_outcomes_loaded": false,
+    "rule": "among candidates meeting the non-collapse criteria on OP3 validation compounds, the lowest mean over seeds of the per-seed validation rmse (v3 selection metric); ties by listed order",
+    "arms": {
+      "A0_v3_reference": {
+        "validation_rmse": 0.4673773556397866,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": true,
+          "pass_rmse_below_zero_change": true,
+          "non_collapsed": true
+        },
+        "sha256": "cfdcbb34ab968ad8e597330d75c65415d703701fa01d9a5713fcbb0237917fe6"
+      },
+      "I1_nb_likelihood": {
+        "validation_rmse": 0.46447598348782804,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": true,
+          "pass_rmse_below_zero_change": true,
+          "non_collapsed": true
+        },
+        "sha256": "002f3661b993b82c956388c7c01b6bd38d4ca399cb1e08d4e65a8c8edbb8d12f"
+      },
+      "I2_counterfactual_pseudobulk": {
+        "validation_rmse": 0.4654963985091392,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": true,
+          "pass_rmse_below_zero_change": true,
+          "non_collapsed": true
+        },
+        "sha256": "abdcfcc1bfa1e422fb71825b181b4277860dad102e0f600921d52f405ddc7ce9"
+      },
+      "I3_nb_plus_pseudobulk": {
+        "validation_rmse": 0.5317169580155244,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": true,
+          "pass_rmse_below_zero_change": false,
+          "non_collapsed": false
+        },
+        "sha256": "eebe0a1894c567c2a6b75128dafd289beb39ac9d17a8c7e4f7f52717bded2ecf"
+      }
+    },
+    "selected": "I1_nb_likelihood",
+    "passing": [
+      "I1_nb_likelihood",
+      "I2_counterfactual_pseudobulk"
+    ],
+    "any_passing": true,
+    "validation_rmse": {
+      "I1_nb_likelihood": 0.46447598348782804,
+      "I2_counterfactual_pseudobulk": 0.4654963985091392,
+      "I3_nb_plus_pseudobulk": 0.5317169580155244
+    }
+  },
+  "seals": {
+    "A0_v3_reference": "cfdcbb34ab968ad8e597330d75c65415d703701fa01d9a5713fcbb0237917fe6",
+    "I1_nb_likelihood": "002f3661b993b82c956388c7c01b6bd38d4ca399cb1e08d4e65a8c8edbb8d12f",
+    "I2_counterfactual_pseudobulk": "abdcfcc1bfa1e422fb71825b181b4277860dad102e0f600921d52f405ddc7ce9",
+    "I3_nb_plus_pseudobulk": "eebe0a1894c567c2a6b75128dafd289beb39ac9d17a8c7e4f7f52717bded2ecf"
+  },
+  "test_truth_first_computed_here": true
+}

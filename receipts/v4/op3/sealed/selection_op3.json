@@ -1,0 +1,58 @@
+{
+  "status": "SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "rule": "among candidates meeting the non-collapse criteria on OP3 validation compounds, the lowest mean over seeds of the per-seed validation rmse (v3 selection metric); ties by listed order",
+  "arms": {
+    "A0_v3_reference": {
+      "validation_rmse": 0.4673773556397866,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": true,
+        "non_collapsed": true
+      },
+      "sha256": "cfdcbb34ab968ad8e597330d75c65415d703701fa01d9a5713fcbb0237917fe6"
+    },
+    "I1_nb_likelihood": {
+      "validation_rmse": 0.46447598348782804,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": true,
+        "non_collapsed": true
+      },
+      "sha256": "002f3661b993b82c956388c7c01b6bd38d4ca399cb1e08d4e65a8c8edbb8d12f"
+    },
+    "I2_counterfactual_pseudobulk": {
+      "validation_rmse": 0.4654963985091392,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": true,
+        "non_collapsed": true
+      },
+      "sha256": "abdcfcc1bfa1e422fb71825b181b4277860dad102e0f600921d52f405ddc7ce9"
+    },
+    "I3_nb_plus_pseudobulk": {
+      "validation_rmse": 0.5317169580155244,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": false,
+        "non_collapsed": false
+      },
+      "sha256": "eebe0a1894c567c2a6b75128dafd289beb39ac9d17a8c7e4f7f52717bded2ecf"
+    }
+  },
+  "selected": "I1_nb_likelihood",
+  "passing": [
+    "I1_nb_likelihood",
+    "I2_counterfactual_pseudobulk"
+  ],
+  "any_passing": true,
+  "validation_rmse": {
+    "I1_nb_likelihood": 0.46447598348782804,
+    "I2_counterfactual_pseudobulk": 0.4654963985091392,
+    "I3_nb_plus_pseudobulk": 0.5317169580155244
+  }
+}

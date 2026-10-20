@@ -1,0 +1,96 @@
+{
+  "status": "EXTRACTED_TEST_RESPONSES_NOT_COMPUTED",
+  "test_outcomes_computed": false,
+  "cells": 298087,
+  "genes": 21265,
+  "units": 2268,
+  "model_cells": 196311,
+  "model_cell_roles": {
+    "train": 131671,
+    "validation": 36188,
+    "vehicle": 28452
+  },
+  "dropped_cells": {
+    "test": 51388,
+    "control": 50388
+  },
+  "eligible_training_pairs": 250,
+  "vehicle_cells": 28452,
+  "context_summary": [
+    {
+      "context_id": "Bcells_24h_1000nM",
+      "eligible_train_compounds": 73,
+      "eligible_train_groups": 72,
+      "eligible_validation_compounds": 20,
+      "eligible_validation_groups": 19,
+      "eligible_test_compounds": 28,
+      "eligible_test_groups": 28,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "Myeloid_24h_1000nM",
+      "eligible_train_compounds": 65,
+      "eligible_train_groups": 65,
+      "eligible_validation_compounds": 18,
+      "eligible_validation_groups": 17,
+      "eligible_test_compounds": 26,
+      "eligible_test_groups": 26,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "NKcells_24h_1000nM",
+      "eligible_train_compounds": 29,
+      "eligible_train_groups": 29,
+      "eligible_validation_compounds": 10,
+      "eligible_validation_groups": 9,
+      "eligible_test_compounds": 9,
+      "eligible_test_groups": 9,
+      "test_count_gate_met": false
+    },
+    {
+      "context_id": "Tcells_24h_1000nM",
+      "eligible_train_compounds": 83,
+      "eligible_train_groups": 82,
+      "eligible_validation_compounds": 21,
+      "eligible_validation_groups": 20,
+      "eligible_test_compounds": 33,
+      "eligible_test_groups": 33,
+      "test_count_gate_met": true
+    }
+  ],
+  "checks": {
+    "design_equals_committed_manifests": true,
+    "unit_cell_counts_equal_authors": {
+      "cell_type": true,
+      "cell_type_orig": false,
+      "matched": [
+        "cell_type"
+      ]
+    },
+    "unit_library_equals_cell_libraries": true,
+    "authors_normalization": {
+      "cells": 500,
+      "median_scale": 10000.0,
+      "scale_iqr": [
+        10000.0,
+        10000.0
+      ],
+      "max_within_cell_relative_deviation": 8.881784197001252e-16,
+      "required": false
+    },
+    "model_cells_exclude_test_and_controls": true,
+    "cell_frozen_counts_sum_to_unit_pseudobulk": true
+  },
+  "frozen_gene_detection_min": 0.05001405876564038,
+  "outputs": {
+    "cells/cells.tsv.gz": "e2a32c376f52f7f6f73aa792e8a8ba27fd60a79d65b8824cb9012089b4771abb",
+    "cells/frozen_counts.npz": "ddda4dc5cc7bc65570e40df534b8cd7c3f9fbc442ff80154f876e1d13d0067d8",
+    "count_qc/compound_qc.tsv": "be1bc4b4d948ce57672e5d04c301c07201f394021896d8d79def67e6f8e5ded9",
+    "count_qc/context_summary.tsv": "4d91542819a3978c6146acddafab50126bd882be5993bd21fdec3bf95468edfd",
+    "count_qc/replicate_qc.tsv": "07a416ee7a6a61f513d297e84994d2d152acbab7cfe9b364efbeaa4b40d1a3f2",
+    "frozen_genes.tsv": "ccd4d29fd1f12f6a9d9bc1c323345b68cbbc7c15c73639b437c7e9f7d0460dbe",
+    "genes.tsv": "425aaffd1316f212ed982414cfa32b2e87587758548f3da3866fa5b7fac2e966",
+    "unit_counts.npz": "f38c5fccc9a5f27036f71f2fb4d2b8965c5569aa0d8beaf31bcbb283eefeb895",
+    "units.tsv": "71c2a6a1f0cf57bec7f5b5c43bd05c2138513b777e92be9265303d6243bebd18"
+  }
+}

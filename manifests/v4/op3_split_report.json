@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "test_fraction": 0.25,
+  "validation_fraction": 0.15,
+  "required_test_compounds": 20,
+  "required_test_groups": 10,
+  "compound_count_unit": "unique_canonical_parent",
+  "train": {
+    "n_compound_ids": 85,
+    "n_compounds": 85,
+    "n_groups": 84
+  },
+  "validation": {
+    "n_compound_ids": 21,
+    "n_compounds": 21,
+    "n_groups": 20
+  },
+  "test": {
+    "n_compound_ids": 35,
+    "n_compounds": 35,
+    "n_groups": 35
+  },
+  "test_minimum_met": true
+}

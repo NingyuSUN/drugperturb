@@ -1,0 +1,5 @@
+context_id	eligible_train_compounds	eligible_train_groups	eligible_validation_compounds	eligible_validation_groups	eligible_test_compounds	eligible_test_groups	test_count_gate_met
+Bcells_24h_1000nM	73	72	20	19	28	28	True
+Myeloid_24h_1000nM	65	65	18	17	26	26	True
+NKcells_24h_1000nM	29	29	10	9	9	9	False
+Tcells_24h_1000nM	83	82	21	20	33	33	True
