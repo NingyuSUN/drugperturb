@@ -26,6 +26,8 @@ from drugperturb.v4.counterfactual import SETTINGS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINES = ['B0', 'B1c', 'B2c', 'M1c']
+ANCHORED = ['B1a', 'M1a']  # amendment A1
+COMPARATORS = ['B0', 'B1c', 'M1c', *ANCHORED]
 
 
 def read(path):
@@ -56,6 +58,8 @@ def main():
                            anchored=by_key(arrays['test_keys'], arrays['test_anchored']), seal=seal)
     baselines, _ = load_sealed(locate(args.sealed_root, 'context_baselines_op3_seal.json'), 'context_baselines', 'op3')
     simple = {m: by_key(baselines['keys'], baselines[m]) for m in BASELINES}
+    anchored, _ = load_sealed(locate(args.sealed_root, 'anchored_baselines_op3_seal.json'), 'anchored_baselines', 'op3')
+    simple.update({m: by_key(anchored['keys'], anchored[m]) for m in ANCHORED})
     selection = json.loads((locate(args.sealed_root, 'selection_op3.json')/'selection_op3.json').read_text())
     if selection['status'] != 'SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING' or any(
             selection['arms'][a]['sha256'] != sealed[a]['seal']['predictions']['sha256'] for a in ARMS):
@@ -89,7 +93,7 @@ def main():
                         | set(pairs.loc[pairs.context_id.eq(context), 'vehicle_unit']))
         index = [position[u] for u in needed]
         truth = design.strict_deltas(unit_counts[index].toarray(), unit_library[index], needed, pairs, keys, columns)
-        methods = {m: np.vstack([simple[m][k] for k in keys]) for m in BASELINES}
+        methods = {m: np.vstack([simple[m][k] for k in keys]) for m in [*BASELINES, *ANCHORED]}
         for arm in ARMS:
             methods[arm] = np.vstack([sealed[arm]['contrast'][k] for k in keys])
             methods[f'{arm}_anchored'] = np.vstack([sealed[arm]['anchored'][k] for k in keys])
@@ -102,13 +106,16 @@ def main():
             rows.append(dict(context_id=context, gate_met=gate, method=name, **summarize_compound_metrics(table)))
         truth_map = dict(zip(keys, truth))
         reference = {context: methods['B1c'][0]}
-        for arm in [*ARMS, 'M1c']:
-            s = diagnostics.summarize(dict(zip(keys, methods[arm])), truth_map, reference)
+        b1a = dict(zip(keys, methods['B1a']))
+        for arm in [*ARMS, 'M1c', 'B1a', 'M1a']:
+            predicted = dict(zip(keys, methods[arm]))
+            s = diagnostics.summarize(predicted, truth_map, reference)
+            s['r_vs_B1a'] = float(np.mean([diagnostics.pearson(predicted[k]-b1a[k], truth_map[k]-b1a[k]) for k in keys]))
             test_diagnostics.append(dict(context_id=context, method=arm, **s))
         if not gate:
             continue
         for candidate in ARMS:
-            for baseline in ['B0', 'B1c', 'M1c']:
+            for baseline in COMPARATORS:
                 b = paired_scaffold_bootstrap(truth, methods[candidate], methods[baseline], ids, groups)
                 contrasts.append(dict(context_id=context, candidate=candidate, baseline=baseline,
                                       primary_arm=candidate == chosen,
@@ -119,10 +126,13 @@ def main():
     pooled = {f'{c}_minus_{b}': pooled_bootstrap(d) for (c, b), d in differences.items()}
     e1 = pooled.get(f'{chosen}_minus_B0')
     e2 = {b: pooled.get(f'{chosen}_minus_{b}') for b in ['B1c', 'M1c']}
+    e3 = {b: pooled.get(f'{chosen}_minus_{b}') for b in ANCHORED}
     endpoints = dict(
         selected_arm=chosen, selection_any_passing=selection['any_passing'],
         E1_non_collapse=dict(estimate=e1, supported=bool(e1 and e1['ci_upper'] < 0)),
         E2_improvement=dict(estimates=e2, supported=bool(all(v and v['ci_upper'] < 0 for v in e2.values()))),
+        E3_beyond_vehicle_anchoring=dict(estimates=e3, amendment='A1',
+                                         supported=bool(all(v and v['ci_upper'] < 0 for v in e3.values()))),
         gate_passing_contexts=[c for c in SETTINGS['op3']['contexts']
                                if str(summary_qc.loc[c, 'test_count_gate_met']) == 'True'])
     pd.concat(per_compound, ignore_index=True).to_csv(out/'per_compound.tsv', sep='\t', index=False)

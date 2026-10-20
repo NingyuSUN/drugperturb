@@ -52,6 +52,9 @@ def main():
         v3_models[q] = by_key(arrays['test_keys'], arrays['test_contrast'])
     baselines, _ = load_sealed(locate(args.sealed_root, 'context_baselines_Q2_seal.json'), 'context_baselines', 'Q2')
     simple = {m: by_key(baselines['keys'], baselines[m]) for m in ['B0', 'B1c', 'B2c', 'M1c']}
+    anchored, _ = load_sealed(locate(args.sealed_root, 'anchored_baselines_sciplex_Q2_seal.json'), 'anchored_baselines',
+                              'sciplex_Q2')
+    simple.update({m: by_key(anchored['keys'], anchored[m]) for m in ['B1a', 'M1a']})  # amendment A1
     v1 = frozen_v1()
     published = read(ROOT/'reports/v3/per_compound.tsv')
 
@@ -76,7 +79,7 @@ def main():
                              usecols=['gene_id', *keys], index_col='gene_id')
         truth, _ = measured_responses(counts, ctx_q, pairs, ids, gene_ids)
         methods = {'B0': np.zeros_like(truth), 'v3_chemcpa_Q2': np.vstack([v3_models['Q2'][(c, context)] for c in ids])}
-        for m in ['B1c', 'B2c', 'M1c']:
+        for m in ['B1c', 'B2c', 'M1c', 'B1a', 'M1a']:
             methods[m] = np.vstack([simple[m][(c, context)] for c in ids])
         for arm in ARMS:
             methods[f'{arm}_Q2'] = np.vstack([arms[(arm, 'sciplex_Q2')][(c, context)] for c in ids])
@@ -103,14 +106,18 @@ def main():
                                 max_abs_rmse_difference=float(np.max(np.abs(merged.rmse_published.astype(float)-merged.rmse)))))
         truth_map = {(c, context): t for c, t in zip(ids, truth)}
         reference = {context: methods['B1c'][0]}
-        for name in [f'{a}_Q2' for a in ARMS]+['v3_chemcpa_Q2', 'M1c']+([f'{a}_Q1' for a in ARMS] if context == Q1_CONTEXT else []):
-            s = diagnostics.summarize({(c, context): p for c, p in zip(ids, methods[name])}, truth_map, reference)
+        b1a = {(c, context): p for c, p in zip(ids, methods['B1a'])}
+        for name in [f'{a}_Q2' for a in ARMS]+['v3_chemcpa_Q2', 'M1c', 'B1a', 'M1a']+(
+                [f'{a}_Q1' for a in ARMS] if context == Q1_CONTEXT else []):
+            predicted = {(c, context): p for c, p in zip(ids, methods[name])}
+            s = diagnostics.summarize(predicted, truth_map, reference)
+            s['r_vs_B1a'] = float(np.mean([diagnostics.pearson(predicted[k]-b1a[k], truth_map[k]-b1a[k]) for k in predicted]))
             test_diagnostics.append(dict(context_id=context, method=name, **s))
         if not gate:
             continue
-        tests = [(f'{a}_Q2', b) for a in ARMS for b in ['B0', 'B1c', 'M1c']]
+        tests = [(f'{a}_Q2', b) for a in ARMS for b in ['B0', 'B1c', 'M1c', 'B1a', 'M1a']]
         if context == Q1_CONTEXT:
-            tests += [(f'{a}_Q1', b) for a in ARMS for b in ['B0', 'v1_B1', 'v1_M1']]
+            tests += [(f'{a}_Q1', b) for a in ARMS for b in ['B0', 'v1_B1', 'v1_M1', 'B1a', 'M1a']]
         for candidate, baseline in tests:
             b = paired_scaffold_bootstrap(truth, methods[candidate], methods[baseline], ids, groups)
             contrasts.append(dict(context_id=context, candidate=candidate, baseline=baseline, label='exploratory',

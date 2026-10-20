@@ -159,6 +159,23 @@ def test_three_donor_identity_model_reproduces_zero_change_exactly():
     assert counterfactual.build_queries(query_rows(2), ['K_24h_1000nM'], ['test'], 3) == {}
 
 
+def test_anchored_training_mean_is_mean_treated_level_minus_query_vehicle():
+    """B1a(q) = mean over training pairs of their treated level - V(q), when truth = T - V."""
+    from drugperturb.v4 import anchoring
+    rng = np.random.default_rng(5)
+    levels = {f'v{i}': rng.normal(size=4) for i in range(4)}
+    rec = lambda wells: [dict(vehicle_well=w) for w in wells]
+    train = {('a', 'K'): rec(['v0', 'v1']), ('b', 'K'): rec(['v2', 'v3']), ('c', 'K'): rec(['v1', 'v2'])}
+    treated = {k: rng.normal(size=4) for k in train}  # replicate-mean treated level
+    truth = {k: treated[k]-np.mean([levels[r['vehicle_well']] for r in v], axis=0) for k, v in train.items()}
+    vbar = anchoring.training_vehicle_means(train, levels, sorted(train))
+    b1c = np.mean(list(truth.values()), axis=0)
+    query = {('q', 'K'): rec(['v3', 'v0'])}
+    got = anchoring.anchor({('q', 'K'): b1c}, query, levels, vbar)[('q', 'K')]
+    expected = np.mean(list(treated.values()), axis=0)-(levels['v3']+levels['v0'])/2
+    assert np.allclose(got, expected)
+
+
 def test_load_truth_decompresses_once(tmp_path):
     delta = np.arange(12.0).reshape(3, 4)
     np.savez_compressed(tmp_path/'t.npz', keys=np.asarray(['a|K', 'b|K', 'c|L']), delta=delta)

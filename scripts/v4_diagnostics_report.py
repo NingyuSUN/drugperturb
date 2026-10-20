@@ -19,7 +19,7 @@ import v3_context_baselines as v3b  # noqa: E402
 from v4_fit import ARMS, load_truth  # noqa: E402
 from drugperturb.chemistry import morgan_fingerprint  # noqa: E402
 from drugperturb.response import baseline_predictions  # noqa: E402
-from drugperturb.v4 import counterfactual, diagnostics  # noqa: E402
+from drugperturb.v4 import anchoring, counterfactual, diagnostics  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPOUNDS = {'sciplex3': 'manifests/split_manifest.tsv', 'op3': 'manifests/v4/op3_compounds.tsv'}
@@ -59,17 +59,26 @@ def main():
     for setting, spec in counterfactual.SETTINGS.items():
         if spec['dataset'] not in prepared or (args.setting and setting not in args.setting):
             continue
+        import v4_anchored_baselines  # local import: that script imports this module
         refs, train, val = reference_predictions(setting, Path(prepared[spec['dataset']]))
+        queries, levels, vbar, _, _ = v4_anchored_baselines.vehicle_context(setting, Path(prepared[spec['dataset']]))
+        for name in ['B1c', 'M1c']:  # amendment A1: vehicle-anchored references
+            refs[f'{name[:2]}a'] = anchoring.anchor(refs[name], queries['validation'], levels, vbar)
+        b1a = refs['B1a']
+        versus_b1a = lambda predicted: float(np.mean([diagnostics.pearson(predicted[k]-b1a[k], val[k]-b1a[k])
+                                                      for k in sorted(set(predicted) & set(val))]))
         reference = diagnostics.context_means(train)
         for name, predicted in refs.items():
             s = diagnostics.summarize(predicted, val, reference)
             rows.append(dict(setting=setting, arm=name, split='validation', role='reference', **s,
-                             **diagnostics.non_collapse(s)))
+                             **diagnostics.non_collapse(s), r_vs_B1a=versus_b1a(predicted)))
         for arm in ARMS:
             found = [r for r in args.sealed_root if (r/f'{arm}_{setting}_seal.json').exists()]
             if len(found) != 1:
                 raise ValueError(f'{arm} {setting}: expected one seal, found {len(found)}')
             seal = json.loads((found[0]/f'{arm}_{setting}_seal.json').read_text())
+            with np.load(found[0]/seal['predictions']['path'], allow_pickle=False) as z:
+                validation = {tuple(k.split('|')): v for k, v in zip(z['validation_keys'], z['validation_contrast'])}
             # Seals from code 8eb216d8 name the criterion flags without the pass_ prefix.
             verdict = {k if k == 'non_collapsed' or k.startswith('pass_') else f'pass_{k}': v
                        for k, v in seal['non_collapse'].items()}
@@ -77,6 +86,7 @@ def main():
                 rows.append(dict(setting=setting, arm=arm, split=split, role='chemCPA arm',
                                  **seal['seed_averaged'][split], **{f'latent_{k}': v for k, v in seal['latent'][split].items()},
                                  **(verdict if split == 'validation' else {}),
+                                 **(dict(r_vs_B1a=versus_b1a(validation)) if split == 'validation' else {}),
                                  mean_seed_validation_rmse=seal['mean_seed_validation_rmse']))
             for fit in seal['fits']:
                 for split in ['train', 'validation']:
@@ -92,7 +102,7 @@ def main():
     table.to_csv(out/'diagnostics.tsv', sep='\t', index=False)
     pd.DataFrame(seeds).to_csv(out/'diagnostics_per_seed.tsv', sep='\t', index=False)
     columns = ['setting', 'arm', 'split', 'effect_size_ratio', 'mean_gene_pearson_r', 'compound_specific_r', 'rmse',
-               'rmse_zero', 'latent_latent_ratio', 'non_collapsed']
+               'rmse_zero', 'r_vs_B1a', 'latent_latent_ratio', 'non_collapsed']
     print(table[[c for c in columns if c in table]].to_string(index=False, float_format=lambda x: f'{x:.4f}'))
 
 

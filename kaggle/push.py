@@ -35,9 +35,12 @@ KERNELS = {
                        sources=['dp-v4-op3-prepare'], code='drugperturb-v4-code'),
     'v4-fit-sciplex': dict(slug='dp-v4-fit-sciplex', file='v4_fit.py', language='python', gpu=True,
                            sources=['dp-v3-prepare'], code='drugperturb-v4-code'),
+    'v4-anchored': dict(slug='dp-v4-anchored', file='v4_anchored.py', language='python', gpu=False,
+                        sources=['dp-v4-op3-prepare', 'dp-v3-prepare'], code='drugperturb-v4-code'),
     'v4-k5': dict(slug='dp-v4-evaluate', file='v4_evaluate.py', language='python', gpu=False,
                   sources=['dp-v4-op3-extract', 'dp-v4-op3-prepare', 'dp-v4-fit-op3', 'dp-v4-fit-sciplex',
-                           'dp-v3-extract', 'dp-v3-prepare', 'dp-v3-chemcpa'], code='drugperturb-v4-code'),
+                           'dp-v4-anchored', 'dp-v3-extract', 'dp-v3-prepare', 'dp-v3-chemcpa'],
+                  code='drugperturb-v4-code'),
 }
 CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code')
 

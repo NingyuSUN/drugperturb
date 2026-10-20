@@ -163,10 +163,18 @@ def test_fits_seal_select_and_evaluate(pipeline):
         '--output-root', tmp/'gpu/sealed', '--allow-smoke')
     selection = json.loads((tmp/'gpu/sealed/selection_op3.json').read_text())
     assert selection['selected'] in protocol['primary_arm_selection']['candidates']
+    run(repo, 'v4_anchored_baselines.py', '--setting', 'op3', '--prepared', tmp/'prep', '--baselines-root',
+        tmp/'sealed_base', '--output-root', tmp/'sealed_anchored')
+    run(repo, 'v4_diagnostics_report.py', '--sealed-root', tmp/'gpu/sealed', '--prepared', f'op3={tmp/"prep"}',
+        '--output-root', tmp/'diag')
+    diag = pd.read_csv(tmp/'diag/diagnostics.tsv', sep='\t')
+    assert {'B1a', 'M1a'} <= set(diag.arm) and diag.loc[diag.arm.eq('B1a'), 'r_vs_B1a'].abs().max() < 1e-9
     run(repo, 'v4_evaluate_op3.py', '--extraction-root', tmp/'ext', '--prepared', tmp/'prep',
-        '--sealed-root', tmp/'sealed_base', '--sealed-root', tmp/'gpu/sealed', '--output-root', tmp/'eval')
+        '--sealed-root', tmp/'sealed_base', '--sealed-root', tmp/'gpu/sealed', '--sealed-root', tmp/'sealed_anchored',
+        '--output-root', tmp/'eval')
     summary = json.loads((tmp/'eval/summary.json').read_text())
     assert summary['endpoints']['selected_arm'] == selection['selected'] and summary['test_truth_first_computed_here']
+    assert set(summary['endpoints']['E3_beyond_vehicle_anchoring']['estimates']) == {'B1a', 'M1a'}
     per = pd.read_csv(tmp/'eval/per_compound.tsv', sep='\t')
     zero = per[per.method.eq('B0')]
     assert len(zero) and np.isfinite(per.rmse).all()
