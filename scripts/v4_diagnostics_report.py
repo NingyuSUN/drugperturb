@@ -50,12 +50,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--sealed-root', type=Path, action='append', required=True)
     parser.add_argument('--prepared', action='append', required=True, help='dataset=path, e.g. op3=/path/prepared')
+    parser.add_argument('--setting', action='append', choices=list(counterfactual.SETTINGS),
+                        help='settings to tabulate (default: every setting whose dataset is given)')
     parser.add_argument('--output-root', type=Path, required=True)
     args = parser.parse_args()
     prepared = dict(p.split('=', 1) for p in args.prepared)
     rows, seeds = [], []
     for setting, spec in counterfactual.SETTINGS.items():
-        if spec['dataset'] not in prepared:
+        if spec['dataset'] not in prepared or (args.setting and setting not in args.setting):
             continue
         refs, train, val = reference_predictions(setting, Path(prepared[spec['dataset']]))
         reference = diagnostics.context_means(train)
@@ -68,10 +70,13 @@ def main():
             if len(found) != 1:
                 raise ValueError(f'{arm} {setting}: expected one seal, found {len(found)}')
             seal = json.loads((found[0]/f'{arm}_{setting}_seal.json').read_text())
+            # Seals from code 8eb216d8 name the criterion flags without the pass_ prefix.
+            verdict = {k if k == 'non_collapsed' or k.startswith('pass_') else f'pass_{k}': v
+                       for k, v in seal['non_collapse'].items()}
             for split in ['train', 'validation']:
                 rows.append(dict(setting=setting, arm=arm, split=split, role='chemCPA arm',
                                  **seal['seed_averaged'][split], **{f'latent_{k}': v for k, v in seal['latent'][split].items()},
-                                 **(seal['non_collapse'] if split == 'validation' else {}),
+                                 **(verdict if split == 'validation' else {}),
                                  mean_seed_validation_rmse=seal['mean_seed_validation_rmse']))
             for fit in seal['fits']:
                 for split in ['train', 'validation']:

@@ -75,9 +75,9 @@ def summarize(predicted, truth, reference_means, training_prediction_means=None)
 def non_collapse(summary, criteria=None):
     """The three prespecified criteria and their conjunction."""
     criteria = CRITERIA if criteria is None else criteria
-    checks = dict(effect_size_ratio=summary['effect_size_ratio'] >= criteria['effect_size_ratio'],
-                  mean_gene_pearson_r=summary['mean_gene_pearson_r'] >= criteria['mean_gene_pearson_r'],
-                  rmse_below_zero_change=summary['rmse'] < summary['rmse_zero'])
+    checks = dict(pass_effect_size_ratio=summary['effect_size_ratio'] >= criteria['effect_size_ratio'],
+                  pass_mean_gene_pearson_r=summary['mean_gene_pearson_r'] >= criteria['mean_gene_pearson_r'],
+                  pass_rmse_below_zero_change=summary['rmse'] < summary['rmse_zero'])
     return dict(checks, non_collapsed=all(checks.values()))
 
 
