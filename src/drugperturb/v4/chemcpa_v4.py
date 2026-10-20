@@ -26,6 +26,7 @@ import torch
 from ..third_party._chemcpa_model_upstream import NBLoss
 from ..v3 import chemcpa as v3_chemcpa
 from ..v3.pseudobulk import MODEL_SCALE, TO_CPM
+from .counterfactual import MAX_MODEL_VALUE
 
 NB_THETA_EPS = 1e-4
 OFFSET_FLOOR = 1e-12
@@ -39,7 +40,7 @@ def gene_offsets(counts, library):
 
 def torch_pseudobulk(values, library):
     """log1p library-weighted mean CPM; values (groups, cells, genes), library (groups, cells)."""
-    expression = torch.clamp(torch.expm1(values), min=0.0)*TO_CPM
+    expression = torch.clamp(torch.expm1(torch.clamp(values, max=MAX_MODEL_VALUE)), min=0.0)*TO_CPM
     weights = library/library.sum(dim=1, keepdim=True)
     return torch.log1p(torch.einsum('gc,gcn->gn', weights, expression))
 

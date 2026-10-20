@@ -10,7 +10,16 @@ import numpy as np
 import pandas as pd
 
 from ..v3 import runner as v3_runner
-from ..v3.pseudobulk import measured_log_cpm, pseudobulk_log_cpm
+from ..v3.pseudobulk import MODEL_SCALE, measured_log_cpm, pseudobulk_log_cpm
+
+# A gene holding a cell's whole library has model value log1p(1e4); no count can exceed it.
+# Capping at this bound is a no-op for any attainable output (so the identity model still
+# reproduces zero change) and keeps divergent decoder outputs from overflowing expm1.
+MAX_MODEL_VALUE = float(np.log1p(MODEL_SCALE))
+
+
+def capped_pseudobulk(values, library):
+    return pseudobulk_log_cpm(np.minimum(np.asarray(values, dtype=np.float64), MAX_MODEL_VALUE), library)
 
 SETTINGS = {
     'sciplex_Q1': dict(dataset='sciplex3', contexts=v3_runner.PROTOCOL_CONTEXTS['Q1'], replicates=2,
@@ -74,10 +83,10 @@ def counterfactual_deltas(predict, queries, vehicle_cells, *, gene_count, n_repl
         c_rows, a_rows = [], []
         for record in replicates:
             well = vehicle_cells[record['vehicle_well']]
-            treated = pseudobulk_log_cpm(predict(well, record['treated']), well['library'])
+            treated = capped_pseudobulk(predict(well, record['treated']), well['library'])
             cache_key = (record['vehicle_well'], tuple(sorted(record['vehicle'].items())))
             if cache_key not in cache:
-                cache[cache_key] = pseudobulk_log_cpm(predict(well, record['vehicle']), well['library'])
+                cache[cache_key] = capped_pseudobulk(predict(well, record['vehicle']), well['library'])
             if treated.shape != (gene_count,):
                 raise ValueError('prediction width differs from the frozen gene space')
             c_rows.append(treated-cache[cache_key])

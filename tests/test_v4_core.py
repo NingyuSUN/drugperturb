@@ -159,6 +159,19 @@ def test_three_donor_identity_model_reproduces_zero_change_exactly():
     assert counterfactual.build_queries(query_rows(2), ['K_24h_1000nM'], ['test'], 3) == {}
 
 
+def test_capped_pseudobulk_is_identity_for_attainable_values_and_finite_beyond():
+    rng = np.random.default_rng(2)
+    values = rng.uniform(0, counterfactual.MAX_MODEL_VALUE, size=(6, 4))
+    library = rng.uniform(100, 500, size=6)
+    assert np.array_equal(counterfactual.capped_pseudobulk(values, library), v3_pseudobulk.pseudobulk_log_cpm(values, library))
+    huge = values.copy()
+    huge[0, 0] = 5000.0  # beyond float64 expm1
+    capped = huge.copy()
+    capped[0, 0] = counterfactual.MAX_MODEL_VALUE
+    out = counterfactual.capped_pseudobulk(huge, library)
+    assert np.isfinite(out).all() and np.array_equal(out, v3_pseudobulk.pseudobulk_log_cpm(capped, library))
+
+
 def test_anchored_training_mean_is_mean_treated_level_minus_query_vehicle():
     """B1a(q) = mean over training pairs of their treated level - V(q), when truth = T - V."""
     from drugperturb.v4 import anchoring

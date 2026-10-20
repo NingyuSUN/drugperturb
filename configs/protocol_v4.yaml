@@ -260,6 +260,23 @@ amendments:
       sci-Plex3 (exploratory dataset) training and validation compounds only. No OP3 fit output, OP3
       validation result or any test truth for a v4 method had been read.
     effect: adds comparators and a stricter endpoint; nothing prespecified is removed or weakened
+  A2_2026-10-20:
+    change: >-
+      Per-cell model values are capped at log1p(1e4), the value of a gene holding a cell's whole library,
+      before the pseudobulk mapping (numpy contrast and torch pseudobulk loss); a validation evaluation
+      whose predictions are non-finite scores +inf, so it is never the selected checkpoint. All twelve OP3
+      fits are rerun with this code (kernel dp-v4-fit-op3 version 2).
+    reason: >-
+      In dp-v4-fit-op3 version 1, two of twelve fits (A0 seed 2026, I2 seed 42) stopped with an error:
+      the Gaussian decoder produced values beyond the float64 range of expm1 during a validation
+      evaluation, giving inf - inf. The cap is a no-op for every attainable output (measured cells have
+      values at most log1p(1e4)), so the identity model still reproduces zero change and A0 still repeats
+      the v3 training step.
+    information_used: >-
+      the two error messages (overflow in expm1, non-finite replicate deltas). No validation or test
+      metric of the version-1 OP3 fits was read; their outputs are archived unread. The sci-Plex3 fits
+      completed without non-finite values under the earlier code and are not rerun (exploratory).
+    effect: engineering only; the response mapping is unchanged for attainable outputs
 compute:
   platform: Kaggle notebooks; CPU for extraction, preparation and evaluation; NVIDIA T4 x2 for fits
   determinism: seeds fixed; cuDNN nondeterminism not eliminated

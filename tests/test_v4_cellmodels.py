@@ -104,6 +104,10 @@ def test_torch_pseudobulk_equals_numpy_mapping():
     got = chemcpa_v4.torch_pseudobulk(torch.as_tensor(values), torch.as_tensor(library)).numpy()
     expected = np.vstack([pseudobulk_log_cpm(values[i], library[i]) for i in range(2)])
     assert np.allclose(got, expected, rtol=1e-12, atol=1e-12)
+    values[0, 0, 0] = 900.0  # divergent output: capped identically in torch and numpy (amendment A2)
+    got = chemcpa_v4.torch_pseudobulk(torch.as_tensor(values), torch.as_tensor(library)).numpy()
+    expected = np.vstack([counterfactual.capped_pseudobulk(values[i], library[i]) for i in range(2)])
+    assert np.isfinite(got).all() and np.allclose(got, expected, rtol=1e-12, atol=1e-12)
 
 
 def test_a0_repeats_the_v3_training_step_exactly():

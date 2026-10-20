@@ -132,7 +132,17 @@ def main():
         cell_types=cell_types, use_cell_type=spec['use_cell_type'], device=args.device, seed=args.seed)
     predict = lambda well, condition: model.predict_mean(well['values'], condition)
     deltas = lambda q: counterfactual.counterfactual_deltas(predict, q, vehicles, gene_count=width, n_replicates=R)
-    validate = lambda m: v3_runner.mean_query_rmse(deltas(queries['validation'])[0], truth['validation'])
+    nonfinite = []
+
+    def validate(m):
+        """Validation RMSE; an evaluation with non-finite predictions scores +inf and is never selected (A2)."""
+        try:
+            return v3_runner.mean_query_rmse(deltas(queries['validation'])[0], truth['validation'])
+        except ValueError as error:
+            if 'finite' not in str(error):
+                raise
+            nonfinite.append(str(error))
+            return float('inf')
     t = sub.iloc[train_index]
     result = chemcpa_v4.fit(model, X[train_index], t.compound_id.tolist(), t.dose_nM.fillna(0).tolist(),
                             t.cell_type.tolist(), batch_size=common['hparams']['batch_size'],
@@ -177,7 +187,8 @@ def main():
                   seconds=time.perf_counter()-started, device=args.device,
                   gpu=torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
                   torch=torch.__version__, cuda=torch.version.cuda, python=platform.python_version(),
-                  test_outcomes_loaded=False, diagnostics=summary, latent=latent, **result)
+                  test_outcomes_loaded=False, diagnostics=summary, latent=latent,
+                  nonfinite_validation_evaluations=len(nonfinite), **result)
     record['validation_rmse'] = summary['validation']['rmse']
     record['history_tail'] = history.tail(3).to_dict('records')
     (out/f'{name}.json').write_text(json.dumps(diagnostics.finite(record), indent=2, allow_nan=False)+'\n')

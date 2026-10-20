@@ -84,5 +84,6 @@ Every change made after the protocol commit is logged in the protocol, with its 
 | ID | Change | Information used |
 |---|---|---|
 | A1 | Adds vehicle-anchored comparators B1a and M1a and endpoint E3. E1, E2, the arms and the selection rule are unchanged. | sci-Plex3 validation compounds only, before any OP3 fit output or test truth was read |
+| A2 | Caps per-cell model values at log1p(10⁴), the value of a gene holding the whole library, before the pseudobulk mapping. A non-finite validation evaluation scores +∞. All twelve OP3 fits are rerun. | the error messages of two diverged OP3 fits; no validation or test metric |
 
 **Why A1.** The measured response T − V contains the sampling noise of the matched vehicle well. A model that receives those vehicle cells can partly cancel that noise; a delta-only baseline cannot. This is the asymmetry v3 identified for its anchored sensitivity. The information-matched simple version adds the vehicle information to a delta baseline: B1a = B1c + V̄_train − V(query), and M1a likewise from M1c. On sci-Plex3 validation compounds, B1a reached a validation RMSE of 0.84 in Q1 and 0.66 in Q2, better than every chemCPA arm. E3 therefore requires the selected arm to beat B1a and M1a before any claim that chemCPA predicts compound responses better than simple baselines.
