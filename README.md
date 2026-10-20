@@ -10,6 +10,27 @@ Public sci-Plex3 data · structure-based models · held-out compounds · cross-c
 
 To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
+## v4: diagnose, intervene, improve? Fixing chemCPA's collapse
+
+**Two principled changes made chemCPA use the drug, but neither beat a per-context training mean or Ridge on held-out compounds in a dataset this project had never scored.**
+
+- **Data.** The confirmatory test set is OP3 (GEO GSE279945): peripheral blood mononuclear cells from three donors, with 35 test compounds in T, B and myeloid cells. The protocol was committed before any fit, and predictions were sealed before testing.
+- **Interventions.** v3 diagnosed chemCPA's collapse; v4 tested two fixes:
+  - a negative binomial count likelihood, which enlarges the drug term;
+  - a counterfactual pseudobulk loss, which trains the prediction path directly and makes the drug term large and correlated with the truth.
+- **The primary arm failed.** The NB arm, selected on validation compounds, was worse than zero change on OP3: +0.171 [−0.004, +0.532]. One compound drove that result; its descriptors hit a scaling bug inherited from v3. Excluding it post hoc, the arm matches zero change (+0.001 [−0.005, +0.008]) and is still worse than the training mean (+0.015 [+0.007, +0.023]).
+- **Methodological finding.** On sci-Plex3, the pseudobulk arms appeared to beat every v1 method by up to 30%. A vehicle-anchored training mean, which uses only the matched vehicle well's measurement, does better. Models conditioned on vehicle cells need that baseline (amendment A1, made before any OP3 result was read).
+
+| OP3, pooled over T, B and myeloid cells | ΔRMSE [95% interval] |
+|---|---|
+| NB arm (primary) − zero change | +0.171 [−0.004, +0.532] |
+| NB arm − per-context training mean | +0.183 [+0.009, +0.544] |
+| Pseudobulk arm − zero change | +0.001 [−0.007, +0.010] |
+| Pseudobulk arm − per-context training mean | +0.014 [+0.006, +0.023] |
+| v3 chemCPA, refitted − zero change | −0.001 [−0.002, +0.001] |
+
+See the [v4 report](reports/v4/report.md), the [pre-test diagnostics](reports/v4/diagnostics.md) and the [v4 methods](docs/V4_METHODS.md).
+
 ## v3: published single-cell perturbation models as baselines
 
 **chemCPA and biolord did not beat information-matched simple baselines.** Both models were trained on sci-Plex3 cells from 3 cell lines × 4 doses, ran on Kaggle T4 GPUs, and had their predictions sealed before test scoring. The confirmatory endpoint pooled six contexts never scored before. There, both were reliably worse than a per-context fingerprint Ridge, and neither was distinguishable from zero change:

@@ -10,6 +10,7 @@ All kernels are private, under the account `ningyusunny`, and use the private co
 | dp-v4-fit-op3 | 1 | T4 ×2 | c9b6fa41… (v2) | 1d5f840 | dp-v4-op3-prepare | error: 2 of 12 fits overflowed (amendment A2); outputs archived unread |
 | dp-v4-anchored | 1 | CPU | 281266f3… (v3) | 0f357ee | dp-v4-op3-prepare, dp-v3-prepare | complete |
 | dp-v4-fit-op3 | 2 | T4 ×2 | 8d405d3b… (v4) | aed9701 | dp-v4-op3-prepare | complete; 12 fits, 2 h 21 min; no non-finite evaluation |
+| dp-v4-evaluate | 1 | CPU | 8d405d3b… (v4) | 69c7e5d (diagnostics committed first) | all of the above, plus dp-v3-extract, dp-v3-prepare and dp-v3-chemcpa | complete; test truth first computed here |
 
 Version 1 of dp-v4-op3-prepare was pushed a few seconds before version 2. A shell retry pushed version 2, which differs only in its push time. Downstream kernels read the latest version's output.
 
