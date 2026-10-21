@@ -1,0 +1,527 @@
+{
+  "method": "I2_counterfactual_pseudobulk",
+  "protocol": "op3",
+  "status": "SEALED_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "predictions": {
+    "path": "I2_counterfactual_pseudobulk_op3_predictions.npz",
+    "sha256": "7a7d2fb57ebcfbe31c5613c2e37112f25c5188c169c60b9f43b671b15e019fb8"
+  },
+  "inputs": {
+    "protocol": {
+      "path": "/tmp/dp/configs/protocol_v4.yaml",
+      "sha256": "d94da64ff0cd134ac8a173e790936c6fe4a58a9a763bfea641b0dfe4bfb8a278"
+    },
+    "model_cells": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared/model_cells.npz",
+      "sha256": "876e8a6eef9467804ebe13598a0adbd44ca0ef3b49174494e5535ab67730ca0d"
+    },
+    "queries": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared/queries.tsv",
+      "sha256": "352b7161ede0a3f1f965deb3efe11421bcf7a071c7cf4ab59b6ad206fc8f7d8f"
+    },
+    "validation_truth": {
+      "path": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared/validation_truth.npz",
+      "sha256": "97888c95e01335020b487b7d45321e00c8026175b8eec7903bcf4c99665e10d8"
+    },
+    "fit_s42": {
+      "path": "/kaggle/working/fits/I2_counterfactual_pseudobulk_op3_s42.npz",
+      "sha256": "7a882193f48c7425529702382acbe41bf514a28c36ea9b924945dfc0d7b371ad"
+    },
+    "fit_s123": {
+      "path": "/kaggle/working/fits/I2_counterfactual_pseudobulk_op3_s123.npz",
+      "sha256": "1e644cdfeb6d441836899d59072e88ff3c281bfe9ad37da989c18e47d7d83adb"
+    },
+    "fit_s2026": {
+      "path": "/kaggle/working/fits/I2_counterfactual_pseudobulk_op3_s2026.npz",
+      "sha256": "78defc1a747db4d0b8f7d7c088bcf10321772437db66a63a23aaabc5b2debce1"
+    }
+  },
+  "setting": "op3",
+  "arm": "I2_counterfactual_pseudobulk",
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "final_prediction": "arithmetic mean of the seeds' predicted deltas",
+  "mean_seed_validation_rmse": 0.4676275163436329,
+  "seed_averaged": {
+    "train": {
+      "n": 250,
+      "contexts": 4,
+      "mean_abs_pred": 0.022467839335063244,
+      "mean_abs_true": 0.3604148519515675,
+      "rmse": 0.4540855323427362,
+      "rmse_zero": 0.47589323706327286,
+      "rmse_minus_zero": -0.021807704720536558,
+      "mean_gene_pearson_r": 0.24978884396532522,
+      "least_squares_scale": 1.4508077584630825,
+      "effect_size_ratio": 0.541272965946633,
+      "reference_r": 0.2832423483417541,
+      "compound_specific_r": 0.24948962663277785
+    },
+    "validation": {
+      "n": 69,
+      "contexts": 4,
+      "mean_abs_pred": 0.02074003721074002,
+      "mean_abs_true": 0.35313808689668746,
+      "rmse": 0.4628703998470963,
+      "rmse_zero": 0.46723953716130373,
+      "rmse_minus_zero": -0.0043691373142072595,
+      "mean_gene_pearson_r": 0.13852891697523312,
+      "least_squares_scale": 0.7967970248933223,
+      "effect_size_ratio": 0.4916662503818682,
+      "reference_r": 0.26021092271224133,
+      "compound_specific_r": 0.0722317400707031
+    }
+  },
+  "latent": {
+    "train": {
+      "basal_norm": 73.12626536687215,
+      "drug_term_norm": 3.88483073314031,
+      "drug_contrast_norm": 3.719079405069351,
+      "latent_ratio": 0.07388419086088749
+    },
+    "validation": {
+      "basal_norm": 72.9421337445577,
+      "drug_term_norm": 3.796189844608307,
+      "drug_contrast_norm": 3.642511487007141,
+      "latent_ratio": 0.07016993026395436
+    }
+  },
+  "non_collapse": {
+    "pass_effect_size_ratio": true,
+    "pass_mean_gene_pearson_r": true,
+    "pass_rmse_below_zero_change": true,
+    "non_collapsed": true
+  },
+  "engineering_smoke": false,
+  "fits": [
+    {
+      "name": "I2_counterfactual_pseudobulk_op3_s42",
+      "setting": "op3",
+      "arm": "I2_counterfactual_pseudobulk",
+      "seed": 42,
+      "arm_spec": {
+        "likelihood": "gaussian",
+        "decoder_activation": "ReLU",
+        "pseudobulk_weight": 1.0
+      },
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 160123,
+      "n_validation_cells": 36188,
+      "n_train_queries": 250,
+      "n_validation_queries": 69,
+      "n_test_queries": 140,
+      "n_vehicle_wells": 189,
+      "descriptor_columns": 168,
+      "seconds": 1305.961479185,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "diagnostics": {
+        "train": {
+          "n": 250,
+          "contexts": 4,
+          "mean_abs_pred": 0.01982485847435541,
+          "mean_abs_true": 0.3604148519515675,
+          "rmse": 0.460505681401227,
+          "rmse_zero": 0.47589323706327286,
+          "rmse_minus_zero": -0.015387555662045816,
+          "mean_gene_pearson_r": 0.2000750806638117,
+          "least_squares_scale": 1.0874008823784433,
+          "effect_size_ratio": 0.585166922726512,
+          "reference_r": 0.2832423483417541,
+          "compound_specific_r": 0.198866452813117
+        },
+        "validation": {
+          "n": 69,
+          "contexts": 4,
+          "mean_abs_pred": 0.01811236771330746,
+          "mean_abs_true": 0.35313808689668746,
+          "rmse": 0.46493173376905583,
+          "rmse_zero": 0.46723953716130373,
+          "rmse_minus_zero": -0.0023078033922477874,
+          "mean_gene_pearson_r": 0.09455633557677254,
+          "least_squares_scale": 0.6740988700323466,
+          "effect_size_ratio": 0.5228927286800288,
+          "reference_r": 0.26021092271224133,
+          "compound_specific_r": 0.04892543358717754
+        }
+      },
+      "latent": {
+        "train": {
+          "per_cell_type": {
+            "Bcells": {
+              "basal_norm": 22.52058219909668,
+              "drug_term_norm": 3.8538784980773926,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.9317188262939453,
+              "latent_ratio": 0.17458335630646574
+            },
+            "Myeloid": {
+              "basal_norm": 81.34033203125,
+              "drug_term_norm": 3.2409019470214844,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.3020453453063965,
+              "latent_ratio": 0.04059542496135606
+            },
+            "NKcells": {
+              "basal_norm": 35.107215881347656,
+              "drug_term_norm": 3.625702381134033,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.6644461154937744,
+              "latent_ratio": 0.10437871598472957
+            },
+            "Tcells": {
+              "basal_norm": 32.1842155456543,
+              "drug_term_norm": 4.0634307861328125,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 4.154403209686279,
+              "latent_ratio": 0.12908200927852756
+            }
+          },
+          "basal_norm": 42.78808641433716,
+          "drug_term_norm": 3.6959784030914307,
+          "vehicle_term_norm": 0.3910731077194214,
+          "drug_contrast_norm": 3.763153374195099,
+          "latent_ratio": 0.11215987663276974
+        },
+        "validation": {
+          "per_cell_type": {
+            "Bcells": {
+              "basal_norm": 22.707773208618164,
+              "drug_term_norm": 3.3662185668945312,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.51725697517395,
+              "latent_ratio": 0.15489220113573549
+            },
+            "Myeloid": {
+              "basal_norm": 81.81280517578125,
+              "drug_term_norm": 3.323195457458496,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.4629671573638916,
+              "latent_ratio": 0.042327935705461193
+            },
+            "NKcells": {
+              "basal_norm": 35.054080963134766,
+              "drug_term_norm": 3.3656857013702393,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.477757215499878,
+              "latent_ratio": 0.09921119367406385
+            },
+            "Tcells": {
+              "basal_norm": 32.645633697509766,
+              "drug_term_norm": 3.39715838432312,
+              "vehicle_term_norm": 0.3910731077194214,
+              "drug_contrast_norm": 3.5523529052734375,
+              "latent_ratio": 0.10881555978324947
+            }
+          },
+          "basal_norm": 43.055073261260986,
+          "drug_term_norm": 3.3630645275115967,
+          "vehicle_term_norm": 0.3910731077194214,
+          "drug_contrast_norm": 3.5025835633277893,
+          "latent_ratio": 0.1013117225746275
+        }
+      },
+      "nonfinite_validation_evaluations": 0,
+      "best_validation_rmse": 0.46493173376905583,
+      "best_epoch": 10,
+      "epochs_executed": 60,
+      "stopped": "patience",
+      "analysis": "v4_corrected_posthoc",
+      "descriptor_min_std": 1e-08,
+      "validation_rmse": 0.46493173376905583
+    },
+    {
+      "name": "I2_counterfactual_pseudobulk_op3_s123",
+      "setting": "op3",
+      "arm": "I2_counterfactual_pseudobulk",
+      "seed": 123,
+      "arm_spec": {
+        "likelihood": "gaussian",
+        "decoder_activation": "ReLU",
+        "pseudobulk_weight": 1.0
+      },
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 160123,
+      "n_validation_cells": 36188,
+      "n_train_queries": 250,
+      "n_validation_queries": 69,
+      "n_test_queries": 140,
+      "n_vehicle_wells": 189,
+      "descriptor_columns": 168,
+      "seconds": 1436.108721598,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "diagnostics": {
+        "train": {
+          "n": 250,
+          "contexts": 4,
+          "mean_abs_pred": 0.028386092572147442,
+          "mean_abs_true": 0.3604148519515675,
+          "rmse": 0.45259893957976904,
+          "rmse_zero": 0.47589323706327286,
+          "rmse_minus_zero": -0.023294297483503708,
+          "mean_gene_pearson_r": 0.24730302648007862,
+          "least_squares_scale": 1.1566102785089958,
+          "effect_size_ratio": 0.6827113064672775,
+          "reference_r": 0.2832423483417541,
+          "compound_specific_r": 0.24675673257155356
+        },
+        "validation": {
+          "n": 69,
+          "contexts": 4,
+          "mean_abs_pred": 0.025646693120860587,
+          "mean_abs_true": 0.35313808689668746,
+          "rmse": 0.46416384972731894,
+          "rmse_zero": 0.46723953716130373,
+          "rmse_minus_zero": -0.003075687433984724,
+          "mean_gene_pearson_r": 0.16197905341164667,
+          "least_squares_scale": 0.6295817626212967,
+          "effect_size_ratio": 0.6060901595913787,
+          "reference_r": 0.26021092271224133,
+          "compound_specific_r": 0.11212731497334492
+        }
+      },
+      "latent": {
+        "train": {
+          "per_cell_type": {
+            "Bcells": {
+              "basal_norm": 68.17876434326172,
+              "drug_term_norm": 5.87033224105835,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 5.872783660888672,
+              "latent_ratio": 0.086138018449862
+            },
+            "Myeloid": {
+              "basal_norm": 197.72265625,
+              "drug_term_norm": 4.498546123504639,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 4.498293876647949,
+              "latent_ratio": 0.022750523192245194
+            },
+            "NKcells": {
+              "basal_norm": 74.69914245605469,
+              "drug_term_norm": 4.722801685333252,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 4.722500324249268,
+              "latent_ratio": 0.06322027494529141
+            },
+            "Tcells": {
+              "basal_norm": 56.365299224853516,
+              "drug_term_norm": 6.100528717041016,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 6.1064066886901855,
+              "latent_ratio": 0.1083362773313842
+            }
+          },
+          "basal_norm": 99.24146556854248,
+          "drug_term_norm": 5.298052191734314,
+          "vehicle_term_norm": 0.1278446763753891,
+          "drug_contrast_norm": 5.2999961376190186,
+          "latent_ratio": 0.0701112734796957
+        },
+        "validation": {
+          "per_cell_type": {
+            "Bcells": {
+              "basal_norm": 71.93115997314453,
+              "drug_term_norm": 5.300263404846191,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 5.315786838531494,
+              "latent_ratio": 0.07390103038121644
+            },
+            "Myeloid": {
+              "basal_norm": 197.9547576904297,
+              "drug_term_norm": 5.276123523712158,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 5.288576602935791,
+              "latent_ratio": 0.026716087375915958
+            },
+            "NKcells": {
+              "basal_norm": 69.218017578125,
+              "drug_term_norm": 3.3660175800323486,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 3.3731536865234375,
+              "latent_ratio": 0.04873230705742513
+            },
+            "Tcells": {
+              "basal_norm": 55.818115234375,
+              "drug_term_norm": 5.552737236022949,
+              "vehicle_term_norm": 0.1278446763753891,
+              "drug_contrast_norm": 5.569392681121826,
+              "latent_ratio": 0.09977751233155172
+            }
+          },
+          "basal_norm": 98.73051261901855,
+          "drug_term_norm": 4.873785436153412,
+          "vehicle_term_norm": 0.1278446763753891,
+          "drug_contrast_norm": 4.886727452278137,
+          "latent_ratio": 0.06228173428652731
+        }
+      },
+      "nonfinite_validation_evaluations": 0,
+      "best_validation_rmse": 0.46416384972731894,
+      "best_epoch": 20,
+      "epochs_executed": 70,
+      "stopped": "patience",
+      "analysis": "v4_corrected_posthoc",
+      "descriptor_min_std": 1e-08,
+      "validation_rmse": 0.46416384972731894
+    },
+    {
+      "name": "I2_counterfactual_pseudobulk_op3_s2026",
+      "setting": "op3",
+      "arm": "I2_counterfactual_pseudobulk",
+      "seed": 2026,
+      "arm_spec": {
+        "likelihood": "gaussian",
+        "decoder_activation": "ReLU",
+        "pseudobulk_weight": 1.0
+      },
+      "max_epochs_override": null,
+      "engineering_smoke": false,
+      "n_training_cells": 160123,
+      "n_validation_cells": 36188,
+      "n_train_queries": 250,
+      "n_validation_queries": 69,
+      "n_test_queries": 140,
+      "n_vehicle_wells": 189,
+      "descriptor_columns": 168,
+      "seconds": 1191.9033217769997,
+      "device": "cuda",
+      "gpu": "Tesla T4",
+      "torch": "2.5.1+cu121",
+      "cuda": "12.1",
+      "python": "3.11.16",
+      "test_outcomes_loaded": false,
+      "diagnostics": {
+        "train": {
+          "n": 250,
+          "contexts": 4,
+          "mean_abs_pred": 0.020833902942854726,
+          "mean_abs_true": 0.3604148519515675,
+          "rmse": 0.45950307718893396,
+          "rmse_zero": 0.47589323706327286,
+          "rmse_minus_zero": -0.016390159874338874,
+          "mean_gene_pearson_r": 0.2001127790930994,
+          "least_squares_scale": 1.0827969937596726,
+          "effect_size_ratio": 0.5709120595009317,
+          "reference_r": 0.2832423483417541,
+          "compound_specific_r": 0.2017761734483028
+        },
+        "validation": {
+          "n": 69,
+          "contexts": 4,
+          "mean_abs_pred": 0.021208672628614252,
+          "mean_abs_true": 0.35313808689668746,
+          "rmse": 0.473786965534524,
+          "rmse_zero": 0.46723953716130373,
+          "rmse_minus_zero": 0.0065474283732206,
+          "mean_gene_pearson_r": 0.10223438184229525,
+          "least_squares_scale": 0.3052000891703411,
+          "effect_size_ratio": 0.5693353140151771,
+          "reference_r": 0.26021092271224133,
+          "compound_specific_r": 0.02891937418297863
+        }
+      },
+      "latent": {
+        "train": {
+          "per_cell_type": {
+            "Bcells": {
+              "basal_norm": 163.28988647460938,
+              "drug_term_norm": 2.810861349105835,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 2.230933904647827,
+              "latent_ratio": 0.013662413226031143
+            },
+            "Myeloid": {
+              "basal_norm": 61.4894905090332,
+              "drug_term_norm": 2.3896055221557617,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 1.8284764289855957,
+              "latent_ratio": 0.029736405584902037
+            },
+            "NKcells": {
+              "basal_norm": 54.345977783203125,
+              "drug_term_norm": 2.4678165912628174,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 1.9462114572525024,
+              "latent_ratio": 0.0358115087194921
+            },
+            "Tcells": {
+              "basal_norm": 30.271621704101562,
+              "drug_term_norm": 2.9735629558563232,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 2.3707330226898193,
+              "latent_ratio": 0.07831536235036275
+            }
+          },
+          "basal_norm": 77.34924411773682,
+          "drug_term_norm": 2.6604616045951843,
+          "vehicle_term_norm": 0.8871517777442932,
+          "drug_contrast_norm": 2.094088703393936,
+          "latent_ratio": 0.039381422470197006
+        },
+        "validation": {
+          "per_cell_type": {
+            "Bcells": {
+              "basal_norm": 161.73814392089844,
+              "drug_term_norm": 2.999570846557617,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 2.367461919784546,
+              "latent_ratio": 0.014637622655929603
+            },
+            "Myeloid": {
+              "basal_norm": 61.467262268066406,
+              "drug_term_norm": 3.1065139770507812,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 2.4957492351531982,
+              "latent_ratio": 0.04060290214763306
+            },
+            "NKcells": {
+              "basal_norm": 54.28303909301758,
+              "drug_term_norm": 3.391021728515625,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 2.822599172592163,
+              "latent_ratio": 0.05199781036127054
+            },
+            "Tcells": {
+              "basal_norm": 30.674816131591797,
+              "drug_term_norm": 3.109771728515625,
+              "vehicle_term_norm": 0.8871517777442932,
+              "drug_contrast_norm": 2.46708345413208,
+              "latent_ratio": 0.08042700055799998
+            }
+          },
+          "basal_norm": 77.04081535339355,
+          "drug_term_norm": 3.151719570159912,
+          "vehicle_term_norm": 0.8871517777442932,
+          "drug_contrast_norm": 2.538223445415497,
+          "latent_ratio": 0.04691633393070829
+        }
+      },
+      "nonfinite_validation_evaluations": 0,
+      "best_validation_rmse": 0.473786965534524,
+      "best_epoch": 10,
+      "epochs_executed": 60,
+      "stopped": "patience",
+      "analysis": "v4_corrected_posthoc",
+      "descriptor_min_std": 1e-08,
+      "validation_rmse": 0.473786965534524
+    }
+  ],
+  "analysis": "v4_corrected_posthoc",
+  "descriptor_min_std": 1e-08
+}
