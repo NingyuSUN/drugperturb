@@ -1,0 +1,58 @@
+schema_version: 1
+status: POST_HOC_PLAN_BEFORE_CORRECTED_FITS
+written_date: '2026-10-21'
+label: v4_corrected_posthoc
+based_on: configs/protocol_v4.yaml
+question: >-
+  With the descriptor columns that are constant on the training compounds up to rounding removed,
+  which OP3 arm does the prespecified validation rule select, and how does it score on the v4
+  endpoints? This is a corrected re-analysis of v4, not a new confirmatory test.
+why_post_hoc:
+  how_the_bug_was_found: >-
+    The v4 evaluation kernel (dp-v4-evaluate version 1) scored the sealed OP3 predictions. The
+    selected arm I1 failed E1-E3, and its error was dominated by ixabepilone. Its descriptor z-scores
+    were about 1e16 because TrainingDescriptorScaler kept RDKit2DNormalized columns whose training
+    standard deviation is floating-point noise (reports/v4/report.md, docs/POST_V4_ENGINEERING.md).
+  information_used: >-
+    OP3 test outcomes (v4 per-compound RMSE), which led to the diagnosis. The fix itself uses
+    training descriptors only: the tolerance sits in the gap between noise columns (std <= 3e-15)
+    and the least variable informative column (std 2e-3).
+  consequence: >-
+    The OP3 test outcomes are open. The corrected result is post hoc. It is reported next to the
+    prespecified v4 result and cannot replace it or serve as confirmatory evidence.
+  selection_also_affected: >-
+    The v4 selection used validation compounds, including CEP-37440 (|z| about 5e15). The corrected
+    analysis therefore reruns all 12 fits and redoes the selection, rather than rescoring the sealed
+    v4 predictions.
+change:
+  descriptors: >-
+    compound_table(..., min_std=NOISE_STD_TOLERANCE), with NOISE_STD_TOLERANCE = 1e-8
+    (drugperturb.v3.descriptors). This drops the 28 OP3 columns that are constant on the 85
+    training compounds and keeps 168 of 196.
+  code_path: scripts/v4_fit.py, v4_seal.py and v4_evaluate_op3.py with --descriptor-tolerance; outputs carry analysis=v4_corrected_posthoc and descriptor_min_std
+  descriptor_min_std: 1.0e-08
+unchanged_from_protocol_v4:
+  - OP3 data, design, split, count QC, gene space and prepared inputs (kernel dp-v4-op3-prepare outputs; hashes in receipts/v4/op3/prepare_receipt.json)
+  - arms A0, I1, I2, I3, hyperparameters, objectives, amendment A2 cap
+  - training schedule, 60-minute cap, seeds 42, 123, 2026, seed averaging
+  - non-collapse criteria and the primary-arm selection rule (validation compounds only)
+  - comparators B0, B1c, B2c, M1c and the vehicle-anchored B1a, M1a; their sealed v4 predictions are reused unchanged, because none uses descriptors (fingerprints and training means only)
+  - endpoints E1, E2, E3, the metric, the scaffold-group bootstrap (2000 draws, seed 2026) and pooling over the gate-passing contexts
+order_of_operations:
+  - commit this plan and the code path, with tests, before any corrected fit
+  - fit all 12 OP3 fits on Kaggle (kernel dp-v4c-fit-op3, code dataset drugperturb-v4c-code), seal, select on validation
+  - commit fit receipts, seals, the selection and training/validation diagnostics before scoring
+  - score locally against the same extraction outputs, after replaying the v4 evaluation locally to show it reproduces reports/v4/op3
+reporting:
+  location: reports/v4_corrected/report.md; tables in reports/v4_corrected/op3/; receipts in receipts/v4_corrected/
+  required:
+    - the corrected selection and every arm's validation RMSE and non-collapse verdict, next to v4's
+    - E1, E2 and E3 for the corrected selected arm, next to the prespecified v4 result
+    - every arm against every comparator, pooled and per context, as in v4
+    - the per-compound RMSE of the three affected test compounds under both rules
+    - the v4 post hoc exclusion analysis repeated on the corrected predictions
+  interpretation: >-
+    The prespecified v4 result stands as the confirmatory result. If the corrected selected arm meets
+    an endpoint, that is reported as a post hoc observation that would need a new protocol on untouched
+    data to confirm. If it does not, the v4 conclusion holds without the artifact.
+committed_v4_outputs: no committed v1-v4 report, seal or receipt is changed

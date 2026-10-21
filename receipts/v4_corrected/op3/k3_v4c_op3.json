@@ -1,0 +1,15 @@
+{
+  "system": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "cpu_count": 4,
+    "gpu": "Tesla T4, 580.178.04, 15360 MiB\nTesla T4, 580.178.04, 15360 MiB",
+    "disk_tmp": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         8.0T  7.0T  1.1T  87% /",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:              31           1          12           0          18          30\nSwap:              0           0           0"
+  },
+  "analysis": "v4_corrected_posthoc",
+  "descriptor_min_std": 1e-08,
+  "prepared": "/kaggle/input/notebooks/ningyusunny/dp-v4-op3-prepare/prepared",
+  "code_archive": "/kaggle/input/datasets/ningyusunny/drugperturb-v4c-code/drugperturb-src.archive",
+  "code_archive_sha256": "bb9eb191f57af1a52385ef86a0cdae17fece79b8dfd3e95b30a0eeaedcfbfe08",
+  "written_utc": "2026-10-21T02:58:31.260188+00:00"
+}

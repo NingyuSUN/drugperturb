@@ -1,0 +1,5 @@
+arm	corrected_non_collapsed	corrected_selected	corrected_validation_rmse	v4_non_collapsed	v4_selected	v4_validation_rmse
+A0_v3_reference	True	False	0.4674359179248652	True	False	0.4673773556397866
+I1_nb_likelihood	True	False	0.468033556646635	True	True	0.46447598348782804
+I2_counterfactual_pseudobulk	True	True	0.4676275163436329	True	False	0.4654963985091392
+I3_nb_plus_pseudobulk	False	False	0.5275403515316773	False	False	0.5317169580155244

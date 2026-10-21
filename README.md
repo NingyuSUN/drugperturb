@@ -31,6 +31,8 @@ To view the original v1 HTML reports, clone this repository or choose **Code →
 
 See the [v4 report](reports/v4/report.md), the [pre-test diagnostics](reports/v4/diagnostics.md) and the [v4 methods](docs/V4_METHODS.md).
 
+**Post hoc corrected analysis.** The scaling bug was fixed, and all 12 OP3 fits were rerun with the training-constant descriptor columns removed. The validation rule then selects the pseudobulk arm. On test compounds it matches zero change (+0.004 [−0.003, +0.012]) and is still worse than the training mean (+0.016 [+0.009, +0.025]); the conclusion does not change. This analysis was prompted by the open OP3 test outcomes, so it is reported next to the prespecified result, not in its place. See the [corrected report](reports/v4_corrected/report.md).
+
 ## v3: published single-cell perturbation models as baselines
 
 **chemCPA and biolord did not beat information-matched simple baselines.** Both models were trained on sci-Plex3 cells from 3 cell lines × 4 doses, ran on Kaggle T4 GPUs, and had their predictions sealed before test scoring. The confirmatory endpoint pooled six contexts never scored before. There, both were reliably worse than a per-context fingerprint Ridge, and neither was distinguishable from zero change:

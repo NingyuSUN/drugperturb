@@ -1,0 +1,60 @@
+{
+  "status": "SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "rule": "among candidates meeting the non-collapse criteria on OP3 validation compounds, the lowest mean over seeds of the per-seed validation rmse (v3 selection metric); ties by listed order",
+  "arms": {
+    "A0_v3_reference": {
+      "validation_rmse": 0.4674359179248652,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": true,
+        "non_collapsed": true
+      },
+      "sha256": "c61fb7a6a3f32079cc99553ff6f232b4714c5b204753554d7ba7c5c82dff04ff"
+    },
+    "I1_nb_likelihood": {
+      "validation_rmse": 0.468033556646635,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": true,
+        "non_collapsed": true
+      },
+      "sha256": "ff2faacef108dfbb45fdfe33aa7411ac0902e416a0c225fb57e9452c23ac69f0"
+    },
+    "I2_counterfactual_pseudobulk": {
+      "validation_rmse": 0.4676275163436329,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": true,
+        "non_collapsed": true
+      },
+      "sha256": "7a7d2fb57ebcfbe31c5613c2e37112f25c5188c169c60b9f43b671b15e019fb8"
+    },
+    "I3_nb_plus_pseudobulk": {
+      "validation_rmse": 0.5275403515316773,
+      "non_collapse": {
+        "pass_effect_size_ratio": true,
+        "pass_mean_gene_pearson_r": true,
+        "pass_rmse_below_zero_change": false,
+        "non_collapsed": false
+      },
+      "sha256": "4d68a61982135854a25c1ab8d82336f339d0e26471345e85e02f7d979941deb9"
+    }
+  },
+  "selected": "I2_counterfactual_pseudobulk",
+  "passing": [
+    "I1_nb_likelihood",
+    "I2_counterfactual_pseudobulk"
+  ],
+  "any_passing": true,
+  "validation_rmse": {
+    "I1_nb_likelihood": 0.468033556646635,
+    "I2_counterfactual_pseudobulk": 0.4676275163436329,
+    "I3_nb_plus_pseudobulk": 0.5275403515316773
+  },
+  "analysis": "v4_corrected_posthoc",
+  "descriptor_min_std": 1e-08
+}

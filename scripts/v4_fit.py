@@ -19,15 +19,29 @@ import yaml
 
 from drugperturb.v3 import runner as v3_runner
 from drugperturb.v3.cells import load_model_archive
-from drugperturb.v3.descriptors import VEHICLE_ID, compound_table
+from drugperturb.v3.descriptors import NOISE_STD_TOLERANCE, VEHICLE_ID, compound_table
 from drugperturb.v3.pseudobulk import normalize_counts
 from drugperturb.v4 import chemcpa_v4, counterfactual, diagnostics
 
 ROOT = Path(__file__).resolve().parents[1]
 ARMS = ['A0_v3_reference', 'I1_nb_likelihood', 'I2_counterfactual_pseudobulk', 'I3_nb_plus_pseudobulk']
+# Post hoc corrected analysis (--descriptor-tolerance): labels written only when the option is used,
+# so default fits, seals and evaluations are unchanged.
+CORRECTED = dict(analysis='v4_corrected_posthoc', descriptor_min_std=NOISE_STD_TOLERANCE)
 
 
 load_truth = counterfactual.load_truth
+
+
+def descriptor_labels(record):
+    """The corrected-analysis labels a fit record, seal or selection carries ({} for the v4 rule)."""
+    return {k: record[k] for k in CORRECTED if k in record}
+
+
+def require_labels(record, expected, what):
+    if descriptor_labels(record) != expected:
+        raise ValueError(f'{what}: descriptor rule {descriptor_labels(record) or "v4 default"} differs from the '
+                         f'requested {expected or "v4 default"}; pass --descriptor-tolerance only for the corrected analysis')
 
 
 def read(path):
@@ -71,6 +85,9 @@ def main():
     parser.add_argument('--output-root', type=Path, required=True)
     parser.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu')
     parser.add_argument('--max-epochs', type=int, help='Engineering smoke runs only; recorded in the fit record')
+    parser.add_argument('--descriptor-tolerance', action='store_true',
+                        help='Post hoc corrected analysis only: drop training descriptor columns with std <= '
+                             'NOISE_STD_TOLERANCE (docs/POST_V4_ENGINEERING.md); labelled in the fit record')
     args = parser.parse_args()
     started = time.perf_counter()
     protocol = yaml.safe_load((ROOT/'configs/protocol_v4.yaml').read_text())
@@ -108,7 +125,9 @@ def main():
     reference = diagnostics.context_means(truth['train'])
 
     train_ids = compounds.loc[compounds.split.eq('train'), 'compound_id'].tolist()
-    descriptors, kept = compound_table(compounds.compound_id.tolist(), compounds.canonical_smiles.tolist(), train_ids)
+    labels = CORRECTED if args.descriptor_tolerance else {}
+    descriptors, kept = compound_table(compounds.compound_id.tolist(), compounds.canonical_smiles.tolist(), train_ids,
+                                       min_std=labels.get('descriptor_min_std', 0.0))
     vocabulary = [VEHICLE_ID, *compounds.compound_id.tolist()]
     X = normalize_counts(sub_counts, sub_library)
     train_index = np.flatnonzero(train_mask[keep])
@@ -188,7 +207,7 @@ def main():
                   gpu=torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
                   torch=torch.__version__, cuda=torch.version.cuda, python=platform.python_version(),
                   test_outcomes_loaded=False, diagnostics=summary, latent=latent,
-                  nonfinite_validation_evaluations=len(nonfinite), **result)
+                  nonfinite_validation_evaluations=len(nonfinite), **result, **labels)
     record['validation_rmse'] = summary['validation']['rmse']
     record['history_tail'] = history.tail(3).to_dict('records')
     (out/f'{name}.json').write_text(json.dumps(diagnostics.finite(record), indent=2, allow_nan=False)+'\n')

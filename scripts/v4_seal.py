@@ -13,7 +13,7 @@ import numpy as np
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from v4_fit import ARMS, load_truth  # noqa: E402
+from v4_fit import ARMS, CORRECTED, load_truth, require_labels  # noqa: E402
 from drugperturb.v3 import runner  # noqa: E402
 from drugperturb.v4 import counterfactual, diagnostics  # noqa: E402
 
@@ -31,7 +31,10 @@ def main():
     parser.add_argument('--prepared', type=Path, required=True)
     parser.add_argument('--output-root', type=Path, required=True)
     parser.add_argument('--allow-smoke', action='store_true', help='Engineering runs only')
+    parser.add_argument('--descriptor-tolerance', action='store_true',
+                        help='Post hoc corrected analysis only: every fit must have used v4_fit.py --descriptor-tolerance')
     args = parser.parse_args()
+    labels = CORRECTED if args.descriptor_tolerance else {}
     protocol = yaml.safe_load((ROOT/'configs/protocol_v4.yaml').read_text())
     seeds = protocol['training']['seeds'][args.setting]
     contexts = counterfactual.SETTINGS[args.setting]['contexts']
@@ -48,6 +51,7 @@ def main():
                 raise ValueError(f'{name} is an engineering smoke fit')
             if record['test_outcomes_loaded'] is not False:
                 raise ValueError(f'{name} does not certify test-outcome blindness')
+            require_labels(record, labels, name)
             records[seed] = record
             with np.load(args.fit_root/f'{name}.npz', allow_pickle=False) as z:
                 arrays[seed] = {k: z[k] for k in z.files}
@@ -74,7 +78,8 @@ def main():
         metadata = dict(setting=args.setting, arm=arm, seeds=seeds, final_prediction=protocol['training']['final_prediction'],
                         mean_seed_validation_rmse=validation_rmse, seed_averaged=summary, latent=latent,
                         non_collapse=verdict, engineering_smoke=any(r['engineering_smoke'] for r in records.values()),
-                        fits=[{k: v for k, v in r.items() if k not in ('history_tail',)} for r in records.values()])
+                        fits=[{k: v for k, v in r.items() if k not in ('history_tail',)} for r in records.values()],
+                        **labels)
         inputs = {'protocol': ROOT/'configs/protocol_v4.yaml', 'model_cells': args.prepared/'model_cells.npz',
                   'queries': args.prepared/'queries.tsv', 'validation_truth': args.prepared/'validation_truth.npz',
                   **{f'fit_s{s}': args.fit_root/f'{arm}_{args.setting}_s{s}.npz' for s in seeds}}
@@ -85,7 +90,7 @@ def main():
         rule = protocol['primary_arm_selection']
         selection = diagnostics.select_primary(arms, rule['candidates'])
         record = dict(status='SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING', test_outcomes_loaded=False,
-                      rule=rule['rule'], arms=arms, **selection)
+                      rule=rule['rule'], arms=arms, **selection, **labels)
         (args.output_root/'selection_op3.json').write_text(json.dumps(diagnostics.finite(record), indent=2)+'\n')
         print(json.dumps(diagnostics.finite(selection), indent=2))
 
