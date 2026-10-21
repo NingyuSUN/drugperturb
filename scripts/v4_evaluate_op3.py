@@ -5,6 +5,9 @@ are sealed. Test truth is first computed here. Endpoints follow the protocol:
 E1 (selected arm minus zero change) and E2 (selected arm minus B1c and M1c),
 pooled over gate-passing contexts with one scaffold-group draw shared by all
 contexts; every other contrast is secondary.
+
+With --descriptor-tolerance it scores the post hoc corrected arm seals instead
+(configs/v4_corrected_posthoc.yaml); the summary is labelled as such.
 """
 from pathlib import Path
 import argparse
@@ -18,7 +21,7 @@ from scipy import sparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from v3_evaluate import by_key, load_sealed, pooled_bootstrap  # noqa: E402
-from v4_fit import ARMS  # noqa: E402
+from v4_fit import ARMS, CORRECTED, require_labels  # noqa: E402
 from drugperturb.evaluation import compound_metrics, paired_scaffold_bootstrap, summarize_compound_metrics  # noqa: E402
 from drugperturb.v3.runner import sha256  # noqa: E402
 from drugperturb.v4 import design, diagnostics  # noqa: E402
@@ -47,7 +50,11 @@ def main():
     parser.add_argument('--prepared', type=Path, required=True)
     parser.add_argument('--sealed-root', type=Path, action='append', default=[])
     parser.add_argument('--output-root', type=Path, required=True)
+    parser.add_argument('--descriptor-tolerance', action='store_true',
+                        help='Post hoc corrected analysis only: score arm seals made with --descriptor-tolerance. '
+                             'OP3 test outcomes were opened by the v4 evaluation, so the summary is labelled post hoc')
     args = parser.parse_args()
+    labels = CORRECTED if args.descriptor_tolerance else {}
     protocol = yaml.safe_load((ROOT/'configs/protocol_v4.yaml').read_text())
     out = args.output_root
     out.mkdir(parents=True, exist_ok=True)
@@ -64,6 +71,9 @@ def main():
     if selection['status'] != 'SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING' or any(
             selection['arms'][a]['sha256'] != sealed[a]['seal']['predictions']['sha256'] for a in ARMS):
         raise ValueError('selection record does not match the sealed arm predictions')
+    require_labels(selection, labels, 'selection_op3.json')
+    for arm in ARMS:
+        require_labels(sealed[arm]['seal'], labels, f'{arm} op3 seal')
     chosen = selection['selected']
 
     compound_qc = read(args.prepared/'count_qc/compound_qc.tsv')
@@ -141,7 +151,7 @@ def main():
     pd.DataFrame(test_diagnostics).to_csv(out/'test_diagnostics.tsv', sep='\t', index=False)
     result = dict(endpoints=endpoints, pooled=pooled, selection=selection,
                   seals={a: sealed[a]['seal']['predictions']['sha256'] for a in ARMS},
-                  test_truth_first_computed_here=True)
+                  test_truth_first_computed_here=not labels, **labels)
     (out/'summary.json').write_text(json.dumps(diagnostics.finite(result), indent=2, allow_nan=False)+'\n')
     print(json.dumps(diagnostics.finite(endpoints), indent=2))
 

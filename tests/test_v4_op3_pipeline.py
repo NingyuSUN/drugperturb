@@ -178,3 +178,52 @@ def test_fits_seal_select_and_evaluate(pipeline):
     per = pd.read_csv(tmp/'eval/per_compound.tsv', sep='\t')
     zero = per[per.method.eq('B0')]
     assert len(zero) and np.isfinite(per.rmse).all()
+
+
+def test_corrected_descriptor_path_is_opt_in_labelled_and_never_mixed(pipeline):
+    """--descriptor-tolerance (configs/v4_corrected_posthoc.yaml) reaches the scaler and labels every output."""
+    pytest.importorskip('descriptastorus')
+    pytest.importorskip('torch')
+    from drugperturb.v3.descriptors import NOISE_STD_TOLERANCE, compound_table
+    tmp, repo = pipeline
+    protocol = yaml.safe_load((repo/'configs/protocol_v4.yaml').read_text())
+    labels = dict(analysis='v4_corrected_posthoc', descriptor_min_std=NOISE_STD_TOLERANCE)
+    for arm in ['A0_v3_reference', 'I1_nb_likelihood', 'I2_counterfactual_pseudobulk', 'I3_nb_plus_pseudobulk']:
+        for seed in protocol['training']['seeds']['op3']:
+            run(repo, 'v4_fit.py', '--setting', 'op3', '--arm', arm, '--seed', seed, '--prepared', tmp/'prep',
+                '--output-root', tmp/'corr', '--device', 'cpu', '--max-epochs', 1, '--descriptor-tolerance')
+    run(repo, 'v4_fit.py', '--setting', 'op3', '--arm', 'A0_v3_reference', '--seed', 42, '--prepared', tmp/'prep',
+        '--output-root', tmp/'default', '--device', 'cpu', '--max-epochs', 1)
+    compounds = pd.read_csv(repo/'manifests/v4/op3_compounds.tsv', sep='\t', keep_default_na=False)
+    args = (compounds.compound_id.tolist(), compounds.canonical_smiles.tolist(),
+            compounds.loc[compounds.split.eq('train'), 'compound_id'].tolist())
+    corrected = json.loads((tmp/'corr/fits/A0_v3_reference_op3_s42.json').read_text())
+    default = json.loads((tmp/'default/fits/A0_v3_reference_op3_s42.json').read_text())
+    assert {k: corrected[k] for k in labels} == labels and not set(labels) & set(default)
+    assert corrected['descriptor_columns'] == len(compound_table(*args, min_std=NOISE_STD_TOLERANCE)[1])
+    assert default['descriptor_columns'] == len(compound_table(*args)[1])
+    assert corrected['descriptor_columns'] < default['descriptor_columns']  # the fixture has noise columns too
+
+    seal = ['v4_seal.py', '--setting', 'op3', '--prepared', tmp/'prep', '--allow-smoke']
+    with pytest.raises(AssertionError, match='descriptor rule'):
+        run(repo, *seal, '--fit-root', tmp/'corr/fits', '--output-root', tmp/'refused_default')
+    shutil.copytree(tmp/'corr/fits', tmp/'mixed')
+    shutil.copy(tmp/'default/fits/A0_v3_reference_op3_s42.json', tmp/'mixed/A0_v3_reference_op3_s42.json')
+    with pytest.raises(AssertionError, match='descriptor rule'):
+        run(repo, *seal, '--fit-root', tmp/'mixed', '--output-root', tmp/'refused_mixed', '--descriptor-tolerance')
+    run(repo, *seal, '--fit-root', tmp/'corr/fits', '--output-root', tmp/'corr/sealed', '--descriptor-tolerance')
+    selection = json.loads((tmp/'corr/sealed/selection_op3.json').read_text())
+    arm_seal = json.loads((tmp/'corr/sealed/I1_nb_likelihood_op3_seal.json').read_text())
+    assert {k: selection[k] for k in labels} == labels and {k: arm_seal[k] for k in labels} == labels
+    assert selection['status'] == 'SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING' and selection['test_outcomes_loaded'] is False
+
+    run(repo, 'v4_anchored_baselines.py', '--setting', 'op3', '--prepared', tmp/'prep', '--baselines-root',
+        tmp/'sealed_base', '--output-root', tmp/'corr/anchored')
+    evaluate = ['v4_evaluate_op3.py', '--extraction-root', tmp/'ext', '--prepared', tmp/'prep', '--sealed-root',
+                tmp/'sealed_base', '--sealed-root', tmp/'corr/sealed', '--sealed-root', tmp/'corr/anchored']
+    with pytest.raises(AssertionError, match='descriptor rule'):
+        run(repo, *evaluate, '--output-root', tmp/'corr/eval_refused')
+    run(repo, *evaluate, '--output-root', tmp/'corr/eval', '--descriptor-tolerance')
+    summary = json.loads((tmp/'corr/eval/summary.json').read_text())
+    assert {k: summary[k] for k in labels} == labels and summary['test_truth_first_computed_here'] is False
+    assert summary['endpoints']['selected_arm'] == selection['selected']
