@@ -5,7 +5,7 @@ These are two engineering problems found during v4. Neither fix changes a commit
 - The v3 and v4 scripts still call the descriptor scaler with its v3 default.
 - The new truth loader returns the same keys and values as the old code.
 
-Nothing was refit or rescored.
+The fixes themselves refit and rescore nothing. A separate post hoc analysis later refitted the OP3 fits with the descriptor tolerance and reported them next to v4 ([corrected report](../reports/v4_corrected/report.md)). It changes no committed v4 output.
 
 ## Descriptor columns that are constant up to rounding
 
@@ -39,7 +39,8 @@ Values in the columns that both rules keep are identical. With the tolerance, th
 **Limits.**
 
 - Descriptor values depend on the descriptastorus and RDKit versions in the cell-model lock. The test pins the 25 and 28 dropped columns for that environment.
-- No model was fitted with the option. sci-Plex3 models would receive 171 instead of 196 inputs, so fits would not be bit-identical, even though the dropped columns were constant.
+- **sci-Plex3 was not refitted with the option.** sci-Plex3 models would receive 171 instead of 196 inputs. The fits would therefore not be bit-identical, even though the dropped columns were constant.
+- **OP3 was refitted with the option** (`--descriptor-tolerance`), only in the post hoc [corrected analysis](../reports/v4_corrected/report.md). The validation rule then selects I2 rather than I1. Neither analysis supports E1, E2 or E3.
 
 ## Truth loading in the v3 scripts
 

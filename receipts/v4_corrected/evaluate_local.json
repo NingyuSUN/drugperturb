@@ -1,0 +1,162 @@
+{
+  "analysis": "v4_corrected_posthoc",
+  "plan": "configs/v4_corrected_posthoc.yaml",
+  "commit": "ea74549",
+  "machine": {
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python": "3.12.14 (main, Sep  1 2026, 14:16:52) [Clang 22.1.3 ]",
+    "processor": ""
+  },
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "torch": "2.5.1+cpu"
+  },
+  "input_paths": {
+    "extraction_root": "/home/ningyu/kout/v4o1/extraction",
+    "prepared": "/home/ningyu/kout/v4o2/prepared",
+    "baselines_sealed": "/home/ningyu/kout/v4o2/sealed",
+    "anchored_sealed": "/home/ningyu/kout/v4anch/sealed",
+    "v4_sealed": "/home/ningyu/kout/v4op3fit2/sealed",
+    "corrected_sealed": "/home/ningyu/kout/v4cfit/sealed",
+    "replay_root": "/home/ningyu/v4c_eval_replay"
+  },
+  "inputs_verified": {
+    "prepared/frozen_genes.tsv": "d281230a030798b99982035af73e51aa0f58e796923b48adc3e9919589000103",
+    "prepared/model_cells.npz": "876e8a6eef9467804ebe13598a0adbd44ca0ef3b49174494e5535ab67730ca0d",
+    "prepared/queries.tsv": "352b7161ede0a3f1f965deb3efe11421bcf7a071c7cf4ab59b6ad206fc8f7d8f",
+    "prepared/train_truth.npz": "9d5e54c4d02c502a549479e4b8823d3ef31686040756c01d13fb5aa117072920",
+    "prepared/validation_truth.npz": "97888c95e01335020b487b7d45321e00c8026175b8eec7903bcf4c99665e10d8",
+    "prepared/vehicle_contexts.tsv": "2310d325e6714905da17e08788d365cbfd2d004a59b6086995226248c76c1327",
+    "extraction/unit_counts.npz": "f38c5fccc9a5f27036f71f2fb4d2b8965c5569aa0d8beaf31bcbb283eefeb895",
+    "receipts/v4/op3/context_baselines_op3_seal.json": "af4fe3759da0435058e6c0d6330c2e5a131dbf05ab8fea1202190fccb8432183",
+    "receipts/v4/anchored/anchored_baselines_op3_seal.json": "a6095eb3a7f57b33c3ed8994028b9e9bec8aff1c94fea6d40acbf6a04107845b",
+    "receipts/v4/op3/sealed/A0_v3_reference_op3_seal.json": "cfdcbb34ab968ad8e597330d75c65415d703701fa01d9a5713fcbb0237917fe6",
+    "receipts/v4/op3/sealed/I1_nb_likelihood_op3_seal.json": "002f3661b993b82c956388c7c01b6bd38d4ca399cb1e08d4e65a8c8edbb8d12f",
+    "receipts/v4/op3/sealed/I2_counterfactual_pseudobulk_op3_seal.json": "abdcfcc1bfa1e422fb71825b181b4277860dad102e0f600921d52f405ddc7ce9",
+    "receipts/v4/op3/sealed/I3_nb_plus_pseudobulk_op3_seal.json": "eebe0a1894c567c2a6b75128dafd289beb39ac9d17a8c7e4f7f52717bded2ecf",
+    "receipts/v4/op3/sealed/selection_op3.json": "1942c7e56f117f3cd261c010e2670b61d79edcc4bcc21636651700f5185d8b05",
+    "receipts/v4_corrected/op3/sealed/A0_v3_reference_op3_seal.json": "c61fb7a6a3f32079cc99553ff6f232b4714c5b204753554d7ba7c5c82dff04ff",
+    "receipts/v4_corrected/op3/sealed/I1_nb_likelihood_op3_seal.json": "ff2faacef108dfbb45fdfe33aa7411ac0902e416a0c225fb57e9452c23ac69f0",
+    "receipts/v4_corrected/op3/sealed/I2_counterfactual_pseudobulk_op3_seal.json": "7a7d2fb57ebcfbe31c5613c2e37112f25c5188c169c60b9f43b671b15e019fb8",
+    "receipts/v4_corrected/op3/sealed/I3_nb_plus_pseudobulk_op3_seal.json": "4d68a61982135854a25c1ab8d82336f339d0e26471345e85e02f7d979941deb9",
+    "receipts/v4_corrected/op3/sealed/selection_op3.json": "6959be7c1a7c351cdcbbf0d926d64fe8497eed726847efaee84c3719bb6de1e7"
+  },
+  "v4_replay": {
+    "compared_with": "reports/v4/op3",
+    "reproduced": true,
+    "files": {
+      "per_compound.tsv": {
+        "bytes_identical": true
+      },
+      "summary.tsv": {
+        "bytes_identical": true
+      },
+      "contrasts.tsv": {
+        "bytes_identical": true
+      },
+      "test_diagnostics.tsv": {
+        "bytes_identical": true
+      },
+      "summary.json": {
+        "equal_as_data": true
+      }
+    }
+  },
+  "commands": [
+    {
+      "started_utc": "2026-10-21T03:07:10.771609+00:00",
+      "command": [
+        "/home/ningyu/venvs/dpcore/bin/python",
+        "scripts/v4_evaluate_op3.py",
+        "--extraction-root",
+        "/home/ningyu/kout/v4o1/extraction",
+        "--prepared",
+        "/home/ningyu/kout/v4o2/prepared",
+        "--sealed-root",
+        "/home/ningyu/kout/v4o2/sealed",
+        "--sealed-root",
+        "/home/ningyu/kout/v4anch/sealed",
+        "--sealed-root",
+        "/home/ningyu/kout/v4op3fit2/sealed",
+        "--output-root",
+        "/home/ningyu/v4c_eval_replay"
+      ],
+      "returncode": 0,
+      "stdout_tail": "ndidate\"\n    },\n    \"supported\": false\n  },\n  \"E2_improvement\": {\n    \"estimates\": {\n      \"B1c\": {\n        \"point_estimate\": 0.18342335681534427,\n        \"ci_lower\": 0.008609972031013264,\n        \"ci_upper\": 0.5439759406652362,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      },\n      \"M1c\": {\n        \"point_estimate\": 0.18372209074182833,\n        \"ci_lower\": 0.008683814174060063,\n        \"ci_upper\": 0.5456062634776313,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      }\n    },\n    \"supported\": false\n  },\n  \"E3_beyond_vehicle_anchoring\": {\n    \"estimates\": {\n      \"B1a\": {\n        \"point_estimate\": 0.2584332946101949,\n        \"ci_lower\": 0.08160126660359183,\n        \"ci_upper\": 0.6187517707835652,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      },\n      \"M1a\": {\n        \"point_estimate\": 0.25814404708707145,\n        \"ci_lower\": 0.08141683634345398,\n        \"ci_upper\": 0.618745040636916,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      }\n    },\n    \"amendment\": \"A1\",\n    \"supported\": false\n  },\n  \"gate_passing_contexts\": [\n    \"Tcells_24h_1000nM\",\n    \"Bcells_24h_1000nM\",\n    \"Myeloid_24h_1000nM\"\n  ]\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "started_utc": "2026-10-21T03:07:27.386652+00:00",
+      "command": [
+        "/home/ningyu/venvs/dpcore/bin/python",
+        "scripts/v4_evaluate_op3.py",
+        "--extraction-root",
+        "/home/ningyu/kout/v4o1/extraction",
+        "--prepared",
+        "/home/ningyu/kout/v4o2/prepared",
+        "--sealed-root",
+        "/home/ningyu/kout/v4o2/sealed",
+        "--sealed-root",
+        "/home/ningyu/kout/v4anch/sealed",
+        "--sealed-root",
+        "/home/ningyu/kout/v4cfit/sealed",
+        "--output-root",
+        "/mnt/c/Users/n.sun/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/scratch-workspaces/2c306b50-3ae1-4531-bdda-8bdf081842b5/300fafb4-b778-40a3-bfc0-9451a8f1c081/scratch-2026-10-16-092570/dp-op3c/reports/v4_corrected/op3",
+        "--descriptor-tolerance"
+      ],
+      "returncode": 0,
+      "stdout_tail": "\n    },\n    \"supported\": false\n  },\n  \"E2_improvement\": {\n    \"estimates\": {\n      \"B1c\": {\n        \"point_estimate\": 0.01640074514399899,\n        \"ci_lower\": 0.008780149430838236,\n        \"ci_upper\": 0.02464117513541427,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      },\n      \"M1c\": {\n        \"point_estimate\": 0.016699479070483057,\n        \"ci_lower\": 0.008873582919354398,\n        \"ci_upper\": 0.025003804117745988,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      }\n    },\n    \"supported\": false\n  },\n  \"E3_beyond_vehicle_anchoring\": {\n    \"estimates\": {\n      \"B1a\": {\n        \"point_estimate\": 0.09141068293884967,\n        \"ci_lower\": 0.08209120999504217,\n        \"ci_upper\": 0.10212470440801993,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      },\n      \"M1a\": {\n        \"point_estimate\": 0.09112143541572615,\n        \"ci_lower\": 0.08147242177536759,\n        \"ci_upper\": 0.10209535457668799,\n        \"contexts\": [\n          \"Tcells_24h_1000nM\",\n          \"Bcells_24h_1000nM\",\n          \"Myeloid_24h_1000nM\"\n        ],\n        \"n_groups\": 33,\n        \"draws\": 2000,\n        \"valid_draws\": 2000,\n        \"seed\": 2026,\n        \"negative_favors\": \"candidate\"\n      }\n    },\n    \"amendment\": \"A1\",\n    \"supported\": false\n  },\n  \"gate_passing_contexts\": [\n    \"Tcells_24h_1000nM\",\n    \"Bcells_24h_1000nM\",\n    \"Myeloid_24h_1000nM\"\n  ]\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "started_utc": "2026-10-21T03:07:39.544427+00:00",
+      "command": [
+        "/home/ningyu/venvs/dpcore/bin/python",
+        "scripts/v4_posthoc_op3.py",
+        "/mnt/c/Users/n.sun/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/scratch-workspaces/2c306b50-3ae1-4531-bdda-8bdf081842b5/300fafb4-b778-40a3-bfc0-9451a8f1c081/scratch-2026-10-16-092570/dp-op3c/reports/v4_corrected/op3/per_compound.tsv",
+        "/mnt/c/Users/n.sun/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/scratch-workspaces/2c306b50-3ae1-4531-bdda-8bdf081842b5/300fafb4-b778-40a3-bfc0-9451a8f1c081/scratch-2026-10-16-092570/dp-op3c/scripts",
+        "/mnt/c/Users/n.sun/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/scratch-workspaces/2c306b50-3ae1-4531-bdda-8bdf081842b5/300fafb4-b778-40a3-bfc0-9451a8f1c081/scratch-2026-10-16-092570/dp-op3c/reports/v4_corrected/op3/posthoc_sensitivity.tsv"
+      ],
+      "returncode": 0,
+      "stdout_tail": "09                     83\nexcluding the 3 test compounds with |z|>1e6              A0_v3_reference      M1c          0.0125    0.0042    0.0213                     83\nexcluding the 3 test compounds with |z|>1e6              A0_v3_reference      B1a          0.0874    0.0762    0.0995                     83\nexcluding the 3 test compounds with |z|>1e6             I1_nb_likelihood       B0          0.0033   -0.0018    0.0083                     83\nexcluding the 3 test compounds with |z|>1e6             I1_nb_likelihood      B1c          0.0161    0.0081    0.0248                     83\nexcluding the 3 test compounds with |z|>1e6             I1_nb_likelihood      M1c          0.0162    0.0079    0.0250                     83\nexcluding the 3 test compounds with |z|>1e6             I1_nb_likelihood      B1a          0.0911    0.0801    0.1027                     83\nexcluding the 3 test compounds with |z|>1e6 I2_counterfactual_pseudobulk       B0          0.0037   -0.0034    0.0115                     83\nexcluding the 3 test compounds with |z|>1e6 I2_counterfactual_pseudobulk      B1c          0.0166    0.0087    0.0252                     83\nexcluding the 3 test compounds with |z|>1e6 I2_counterfactual_pseudobulk      M1c          0.0166    0.0084    0.0252                     83\nexcluding the 3 test compounds with |z|>1e6 I2_counterfactual_pseudobulk      B1a          0.0915    0.0809    0.1024                     83\nexcluding the 3 test compounds with |z|>1e6        I3_nb_plus_pseudobulk       B0          0.0205    0.0025    0.0407                     83\nexcluding the 3 test compounds with |z|>1e6        I3_nb_plus_pseudobulk      B1c          0.0334    0.0197    0.0492                     83\nexcluding the 3 test compounds with |z|>1e6        I3_nb_plus_pseudobulk      M1c          0.0334    0.0201    0.0486                     83\nexcluding the 3 test compounds with |z|>1e6        I3_nb_plus_pseudobulk      B1a          0.1083    0.0930    0.1231                     83\n",
+      "stderr_tail": ""
+    },
+    {
+      "started_utc": "2026-10-21T03:07:43.370684+00:00",
+      "command": [
+        "/home/ningyu/venvs/dpcore/bin/python",
+        "scripts/v4c_side_by_side.py",
+        "--v4-report",
+        "reports/v4/op3",
+        "--corrected-report",
+        "/mnt/c/Users/n.sun/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/scratch-workspaces/2c306b50-3ae1-4531-bdda-8bdf081842b5/300fafb4-b778-40a3-bfc0-9451a8f1c081/scratch-2026-10-16-092570/dp-op3c/reports/v4_corrected/op3",
+        "--v4-selection",
+        "receipts/v4/op3/sealed/selection_op3.json",
+        "--corrected-selection",
+        "receipts/v4_corrected/op3/sealed/selection_op3.json",
+        "--output-root",
+        "/mnt/c/Users/n.sun/AppData/Local/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/scratch-workspaces/2c306b50-3ae1-4531-bdda-8bdf081842b5/300fafb4-b778-40a3-bfc0-9451a8f1c081/scratch-2026-10-16-092570/dp-op3c/reports/v4_corrected/op3/side_by_side"
+      ],
+      "returncode": 0,
+      "stdout_tail": "erfactual_pseudobulk  Bcells_24h_1000nM      True 0.5847     0.5878\nI2_counterfactual_pseudobulk Myeloid_24h_1000nM      True 0.3435     0.3465\n       I3_nb_plus_pseudobulk  Tcells_24h_1000nM      True 0.4896     0.3321\n       I3_nb_plus_pseudobulk NKcells_24h_1000nM     False 0.9555     0.9428\n       I3_nb_plus_pseudobulk  Bcells_24h_1000nM      True 0.7902     0.6116\n       I3_nb_plus_pseudobulk Myeloid_24h_1000nM      True 0.5517     0.3696\n== affected_compounds\ncompound_id        name         context_id                       method  corrected     v4\n   LSM-1020   Dasatinib  Tcells_24h_1000nM              A0_v3_reference     0.4538 0.4698\n   LSM-1020   Dasatinib  Tcells_24h_1000nM             I1_nb_likelihood     0.4395 0.4687\n   LSM-1020   Dasatinib  Tcells_24h_1000nM I2_counterfactual_pseudobulk     0.4050 0.4682\n   LSM-1020   Dasatinib  Tcells_24h_1000nM        I3_nb_plus_pseudobulk     0.3332 0.3636\n  LSM-43293 Ixabepilone  Bcells_24h_1000nM              A0_v3_reference     0.4502 0.4404\n  LSM-43293 Ixabepilone  Bcells_24h_1000nM             I1_nb_likelihood     0.4555 5.2491\n  LSM-43293 Ixabepilone  Bcells_24h_1000nM I2_counterfactual_pseudobulk     0.4622 0.4404\n  LSM-43293 Ixabepilone  Bcells_24h_1000nM        I3_nb_plus_pseudobulk     0.6002 5.6504\n  LSM-43293 Ixabepilone Myeloid_24h_1000nM              A0_v3_reference     0.2388 0.2403\n  LSM-43293 Ixabepilone Myeloid_24h_1000nM             I1_nb_likelihood     0.2802 5.0132\n  LSM-43293 Ixabepilone Myeloid_24h_1000nM I2_counterfactual_pseudobulk     0.2590 0.2400\n  LSM-43293 Ixabepilone Myeloid_24h_1000nM        I3_nb_plus_pseudobulk     0.3481 5.5076\n  LSM-43293 Ixabepilone  Tcells_24h_1000nM              A0_v3_reference     0.2237 0.2087\n  LSM-43293 Ixabepilone  Tcells_24h_1000nM             I1_nb_likelihood     0.2475 5.2895\n  LSM-43293 Ixabepilone  Tcells_24h_1000nM I2_counterfactual_pseudobulk     0.2508 0.2089\n  LSM-43293 Ixabepilone  Tcells_24h_1000nM        I3_nb_plus_pseudobulk     0.3626 5.6783\n",
+      "stderr_tail": ""
+    }
+  ],
+  "outputs": {
+    "reports/v4_corrected/op3/contrasts.tsv": "2f40710792c2baae814eda2c12c0511dc7412f7e765add87cc933bcc7008acfc",
+    "reports/v4_corrected/op3/per_compound.tsv": "595801c9d82761af814ce8bffbfcbfa1a0723e11b42ea9caba7d8e8634a9221d",
+    "reports/v4_corrected/op3/posthoc_sensitivity.tsv": "6b56fa01d6681eb88128283dbe9ed9fdb528b7edfe9972a4a5799bf0a6299796",
+    "reports/v4_corrected/op3/side_by_side/affected_compounds.tsv": "63b22adc6812d3c87eacd28389b25f8fb505d4232ae3b7d60993092b3acb6feb",
+    "reports/v4_corrected/op3/side_by_side/endpoints.tsv": "50923134ece32d27d532d3497dacf8a92068b432580c7782a1776b7bf87e6961",
+    "reports/v4_corrected/op3/side_by_side/per_context.tsv": "5a32dc87956e72249e039faefd7c536858b8051c9f38d3d85178c8ceecaec08c",
+    "reports/v4_corrected/op3/side_by_side/pooled.tsv": "02973e229f5ee54b103c6d0ef01c13796b559fff71e2baf8bbc94acd5d5e9da6",
+    "reports/v4_corrected/op3/side_by_side/selection.tsv": "84df69753afcdaf67e897bc5bf77ad210615d132613c71b917490569327b9949",
+    "reports/v4_corrected/op3/summary.json": "66e821d0dc0efa1e81ad6076fa90d7686a21db4d19ebe0c779c2c5cb5161baa4",
+    "reports/v4_corrected/op3/summary.tsv": "17b94f7d227a901110753c4cdd8e4272e58b8deac64c845be584f89769139687",
+    "reports/v4_corrected/op3/test_diagnostics.tsv": "77ee4c30997a53cac78ae7f8a48b20637d8a2e4a470426f6199775b35a63e1b0"
+  },
+  "test_outcomes_previously_opened_by": "dp-v4-evaluate version 1",
+  "written_utc": "2026-10-21T03:07:46.497287+00:00"
+}
