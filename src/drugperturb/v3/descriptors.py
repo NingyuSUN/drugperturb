@@ -16,6 +16,10 @@ VEHICLE_SMILES = 'CS(C)=O'
 # least variable informative column in the sci-Plex3 and OP3 training sets has 2e-3.
 # The v3/v4 rule (std > 0) keeps such columns; see docs/POST_V4_ENGINEERING.md.
 NOISE_STD_TOLERANCE = 1e-8
+# Sealing refuses fits whose scaled descriptors exceed this |z| (scripts/v4_seal.py). Under the
+# NOISE_STD_TOLERANCE rule the largest |z| of any compound is 9.2 in OP3 and 10.9 in sci-Plex3; a kept
+# training-constant column gives ~1e16 to a compound that differs from training in it.
+DESCRIPTOR_Z_LIMIT = 1e3
 
 
 def rdkit2d_normalized(smiles):
@@ -88,3 +92,57 @@ def compound_table(compound_ids, smiles, train_ids, min_std=0.0):
     scaled = scaler.transform(raw)
     kept = [name for name, flag in zip(names, scaler.keep) if flag]
     return {cid: scaled[i] for i, cid in enumerate(order)}, kept
+
+
+def json_float(value):
+    """A |z| beyond the float32 range becomes None (JSON null); the gate treats it as above any limit."""
+    return float(value) if np.isfinite(value) else None
+
+
+def scaling_diagnostics(table, splits, limit=DESCRIPTOR_Z_LIMIT):
+    """Largest |z| per split and the compounds above limit, for a compound_table result.
+
+    splits maps compound ID to split; the vehicle is its own split. Label-free: descriptors only.
+    """
+    largest, above = {}, {}
+    for cid, row in table.items():
+        split = 'vehicle' if cid == VEHICLE_ID else splits[cid]
+        z = float(np.abs(row).max())
+        largest[split] = max(largest.get(split, 0.0), z)
+        if not z <= limit:
+            above.setdefault(split, {})[cid] = z
+    return dict(z_limit=float(limit), max_abs_z={s: json_float(z) for s, z in largest.items()},
+                above_limit={s: {c: json_float(z) for c, z in found.items()} for s, found in above.items()})
+
+
+def descriptor_gate(records, override=False, limit=DESCRIPTOR_Z_LIMIT):
+    """Check the fit records' descriptor_scaling before sealing; the summary is stored in the seal.
+
+    records maps fit name to fit record. Raises, naming the compounds, if any |z| exceeds limit or a
+    record has no diagnostics (written before this gate), unless override is set.
+    """
+    largest, above, missing = {}, {}, []
+    for name, record in records.items():
+        found = record.get('descriptor_scaling')
+        if found is None:
+            missing.append(name)
+            continue
+        for split, z in found['max_abs_z'].items():
+            largest[split] = max(largest.get(split, 0.0), np.inf if z is None else z)
+        for split, compounds in found['above_limit'].items():
+            for cid, z in compounds.items():
+                if z is None or z > limit:
+                    above.setdefault(split, {})[cid] = np.inf if z is None else z
+    passed = not missing and all(z <= limit for z in largest.values())
+    if not passed and not override:
+        problems = ['largest |z| per split ' + ', '.join(f'{s} {z:.3g}' for s, z in largest.items())] if largest else []
+        if above:
+            problems.append(f'compounds above {limit:g}: '
+                            + ', '.join(f'{c} ({s}, |z| = {z:.3g})' for s, found in above.items() for c, z in found.items()))
+        if missing:
+            problems.append(f'fits without descriptor diagnostics: {", ".join(missing)}')
+        raise ValueError(f'descriptor gate: {"; ".join(problems)}. Refusing to seal; an explicit override '
+                         '(v4_seal.py --override-descriptor-gate) is recorded in the seal')
+    return dict(z_limit=float(limit), max_abs_z={s: json_float(z) for s, z in largest.items()},
+                above_limit={s: {c: json_float(z) for c, z in found.items()} for s, found in above.items()},
+                fits_without_diagnostics=missing, passed=passed, override=bool(override))
