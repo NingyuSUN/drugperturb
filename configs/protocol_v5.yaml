@@ -1,0 +1,319 @@
+schema_version: 5
+status: PRESPECIFIED_BEFORE_V5_FITTING
+prespecified_date: '2026-10-22'
+notes: >-
+  Committed with manifests/v5, the design-audit code and its receipts, after the user approved it on
+  2026-10-22. The user chose Tahoe-100M and the draft defaults for every other decision (marked USER_DECISION
+  Dn; docs/V5_DESIGN_NOTE.md). The metadata-only design audit (scripts/v5_design_audit.py;
+  receipts/v5/design_audit.json) filled in design_confirmed_by_audit, contexts, chemistry and split. At this
+  commit no fit has been run, no expression value or expression summary has been read, and no cell count of a
+  compound sample has been computed (receipts/v5/pre_protocol_reads.md). Any later change is an amendment.
+user_decisions:
+  date: '2026-10-22'
+  decided: D1 Tahoe-100M; D2-D11 the draft defaults
+  salt_policy: the v1 counter-ion list is kept, after the user reviewed the audit's 14 salt exclusions
+  record: docs/V5_DESIGN_NOTE.md (decisions table)
+question: >-
+  On single-cell data this project has never scored, does a chemCPA model trained with the v4 interventions and
+  a corrected descriptor scaler predict the transcriptional responses of held-out compounds (whole scaffold
+  groups held out) better than vehicle-anchored simple baselines?
+scope:
+  public_data_only: true
+  wet_experiments: false
+  claims_excluded: [drug_efficacy, toxicity, target_engagement, clinical_benefit, mechanism_of_action]
+evidence_carried_from_v4:
+  sources: [reports/v4/report.md, reports/v4_corrected/report.md, reports/v4_corrected/diagnostics.md, docs/POST_V4_ENGINEERING.md]
+  facts:
+    - OP3 prespecified - the selected NB arm I1 failed E1-E3 (I1 - B0 +0.171 [-0.004, +0.532]); one test compound with descriptor z near 1e16 dominated
+    - OP3 corrected post hoc - the selected pseudobulk arm I2 matched zero change (+0.004 [-0.003, +0.012]) and was reliably worse than B1c (+0.016), M1c (+0.017) and B1a/M1a (+0.091)
+    - vehicle anchoring alone (B1a - B1c) lowered OP3 test error by 0.075 [0.064, 0.086]; on sci-Plex3 validation B1a beat every chemCPA arm
+    - arm selection on OP3 validation was a near-tie twice - I1 over I2 by 0.0010 (v4), I2 over I1 by 0.0004 (corrected); I2's per-seed range was 0.0096
+    - 28 OP3 and 25 sci-Plex3 RDKit2DNormalized columns are constant on training compounds up to rounding (std <= 3e-15); the least variable informative column has std 2e-3
+  lessons_prespecified_here:
+    descriptor_tolerance: descriptors.min_std (NOISE_STD_TOLERANCE) and the descriptor gate
+    anchored_comparators: B1a and M1a are the primary comparators from the start (v4 added them by amendment A1)
+    near_ties: more seeds plus an explicit tie rule (primary_arm_selection)
+    gates_and_endpoints: listed in gates and evaluation; a failed gate stops or downgrades the analysis as stated there
+dataset:
+  choice: tahoe_100m  # USER_DECISION D1; survey in docs/V5_DATASET_SURVEY.md
+  role: confirmatory
+  source:
+    name: Tahoe-100M (Tahoe Therapeutics, formerly Vevo; Zhang et al. 2025, bioRxiv 10.1101/2025.02.20.639398)
+    primary_copy: https://huggingface.co/datasets/tahoebio/Tahoe-100M
+    revision: 349e2a55f5538a3e73b32a06c6bdd8e9e87011e8
+    revision_note: >-
+      HEAD on 2026-10-22. The two newest commits (2026-10-14) change only the dataset card; data and metadata
+      files last changed on 2025-07-23 (pseudobulk DE added). Every file is fetched at this revision.
+    files:
+      expression: data/train-*-of-03388.parquet (3,388 shards; per cell - gene token IDs, raw counts, drug, sample, plate, cell_line_id, canonical_smiles)
+      design: metadata/sample_metadata.parquet, metadata/drug_metadata.parquet, metadata/cell_line_metadata.parquet, metadata/gene_metadata.parquet, metadata/obs_metadata.parquet
+      never_read: metadata/pseudobulk_differential_expression/* (1,026 shards of published per-condition DE; response information)
+    hashes: sha256 of every file read equals its Hugging Face LFS oid at the pinned revision; recorded in the source manifest at first download
+    alternative_copy: gs://arc-institute-virtual-cell-atlas/tahoe100M/2025-02-25/ (14 per-plate h5ad, about 337 GB, Requester Pays); USER_DECISION D5
+    licence: CC0-1.0 (dataset card; Arc Virtual Cell Atlas)
+  exposure_before_this_protocol:
+    public_since: 2025-02-25 (Arc Virtual Cell Atlas); Hugging Face copy created 2025-03-12
+    used_by_others: >-
+      Training data of Arc's State and Tahoe's Tahoe-x1 models; included in Chem-PerturBridge and other benchmarks;
+      per-condition pseudobulk DE is published in the same repository. Untouched here means untouched by this
+      project, as for OP3.
+    this_project_read: >-
+      The dataset card, the Hugging Face file listing and commit log, the Arc Virtual Cell Atlas README and the
+      preprint text (design only); then the design audit's reads (allowed_before_commit), all on 2026-10-22.
+      No expression value, no expression summary and no cell count of a compound sample was read
+      (receipts/v5/pre_protocol_reads.md).
+    allowed_before_commit: >-
+      Design audit only - sample_metadata columns sample, plate, drug, drugname_drugconc; drug_metadata (names,
+      SMILES, PubChem CIDs, annotations); cell_line_metadata; gene_metadata; obs_metadata rows of vehicle samples
+      only (vehicle unit sizes per plate and cell line). Not the mean_* columns of sample_metadata, which
+      summarise expression, and no cell count of a compound sample.
+    receipt: receipts/v5/design_audit.json; source hashes in manifests/v5/source.tsv
+  design_reported_by_source:
+    cells: 50 cancer cell lines pooled in each well (Mosaic spheroids), identity by SNP demultiplexing
+    compounds: 379 drugs with canonical SMILES and PubChem CID; 1,135 drug-dose combinations
+    doses_uM: [0.05, 0.5, 5.0]
+    time: 24 h
+    plates: 14 96-well plates, 1,344 samples; plate 14 is a replicate of plate 6
+    vehicle: DMSO_TF samples on every plate (reported as two wells per plate, H11 and H12); plate-matched
+    cells: 100,648,790 in obs_metadata (95.6M in expression_data); median 1,287 cells per cell line-drug-dose
+  design_confirmed_by_audit:
+    samples: 1,344 (96 per plate) - 1,298 compound samples of 378 drugs, 28 vehicle samples, 18 reference-control samples
+    vehicle: exactly two DMSO_TF samples on every plate; no separate media-only control
+    reference_control: >-
+      Adagrasib at 0.05 uM is on every plate (16 samples; two on plates 7 and 13), plus one sample each at 0.5
+      and 5 uM. Excluded in full, as v4 excluded OP3's positive controls.
+    trametinib_dmso_solvate: a drug (three doses on plates 7-9), not a vehicle; its parent equals Trametinib, which represents it
+    plates_by_dose: >-
+      every plate except 13 holds one dose - 0.05 uM on plates 1, 4, 7, 10; 0.5 uM on 2, 5, 8, 11; 5 uM on 3, 6, 9,
+      12, 14 (92-93 compound samples each); plate 13 holds 37, 30 and 25 compound samples at the three doses.
+      Plate 14 repeats plate 6.
+    consequence: >-
+      Dose and plate are confounded (a dose's compounds and its vehicles come from that dose's plates), and a
+      compound's three doses are on three different plates, except the 10 accepted compounds tested only on plate 13
+    replicates_per_accepted_compound_dose: {one_sample: 871, two_samples: 134, three_samples: 3}
+    replicate_plates: >-
+      Of 137 accepted compound-doses with more than one sample - 80 on plates 6 and 14; 45 repeated on plate 13
+      (Afatinib's three doses on three plates each); 6 on two plates of the same dose (plates 1/10, 2/11, 3/12);
+      6 as two samples on the same plate (plates 1, 2, 3)
+    drug_name_spelling: two drugs carry a trailing space in some samples ('Erdafitinib ', 'Selinexor '); names are whitespace-normalized and the source spelling is kept in manifests/v5/samples.tsv
+    vehicle_units: >-
+      50 cell lines; 2,205,786 vehicle cells with pass_filter == full (124,370 minimal not counted); per
+      (plate, line) unit median 2,811 cells (range 13-15,253); 13 units below 30 cells, all in NCI-H2122 and
+      NCI-H596
+  contexts:
+    definition: (cell line, dose); the measurement unit is the cells of that line in one well
+    cell_lines:
+      CVCL_0099: SNU-1 (esophagus/stomach)
+      CVCL_0131: A-172 (CNS/brain)
+      CVCL_0293: HEC-1-A (uterus)
+      CVCL_0428: MIA PaCa-2 (pancreas)
+      CVCL_1097: C32 (skin)
+      CVCL_1239: H4 (CNS/brain)
+      CVCL_1381: LOX-IMVI (skin)
+      CVCL_1550: NCI-H2347 (lung)
+      CVCL_1715: SW 1088 (CNS/brain)
+      CVCL_1717: SW1417 (bowel)
+    cell_lines_audit: >-
+      48 of 50 lines meet the 200-cell median (not NCI-H2122, 47; NCI-H596, 24). Every vehicle unit of the 10
+      drawn lines has at least 74 cells; SW 1088 has the smallest (74-626 per plate), so its count gate is the
+      tightest. manifests/v5/cell_lines.tsv, vehicle_units.tsv, contexts.tsv (30 contexts)
+    cell_line_rule: >-
+      USER_DECISION D3 - among lines whose median vehicle unit over plates is at least 200 cells,
+      draw 10 with numpy default_rng(42) from the list sorted by Cellosaurus ID. Uses vehicle samples only.
+    cell_line_selection: {min_median_vehicle_cells: 200, n_lines: 10, seed: 42, counted_cells: obs_metadata pass_filter == full}
+    doses: all three  # USER_DECISION D3
+    covariates: [cell_line]
+  replicates:
+    unit: sample (well); a (compound, dose) normally has one sample (manifests/v5/replicates.tsv)
+    truth_combination: equal-weight mean over the (compound, dose)'s samples, each against the vehicle unit of its own plate (USER_DECISION D11); two samples on one plate share that plate's vehicle unit
+    note: no donor or other biological replicate; between-well variance is estimable only for the 137 multi-sample compound-doses and is reported
+  strict_matched_vehicle: all vehicle (DMSO_TF) cells of the same cell line on the same plate, pooled as one library-weighted unit
+  excluded_samples: every Adagrasib sample (reference control); every sample of a drug excluded by chemistry; cells of excluded samples never enter any model, baseline or truth
+chemistry:
+  standardization: v1 standardize_smiles; reject undefined atoms and unresolved active mixtures; group canonical duplicates
+  duplicate_parents: v1 rule (scripts/prepare_design.py) - keep the least modified formulation, then the first name in sort order
+  audit_result:
+    drugs: 378 in compound samples
+    excluded_structure: >-
+      22 - two without SMILES in drug_metadata (Sacubitril/Valsartan, Verteporfin) and 20 unresolved mixtures.
+      Of the 20, 14 are salts or solvates whose counter-ions are not on the v1 list (maleate, fumarate,
+      acetate, malate, isethionate, olamine, erbumine, ammonium, propanediol); 3 hold two copies of the parent
+      (lenalidomide and canagliflozin hemihydrates, pitavastatin calcium); 1 has a stray methane fragment in its
+      source SMILES (lactate calcium); 2 are metal complexes (oxaliplatin, auranofin). Canagliflozin and
+      dapagliflozin are also tested in free form, so their parents remain. The v1 list is not extended.
+    excluded_duplicate_parent: 20 - salt or solvate forms of a drug also present, and Epirubicin, whose source SMILES carries no stereochemistry and equals Doxorubicin's
+    accepted: 336 unique parents
+  scaffold_groups: 290 (10 acyclic); manifests/v5/compounds.tsv
+  overlap_with_scored_datasets: >-
+    Compounds also in sci-Plex3 or OP3 are kept (USER_DECISION D7). Their Tahoe responses are
+    unscored; overlap is reported. No sci-Plex3 or OP3 data enters any v5 fit.
+  overlap_audit: >-
+    Same canonical parent (re-standardized in the dpcore environment) - 17 sci-Plex3 compounds (train 9,
+    validation 4, test 4) and 11 OP3 compounds (train 8, validation 2, test 1); 24 and 18 when stereochemistry
+    is ignored. Flags in_sciplex3 and in_op3 in manifests/v5/compounds.tsv.
+split:
+  unit: whole scaffold groups; every dose of a compound in the same partition
+  method: drugperturb.v4.design.split_by_structure_fractions
+  seed: 42
+  test_fraction: 0.25
+  validation_fraction: 0.15
+  min_test_compounds: 60
+  min_test_groups: 40
+  manifest: manifests/v5/compounds.tsv
+  structure_only: true
+  realized: >-
+    train 202 compounds in 168 scaffold groups, validation 50 in 45, test 84 in 77 (manifests/v5/split_report.json);
+    gate G2 (>= 60 test compounds in >= 40 groups) is met
+count_qc:
+  rule: (compound, context) eligible when every replicate well has >= 30 cells of the line and each matched vehicle unit >= 30 cells
+  context_gate: at least 20 eligible test compounds in at least 10 scaffold groups
+  failed_gate: descriptive only, no interval, excluded from the pooled estimand
+  computed_by: preparation kernel after this protocol is committed (compound-sample cell counts are not read before)
+truth:
+  definition: per replicate well, log1p CPM (all-gene library) of the treated unit minus the matched vehicle unit; equal-weight mean over replicate wells
+  computed_for_test: only by the evaluation kernel after every prediction is sealed
+gene_space:
+  n_genes: 2000
+  candidates: genes with nonzero counts in at least 5% of vehicle cells of the selected lines
+  ranking: population variance of training-compound strict deltas over all eligible training (compound, context) rows; stable descending (v1 rule)
+  information: training compounds and vehicle cells only
+library: all-gene UMI total of each cell
+model_cells:
+  included: cells of training- and validation-compound wells and of vehicle wells, selected lines only; test-compound cells dropped before model code
+  cap_per_well_and_line: 32  # USER_DECISION D3; sampled with numpy default_rng(42) before any fit; truth and baselines use all cells
+  reason: about 1,300 cells per line and well; the cap keeps a fit near the v4 OP3 size (about 0.4M cells for 10 lines)
+dose_input: dose_nM / 10000 (v3) - 0.005, 0.05, 0.5; vehicle 1.0
+descriptors:
+  features: RDKit2DNormalized (descriptastorus 2.8.0), z-scored on training compounds
+  min_std: 1.0e-08  # NOISE_STD_TOLERANCE, drugperturb.v3.descriptors; columns with training std <= min_std are dropped
+  min_std_reason: >-
+    Columns constant on training compounds up to rounding have std <= 3e-15 in sci-Plex3 and OP3; the least
+    variable informative column has 2e-3 (docs/POST_V4_ENGINEERING.md). Any value in the gap keeps exactly the
+    training-nonconstant columns. Set from training descriptors only.
+  label_free_report_before_fits: dropped columns, kept count, largest |z| per split (training, validation, test, vehicle)
+  gate: >-
+    Sealing refuses a fit whose scaled descriptors exceed |z| = 1e3 for any compound (DESCRIPTOR_Z_LIMIT,
+    branch v5-zscore-seal-gate, not yet merged; USER_DECISION D6). An override needs an amendment
+    logged before the evaluation kernel runs.
+arms:
+  common: v4 arms unchanged - C1_repository_default hparams, no hyperparameter search, amortized doser, amendment A2 cap, v4 objectives (configs/protocol_v4.yaml arms)
+  A0_v3_reference: {role: reference, seeds: 3}
+  I1_nb_likelihood: {role: candidate}
+  I2_counterfactual_pseudobulk: {role: candidate}
+  I3_nb_plus_pseudobulk: {role: candidate}
+  arm_set: USER_DECISION D2 (keep the three v4 interventions as candidates and A0 as a 3-seed reference)
+training:
+  max_epochs: 200
+  evaluate_every_epochs: 10
+  early_stopping_patience_evaluations: 5
+  checkpoint: lowest_validation_rmse_evaluation
+  max_minutes_per_fit: 60
+  validation_metric: mean over validation (compound, context) pairs of RMSE between counterfactual contrast and measured delta (v3)
+  seeds:
+    candidates: [42, 123, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033]  # USER_DECISION D4
+    A0: [42, 123, 2026]
+  seeds_reason: >-
+    Corrected OP3 per-seed validation RMSE had a range of 0.0096 over three seeds for I2 (SD about 0.005).
+    With 10 seeds the standard error of a difference between two arms' means is about 0.002, so differences
+    of about 0.005 or more are resolved; closer ones are declared ties by the selection rule, because no
+    affordable seed count resolves a margin like OP3's 0.0004.
+  final_prediction: arithmetic mean of the seeds' predicted deltas
+  failed_fit: a fit that stops with an error is rerun once with the same seed; an arm with fewer than 8 completed seeds is not a candidate
+  non_finite_validation: scores +inf and is never the selected checkpoint (v4 A2)
+comparators:
+  fitted_per_context_on: training compounds eligible in that context
+  B0: zero change
+  B1c: context training mean
+  B2c: context nearest training compound (binary Tanimoto, Morgan r2 2048)
+  M1c: context fingerprint Ridge on 20 training-only principal components, alpha by context validation RMSE (v3 code)
+  B1a: B1c + Vbar_train(context) - mean_r V_r(query)  (drugperturb.v4.anchoring; V_r is the query's plate-r matched vehicle unit)
+  M1a: M1c + Vbar_train(context) - mean_r V_r(query)
+  B1p: >-
+    secondary, new - mean measured delta of the context's training compounds on the query's plate. Those deltas
+    share the query's vehicle unit, so B1p carries the plate's vehicle term without an anchoring term; with fewer
+    than 5 such compounds it falls back to B1a. Tests whether plate effects beyond the vehicle explain any gain
+    (USER_DECISION D8)
+  ridge_alphas: [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+  sealed: before any chemCPA fit is scored
+diagnostics_before_test_scoring:
+  as_v4: effect_size_ratio, mean_gene_pearson_r, compound_specific_r (against B1c and against B1a), rmse and zero-change rmse, least-squares scale, latent_ratio
+  computed_on: training and validation (compound, context) pairs; best-checkpoint models; per seed and seed-averaged
+  non_collapse_criteria:
+    applied_to: seed-averaged validation predictions, pooled over the model contexts
+    all_required: {effect_size_ratio: '>= 0.10', mean_gene_pearson_r: '>= 0.10', validation_rmse: below zero-change validation rmse}
+  report: reports/v5/diagnostics.md, committed before the evaluation kernel runs
+primary_arm_selection:
+  candidates: [I1_nb_likelihood, I2_counterfactual_pseudobulk, I3_nb_plus_pseudobulk]
+  metric: mean over seeds of the per-seed validation rmse (v4)
+  rule: among non-collapsed candidates, the lowest metric
+  near_tie_rule: >-
+    USER_DECISION D10. Let d be the runner-up's metric minus the leader's and se the Welch standard error of that difference from
+    the per-seed values. If d < 1.96 se, every non-collapsed candidate within 1.96 se of the leader is a
+    co-primary arm (at most three). Each co-primary arm is tested at a Bonferroni-adjusted level
+    (k co-primary arms - two-sided 1 - 0.05/k percentile interval); the primary claim holds if any one of them
+    meets it. The leader alone is the primary arm otherwise.
+  if_none_meets_criteria: the lowest-metric candidate is still evaluated (with the same tie rule), and the study reports that no intervention met the non-collapse criteria
+  information: validation compounds only
+  record: receipts/v5/selection.json, committed with the diagnostics
+evaluation:
+  unit: compound
+  metric: mean over compounds of per-compound RMSE over the 2,000 frozen genes (v1-v4 code)
+  bootstrap: {unit: scaffold_group, draws: 10000, seed: 2026, interval: percentile, pooled: one draw shared by every context}  # draws USER_DECISION D9
+  bootstrap_draws_reason: Bonferroni-adjusted tails (1.25% with two co-primary arms) need more draws than v4's 2,000
+  pooled_estimand: mean over gate-passing contexts of the context mean compound RMSE difference
+  primary:
+    P1_beyond_vehicle_anchoring: >-
+      primary arm minus B1a and primary arm minus M1a, pooled; supported if both upper bounds are below zero
+      (intersection-union test, no further adjustment). A claim that chemCPA predicts compound responses
+      better than simple baselines requires P1.
+  key_secondary:
+    S1_non_collapse: primary arm minus B0 (v4 E1)
+    S2_delta_baselines: primary arm minus B1c and minus M1c (v4 E2)
+    S3_structure_beyond_anchoring: M1a minus B1a (does structure add anything to the anchored context mean)
+    S4_anchoring_gain: B1a minus B1c (replicates v4's methodological finding on new data)
+    labelled: secondary, unadjusted; reported whatever P1's result
+  other_secondary:
+    - every arm against every comparator, pooled, per context, per dose and per cell line
+    - A0 minus B0 (does the collapse replicate)
+    - B1p against B1a, and the primary arm against B1p
+    - test-compound effect_size_ratio, mean_gene_pearson_r and compound_specific_r per arm
+    - leave-one-plate-out pooled estimates of P1 (plate sensitivity; test compounds on one plate share a vehicle)
+    - contexts failing the count gate, descriptively
+truth_anchors:
+  - the regenerated design equals the committed manifests
+  - per (sample, cell line), extracted cell counts equal obs_metadata counts after pass_filter
+  - per-cell frozen-gene counts sum to the unit pseudobulk
+  - an identity model reproduces zero change exactly
+  - every expression shard's sha256 equals its LFS oid at the pinned revision
+gates:
+  G0_source: pinned revision; every file read hash-verified
+  G1_design: the audit's manifests regenerate exactly at extraction
+  G2_split: the test partition has >= 60 compounds in >= 40 scaffold groups; otherwise stop and revise the protocol before any fit
+  G3_context: count gate per context (count_qc)
+  G4_study: at least 6 gate-passing contexts covering at least 3 cell lines and 2 doses; otherwise every result is descriptive and nothing is confirmatory
+  G5_descriptor: descriptors.gate, before sealing
+  G6_software: truth_anchors pass before the evaluation kernel scores any arm
+  G7_fits: training.failed_fit and the non-collapse criteria
+  on_failure: a gate failure and its consequence are reported; thresholds are not relaxed after the protocol commit
+sealing: SHA256 of every prediction archive written before the evaluation kernel reads any test response; the evaluator verifies each seal
+order_of_operations:
+  - user decisions D1-D11 (docs/V5_DESIGN_NOTE.md) - done 2026-10-22; Kaggle use approved by the user - pending
+  - design audit from metadata only (allowed_before_commit); manifests, split and receipts/v5/design_audit.json - done 2026-10-22
+  - fill in the audit results - done; commit this protocol (status PRESPECIFIED_BEFORE_V5_FITTING) with the manifests and split - done 2026-10-22
+  - the D6 descriptor seal gate (branch v5-zscore-seal-gate) merged before any fit is sealed
+  - extraction and preparation (CPU kernels); comparators sealed
+  - fits of every arm and seed (GPU kernels), training and validation outputs only; descriptor gate
+  - diagnostics report and selection record from training and validation outputs, committed
+  - seal arm predictions
+  - evaluation kernel computes test truth and scores sealed predictions
+amendments:
+  policy: >-
+    Every change after the protocol commit is logged here with its date, reason and the information it used.
+    No change may use a test response. After the evaluation kernel runs, every change is post hoc and is
+    reported next to the prespecified result, never in its place.
+compute:
+  platform: Kaggle notebooks (each job approved by the user); CPU for extraction, preparation and evaluation; NVIDIA T4 x2 for fits
+  extraction: stream the pinned parquet shards (about 429 GB) in CPU kernels with internet access, keeping the selected lines; outputs below the Kaggle output limit
+  fits_estimate: 33 fits (3 candidates x 10 seeds + A0 x 3) at about 20-40 minutes each, 11-22 GPU hours over two or more sessions
+  determinism: seeds fixed; cuDNN nondeterminism not eliminated
+  record: gpu_name, driver, cuda, torch and package versions, wall time, input and output sha256
