@@ -159,10 +159,23 @@ def test_fits_seal_select_and_evaluate(pipeline):
     with pytest.raises(AssertionError):
         run(repo, 'v4_seal.py', '--setting', 'op3', '--fit-root', tmp/'gpu/fits', '--prepared', tmp/'prep',
             '--output-root', tmp/'gpu/refused')
+    # Under the v4 descriptor rule the fixture's training-constant columns give some validation/test compounds
+    # and DMSO a |z| of order 1e16 or more, like the v4 OP3 bug: the seal refuses before writing anything.
+    scaling = record['descriptor_scaling']
+    flagged = {c for found in scaling['above_limit'].values() for c in found}
+    assert flagged and {'validation', 'test'} & set(scaling['above_limit']) and scaling['max_abs_z']['train'] < 10
+    with pytest.raises(AssertionError, match='descriptor gate') as refused:
+        run(repo, 'v4_seal.py', '--setting', 'op3', '--fit-root', tmp/'gpu/fits', '--prepared', tmp/'prep',
+            '--output-root', tmp/'gpu/gated', '--allow-smoke')
+    assert all(c in str(refused.value) for c in flagged) and not (tmp/'gpu/gated').exists()
     run(repo, 'v4_seal.py', '--setting', 'op3', '--fit-root', tmp/'gpu/fits', '--prepared', tmp/'prep',
-        '--output-root', tmp/'gpu/sealed', '--allow-smoke')
+        '--output-root', tmp/'gpu/sealed', '--allow-smoke', '--override-descriptor-gate')
     selection = json.loads((tmp/'gpu/sealed/selection_op3.json').read_text())
     assert selection['selected'] in protocol['primary_arm_selection']['candidates']
+    for arm in ['A0_v3_reference', 'I1_nb_likelihood', 'I2_counterfactual_pseudobulk', 'I3_nb_plus_pseudobulk']:
+        gate = json.loads((tmp/f'gpu/sealed/{arm}_op3_seal.json').read_text())['descriptor_gate']
+        assert gate == selection['descriptor_gate'] and gate['override'] and not gate['passed']
+        assert {c for found in gate['above_limit'].values() for c in found} == flagged
     run(repo, 'v4_anchored_baselines.py', '--setting', 'op3', '--prepared', tmp/'prep', '--baselines-root',
         tmp/'sealed_base', '--output-root', tmp/'sealed_anchored')
     run(repo, 'v4_diagnostics_report.py', '--sealed-root', tmp/'gpu/sealed', '--prepared', f'op3={tmp/"prep"}',
@@ -184,7 +197,7 @@ def test_corrected_descriptor_path_is_opt_in_labelled_and_never_mixed(pipeline):
     """--descriptor-tolerance (configs/v4_corrected_posthoc.yaml) reaches the scaler and labels every output."""
     pytest.importorskip('descriptastorus')
     pytest.importorskip('torch')
-    from drugperturb.v3.descriptors import NOISE_STD_TOLERANCE, compound_table
+    from drugperturb.v3.descriptors import DESCRIPTOR_Z_LIMIT, NOISE_STD_TOLERANCE, compound_table
     tmp, repo = pipeline
     protocol = yaml.safe_load((repo/'configs/protocol_v4.yaml').read_text())
     labels = dict(analysis='v4_corrected_posthoc', descriptor_min_std=NOISE_STD_TOLERANCE)
@@ -216,6 +229,11 @@ def test_corrected_descriptor_path_is_opt_in_labelled_and_never_mixed(pipeline):
     arm_seal = json.loads((tmp/'corr/sealed/I1_nb_likelihood_op3_seal.json').read_text())
     assert {k: selection[k] for k in labels} == labels and {k: arm_seal[k] for k in labels} == labels
     assert selection['status'] == 'SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING' and selection['test_outcomes_loaded'] is False
+    # The tolerance removes the noise columns, so the same compounds pass the descriptor gate without an override.
+    gate = arm_seal['descriptor_gate']
+    assert gate == selection['descriptor_gate'] and gate['passed'] and not gate['override'] and gate['above_limit'] == {}
+    assert max(gate['max_abs_z'].values()) <= DESCRIPTOR_Z_LIMIT
+    assert corrected['descriptor_scaling']['above_limit'] == {} and default['descriptor_scaling']['above_limit']
 
     run(repo, 'v4_anchored_baselines.py', '--setting', 'op3', '--prepared', tmp/'prep', '--baselines-root',
         tmp/'sealed_base', '--output-root', tmp/'corr/anchored')
