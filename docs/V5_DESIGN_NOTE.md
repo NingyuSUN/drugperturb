@@ -100,7 +100,10 @@ On data this project has never scored, does a chemCPA model predict held-out com
 
 **Done on 2026-10-22:** the decisions, the design audit, the user's review, and the commit of the protocol (status `PRESPECIFIED_BEFORE_V5_FITTING`) with `manifests/v5/`.
 
+**Written since, but not run:** the extraction, preparation and comparator kernels ([V5_EXTRACTION.md](V5_EXTRACTION.md)), with synthetic tests. Amendment A1 (engineering) restates one extraction anchor so that it is compatible with the model-cell cap.
+
 **Still to do:**
 
-1. Merge the D6 descriptor seal gate (branch `v5-zscore-seal-gate`) before any fit is sealed.
-2. Write the extraction and preparation kernels, and get approval for the Kaggle jobs.
+1. Get approval for the Kaggle jobs (E1 extraction, P1 preparation and comparators).
+2. Write the v5 fit script.
+3. Merge the D6 descriptor seal gate (branch `v5-zscore-seal-gate`) before any fit is sealed.

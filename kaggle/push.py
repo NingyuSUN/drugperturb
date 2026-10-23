@@ -44,8 +44,14 @@ KERNELS = {
     # Post hoc corrected OP3 analysis: its own code dataset, so the v4 kernels keep their code version.
     'v4c-fit-op3': dict(slug='dp-v4c-fit-op3', file='v4c_fit_op3.py', language='python', gpu=True,
                         sources=['dp-v4-op3-prepare'], code='drugperturb-v4c-code'),
+    # v5 (Tahoe-100M): its own code dataset. --shards START:STOP pushes one extraction part as its own kernel.
+    'v5-e1': dict(slug='dp-v5-extract', file='v5_extract.py', language='python', gpu=False, sources=[],
+                  code='drugperturb-v5-code'),
+    'v5-p1': dict(slug='dp-v5-prepare', file='v5_prepare.py', language='python', gpu=False,
+                  sources=['dp-v5-extract'], code='drugperturb-v5-code'),
 }
-CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code')
+CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code', 'drugperturb-v5-code')
+V5_SHARDS = 3388
 
 
 def kaggle(*args):
@@ -81,8 +87,8 @@ def push_code(user, dataset='drugperturb-v3-code'):
         print(kaggle('datasets', 'create', '-p', str(target), '-q', '-t'))
 
 
-def push_kernel(user, name, smoke):
-    spec = KERNELS[name]
+def push_kernel(user, name, smoke, shards=None):
+    spec = dict(KERNELS[name])
     target = BUILD/name
     target.mkdir(parents=True, exist_ok=True)
     text = (ROOT/'kaggle'/spec['file']).read_text()
@@ -90,6 +96,13 @@ def push_kernel(user, name, smoke):
         text = text.replace("'__METHOD__'", repr(name.split('-')[1])).replace('__SMOKE__', repr(smoke))
     if spec['file'] == 'v4_fit.py':
         text = text.replace("'__DATASET__'", repr(name.split('-')[-1])).replace('__SMOKE__', repr(smoke))
+    if spec['file'] == 'v5_extract.py':
+        start, stop = map(int, shards.split(':')) if shards else (0, V5_SHARDS)
+        text = text.replace("'__SHARDS__'", repr((start, stop)))
+        if shards:
+            spec['slug'] = f'{spec["slug"]}-{start}-{stop}'
+            target = BUILD/f'{name}-{start}-{stop}'
+            target.mkdir(parents=True, exist_ok=True)
     (target/spec['file']).write_text(text)
     meta = dict(id=f'{user}/{spec["slug"]}', title=spec['slug'], code_file=spec['file'], language=spec['language'],
                 kernel_type='script', is_private=True, enable_gpu=spec['gpu'], enable_internet=True,
@@ -106,13 +119,14 @@ def main():
     parser.add_argument('what', choices=['code', 'kernel'])
     parser.add_argument('name', nargs='?', choices=list(KERNELS))
     parser.add_argument('--smoke', type=int, help='engineering smoke epochs for k3 kernels')
+    parser.add_argument('--shards', help='v5-e1 only: START:STOP shard range pushed as its own kernel')
     parser.add_argument('--dataset', choices=CODE_DATASETS, default='drugperturb-v3-code', help='code dataset to version')
     args = parser.parse_args()
     user = username()
     if args.what == 'code':
         push_code(user, args.dataset)
     else:
-        push_kernel(user, args.name, args.smoke)
+        push_kernel(user, args.name, args.smoke, args.shards)
 
 
 if __name__ == '__main__':
