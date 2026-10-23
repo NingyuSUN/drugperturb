@@ -49,6 +49,10 @@ KERNELS = {
                   code='drugperturb-v5-code'),
     'v5-p1': dict(slug='dp-v5-prepare', file='v5_prepare.py', language='python', gpu=False,
                   sources=['dp-v5-extract'], code='drugperturb-v5-code'),
+    'v5-fit-a': dict(slug='dp-v5-fit-a', file='v5_fit.py', language='python', gpu=True,
+                     sources=['dp-v5-prepare'], code='drugperturb-v5-code'),
+    'v5-fit-b': dict(slug='dp-v5-fit-b', file='v5_fit.py', language='python', gpu=True,
+                     sources=['dp-v5-prepare'], code='drugperturb-v5-code'),
 }
 CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code', 'drugperturb-v5-code')
 V5_SHARDS = 3388
@@ -96,6 +100,8 @@ def push_kernel(user, name, smoke, shards=None):
         text = text.replace("'__METHOD__'", repr(name.split('-')[1])).replace('__SMOKE__', repr(smoke))
     if spec['file'] == 'v4_fit.py':
         text = text.replace("'__DATASET__'", repr(name.split('-')[-1])).replace('__SMOKE__', repr(smoke))
+    if spec['file'] == 'v5_fit.py':
+        text = text.replace("'__PART__'", repr(name.rsplit('-', 1)[1]))
     if spec['file'] == 'v5_extract.py':
         start, stop = map(int, shards.split(':')) if shards else (0, V5_SHARDS)
         text = text.replace("'__SHARDS__'", repr((start, stop)))

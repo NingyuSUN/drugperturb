@@ -86,11 +86,39 @@ These are the CPU stages of [protocol_v5.yaml](../configs/protocol_v5.yaml) that
   - changing test-compound counts changes none of the prepared inputs or sealed comparators;
   - splitting the shards into parts changes no output.
 
-## Not yet done
+E1 and P1 have run. Their results are in [kaggle_runs.md](../receipts/v5/kaggle_runs.md).
 
-- **v5 fit script.** v4's `v4_fit.py` assumes a fixed replicate count per key and v3 context names, so v5 needs its own fit script on this prepared layout. The D6 descriptor seal gate must be merged before any fit is sealed.
-- **Resources for E1.** These are estimates, and nothing has run.
-  - Downloading 337.6 GB.
-  - Holding the barcode index of about 20M cells of the ten lines.
-  - About 3 GB of int32 unit sums, plus about 4–5 GB of model-cell counts in memory.
-  - The run should fit in one 12-hour CPU session with 30 GB of RAM. If it does not, split it with `--shards`.
+## Fits, sealing and evaluation
+
+**Fits.** [scripts/v5_fit.py](../scripts/v5_fit.py) fits one arm and seed.
+
+- **Unchanged from v4.** The arms, hyperparameters, objectives and A2 cap are v4's (`v4_fit.arm_spec`).
+- **What v5 changes:**
+  - descriptors drop training-constant columns (`min_std = NOISE_STD_TOLERANCE`), and each fit record carries the D6 scaling summary;
+  - contexts are named `<line>_<dose>nM`, with the cell line as the covariate;
+  - a key's contrast is the equal-weight mean over its one to three replicates;
+  - the pseudobulk loss weights replicates the same way. Each pair is padded to three wells, and padded wells get weight 0 ([drugperturb.v5.chemcpa](../src/drugperturb/v5/chemcpa.py)).
+
+**Kernels.** [kaggle/v5_fit.py](../kaggle/v5_fit.py) runs as two GPU kernels, `dp-v5-fit-a` and `dp-v5-fit-b`, on T4 ×2 each.
+
+- They split the 33 prespecified fits (3 candidates × 10 seeds, plus A0 × 3), longest arms first.
+- Each kernel first runs a one-epoch smoke fit of every arm it holds and stops if any fails.
+
+**Sealing** ([scripts/v5_seal.py](../scripts/v5_seal.py)):
+
+- It refuses fits above the D6 descriptor limit (`DESCRIPTOR_Z_LIMIT`, merged from PR #5).
+- It averages seeds and writes one seal per arm.
+- It applies the prespecified near-tie selection rule ([drugperturb.v5.selection](../src/drugperturb/v5/selection.py)), using validation compounds only.
+
+**Evaluation** ([scripts/v5_evaluate.py](../scripts/v5_evaluate.py)). Test truth is first computed here.
+
+- It verifies every seal and the selection, then computes test truth from the extraction unit sums for the count-eligible test pairs.
+- It reports:
+  - P1 for each primary arm at the selection's Bonferroni level;
+  - S1–S4;
+  - every arm against every comparator: pooled, per dose, per line and per context;
+  - B1p contrasts, and leave-one-plate-out P1;
+  - test diagnostics, and A0 − B0.
+- The bootstrap uses 10,000 draws over scaffold groups (seed 2026), shared across the gate-passing contexts.
+
+**Tests.** Synthetic tests cover the fits and seals (`test_v5_cellmodels.py`), the selection rule (`test_v5_selection.py`) and the evaluator (`test_v5_evaluate.py`, with fabricated arm seals).
