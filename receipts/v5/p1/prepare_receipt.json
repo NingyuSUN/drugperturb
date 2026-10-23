@@ -1,0 +1,412 @@
+{
+  "status": "PREPARED_RESPONSE_FREE_FOR_TEST",
+  "test_outcomes_computed": false,
+  "checks": {
+    "shards": 3388,
+    "unit_cells_equal_obs_pass_filter": true,
+    "unit_library_equals_unit_sums": true,
+    "model_cells_found_once": true,
+    "model_cells_within_unit_sums": true,
+    "model_cells_equal_unit_sums_where_all_kept": true,
+    "model_library_equals_counts": true,
+    "truth_keys_exclude_test": true,
+    "model_cells_exclude_test": true,
+    "model_cells_per_unit_at_most_cap": true
+  },
+  "study_gate_G4": {
+    "gate_passing_contexts": [
+      "CVCL_0099_5000nM",
+      "CVCL_0099_500nM",
+      "CVCL_0099_50nM",
+      "CVCL_0131_5000nM",
+      "CVCL_0131_500nM",
+      "CVCL_0131_50nM",
+      "CVCL_0293_5000nM",
+      "CVCL_0293_500nM",
+      "CVCL_0293_50nM",
+      "CVCL_0428_5000nM",
+      "CVCL_0428_500nM",
+      "CVCL_0428_50nM",
+      "CVCL_1097_5000nM",
+      "CVCL_1097_500nM",
+      "CVCL_1097_50nM",
+      "CVCL_1239_5000nM",
+      "CVCL_1239_500nM",
+      "CVCL_1239_50nM",
+      "CVCL_1381_5000nM",
+      "CVCL_1381_500nM",
+      "CVCL_1381_50nM",
+      "CVCL_1550_5000nM",
+      "CVCL_1550_500nM",
+      "CVCL_1550_50nM",
+      "CVCL_1715_5000nM",
+      "CVCL_1715_500nM",
+      "CVCL_1715_50nM",
+      "CVCL_1717_5000nM",
+      "CVCL_1717_500nM",
+      "CVCL_1717_50nM"
+    ],
+    "n_contexts": 30,
+    "n_lines": 10,
+    "n_doses": 3,
+    "met": true
+  },
+  "contexts_passing_count_gate": 30,
+  "context_summary": [
+    {
+      "context_id": "CVCL_0099_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0099_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0099_50nM",
+      "eligible_train_compounds": 196,
+      "eligible_train_groups": 163,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0131_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0131_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 50,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0131_50nM",
+      "eligible_train_compounds": 196,
+      "eligible_train_groups": 163,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0293_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0293_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 50,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0293_50nM",
+      "eligible_train_compounds": 197,
+      "eligible_train_groups": 164,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0428_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0428_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_0428_50nM",
+      "eligible_train_compounds": 196,
+      "eligible_train_groups": 163,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1097_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1097_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 50,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1097_50nM",
+      "eligible_train_compounds": 196,
+      "eligible_train_groups": 163,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1239_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1239_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1239_50nM",
+      "eligible_train_compounds": 196,
+      "eligible_train_groups": 163,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1381_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1381_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1381_50nM",
+      "eligible_train_compounds": 196,
+      "eligible_train_groups": 163,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1550_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1550_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 50,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1550_50nM",
+      "eligible_train_compounds": 197,
+      "eligible_train_groups": 164,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1715_5000nM",
+      "eligible_train_compounds": 184,
+      "eligible_train_groups": 152,
+      "eligible_validation_compounds": 42,
+      "eligible_validation_groups": 40,
+      "eligible_test_compounds": 77,
+      "eligible_test_groups": 72,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1715_500nM",
+      "eligible_train_compounds": 188,
+      "eligible_train_groups": 157,
+      "eligible_validation_compounds": 48,
+      "eligible_validation_groups": 43,
+      "eligible_test_compounds": 78,
+      "eligible_test_groups": 72,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1715_50nM",
+      "eligible_train_compounds": 179,
+      "eligible_train_groups": 150,
+      "eligible_validation_compounds": 44,
+      "eligible_validation_groups": 39,
+      "eligible_test_compounds": 77,
+      "eligible_test_groups": 70,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1717_5000nM",
+      "eligible_train_compounds": 202,
+      "eligible_train_groups": 168,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 84,
+      "eligible_test_groups": 77,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1717_500nM",
+      "eligible_train_compounds": 200,
+      "eligible_train_groups": 166,
+      "eligible_validation_compounds": 50,
+      "eligible_validation_groups": 45,
+      "eligible_test_compounds": 83,
+      "eligible_test_groups": 76,
+      "test_count_gate_met": true
+    },
+    {
+      "context_id": "CVCL_1717_50nM",
+      "eligible_train_compounds": 197,
+      "eligible_train_groups": 164,
+      "eligible_validation_compounds": 49,
+      "eligible_validation_groups": 44,
+      "eligible_test_compounds": 81,
+      "eligible_test_groups": 74,
+      "test_count_gate_met": true
+    }
+  ],
+  "shard_stats": {
+    "rows": 95624334,
+    "matched_rows": 15676406,
+    "markers": 15676406,
+    "unknown_token_entries": 0,
+    "unknown_token_umi": 0,
+    "duplicate_token_entries": 0
+  },
+  "units": 11760,
+  "vehicle_units": 140,
+  "vehicle_cells": 418028,
+  "candidate_genes": 7747,
+  "frozen_genes": 2000,
+  "frozen_gene_detection_min": 0.05000382749480896,
+  "truth_pairs": {
+    "train": 5936,
+    "validation": 1462
+  },
+  "eligible_test_pairs": 2464,
+  "queries": 11480,
+  "model_cells": 281856,
+  "model_cell_roles": {
+    "train": 220877,
+    "validation": 52027,
+    "vehicle": 8952
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6"
+  },
+  "inputs": {
+    "part_00000_03388/expected_unit_cells.tsv": "2daa57bf908e630ee75247e10cc89a83f85b8034b6b948fcccc4f0b238ba2562",
+    "part_00000_03388/genes.tsv": "efa1e09e0c68e2c1ce1ad39d7294f017012c665767f8cd723cc0da053170b065",
+    "part_00000_03388/model_cells.npz": "d312abad6eb22214e6ec0ff8b3144602a0124ac0bc0f51c70d4b583061396745",
+    "part_00000_03388/model_selection.tsv": "736d4c85ccb8b02b7b8f2e956f4f0b8d544932a1daae6b09dbecf1603ecfe162",
+    "part_00000_03388/part_receipt.json": "c28c071b02cc1699ecf1edc4959d6275979e78485b485cdafe0151c6dfde37c5",
+    "part_00000_03388/shards.tsv": "cfee6c4106bade76f67a43b3921eb312affff918fb0d53612fd1d66ddc5db3b8",
+    "part_00000_03388/unit_counts.npz": "0e01fe1a81860feded9eb36b40a4c34184a8acf1383646bd5889689881156865",
+    "part_00000_03388/units.tsv": "ebf1c985769fafc568ff94ef2128427b95417d95f4ff073fc42bad50444faed5",
+    "part_00000_03388/vehicle_detection.npz": "0a57b788e7417a8c96ba91f1ae59bbcb8d5bd5883e34d6207b40aa01971ec11d"
+  },
+  "outputs": {
+    "count_qc/compound_qc.tsv": "3abba44126a987f1ea1ab6f51a0d2de439b9819365a4a494be03a0f5035834c8",
+    "count_qc/context_summary.tsv": "b9789e860ea1fb9e52d983032183633378c9fb3986e842ab0fee777abfc1079d",
+    "count_qc/replicate_qc.tsv": "fcdaec1b143c73392a7d4ec214707fe5a6241d7b1ca481da708acada390ec048",
+    "frozen_genes.tsv": "2e8e899be5aa5b72f5004053680f6283335848efb24766ccb161624775aeb4ed",
+    "model_cells.npz": "7213a0879d29587402949d8d26beb080a3a36c90391d22b8586ffae6e32d22f9",
+    "queries.tsv": "57ca5f4a5ae5a44d0a1509b7ae9f6a3665e9d0077cd35b52580086c48c66989b",
+    "train_replicate_deltas.npz": "d1d671273ea1f2f7e04aa02d7ef41d64049aa2ad656473744409c874af22de7a",
+    "train_truth.npz": "3de12bc825156fbac75b78711e984338e24423f7b2135c35681c1b7ebe6f94ff",
+    "validation_truth.npz": "cbd5436ef29d6fc4f8010fa667314f985a645903179a1010fd93a0e7aa8241e0",
+    "vehicle_contexts.tsv": "831930156630452605df8d7641a98bfdf10792e1ad2a83daaf75a90107199526",
+    "vehicle_levels.npz": "c3a2b774b006247ce33514cc04c677d0bfb5794fc2631e7c86c262898fd3b1b3"
+  }
+}

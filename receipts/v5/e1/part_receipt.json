@@ -1,0 +1,46 @@
+{
+  "status": "EXTRACTED_PART_TEST_RESPONSES_NOT_COMPUTED",
+  "test_outcomes_computed": false,
+  "shard_start": 0,
+  "shard_stop": 3388,
+  "shards": 3388,
+  "units": 11760,
+  "design_cells": 15676406,
+  "model_cells_selected": 281856,
+  "model_cell_cap": 32,
+  "model_cell_seed": 42,
+  "cells_found_in_part": 15676406,
+  "vehicle_cells_in_part": 418028,
+  "decoding": {
+    "rows": 95624334,
+    "matched_rows": 15676406,
+    "markers": 15676406,
+    "unknown_token_entries": 0,
+    "unknown_token_umi": 0,
+    "duplicate_token_entries": 0
+  },
+  "inputs": {
+    "obs_metadata": "e51b24f3666f5f433c59ff01dd6fa33934627091455e89d929f2c1ddc87401fe",
+    "gene_metadata": "d6104d1ca570d94832be0d27ffe8b7e4e54cfd366c9080239219f9c406eb751c",
+    "protocol": "c50b1162fc63b5b0f4064449df0b43258a2f1521e3bd012a50d7d6fd3299459d"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "26.0.0"
+  },
+  "seconds": 6277.170456021,
+  "command": "python scripts/v5_extract.py --obs /tmp/meta/obs_metadata.parquet --gene-metadata /tmp/meta/gene_metadata.parquet --download /tmp/shards --output-root /kaggle/working/extraction --shard-start 0 --shard-stop 3388",
+  "outputs": {
+    "expected_unit_cells.tsv": "2daa57bf908e630ee75247e10cc89a83f85b8034b6b948fcccc4f0b238ba2562",
+    "genes.tsv": "efa1e09e0c68e2c1ce1ad39d7294f017012c665767f8cd723cc0da053170b065",
+    "model_cells.npz": "d312abad6eb22214e6ec0ff8b3144602a0124ac0bc0f51c70d4b583061396745",
+    "model_selection.tsv": "736d4c85ccb8b02b7b8f2e956f4f0b8d544932a1daae6b09dbecf1603ecfe162",
+    "shards.tsv": "cfee6c4106bade76f67a43b3921eb312affff918fb0d53612fd1d66ddc5db3b8",
+    "unit_counts.npz": "0e01fe1a81860feded9eb36b40a4c34184a8acf1383646bd5889689881156865",
+    "units.tsv": "ebf1c985769fafc568ff94ef2128427b95417d95f4ff073fc42bad50444faed5",
+    "vehicle_detection.npz": "0a57b788e7417a8c96ba91f1ae59bbcb8d5bd5883e34d6207b40aa01971ec11d"
+  }
+}
