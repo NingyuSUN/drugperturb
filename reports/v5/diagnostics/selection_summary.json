@@ -1,0 +1,39 @@
+{
+  "selected": "I2_counterfactual_pseudobulk",
+  "primary_arms": [
+    "I2_counterfactual_pseudobulk"
+  ],
+  "near_tie": false,
+  "bonferroni_k": 1,
+  "interval_level": 0.95,
+  "passing": [
+    "I2_counterfactual_pseudobulk",
+    "I3_nb_plus_pseudobulk"
+  ],
+  "any_passing": true,
+  "mean_seed_validation_rmse": {
+    "I1_nb_likelihood": 0.3826786796543993,
+    "I2_counterfactual_pseudobulk": 0.3525965841839013,
+    "I3_nb_plus_pseudobulk": 0.35916084884312505
+  },
+  "comparisons_to_leader": {
+    "I3_nb_plus_pseudobulk": {
+      "d": 0.006564264659223773,
+      "se": 0.002956885580213761,
+      "within": false
+    }
+  },
+  "descriptor_gate": {
+    "z_limit": 1000.0,
+    "max_abs_z": {
+      "train": 14.177447319030762,
+      "validation": 14.177447319030762,
+      "test": 14.177447319030762,
+      "vehicle": 3.5779318809509277
+    },
+    "above_limit": {},
+    "fits_without_diagnostics": [],
+    "passed": true,
+    "override": false
+  }
+}

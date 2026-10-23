@@ -1,0 +1,275 @@
+{
+  "name": "I3_nb_plus_pseudobulk_v5_s2032",
+  "analysis": "v5",
+  "arm": "I3_nb_plus_pseudobulk",
+  "seed": 2032,
+  "arm_spec": {
+    "likelihood": "nb",
+    "decoder_activation": "linear",
+    "pseudobulk_weight": 1.0
+  },
+  "max_epochs_override": null,
+  "engineering_smoke": false,
+  "n_training_cells": 229829,
+  "n_validation_cells": 52027,
+  "n_train_queries": 5936,
+  "n_validation_queries": 1462,
+  "n_test_queries": 2520,
+  "n_vehicle_units": 140,
+  "cell_lines": [
+    "CVCL_0099",
+    "CVCL_0131",
+    "CVCL_0293",
+    "CVCL_0428",
+    "CVCL_1097",
+    "CVCL_1239",
+    "CVCL_1381",
+    "CVCL_1550",
+    "CVCL_1715",
+    "CVCL_1717"
+  ],
+  "descriptor_columns": 173,
+  "descriptor_min_std": 1e-08,
+  "descriptor_scaling": {
+    "z_limit": 1000.0,
+    "max_abs_z": {
+      "train": 14.177447319030762,
+      "validation": 14.177447319030762,
+      "test": 14.177447319030762,
+      "vehicle": 3.5779318809509277
+    },
+    "above_limit": {}
+  },
+  "seconds": 2695.382810313001,
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "torch": "2.5.1+cu121",
+  "cuda": "12.1",
+  "python": "3.11.16",
+  "test_outcomes_loaded": false,
+  "diagnostics": {
+    "train": {
+      "n": 5936,
+      "contexts": 30,
+      "mean_abs_pred": 0.12367638459477186,
+      "mean_abs_true": 0.28818048617624487,
+      "rmse": 0.3421921907352071,
+      "rmse_zero": 0.3854555871528712,
+      "rmse_minus_zero": -0.04326339641766409,
+      "mean_gene_pearson_r": 0.47028785725723377,
+      "least_squares_scale": 1.1573833250288463,
+      "effect_size_ratio": 1.0353786020300308,
+      "reference_r": 0.42096496597659444,
+      "compound_specific_r": 0.30912778901945287
+    },
+    "validation": {
+      "n": 1462,
+      "contexts": 30,
+      "mean_abs_pred": 0.10606647963046507,
+      "mean_abs_true": 0.2775671339838567,
+      "rmse": 0.36326382874443947,
+      "rmse_zero": 0.3739728600199632,
+      "rmse_minus_zero": -0.01070903127552364,
+      "mean_gene_pearson_r": 0.2928135669573788,
+      "least_squares_scale": 0.6721257063913831,
+      "effect_size_ratio": 0.8921597232618063,
+      "reference_r": 0.40674365435828586,
+      "compound_specific_r": 0.03368962101389009
+    }
+  },
+  "latent": {
+    "train": {
+      "per_cell_line": {
+        "CVCL_0099": {
+          "basal_norm": 126.47684478759766,
+          "drug_term_norm": 8.523929595947266,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.143095970153809,
+          "latent_ratio": 0.06438408535435193
+        },
+        "CVCL_0131": {
+          "basal_norm": 113.82234954833984,
+          "drug_term_norm": 8.523929595947266,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.143095970153809,
+          "latent_ratio": 0.07154215321038924
+        },
+        "CVCL_0293": {
+          "basal_norm": 98.62906646728516,
+          "drug_term_norm": 8.522226333618164,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.1417236328125,
+          "latent_ratio": 0.08254892725272904
+        },
+        "CVCL_0428": {
+          "basal_norm": 129.30844116210938,
+          "drug_term_norm": 8.523929595947266,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.143095970153809,
+          "latent_ratio": 0.06297420258856187
+        },
+        "CVCL_1097": {
+          "basal_norm": 190.88714599609375,
+          "drug_term_norm": 8.523929595947266,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.143095970153809,
+          "latent_ratio": 0.04265921588203978
+        },
+        "CVCL_1239": {
+          "basal_norm": 130.0422821044922,
+          "drug_term_norm": 8.523929595947266,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.143095970153809,
+          "latent_ratio": 0.06261883318542988
+        },
+        "CVCL_1381": {
+          "basal_norm": 91.66134643554688,
+          "drug_term_norm": 8.523929595947266,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.143095970153809,
+          "latent_ratio": 0.08883893033231577
+        },
+        "CVCL_1550": {
+          "basal_norm": 108.81625366210938,
+          "drug_term_norm": 8.522226333618164,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.1417236328125,
+          "latent_ratio": 0.07482084117776891
+        },
+        "CVCL_1715": {
+          "basal_norm": 133.38592529296875,
+          "drug_term_norm": 8.381410598754883,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.058340072631836,
+          "latent_ratio": 0.06041372097492673
+        },
+        "CVCL_1717": {
+          "basal_norm": 100.96983337402344,
+          "drug_term_norm": 8.522226333618164,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 8.1417236328125,
+          "latent_ratio": 0.08063520915849234
+        }
+      },
+      "basal_norm": 122.39994888305664,
+      "drug_term_norm": 8.509166717529297,
+      "vehicle_term_norm": 9.04035758972168,
+      "drug_contrast_norm": 8.134208679199219,
+      "latent_ratio": 0.06914361191170054
+    },
+    "validation": {
+      "per_cell_line": {
+        "CVCL_0099": {
+          "basal_norm": 126.47684478759766,
+          "drug_term_norm": 8.25047779083252,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.170180797576904,
+          "latent_ratio": 0.05669164825876502
+        },
+        "CVCL_0131": {
+          "basal_norm": 113.82234191894531,
+          "drug_term_norm": 8.228808403015137,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.177274227142334,
+          "latent_ratio": 0.06305681385692613
+        },
+        "CVCL_0293": {
+          "basal_norm": 98.62906646728516,
+          "drug_term_norm": 8.228808403015137,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.177274227142334,
+          "latent_ratio": 0.0727703757545247
+        },
+        "CVCL_0428": {
+          "basal_norm": 129.30844116210938,
+          "drug_term_norm": 8.25047779083252,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.170180797576904,
+          "latent_ratio": 0.05545021448822436
+        },
+        "CVCL_1097": {
+          "basal_norm": 190.8871307373047,
+          "drug_term_norm": 8.228808403015137,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.177274227142334,
+          "latent_ratio": 0.03759957101047092
+        },
+        "CVCL_1239": {
+          "basal_norm": 130.0422821044922,
+          "drug_term_norm": 8.25047779083252,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.170180797576904,
+          "latent_ratio": 0.05513730366416891
+        },
+        "CVCL_1381": {
+          "basal_norm": 91.66134643554688,
+          "drug_term_norm": 8.25047779083252,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.170180797576904,
+          "latent_ratio": 0.0782246942294125
+        },
+        "CVCL_1550": {
+          "basal_norm": 108.8162612915039,
+          "drug_term_norm": 8.228808403015137,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.177274227142334,
+          "latent_ratio": 0.06595773592988456
+        },
+        "CVCL_1715": {
+          "basal_norm": 133.38592529296875,
+          "drug_term_norm": 8.355884552001953,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.2002153396606445,
+          "latent_ratio": 0.05398032306516671
+        },
+        "CVCL_1717": {
+          "basal_norm": 100.96984100341797,
+          "drug_term_norm": 8.228808403015137,
+          "vehicle_term_norm": 9.04035758972168,
+          "drug_contrast_norm": 7.177274227142334,
+          "latent_ratio": 0.07108334682729048
+        }
+      },
+      "basal_norm": 122.39994812011719,
+      "drug_term_norm": 8.25018377304077,
+      "vehicle_term_norm": 9.04035758972168,
+      "drug_contrast_norm": 7.176730966567993,
+      "latent_ratio": 0.06099520270848343
+    }
+  },
+  "nonfinite_validation_evaluations": 0,
+  "best_validation_rmse": 0.36326382874443947,
+  "best_epoch": 20,
+  "epochs_executed": 70,
+  "stopped": "patience",
+  "validation_rmse": 0.36326382874443947,
+  "history_tail": [
+    {
+      "epoch": 68,
+      "reconstruction": 0.25775529927094953,
+      "adversary_drug": 0.018535881365477243,
+      "adversary_cell_type": 2.3061322836674134,
+      "pseudobulk": 0.11578279210955635,
+      "minutes": 40.331130391049996,
+      "validation_rmse": null
+    },
+    {
+      "epoch": 69,
+      "reconstruction": 0.2583473113205757,
+      "adversary_drug": 0.018528248193800317,
+      "adversary_cell_type": 2.305744567798878,
+      "pseudobulk": 0.11567423637865115,
+      "minutes": 40.96544368706665,
+      "validation_rmse": null
+    },
+    {
+      "epoch": 70,
+      "reconstruction": 0.2576335343326917,
+      "adversary_drug": 0.01852611151579892,
+      "adversary_cell_type": 2.304512257565369,
+      "pseudobulk": 0.11738549175782166,
+      "minutes": 41.50461917121667,
+      "validation_rmse": 0.3808738434742298
+    }
+  ]
+}

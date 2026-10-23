@@ -6,6 +6,8 @@ The kernels and the code dataset are private, under the account `ningyusunny`. E
 |---|---|---|---|---|---|---|
 | dp-v5-extract (E1) | 1 | CPU (4 cores, 31 GB), internet | 11d17891… (drugperturb-v5-code v1) | 9b94ed2 | Tahoe-100M at Hugging Face revision 349e2a55… | complete; 3,388 shards in one part; 1 h 45 min extraction |
 | dp-v5-prepare (P1) | 1 | CPU | 11d17891… (drugperturb-v5-code v1) | 9b94ed2 | dp-v5-extract v1 | complete; every anchor passed; 30 of 30 contexts pass the count gate; comparators sealed |
+| dp-v5-fit-a | 1 | T4 ×2 | af874d62… (v2) | 0917195 | dp-v5-prepare v1 | complete; 17 fits, 03:01–09:55 UTC |
+| dp-v5-fit-b | 1 | T4 ×2 | af874d62… (v2) | 0917195 | dp-v5-prepare v1 | complete; 16 fits, 03:01–09:45 UTC |
 
 ## Commands
 
@@ -70,3 +72,48 @@ KAGGLE_BUILD_ROOT=$HOME/kb python3 kaggle/push.py kernel v5-e1
   - The Ridge chose α = 1,000 or 10,000 in every context.
   - B1p fell back to B1a nowhere: every context and plate has at least 5 training compounds.
 - **Local copy.** The full outputs are at `~/kout/v5p1` in WSL (584 MB) and stay out of Git.
+
+## Fits (dp-v5-fit-a and dp-v5-fit-b, version 1)
+
+**Approval.** The fits ran under the user's instruction, relayed by the top session, to continue the prespecified stages within the planned GPU budget.
+
+**Push commands:**
+
+```
+KAGGLE_BUILD_ROOT=$HOME/kb python3 kaggle/push.py code --dataset drugperturb-v5-code   # v2, commit 0917195
+KAGGLE_BUILD_ROOT=$HOME/kb python3 kaggle/push.py kernel v5-fit-a
+KAGGLE_BUILD_ROOT=$HOME/kb python3 kaggle/push.py kernel v5-fit-b
+```
+
+- **Timing.** Both kernels started at 03:01 UTC on 2026-10-23. Part b was complete by 09:45 UTC and part a by 09:55 UTC, about 13.6 Kaggle GPU session-hours in total, within the protocol's 11–22 hour estimate.
+- **Code and tests.**
+  - Both receipts ([v5_fit_a.json](fits/v5_fit_a.json), [v5_fit_b.json](fits/v5_fit_b.json)) record the code-archive SHA256 af874d62…, the archive that was pushed.
+  - The in-kernel tests passed in each kernel: 12 tests.
+  - Each kernel first ran a one-epoch smoke fit of every arm it held. All succeeded, and the smoke fits are not sealed.
+- **Fits** ([fits/](fits)):
+  - All 33 prespecified fits completed: I1, I2 and I3 with 10 seeds each, and A0 with seeds 42, 123 and 2026.
+  - Every fit record has `analysis: v5`, `test_outcomes_loaded: false`, `engineering_smoke: false`, 173 descriptor columns, and no non-finite validation evaluation.
+  - The largest scaled descriptor |z| is 14.2, below the D6 limit of 1,000.
+- **How the fits stopped:**
+
+  | Arm | Stopped by |
+  |---|---|
+  | I1 | patience, all 10 seeds |
+  | I3 | patience, all 10 seeds |
+  | A0 | the 200-epoch maximum for seeds 123 and 2026; patience for seed 42 |
+  | I2 | the prespecified 60-minute cap for 9 of 10 seeds, six of them with their best evaluation within the last 10 epochs; patience for seed 42 |
+
+  The cap therefore bounded I2's training. That is prespecified, and it is a limitation of the I2 result.
+- **Not committed.** The prediction archives (about 10 GB in all) stay out of Git, at `~/kout/v5fa` and `~/kout/v5fb` in WSL. The seals hash them.
+
+## Seal (dp-v5-seal, version 1)
+
+- **Timing.** The kernel ran on CPU from 10:08 to 10:32 UTC on 2026-10-23.
+- **Code and inputs.**
+  - Code archive 0ec7cc0a… (drugperturb-v5-code v3, commit 4b53816).
+  - Inputs: both fit kernels (full fits only; the smoke fits were ignored) and dp-v5-prepare v1.
+  - The in-kernel tests passed: 12.
+- **Sealing.** `v5_seal.py` passed the D6 descriptor gate (largest |z| 14.2) and sealed the four arms ([receipts/v5/sealed/](sealed)).
+- **Selection.** It chose I2 as the single primary arm on validation compounds (no near tie: I3 is 0.0066 behind, with 1.96 × SE = 0.0058).
+- **Diagnostics.** `v5_diagnostics_report.py` wrote [reports/v5/diagnostics.md](../../reports/v5/diagnostics.md)'s tables. They were committed before the evaluation kernel ran.
+- **Not committed.** The prediction archives (about 1 GB per arm) stay on Kaggle and are mounted by the evaluation kernel. The seals hash them.

@@ -1,0 +1,33 @@
+# started 2026-10-23T10:11:11.885434+00:00
+# /tmp/venvs/cellmodels/bin/python scripts/v5_seal.py --fit-root /kaggle/input/notebooks/ningyusunny/dp-v5-fit-a /kaggle/input/notebooks/ningyusunny/dp-v5-fit-b --prepared /kaggle/input/notebooks/ningyusunny/dp-v5-prepare/prepared --output-root /kaggle/working/sealed
+{"arm": "A0_v3_reference", "validation_rmse": 0.37719641992939734, "pass_effect_size_ratio": true, "pass_mean_gene_pearson_r": false, "pass_rmse_below_zero_change": false, "non_collapsed": false}
+{"arm": "I1_nb_likelihood", "validation_rmse": 0.3826786796543993, "pass_effect_size_ratio": true, "pass_mean_gene_pearson_r": false, "pass_rmse_below_zero_change": false, "non_collapsed": false}
+{"arm": "I2_counterfactual_pseudobulk", "validation_rmse": 0.3525965841839013, "pass_effect_size_ratio": true, "pass_mean_gene_pearson_r": true, "pass_rmse_below_zero_change": true, "non_collapsed": true}
+{"arm": "I3_nb_plus_pseudobulk", "validation_rmse": 0.35916084884312505, "pass_effect_size_ratio": true, "pass_mean_gene_pearson_r": true, "pass_rmse_below_zero_change": true, "non_collapsed": true}
+{
+  "selected": "I2_counterfactual_pseudobulk",
+  "primary_arms": [
+    "I2_counterfactual_pseudobulk"
+  ],
+  "near_tie": false,
+  "bonferroni_k": 1,
+  "interval_level": 0.95,
+  "passing": [
+    "I2_counterfactual_pseudobulk",
+    "I3_nb_plus_pseudobulk"
+  ],
+  "any_passing": true,
+  "mean_seed_validation_rmse": {
+    "I1_nb_likelihood": 0.3826786796543993,
+    "I2_counterfactual_pseudobulk": 0.3525965841839013,
+    "I3_nb_plus_pseudobulk": 0.35916084884312505
+  },
+  "comparisons_to_leader": {
+    "I3_nb_plus_pseudobulk": {
+      "d": 0.006564264659223773,
+      "se": 0.002956885580213761,
+      "within": false
+    }
+  },
+  "z": 1.96
+}
