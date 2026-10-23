@@ -311,6 +311,18 @@ amendments:
     Every change after the protocol commit is logged here with its date, reason and the information it used.
     No change may use a test response. After the evaluation kernel runs, every change is post hoc and is
     reported next to the prespecified result, never in its place.
+  A1_2026-10-22:
+    change: >-
+      The truth anchor "per-cell frozen-gene counts sum to the unit pseudobulk" is checked on all genes, exactly
+      for units whose cells are all model cells (at most cap_per_well_and_line cells), and elsewhere as an
+      elementwise upper bound (model cells never exceed the unit sums). The anchors on unit cell numbers, unit
+      libraries and selected model cells are unchanged (drugperturb.v5.extract.merge_parts).
+    reason: >-
+      model_cells caps each (sample, line) at 32 cells, so for larger units the model cells are a subset and
+      cannot sum to the unit pseudobulk; the anchor as written could not pass. Found while writing the
+      extraction code.
+    information_used: the protocol text, the v4 extraction code and synthetic test data. No Tahoe-100M expression value, expression summary or compound-sample cell count.
+    effect: engineering only; no estimand, gate, comparator or endpoint changes
 compute:
   platform: Kaggle notebooks (each job approved by the user); CPU for extraction, preparation and evaluation; NVIDIA T4 x2 for fits
   extraction: stream the pinned parquet shards (about 429 GB) in CPU kernels with internet access, keeping the selected lines; outputs below the Kaggle output limit
