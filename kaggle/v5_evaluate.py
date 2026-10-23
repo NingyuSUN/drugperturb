@@ -1,9 +1,9 @@
 """Kaggle kernel v5-V (CPU): score the sealed v5 predictions; test truth is first computed here.
 
 Mounts the E1 extraction, the P1 prepared inputs and comparator seal, and the
-private dataset of arm seals and the selection (written by scripts/v5_seal.py
-and committed with the diagnostics before this kernel runs). The evaluator
-verifies every seal hash before reading any test response.
+v5-S output (arm seals and the selection, committed with the diagnostics before
+this kernel runs). The evaluator verifies every seal hash before reading any
+test response.
 """
 import glob
 import sys

@@ -53,10 +53,10 @@ KERNELS = {
                      sources=['dp-v5-prepare'], code='drugperturb-v5-code'),
     'v5-fit-b': dict(slug='dp-v5-fit-b', file='v5_fit.py', language='python', gpu=True,
                      sources=['dp-v5-prepare'], code='drugperturb-v5-code'),
-    # The arm seals and selection are a private dataset (drugperturb-v5-seals), added below as a data source.
+    'v5-seal': dict(slug='dp-v5-seal', file='v5_seal.py', language='python', gpu=False,
+                    sources=['dp-v5-fit-a', 'dp-v5-fit-b', 'dp-v5-prepare'], code='drugperturb-v5-code'),
     'v5-evaluate': dict(slug='dp-v5-evaluate', file='v5_evaluate.py', language='python', gpu=False,
-                        sources=['dp-v5-extract', 'dp-v5-prepare'], code='drugperturb-v5-code',
-                        data=['drugperturb-v5-seals']),
+                        sources=['dp-v5-extract', 'dp-v5-prepare', 'dp-v5-seal'], code='drugperturb-v5-code'),
 }
 CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code', 'drugperturb-v5-code')
 V5_SHARDS = 3388
@@ -95,25 +95,6 @@ def push_code(user, dataset='drugperturb-v3-code'):
         print(kaggle('datasets', 'create', '-p', str(target), '-q', '-t'))
 
 
-def push_seals(user, source, dataset='drugperturb-v5-seals'):
-    """Upload sealed v5 arm predictions, their seals and the selection as a private dataset (copied, not moved)."""
-    import shutil
-    target = BUILD/dataset
-    if target.exists():
-        shutil.rmtree(target)
-    target.mkdir(parents=True)
-    names = sorted(p.name for p in Path(source).iterdir() if p.suffix in ('.json', '.npz'))
-    if 'selection_v5.json' not in names:
-        raise SystemExit(f'{source} holds no selection_v5.json')
-    for name in names:
-        shutil.copy2(Path(source)/name, target/name)
-    meta = dict(title=dataset, id=f'{user}/{dataset}', licenses=[dict(name='other')])
-    (target/'dataset-metadata.json').write_text(json.dumps(meta, indent=2))
-    exists = dataset in kaggle('datasets', 'list', '--mine', '--search', dataset)
-    print(kaggle('datasets', 'version' if exists else 'create', '-p', str(target), *(['-m', 'seals'] if exists else []),
-                 '-q'))
-
-
 def push_kernel(user, name, smoke, shards=None):
     spec = dict(KERNELS[name])
     target = BUILD/name
@@ -135,8 +116,7 @@ def push_kernel(user, name, smoke, shards=None):
     (target/spec['file']).write_text(text)
     meta = dict(id=f'{user}/{spec["slug"]}', title=spec['slug'], code_file=spec['file'], language=spec['language'],
                 kernel_type='script', is_private=True, enable_gpu=spec['gpu'], enable_internet=True,
-                dataset_sources=[f'{user}/{spec.get("code", "drugperturb-v3-code")}',
-                                 *[f'{user}/{d}' for d in spec.get('data', [])]],
+                dataset_sources=[f'{user}/{spec.get("code", "drugperturb-v3-code")}'],
                 kernel_sources=[f'{user}/{s}' for s in spec['sources']], competition_sources=[])
     if spec['gpu']:
         meta['machine_shape'] = 'NvidiaTeslaT4'
@@ -146,8 +126,7 @@ def push_kernel(user, name, smoke, shards=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('what', choices=['code', 'kernel', 'seals'])
-    parser.add_argument('--seals-dir', type=Path, help='seals only: directory written by scripts/v5_seal.py')
+    parser.add_argument('what', choices=['code', 'kernel'])
     parser.add_argument('name', nargs='?', choices=list(KERNELS))
     parser.add_argument('--smoke', type=int, help='engineering smoke epochs for k3 kernels')
     parser.add_argument('--shards', help='v5-e1 only: START:STOP shard range pushed as its own kernel')
@@ -156,8 +135,6 @@ def main():
     user = username()
     if args.what == 'code':
         push_code(user, args.dataset)
-    elif args.what == 'seals':
-        push_seals(user, args.seals_dir)
     else:
         push_kernel(user, args.name, args.smoke, args.shards)
 
