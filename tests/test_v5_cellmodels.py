@@ -155,6 +155,29 @@ def test_seal_refuses_smoke_fits_and_seals_with_a_selection(fitted):
     assert len(list((root/'sealed').glob('*_v5_seal.json'))) == 4
 
 
+def test_diagnostics_report_tabulates_arms_and_comparators_on_validation(fitted):
+    root, prepared = fitted
+    sealed = root/'sealed'
+    if not (sealed/'selection_v5.json').exists():
+        run('v5_seal.py', '--fit-root', root/'out', '--prepared', prepared, '--protocol', root/'protocol.yaml',
+            '--output-root', sealed, '--allow-smoke')
+    from drugperturb.v3 import runner
+    from drugperturb.v4.counterfactual import load_truth
+    val = load_truth(prepared/'validation_truth.npz')
+    keys = sorted(val)
+    rng = np.random.default_rng(5)
+    arrays = dict(keys=np.asarray(['X1|CVCL_A_50nM']), validation_keys=np.asarray([f'{c}|{x}' for c, x in keys]),
+                  **{f'validation_{m}': rng.normal(0, 0.2, (len(keys), GENES)) for m in ['B1c', 'M1c', 'B1a', 'M1a', 'B1p']})
+    if not (sealed/'baselines_v5_seal.json').exists():
+        runner.write_seal(sealed, 'v5', 'baselines', arrays, {}, {})
+    run('v5_diagnostics_report.py', '--sealed-root', sealed, '--prepared', prepared, '--output-root', root/'diag')
+    table = pd.read_csv(root/'diag/diagnostics.tsv', sep='\t')
+    assert set(table.arm) == {'B1c', 'M1c', 'B1a', 'M1a', 'B1p', 'A0_v3_reference', 'I1_nb_likelihood',
+                              'I2_counterfactual_pseudobulk', 'I3_nb_plus_pseudobulk'}
+    assert np.allclose(table.loc[table.arm.eq('B1a'), 'r_vs_B1a'], 0)
+    assert len(pd.read_csv(root/'diag/diagnostics_per_seed.tsv', sep='\t')) == 4*2*2
+
+
 def test_seal_refuses_a_fit_above_the_descriptor_limit(fitted):
     root, prepared = fitted
     path = root/'out/fits/I1_nb_likelihood_v5_s2.json'
