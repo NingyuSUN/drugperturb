@@ -1,0 +1,16 @@
+{
+  "system": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "cpu_count": 4,
+    "gpu": "unavailable: [Errno 2] No such file or directory: 'nvidia-smi'",
+    "disk_tmp": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         8.0T  7.0T  1.1T  88% /",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:              31           0          16           0          14          30\nSwap:              0           0           0"
+  },
+  "extraction": "/kaggle/input/notebooks/ningyusunny/dp-v5-extract/extraction",
+  "prepared": "/kaggle/input/notebooks/ningyusunny/dp-v5-prepare/prepared",
+  "arm_seals": "/kaggle/input/notebooks/ningyusunny/dp-v5-seal/sealed",
+  "comparator_seal": "/kaggle/input/notebooks/ningyusunny/dp-v5-prepare/sealed",
+  "code_archive": "/kaggle/input/datasets/ningyusunny/drugperturb-v5-code/drugperturb-src.archive",
+  "code_archive_sha256": "0ec7cc0a5b07fb04ff4faf0ec9b87ff248d0efde8ba6c5228ef556005e061d2b",
+  "written_utc": "2026-10-23T10:57:33.107340+00:00"
+}

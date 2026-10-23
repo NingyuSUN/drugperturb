@@ -1,6 +1,6 @@
 # DrugPerturb v5: design note
 
-**Status: prespecified on 2026-10-22, before any fit.** v4 and its corrected analysis both concluded that a positive claim needs a new protocol on untouched data. This note explains that protocol, [protocol_v5.yaml](../configs/protocol_v5.yaml).
+**Status: prespecified on 2026-10-22, before any fit; run and evaluated on 2026-10-23 ([report](../reports/v5/report.md)).** v4 and its corrected analysis both concluded that a positive claim needs a new protocol on untouched data. This note explains that protocol, [protocol_v5.yaml](../configs/protocol_v5.yaml).
 
 - **Decisions:** the user chose Tahoe-100M and the draft defaults for D2–D11.
 - **Design audit:** it was run from metadata only and wrote `manifests/v5/` and [receipts/v5/design_audit.json](../receipts/v5/design_audit.json).

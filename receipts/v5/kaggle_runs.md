@@ -117,3 +117,14 @@ KAGGLE_BUILD_ROOT=$HOME/kb python3 kaggle/push.py kernel v5-fit-b
 - **Selection.** It chose I2 as the single primary arm on validation compounds (no near tie: I3 is 0.0066 behind, with 1.96 × SE = 0.0058).
 - **Diagnostics.** `v5_diagnostics_report.py` wrote [reports/v5/diagnostics.md](../../reports/v5/diagnostics.md)'s tables. They were committed before the evaluation kernel ran.
 - **Not committed.** The prediction archives (about 1 GB per arm) stay on Kaggle and are mounted by the evaluation kernel. The seals hash them.
+
+## Evaluation (dp-v5-evaluate, version 1)
+
+- **Timing.** The kernel ran on CPU from 10:44 to 10:59 UTC on 2026-10-23. That was after the seals, the selection and the validation diagnostics were committed (3a7dd0b) and pushed to GitHub.
+- **Code and inputs.**
+  - Code archive 0ec7cc0a… (v3, commit 4b53816).
+  - Inputs: dp-v5-extract v1, dp-v5-prepare v1 and dp-v5-seal v1.
+  - The in-kernel tests passed: 8.
+- **Checks.** `v5_evaluate.py` verified every arm seal and the comparator seal against their SHA256. It checked that the selection names the sealed arms, and that the extraction unit sums are those the preparation read.
+- **Test truth.** Computed for the first time here, for the 2,464 count-eligible test pairs.
+- **Outputs.** In [reports/v5/evaluation/](../../reports/v5/evaluation). The per-compound table is gzip-compressed; the uncompressed table's SHA256 is 84a1f227…. The receipt is [evaluate/v5_evaluate.json](evaluate/v5_evaluate.json). The results are in [reports/v5/report.md](../../reports/v5/report.md).

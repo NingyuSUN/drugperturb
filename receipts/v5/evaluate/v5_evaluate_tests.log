@@ -1,0 +1,4 @@
+# started 2026-10-23T10:48:08.279544+00:00
+# /tmp/venvs/core/bin/python -m pytest -q -p no:cacheprovider tests/test_v5_evaluate.py tests/test_v5_selection.py
+........                                                                 [100%]
+8 passed in 52.02s

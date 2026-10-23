@@ -1,0 +1,334 @@
+{
+  "endpoints": {
+    "primary_arms": [
+      "I2_counterfactual_pseudobulk"
+    ],
+    "interval_level": 0.95,
+    "near_tie": false,
+    "selection_any_passing": true,
+    "gate_passing_contexts": [
+      "CVCL_0099_50nM",
+      "CVCL_0099_500nM",
+      "CVCL_0099_5000nM",
+      "CVCL_0131_50nM",
+      "CVCL_0131_500nM",
+      "CVCL_0131_5000nM",
+      "CVCL_0293_50nM",
+      "CVCL_0293_500nM",
+      "CVCL_0293_5000nM",
+      "CVCL_0428_50nM",
+      "CVCL_0428_500nM",
+      "CVCL_0428_5000nM",
+      "CVCL_1097_50nM",
+      "CVCL_1097_500nM",
+      "CVCL_1097_5000nM",
+      "CVCL_1239_50nM",
+      "CVCL_1239_500nM",
+      "CVCL_1239_5000nM",
+      "CVCL_1381_50nM",
+      "CVCL_1381_500nM",
+      "CVCL_1381_5000nM",
+      "CVCL_1550_50nM",
+      "CVCL_1550_500nM",
+      "CVCL_1550_5000nM",
+      "CVCL_1715_50nM",
+      "CVCL_1715_500nM",
+      "CVCL_1715_5000nM",
+      "CVCL_1717_50nM",
+      "CVCL_1717_500nM",
+      "CVCL_1717_5000nM"
+    ],
+    "study_gate_G4": {
+      "gate_passing_contexts": [
+        "CVCL_0099_5000nM",
+        "CVCL_0099_500nM",
+        "CVCL_0099_50nM",
+        "CVCL_0131_5000nM",
+        "CVCL_0131_500nM",
+        "CVCL_0131_50nM",
+        "CVCL_0293_5000nM",
+        "CVCL_0293_500nM",
+        "CVCL_0293_50nM",
+        "CVCL_0428_5000nM",
+        "CVCL_0428_500nM",
+        "CVCL_0428_50nM",
+        "CVCL_1097_5000nM",
+        "CVCL_1097_500nM",
+        "CVCL_1097_50nM",
+        "CVCL_1239_5000nM",
+        "CVCL_1239_500nM",
+        "CVCL_1239_50nM",
+        "CVCL_1381_5000nM",
+        "CVCL_1381_500nM",
+        "CVCL_1381_50nM",
+        "CVCL_1550_5000nM",
+        "CVCL_1550_500nM",
+        "CVCL_1550_50nM",
+        "CVCL_1715_5000nM",
+        "CVCL_1715_500nM",
+        "CVCL_1715_50nM",
+        "CVCL_1717_5000nM",
+        "CVCL_1717_500nM",
+        "CVCL_1717_50nM"
+      ],
+      "n_contexts": 30,
+      "n_lines": 10,
+      "n_doses": 3,
+      "met": true
+    },
+    "P1_beyond_vehicle_anchoring": {
+      "per_arm": {
+        "I2_counterfactual_pseudobulk": {
+          "estimates": {
+            "B1a": {
+              "point_estimate": -0.004667780814215657,
+              "ci_lower": -0.010438922661729829,
+              "ci_upper": 0.0010740135700994318,
+              "level": 0.95,
+              "contexts": 30,
+              "n_groups": 77,
+              "draws": 10000,
+              "valid_draws": 10000,
+              "seed": 2026,
+              "negative_favors": "candidate"
+            },
+            "M1a": {
+              "point_estimate": -0.004644381852784017,
+              "ci_lower": -0.0104068431203362,
+              "ci_upper": 0.0011268633494023444,
+              "level": 0.95,
+              "contexts": 30,
+              "n_groups": 77,
+              "draws": 10000,
+              "valid_draws": 10000,
+              "seed": 2026,
+              "negative_favors": "candidate"
+            }
+          },
+          "supported": false
+        }
+      },
+      "supported": false,
+      "confirmatory": true
+    },
+    "S1_non_collapse": {
+      "I2_counterfactual_pseudobulk": {
+        "point_estimate": -0.035883161214209015,
+        "ci_lower": -0.03992455336951758,
+        "ci_upper": -0.031906272389495824,
+        "level": 0.95,
+        "contexts": 30,
+        "n_groups": 77,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "negative_favors": "candidate"
+      }
+    },
+    "S2_delta_baselines": {
+      "I2_counterfactual_pseudobulk": {
+        "B1c": {
+          "point_estimate": -0.0067438477905778045,
+          "ci_lower": -0.009848948441443123,
+          "ci_upper": -0.0036120493094888555,
+          "level": 0.95,
+          "contexts": 30,
+          "n_groups": 77,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "negative_favors": "candidate"
+        },
+        "M1c": {
+          "point_estimate": -0.005541769076449516,
+          "ci_lower": -0.00872404179789968,
+          "ci_upper": -0.002346193432844633,
+          "level": 0.95,
+          "contexts": 30,
+          "n_groups": 77,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "negative_favors": "candidate"
+        }
+      }
+    },
+    "S3_structure_beyond_anchoring": {
+      "point_estimate": -2.339896143164129e-05,
+      "ci_lower": -0.00027965489530716483,
+      "ci_upper": 0.0002472942836665674,
+      "level": 0.95,
+      "contexts": 30,
+      "n_groups": 77,
+      "draws": 10000,
+      "valid_draws": 10000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    },
+    "S4_anchoring_gain": {
+      "point_estimate": -0.0020760669763621458,
+      "ci_lower": -0.007951704901636254,
+      "ci_upper": 0.0036216820685254962,
+      "level": 0.95,
+      "contexts": 30,
+      "n_groups": 77,
+      "draws": 10000,
+      "valid_draws": 10000,
+      "seed": 2026,
+      "negative_favors": "candidate"
+    }
+  },
+  "a0_minus_b0": {
+    "point_estimate": 0.0014451137261355758,
+    "ci_lower": 0.0006350019058368211,
+    "ci_upper": 0.002366648014270888,
+    "level": 0.95,
+    "contexts": 30,
+    "n_groups": 77,
+    "draws": 10000,
+    "valid_draws": 10000,
+    "seed": 2026,
+    "negative_favors": "candidate"
+  },
+  "selection": {
+    "status": "SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING",
+    "test_outcomes_loaded": false,
+    "rule": "among non-collapsed candidates, the lowest metric",
+    "near_tie_rule": "USER_DECISION D10. Let d be the runner-up's metric minus the leader's and se the Welch standard error of that difference from the per-seed values. If d < 1.96 se, every non-collapsed candidate within 1.96 se of the leader is a co-primary arm (at most three). Each co-primary arm is tested at a Bonferroni-adjusted level (k co-primary arms - two-sided 1 - 0.05/k percentile interval); the primary claim holds if any one of them meets it. The leader alone is the primary arm otherwise.",
+    "arms": {
+      "A0_v3_reference": {
+        "seed_rmse": [
+          0.3746430293819961,
+          0.3785176878228259,
+          0.37842854258336994
+        ],
+        "validation_rmse": 0.37719641992939734,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": false,
+          "pass_rmse_below_zero_change": false,
+          "non_collapsed": false
+        },
+        "sha256": "6224a89edaf1ca42d1c3fffa0c6cc79c1a9d70a5033dc5b24314d3bfc661825b"
+      },
+      "I1_nb_likelihood": {
+        "seed_rmse": [
+          0.3826874616269108,
+          0.3833430726580887,
+          0.3817388757200504,
+          0.3815262894656771,
+          0.38128100214381133,
+          0.38074291042086955,
+          0.3808425263415063,
+          0.38138703600075835,
+          0.3852275177694332,
+          0.38801010439688705
+        ],
+        "validation_rmse": 0.3826786796543993,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": false,
+          "pass_rmse_below_zero_change": false,
+          "non_collapsed": false
+        },
+        "sha256": "012d9a4e321e00b6a28e3db5bef32e5926e29da22bf5c80118c947ce79233393"
+      },
+      "I2_counterfactual_pseudobulk": {
+        "seed_rmse": [
+          0.3688110976368317,
+          0.3623401133357491,
+          0.3526745752514031,
+          0.3523708178179785,
+          0.34740435444539153,
+          0.35034255737014575,
+          0.34713139352679634,
+          0.3429677057689606,
+          0.34268538002623183,
+          0.3592378466595241
+        ],
+        "validation_rmse": 0.3525965841839013,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": true,
+          "pass_rmse_below_zero_change": true,
+          "non_collapsed": true
+        },
+        "sha256": "93ecfa7994927ae46b3712789471df43a0005b6e7fe307fa1baaee311e71be35"
+      },
+      "I3_nb_plus_pseudobulk": {
+        "seed_rmse": [
+          0.3637281771459654,
+          0.360575754086096,
+          0.3606791515764933,
+          0.3566281280998686,
+          0.3575761510821323,
+          0.3521540223564406,
+          0.36344975848848887,
+          0.3557199686641651,
+          0.36326382874443947,
+          0.35783354818716084
+        ],
+        "validation_rmse": 0.35916084884312505,
+        "non_collapse": {
+          "pass_effect_size_ratio": true,
+          "pass_mean_gene_pearson_r": true,
+          "pass_rmse_below_zero_change": true,
+          "non_collapsed": true
+        },
+        "sha256": "cb3eb452e28b13663e3dc178665c8b5ca611074c67baa5c814ded742619a0703"
+      }
+    },
+    "descriptor_gate": {
+      "z_limit": 1000.0,
+      "max_abs_z": {
+        "train": 14.177447319030762,
+        "validation": 14.177447319030762,
+        "test": 14.177447319030762,
+        "vehicle": 3.5779318809509277
+      },
+      "above_limit": {},
+      "fits_without_diagnostics": [],
+      "passed": true,
+      "override": false
+    },
+    "selected": "I2_counterfactual_pseudobulk",
+    "primary_arms": [
+      "I2_counterfactual_pseudobulk"
+    ],
+    "near_tie": false,
+    "bonferroni_k": 1,
+    "interval_level": 0.95,
+    "passing": [
+      "I2_counterfactual_pseudobulk",
+      "I3_nb_plus_pseudobulk"
+    ],
+    "any_passing": true,
+    "mean_seed_validation_rmse": {
+      "I1_nb_likelihood": 0.3826786796543993,
+      "I2_counterfactual_pseudobulk": 0.3525965841839013,
+      "I3_nb_plus_pseudobulk": 0.35916084884312505
+    },
+    "comparisons_to_leader": {
+      "I3_nb_plus_pseudobulk": {
+        "d": 0.006564264659223773,
+        "se": 0.002956885580213761,
+        "within": false
+      }
+    },
+    "z": 1.96
+  },
+  "seals": {
+    "A0_v3_reference": "6224a89edaf1ca42d1c3fffa0c6cc79c1a9d70a5033dc5b24314d3bfc661825b",
+    "I1_nb_likelihood": "012d9a4e321e00b6a28e3db5bef32e5926e29da22bf5c80118c947ce79233393",
+    "I2_counterfactual_pseudobulk": "93ecfa7994927ae46b3712789471df43a0005b6e7fe307fa1baaee311e71be35",
+    "I3_nb_plus_pseudobulk": "cb3eb452e28b13663e3dc178665c8b5ca611074c67baa5c814ded742619a0703"
+  },
+  "comparator_seal": "b05c4c9c9726c5f7eac2ec5efa040e4e53e71f96d3f058aa5a830534fcb2c0e5",
+  "test_truth_first_computed_here": true,
+  "eligible_test_pairs": 2464,
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 2026,
+    "unit": "scaffold_group"
+  }
+}
