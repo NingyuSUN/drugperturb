@@ -1,0 +1,84 @@
+{
+  "system": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "cpu_count": 4,
+    "gpu": "Tesla T4, 580.178.04, 15360 MiB\nTesla T4, 580.178.04, 15360 MiB",
+    "disk_tmp": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         8.0T  7.0T  1.1T  88% /",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:              31           1          11           0          19          30\nSwap:              0           0           0"
+  },
+  "part": "a",
+  "jobs": [
+    [
+      "I3_nb_plus_pseudobulk",
+      42
+    ],
+    [
+      "I3_nb_plus_pseudobulk",
+      2026
+    ],
+    [
+      "I3_nb_plus_pseudobulk",
+      2028
+    ],
+    [
+      "I3_nb_plus_pseudobulk",
+      2030
+    ],
+    [
+      "I3_nb_plus_pseudobulk",
+      2032
+    ],
+    [
+      "I2_counterfactual_pseudobulk",
+      42
+    ],
+    [
+      "I2_counterfactual_pseudobulk",
+      2026
+    ],
+    [
+      "I2_counterfactual_pseudobulk",
+      2028
+    ],
+    [
+      "I2_counterfactual_pseudobulk",
+      2030
+    ],
+    [
+      "I2_counterfactual_pseudobulk",
+      2032
+    ],
+    [
+      "I1_nb_likelihood",
+      42
+    ],
+    [
+      "I1_nb_likelihood",
+      2026
+    ],
+    [
+      "I1_nb_likelihood",
+      2028
+    ],
+    [
+      "I1_nb_likelihood",
+      2030
+    ],
+    [
+      "I1_nb_likelihood",
+      2032
+    ],
+    [
+      "A0_v3_reference",
+      42
+    ],
+    [
+      "A0_v3_reference",
+      2026
+    ]
+  ],
+  "prepared": "/kaggle/input/notebooks/ningyusunny/dp-v5-prepare/prepared",
+  "code_archive": "/kaggle/input/datasets/ningyusunny/drugperturb-v5-code/drugperturb-src.archive",
+  "code_archive_sha256": "af874d62ddc9f90c3f6f76f4f536d951d96460c17763b4df9a542adfd79917d9",
+  "written_utc": "2026-10-23T09:50:19.820285+00:00"
+}

@@ -10,6 +10,29 @@ Public sci-Plex3 data · structure-based models · held-out compounds · cross-c
 
 To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
+## v5: a confirmatory test on Tahoe-100M
+
+**The prespecified primary endpoint was not met.** The chemCPA arm selected on validation compounds was the counterfactual pseudobulk arm. It did not beat the vehicle-anchored training mean or anchored Ridge on held-out compounds.
+
+The dataset was [Tahoe-100M](https://huggingface.co/datasets/tahoebio/Tahoe-100M), which this project had never scored: 84 test compounds in 77 scaffold groups, 10 cancer cell lines × 3 doses, and 2,464 test pairs. The protocol was committed before any fit. The seals, validation diagnostics and arm selection were committed and pushed before test truth was first computed.
+
+| Pooled over 30 contexts | ΔRMSE [95% interval] |
+|---|---|
+| **P1:** pseudobulk arm (I2) − anchored training mean (B1a) | −0.0047 [−0.0104, +0.0011] |
+| **P1:** I2 − anchored Ridge (M1a) | −0.0046 [−0.0104, +0.0011] |
+| I2 − zero change | −0.0359 [−0.0399, −0.0319] |
+| I2 − training mean (B1c) | −0.0067 [−0.0098, −0.0036] |
+| Plate-anchored training mean (B1p) − B1a | −0.0428 [−0.0472, −0.0386] |
+
+**What the secondary analyses show:**
+
+- **First chemCPA win over zero change.** This is the first chemCPA arm in this project to reliably beat zero change on untouched data.
+- **Its gain over the delta baselines comes from one line.** It is in SW 1088, whose vehicle samples are small, so the gain reflects vehicle-noise cancellation (v4's lesson). In the other nine lines, the arm matches the training mean.
+- **Structure adds nothing.** The anchored Ridge equals the anchored mean.
+- **Plate effects dominate.** A plate-anchored training mean, which uses no chemistry, has the lowest error in every one of the 30 contexts. Plate-level effects therefore dominate Tahoe-100M responses.
+
+See the [v5 report](reports/v5/report.md), the [pre-test diagnostics](reports/v5/diagnostics.md), the [protocol](configs/protocol_v5.yaml) and the [design note](docs/V5_DESIGN_NOTE.md).
+
 ## v4: diagnose, intervene, improve? Fixing chemCPA's collapse
 
 **Two principled changes made chemCPA use the drug, but neither beat a per-context training mean or Ridge on held-out compounds in a dataset this project had never scored.**

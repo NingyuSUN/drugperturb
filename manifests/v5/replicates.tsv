@@ -1,0 +1,1009 @@
+compound_id	dose_nM	n_samples	samples	plates
+(S)-Crizotinib	50	1	smp_2100	plate7
+(S)-Crizotinib	500	1	smp_2196	plate8
+(S)-Crizotinib	5000	1	smp_2292	plate9
+18β-Glycyrrhetinic acid	50	1	smp_1812	plate4
+18β-Glycyrrhetinic acid	500	1	smp_1908	plate5
+18β-Glycyrrhetinic acid	5000	2	smp_2004;smp_2772	plate6;plate14
+4EGI-1	50	1	smp_1566	plate1
+4EGI-1	500	1	smp_1662	plate2
+4EGI-1	5000	1	smp_1758	plate3
+5-Azacytidine	50	1	smp_2439	plate10
+5-Azacytidine	500	1	smp_2535	plate11
+5-Azacytidine	5000	1	smp_2631	plate12
+5-Fluorouracil	50	1	smp_2437	plate10
+5-Fluorouracil	500	1	smp_2533	plate11
+5-Fluorouracil	5000	1	smp_2629	plate12
+8-Hydroxyquinoline	50	1	smp_1783	plate4
+8-Hydroxyquinoline	500	1	smp_1879	plate5
+8-Hydroxyquinoline	5000	2	smp_1975;smp_2743	plate6;plate14
+9-ING-41	50	1	smp_1539	plate1
+9-ING-41	500	1	smp_1635	plate2
+9-ING-41	5000	1	smp_1731	plate3
+APTO-253	50	1	smp_1580	plate1
+APTO-253	500	1	smp_1676	plate2
+APTO-253	5000	1	smp_1772	plate3
+AT7519	50	1	smp_1582	plate1
+AT7519	500	1	smp_1678	plate2
+AT7519	5000	1	smp_1774	plate3
+AZD-7648	50	1	smp_1574	plate1
+AZD-7648	500	1	smp_1670	plate2
+AZD-7648	5000	1	smp_1766	plate3
+AZD-8055	50	1	smp_1517	plate1
+AZD-8055	500	1	smp_1613	plate2
+AZD-8055	5000	1	smp_1709	plate3
+AZD1390	50	1	smp_1563	plate1
+AZD1390	500	1	smp_1659	plate2
+AZD1390	5000	1	smp_1755	plate3
+AZD2858	50	1	smp_1543	plate1
+AZD2858	500	1	smp_1639	plate2
+AZD2858	5000	1	smp_1735	plate3
+Abemaciclib	50	2	smp_1499;smp_2647	plate1;plate13
+Abemaciclib	500	1	smp_1595	plate2
+Abemaciclib	5000	1	smp_1691	plate3
+Abiraterone acetate	50	1	smp_2395	plate10
+Abiraterone acetate	500	1	smp_2491	plate11
+Abiraterone acetate	5000	1	smp_2587	plate12
+Acetazolamide	50	1	smp_2420	plate10
+Acetazolamide	500	1	smp_2516	plate11
+Acetazolamide	5000	1	smp_2612	plate12
+Acetohexamide	50	1	smp_1801	plate4
+Acetohexamide	500	1	smp_1897	plate5
+Acetohexamide	5000	2	smp_1993;smp_2761	plate6;plate14
+Adenine	50	1	smp_1870	plate4
+Adenine	500	1	smp_1966	plate5
+Adenine	5000	2	smp_2062;smp_2830	plate6;plate14
+Adenosine	50	1	smp_1832	plate4
+Adenosine	500	1	smp_1928	plate5
+Adenosine	5000	2	smp_2024;smp_2792	plate6;plate14
+Afatinib	50	3	smp_1530;smp_2092;smp_2704	plate1;plate7;plate13
+Afatinib	500	3	smp_1626;smp_2188;smp_2692	plate2;plate8;plate13
+Afatinib	5000	3	smp_1722;smp_2284;smp_2680	plate3;plate9;plate13
+Aliskiren	50	1	smp_1815	plate4
+Aliskiren	500	1	smp_1911	plate5
+Aliskiren	5000	2	smp_2007;smp_2775	plate6;plate14
+Allantoin	50	1	smp_1847	plate4
+Allantoin	500	1	smp_1943	plate5
+Allantoin	5000	2	smp_2039;smp_2807	plate6;plate14
+Allopurinol	50	1	smp_2397	plate10
+Allopurinol	500	1	smp_2493	plate11
+Allopurinol	5000	1	smp_2589	plate12
+Almonertinib (hydrochloride)	50	1	smp_1825	plate4
+Almonertinib (hydrochloride)	500	1	smp_1921	plate5
+Almonertinib (hydrochloride)	5000	2	smp_2017;smp_2785	plate6;plate14
+Alpelisib	50	1	smp_1504	plate1
+Alpelisib	500	1	smp_1600	plate2
+Alpelisib	5000	1	smp_1696	plate3
+Altretamine	50	1	smp_2142	plate7
+Altretamine	500	1	smp_2238	plate8
+Altretamine	5000	1	smp_2334	plate9
+Amsacrine	50	1	smp_1873	plate4
+Amsacrine	500	1	smp_1969	plate5
+Amsacrine	5000	2	smp_2065;smp_2833	plate6;plate14
+Anastrozole	50	1	smp_1587	plate1
+Anastrozole	500	1	smp_1683	plate2
+Anastrozole	5000	1	smp_1779	plate3
+Anethole trithione	50	1	smp_1874	plate4
+Anethole trithione	500	1	smp_1970	plate5
+Anethole trithione	5000	2	smp_2066;smp_2834	plate6;plate14
+Apalutamide	50	1	smp_2160	plate7
+Apalutamide	500	1	smp_2256	plate8
+Apalutamide	5000	1	smp_2352	plate9
+Aprepitant	50	1	smp_2384	plate10
+Aprepitant	500	1	smp_2480	plate11
+Aprepitant	5000	1	smp_2576	plate12
+Arbutin	50	1	smp_2154	plate7
+Arbutin	500	1	smp_2250	plate8
+Arbutin	5000	1	smp_2346	plate9
+Artemether	50	1	smp_2424	plate10
+Artemether	500	1	smp_2520	plate11
+Artemether	5000	1	smp_2616	plate12
+Artesunate	50	1	smp_1866	plate4
+Artesunate	500	1	smp_1962	plate5
+Artesunate	5000	2	smp_2058;smp_2826	plate6;plate14
+Asciminib	50	1	smp_2396	plate10
+Asciminib	500	1	smp_2492	plate11
+Asciminib	5000	1	smp_2588	plate12
+Aspirin	50	1	smp_2440	plate10
+Aspirin	500	1	smp_2536	plate11
+Aspirin	5000	1	smp_2632	plate12
+Ataluren	50	1	smp_2360	plate10
+Ataluren	500	1	smp_2456	plate11
+Ataluren	5000	1	smp_2552	plate12
+Atazanavir (sulfate)	50	1	smp_2411	plate10
+Atazanavir (sulfate)	500	1	smp_2507	plate11
+Atazanavir (sulfate)	5000	1	smp_2603	plate12
+Azithromycin (hydrate)	50	1	smp_1829	plate4
+Azithromycin (hydrate)	500	1	smp_1925	plate5
+Azithromycin (hydrate)	5000	2	smp_2021;smp_2789	plate6;plate14
+BAY1125976	50	1	smp_1538	plate1
+BAY1125976	500	1	smp_1634	plate2
+BAY1125976	5000	1	smp_1730	plate3
+BI-3406	50	1	smp_1516	plate1
+BI-3406	500	1	smp_1612	plate2
+BI-3406	5000	1	smp_1708	plate3
+BI-78D3	50	1	smp_1521	plate1
+BI-78D3	500	1	smp_1617	plate2
+BI-78D3	5000	1	smp_1713	plate3
+Baicalin	50	1	smp_1857	plate4
+Baicalin	500	1	smp_1953	plate5
+Baicalin	5000	2	smp_2049;smp_2817	plate6;plate14
+Balsalazide (sodium hydrate)	50	1	smp_1864	plate4
+Balsalazide (sodium hydrate)	500	1	smp_1960	plate5
+Balsalazide (sodium hydrate)	5000	2	smp_2056;smp_2824	plate6;plate14
+Belinostat	50	1	smp_2368	plate10
+Belinostat	500	1	smp_2464	plate11
+Belinostat	5000	1	smp_2560	plate12
+Belumosudil	50	2	smp_2089;smp_2701	plate7;plate13
+Belumosudil	500	2	smp_2185;smp_2689	plate8;plate13
+Belumosudil	5000	2	smp_2281;smp_2677	plate9;plate13
+Belzutifan	50	1	smp_1558	plate1
+Belzutifan	500	1	smp_1654	plate2
+Belzutifan	5000	1	smp_1750	plate3
+Bendamustine	50	1	smp_2141	plate7
+Bendamustine	500	1	smp_2237	plate8
+Bendamustine	5000	1	smp_2333	plate9
+Benproperine (phosphate)	50	1	smp_2097	plate7
+Benproperine (phosphate)	500	1	smp_2193	plate8
+Benproperine (phosphate)	5000	1	smp_2289	plate9
+Bentamapimod	50	1	smp_1524	plate1
+Bentamapimod	500	1	smp_1620	plate2
+Bentamapimod	5000	1	smp_1716	plate3
+Benztropine (mesylate)	50	1	smp_2371	plate10
+Benztropine (mesylate)	500	1	smp_2467	plate11
+Benztropine (mesylate)	5000	1	smp_2563	plate12
+Berbamine	50	1	smp_1786	plate4
+Berbamine	500	2	smp_1882;smp_2658	plate5;plate13
+Berbamine	5000	2	smp_1978;smp_2746	plate6;plate14
+Berberine (chloride hydrate)	50	1	smp_1858	plate4
+Berberine (chloride hydrate)	500	1	smp_1954	plate5
+Berberine (chloride hydrate)	5000	2	smp_2050;smp_2818	plate6;plate14
+Bergenin	50	1	smp_1846	plate4
+Bergenin	500	1	smp_1942	plate5
+Bergenin	5000	2	smp_2038;smp_2806	plate6;plate14
+Bestatin	50	1	smp_2087	plate7
+Bestatin	500	1	smp_2183	plate8
+Bestatin	5000	1	smp_2279	plate9
+Betamethasone dipropionate	50	1	smp_2130	plate7
+Betamethasone dipropionate	500	1	smp_2226	plate8
+Betamethasone dipropionate	5000	1	smp_2322	plate9
+Bexarotene	50	1	smp_2414	plate10
+Bexarotene	500	1	smp_2510	plate11
+Bexarotene	5000	1	smp_2606	plate12
+Bicalutamide	50	1	smp_2366	plate10
+Bicalutamide	500	1	smp_2462	plate11
+Bicalutamide	5000	1	smp_2558	plate12
+Bimatoprost	50	1	smp_1848	plate4
+Bimatoprost	500	1	smp_1944	plate5
+Bimatoprost	5000	2	smp_2040;smp_2808	plate6;plate14
+Bimiralisib	50	1	smp_1541	plate1
+Bimiralisib	500	1	smp_1637	plate2
+Bimiralisib	5000	1	smp_1733	plate3
+Binimetinib	50	2	smp_1518;smp_2447	plate1;plate10
+Binimetinib	500	2	smp_1614;smp_2543	plate2;plate11
+Binimetinib	5000	2	smp_1710;smp_2639	plate3;plate12
+Bortezomib	50	1	smp_1555	plate1
+Bortezomib	500	1	smp_1651	plate2
+Bortezomib	5000	1	smp_1747	plate3
+Bosentan (hydrate)	50	1	smp_2086	plate7
+Bosentan (hydrate)	500	1	smp_2182	plate8
+Bosentan (hydrate)	5000	1	smp_2278	plate9
+Brimonidine	50	1	smp_2362	plate10
+Brimonidine	500	1	smp_2458	plate11
+Brimonidine	5000	1	smp_2554	plate12
+Brivudine	50	1	smp_1523	plate1
+Brivudine	500	1	smp_1619	plate2
+Brivudine	5000	1	smp_1715	plate3
+Budesonide	50	1	smp_2432	plate10
+Budesonide	500	1	smp_2528	plate11
+Budesonide	5000	1	smp_2624	plate12
+Busulfan	50	1	smp_1840	plate4
+Busulfan	500	1	smp_1936	plate5
+Busulfan	5000	2	smp_2032;smp_2800	plate6;plate14
+CP21R7	50	1	smp_1554	plate1
+CP21R7	500	1	smp_1650	plate2
+CP21R7	5000	1	smp_1746	plate3
+Canagliflozin	50	1	smp_2123	plate7
+Canagliflozin	500	1	smp_2219	plate8
+Canagliflozin	5000	1	smp_2315	plate9
+Capivasertib	50	1	smp_1500	plate1
+Capivasertib	500	1	smp_1596	plate2
+Capivasertib	5000	1	smp_1692	plate3
+Capmatinib	50	1	smp_1511	plate1
+Capmatinib	500	1	smp_1607	plate2
+Capmatinib	5000	1	smp_1703	plate3
+Captopril	50	2	smp_2400;smp_2662	plate10;plate13
+Captopril	500	1	smp_2496	plate11
+Captopril	5000	1	smp_2592	plate12
+Carbamazepine	50	1	smp_2389	plate10
+Carbamazepine	500	1	smp_2485	plate11
+Carbamazepine	5000	1	smp_2581	plate12
+Carbidopa (monohydrate)	50	1	smp_2741	plate13
+Carbidopa (monohydrate)	500	1	smp_2729	plate13
+Carbidopa (monohydrate)	5000	1	smp_2717	plate13
+Celecoxib	50	1	smp_1577	plate1
+Celecoxib	500	1	smp_1673	plate2
+Celecoxib	5000	1	smp_1769	plate3
+Cepharanthine	50	1	smp_1841	plate4
+Cepharanthine	500	1	smp_1937	plate5
+Cepharanthine	5000	2	smp_2033;smp_2801	plate6;plate14
+Ciclopirox	50	1	smp_1835	plate4
+Ciclopirox	500	1	smp_1931	plate5
+Ciclopirox	5000	2	smp_2027;smp_2795	plate6;plate14
+Cilostazol	50	1	smp_2120	plate7
+Cilostazol	500	1	smp_2216	plate8
+Cilostazol	5000	1	smp_2312	plate9
+Cinacalcet	50	1	smp_2433	plate10
+Cinacalcet	500	1	smp_2529	plate11
+Cinacalcet	5000	1	smp_2625	plate12
+Citalopram (hydrobromide)	50	1	smp_2419	plate10
+Citalopram (hydrobromide)	500	1	smp_2515	plate11
+Citalopram (hydrobromide)	5000	1	smp_2611	plate12
+Clobetasol propionate	50	1	smp_2431	plate10
+Clobetasol propionate	500	1	smp_2527	plate11
+Clobetasol propionate	5000	1	smp_2623	plate12
+Clofarabine	50	1	smp_2150	plate7
+Clofarabine	500	1	smp_2246	plate8
+Clofarabine	5000	1	smp_2342	plate9
+Clonidine (hydrochloride)	50	1	smp_1875	plate4
+Clonidine (hydrochloride)	500	1	smp_1971	plate5
+Clonidine (hydrochloride)	5000	2	smp_2067;smp_2835	plate6;plate14
+Clopidogrel	50	1	smp_2398	plate10
+Clopidogrel	500	1	smp_2494	plate11
+Clopidogrel	5000	1	smp_2590	plate12
+Clotrimazole	50	1	smp_1796	plate4
+Clotrimazole	500	1	smp_1892	plate5
+Clotrimazole	5000	2	smp_1988;smp_2756	plate6;plate14
+Cloxacillin (sodium)	50	1	smp_1865	plate4
+Cloxacillin (sodium)	500	1	smp_1961	plate5
+Cloxacillin (sodium)	5000	2	smp_2057;smp_2825	plate6;plate14
+Cobimetinib	50	1	smp_2115	plate7
+Cobimetinib	500	1	smp_2211	plate8
+Cobimetinib	5000	1	smp_2307	plate9
+Cyclosporin A	50	1	smp_2425	plate10
+Cyclosporin A	500	1	smp_2521	plate11
+Cyclosporin A	5000	1	smp_2617	plate12
+Cysteamine (hydrochloride)	50	1	smp_1788	plate4
+Cysteamine (hydrochloride)	500	1	smp_1884	plate5
+Cysteamine (hydrochloride)	5000	2	smp_1980;smp_2748	plate6;plate14
+Cytarabine	50	2	smp_2091;smp_2703	plate7;plate13
+Cytarabine	500	2	smp_2187;smp_2691	plate8;plate13
+Cytarabine	5000	2	smp_2283;smp_2679	plate9;plate13
+DT-061	50	1	smp_1573	plate1
+DT-061	500	1	smp_1669	plate2
+DT-061	5000	1	smp_1765	plate3
+DTP3	50	2	smp_1570;smp_2655	plate1;plate13
+DTP3	500	1	smp_1666	plate2
+DTP3	5000	1	smp_1762	plate3
+Dabrafenib	50	1	smp_1525	plate1
+Dabrafenib	500	1	smp_1621	plate2
+Dabrafenib	5000	1	smp_1717	plate3
+Daidzin	50	2	smp_2078;smp_2696	plate7;plate13
+Daidzin	500	2	smp_2174;smp_2684	plate8;plate13
+Daidzin	5000	2	smp_2270;smp_2672	plate9;plate13
+Dapagliflozin	50	1	smp_2449	plate10
+Dapagliflozin	500	1	smp_2545	plate11
+Dapagliflozin	5000	1	smp_2641	plate12
+Daptomycin	50	1	smp_2731	plate13
+Daptomycin	500	1	smp_2719	plate13
+Daptomycin	5000	1	smp_2707	plate13
+Darinaparsin	50	1	smp_1826	plate4
+Darinaparsin	500	1	smp_1922	plate5
+Darinaparsin	5000	2	smp_2018;smp_2786	plate6;plate14
+Darolutamide	50	1	smp_2429	plate10
+Darolutamide	500	1	smp_2525	plate11
+Darolutamide	5000	1	smp_2621	plate12
+Decitabine	50	1	smp_2124	plate7
+Decitabine	500	1	smp_2220	plate8
+Decitabine	5000	1	smp_2316	plate9
+Delamanid	50	1	smp_2417	plate10
+Delamanid	500	1	smp_2513	plate11
+Delamanid	5000	1	smp_2609	plate12
+Demeclocycline	50	1	smp_1837	plate4
+Demeclocycline	500	1	smp_1933	plate5
+Demeclocycline	5000	2	smp_2029;smp_2797	plate6;plate14
+Dexamethasone	50	1	smp_2403	plate10
+Dexamethasone	500	1	smp_2499	plate11
+Dexamethasone	5000	1	smp_2595	plate12
+Dexmedetomidine	50	1	smp_2144	plate7
+Dexmedetomidine	500	1	smp_2240	plate8
+Dexmedetomidine	5000	1	smp_2336	plate9
+Digitoxin	50	1	smp_2382	plate10
+Digitoxin	500	1	smp_2478	plate11
+Digitoxin	5000	1	smp_2574	plate12
+Dihydroartemisinin	50	1	smp_2442	plate10
+Dihydroartemisinin	500	1	smp_2538	plate11
+Dihydroartemisinin	5000	1	smp_2634	plate12
+Dimethyl fumarate	50	1	smp_2076	plate7
+Dimethyl fumarate	500	1	smp_2172	plate8
+Dimethyl fumarate	5000	1	smp_2268	plate9
+Dinaciclib	50	1	smp_2085	plate7
+Dinaciclib	500	1	smp_2181	plate8
+Dinaciclib	5000	1	smp_2277	plate9
+Diphenhydramine	50	1	smp_2104	plate7
+Diphenhydramine	500	1	smp_2200	plate8
+Diphenhydramine	5000	1	smp_2296	plate9
+Docetaxel	50	1	smp_1843	plate4
+Docetaxel	500	1	smp_1939	plate5
+Docetaxel	5000	2	smp_2035;smp_2803	plate6;plate14
+Dorzolamide (hydrochloride)	50	1	smp_2121	plate7
+Dorzolamide (hydrochloride)	500	1	smp_2217	plate8
+Dorzolamide (hydrochloride)	5000	1	smp_2313	plate9
+Doxorubicin (hydrochloride)	50	1	smp_2145	plate7
+Doxorubicin (hydrochloride)	500	1	smp_2241	plate8
+Doxorubicin (hydrochloride)	5000	1	smp_2337	plate9
+Doxycycline (monohydrate)	50	1	smp_2113	plate7
+Doxycycline (monohydrate)	500	1	smp_2209	plate8
+Doxycycline (monohydrate)	5000	1	smp_2305	plate9
+Drospirenone	50	1	smp_2367	plate10
+Drospirenone	500	1	smp_2463	plate11
+Drospirenone	5000	1	smp_2559	plate12
+ERK5-IN-2	50	1	smp_1533	plate1
+ERK5-IN-2	500	1	smp_1629	plate2
+ERK5-IN-2	5000	1	smp_1725	plate3
+ETC-206	50	1	smp_1583	plate1
+ETC-206	500	1	smp_1679	plate2
+ETC-206	5000	1	smp_1775	plate3
+EX229	50	1	smp_1549	plate1
+EX229	500	1	smp_1645	plate2
+EX229	5000	1	smp_1741	plate3
+Econazole	50	1	smp_2375	plate10
+Econazole	500	1	smp_2471	plate11
+Econazole	5000	1	smp_2567	plate12
+Edoxaban (tosylate monohydrate)	50	1	smp_2739	plate13
+Edoxaban (tosylate monohydrate)	500	1	smp_2727	plate13
+Edoxaban (tosylate monohydrate)	5000	1	smp_2715	plate13
+Elagolix sodium	50	1	smp_1819	plate4
+Elagolix sodium	500	1	smp_1915	plate5
+Elagolix sodium	5000	2	smp_2011;smp_2779	plate6;plate14
+Elimusertib hydrochloride	50	1	smp_1562	plate1
+Elimusertib hydrochloride	500	1	smp_1658	plate2
+Elimusertib hydrochloride	5000	1	smp_1754	plate3
+Encorafenib	50	1	smp_1526	plate1
+Encorafenib	500	1	smp_1622	plate2
+Encorafenib	5000	1	smp_1718	plate3
+Entecavir (monohydrate)	50	1	smp_2074	plate7
+Entecavir (monohydrate)	500	1	smp_2170	plate8
+Entecavir (monohydrate)	5000	1	smp_2266	plate9
+Entrectinib	50	1	smp_2377	plate10
+Entrectinib	500	1	smp_2473	plate11
+Entrectinib	5000	1	smp_2569	plate12
+Eplerenone	50	1	smp_2158	plate7
+Eplerenone	500	1	smp_2254	plate8
+Eplerenone	5000	1	smp_2350	plate9
+Erdafitinib	50	1	smp_1496	plate1
+Erdafitinib	500	1	smp_1592	plate2
+Erdafitinib	5000	1	smp_1688	plate3
+Erlotinib	50	1	smp_2098	plate7
+Erlotinib	500	1	smp_2194	plate8
+Erlotinib	5000	1	smp_2290	plate9
+Erythromycin	50	1	smp_2394	plate10
+Erythromycin	500	1	smp_2490	plate11
+Erythromycin	5000	1	smp_2586	plate12
+Esmolol (hydrochloride)	50	1	smp_2364	plate10
+Esmolol (hydrochloride)	500	1	smp_2460	plate11
+Esmolol (hydrochloride)	5000	1	smp_2556	plate12
+Estrone sulfate (potassium)	50	1	smp_2386	plate10
+Estrone sulfate (potassium)	500	1	smp_2482	plate11
+Estrone sulfate (potassium)	5000	1	smp_2578	plate12
+Everolimus	50	2	smp_1497;smp_1551	plate1;plate1
+Everolimus	500	2	smp_1593;smp_1647	plate2;plate2
+Everolimus	5000	2	smp_1689;smp_1743	plate3;plate3
+Fedratinib (hydrochloride hydrate)	50	1	smp_2428	plate10
+Fedratinib (hydrochloride hydrate)	500	1	smp_2524	plate11
+Fedratinib (hydrochloride hydrate)	5000	1	smp_2620	plate12
+Fenofibrate	50	1	smp_2099	plate7
+Fenofibrate	500	1	smp_2195	plate8
+Fenofibrate	5000	1	smp_2291	plate9
+Ferulic acid	50	1	smp_2137	plate7
+Ferulic acid	500	1	smp_2233	plate8
+Ferulic acid	5000	1	smp_2329	plate9
+Filgotinib	50	1	smp_2363	plate10
+Filgotinib	500	1	smp_2459	plate11
+Filgotinib	5000	1	smp_2555	plate12
+Finasteride	50	1	smp_2111	plate7
+Finasteride	500	1	smp_2207	plate8
+Finasteride	5000	1	smp_2303	plate9
+Fingolimod (hydrochloride)	50	1	smp_2381	plate10
+Fingolimod (hydrochloride)	500	1	smp_2477	plate11
+Fingolimod (hydrochloride)	5000	1	smp_2573	plate12
+Flumatinib (mesylate)	50	2	smp_2090;smp_2702	plate7;plate13
+Flumatinib (mesylate)	500	2	smp_2186;smp_2690	plate8;plate13
+Flumatinib (mesylate)	5000	2	smp_2282;smp_2678	plate9;plate13
+Flutamide	50	1	smp_2390	plate10
+Flutamide	500	1	smp_2486	plate11
+Flutamide	5000	1	smp_2582	plate12
+Fluvoxamine	50	1	smp_2139	plate7
+Fluvoxamine	500	1	smp_2235	plate8
+Fluvoxamine	5000	1	smp_2331	plate9
+Folic acid	50	1	smp_1868	plate4
+Folic acid	500	1	smp_1964	plate5
+Folic acid	5000	2	smp_2060;smp_2828	plate6;plate14
+Fostamatinib (disodium hexahydrate)	50	1	smp_2734	plate13
+Fostamatinib (disodium hexahydrate)	500	1	smp_2722	plate13
+Fostamatinib (disodium hexahydrate)	5000	1	smp_2710	plate13
+Fulvestrant	50	1	smp_2421	plate10
+Fulvestrant	500	1	smp_2517	plate11
+Fulvestrant	5000	1	smp_2613	plate12
+Fumaric acid	50	2	smp_2079;smp_2697	plate7;plate13
+Fumaric acid	500	2	smp_2175;smp_2685	plate8;plate13
+Fumaric acid	5000	2	smp_2271;smp_2673	plate9;plate13
+Furosemide	50	1	smp_1795	plate4
+Furosemide	500	1	smp_1891	plate5
+Furosemide	5000	2	smp_1987;smp_2755	plate6;plate14
+Fusidic acid	50	1	smp_1863	plate4
+Fusidic acid	500	1	smp_1959	plate5
+Fusidic acid	5000	2	smp_2055;smp_2823	plate6;plate14
+Futibatinib	50	1	smp_1559	plate1
+Futibatinib	500	1	smp_1655	plate2
+Futibatinib	5000	1	smp_1751	plate3
+GSK1059615	50	1	smp_1542	plate1
+GSK1059615	500	1	smp_1638	plate2
+GSK1059615	5000	1	smp_1734	plate3
+Gallic acid	50	1	smp_1871	plate4
+Gallic acid	500	1	smp_1967	plate5
+Gallic acid	5000	2	smp_2063;smp_2831	plate6;plate14
+Gefitinib	50	1	smp_2445	plate10
+Gefitinib	500	1	smp_2541	plate11
+Gefitinib	5000	1	smp_2637	plate12
+Gemcitabine	50	2	smp_1501;smp_1575	plate1;plate1
+Gemcitabine	500	2	smp_1597;smp_1671	plate2;plate2
+Gemcitabine	5000	2	smp_1693;smp_1767	plate3;plate3
+Gemfibrozil	50	1	smp_1811	plate4
+Gemfibrozil	500	1	smp_1907	plate5
+Gemfibrozil	5000	2	smp_2003;smp_2771	plate6;plate14
+Glasdegib	50	1	smp_2732	plate13
+Glasdegib	500	1	smp_2720	plate13
+Glasdegib	5000	1	smp_2708	plate13
+Glycyrrhizic acid	50	1	smp_2147	plate7
+Glycyrrhizic acid	500	1	smp_2243	plate8
+Glycyrrhizic acid	5000	1	smp_2339	plate9
+HI-TOPK-032	50	1	smp_1579	plate1
+HI-TOPK-032	500	1	smp_1675	plate2
+HI-TOPK-032	5000	1	smp_1771	plate3
+Harringtonine	50	1	smp_2105	plate7
+Harringtonine	500	1	smp_2201	plate8
+Harringtonine	5000	1	smp_2297	plate9
+Hesperidin	50	1	smp_2128	plate7
+Hesperidin	500	1	smp_2224	plate8
+Hesperidin	5000	1	smp_2320	plate9
+Hexylresorcinol	50	1	smp_1856	plate4
+Hexylresorcinol	500	1	smp_1952	plate5
+Hexylresorcinol	5000	2	smp_2048;smp_2816	plate6;plate14
+Homoharringtonine	50	1	smp_1855	plate4
+Homoharringtonine	500	1	smp_1951	plate5
+Homoharringtonine	5000	2	smp_2047;smp_2815	plate6;plate14
+Hydroxyfasudil	50	2	smp_1556;smp_2652	plate1;plate13
+Hydroxyfasudil	500	1	smp_1652	plate2
+Hydroxyfasudil	5000	1	smp_1748	plate3
+Hydroxyurea	50	1	smp_2112	plate7
+Hydroxyurea	500	1	smp_2208	plate8
+Hydroxyurea	5000	1	smp_2304	plate9
+IQ 1	50	1	smp_1553	plate1
+IQ 1	500	1	smp_1649	plate2
+IQ 1	5000	1	smp_1745	plate3
+Idarubicin (hydrochloride)	50	1	smp_1818	plate4
+Idarubicin (hydrochloride)	500	1	smp_1914	plate5
+Idarubicin (hydrochloride)	5000	2	smp_2010;smp_2778	plate6;plate14
+Idoxuridine	50	1	smp_2410	plate10
+Idoxuridine	500	1	smp_2506	plate11
+Idoxuridine	5000	1	smp_2602	plate12
+Imiquimod (hydrochloride)	50	1	smp_2380	plate10
+Imiquimod (hydrochloride)	500	1	smp_2476	plate11
+Imiquimod (hydrochloride)	5000	1	smp_2572	plate12
+Infigratinib	50	1	smp_1495	plate1
+Infigratinib	500	1	smp_1591	plate2
+Infigratinib	5000	1	smp_1687	plate3
+Ipatasertib	50	1	smp_1536	plate1
+Ipatasertib	500	1	smp_1632	plate2
+Ipatasertib	5000	1	smp_1728	plate3
+Irinotecan	50	1	smp_1502	plate1
+Irinotecan	500	1	smp_1598	plate2
+Irinotecan	5000	1	smp_1694	plate3
+Isocorydine	50	1	smp_1793	plate4
+Isocorydine	500	1	smp_1889	plate5
+Isocorydine	5000	2	smp_1985;smp_2753	plate6;plate14
+Ivabradine (hydrochloride)	50	1	smp_2735	plate13
+Ivabradine (hydrochloride)	500	1	smp_2723	plate13
+Ivabradine (hydrochloride)	5000	1	smp_2711	plate13
+Ivermectin	50	1	smp_2418	plate10
+Ivermectin	500	1	smp_2514	plate11
+Ivermectin	5000	1	smp_2610	plate12
+Ixazomib	50	1	smp_1569	plate1
+Ixazomib	500	1	smp_1665	plate2
+Ixazomib	5000	1	smp_1761	plate3
+Ixazomib citrate	50	1	smp_2438	plate10
+Ixazomib citrate	500	1	smp_2534	plate11
+Ixazomib citrate	5000	1	smp_2630	plate12
+L-Eflornithine (monohydrochloride)	50	1	smp_2387	plate10
+L-Eflornithine (monohydrochloride)	500	1	smp_2483	plate11
+L-Eflornithine (monohydrochloride)	5000	1	smp_2579	plate12
+L-Thyroxine (sodium salt pentahydrate)	50	1	smp_1805	plate4
+L-Thyroxine (sodium salt pentahydrate)	500	1	smp_1901	plate5
+L-Thyroxine (sodium salt pentahydrate)	5000	2	smp_1997;smp_2765	plate6;plate14
+LB-100	50	1	smp_1581	plate1
+LB-100	500	1	smp_1677	plate2
+LB-100	5000	1	smp_1773	plate3
+LJI308	50	1	smp_1546	plate1
+LJI308	500	1	smp_1642	plate2
+LJI308	5000	1	smp_1738	plate3
+LY-2584702 (tosylate salt)	50	1	smp_1547	plate1
+LY-2584702 (tosylate salt)	500	1	smp_1643	plate2
+LY-2584702 (tosylate salt)	5000	1	smp_1739	plate3
+LY2090314	50	1	smp_1584	plate1
+LY2090314	500	1	smp_1680	plate2
+LY2090314	5000	1	smp_1776	plate3
+Lapatinib ditosylate	50	1	smp_1505	plate1
+Lapatinib ditosylate	500	1	smp_1601	plate2
+Lapatinib ditosylate	5000	1	smp_1697	plate3
+Larotrectinib	50	1	smp_1839	plate4
+Larotrectinib	500	1	smp_1935	plate5
+Larotrectinib	5000	2	smp_2031;smp_2799	plate6;plate14
+Levobupivacaine (hydrochloride)	50	1	smp_2131	plate7
+Levobupivacaine (hydrochloride)	500	1	smp_2227	plate8
+Levobupivacaine (hydrochloride)	5000	1	smp_2323	plate9
+Lidocaine (hydrochloride)	50	1	smp_1836	plate4
+Lidocaine (hydrochloride)	500	1	smp_1932	plate5
+Lidocaine (hydrochloride)	5000	2	smp_2028;smp_2796	plate6;plate14
+Ligustrazine	50	1	smp_2125	plate7
+Ligustrazine	500	1	smp_2221	plate8
+Ligustrazine	5000	1	smp_2317	plate9
+Lipoic acid	50	1	smp_1872	plate4
+Lipoic acid	500	1	smp_1968	plate5
+Lipoic acid	5000	2	smp_2064;smp_2832	plate6;plate14
+Lonafarnib	50	1	smp_1507	plate1
+Lonafarnib	500	1	smp_1603	plate2
+Lonafarnib	5000	1	smp_1699	plate3
+Loperamide (hydrochloride)	50	1	smp_2374	plate10
+Loperamide (hydrochloride)	500	1	smp_2470	plate11
+Loperamide (hydrochloride)	5000	1	smp_2566	plate12
+Lopinavir	50	1	smp_2402	plate10
+Lopinavir	500	1	smp_2498	plate11
+Lopinavir	5000	1	smp_2594	plate12
+Lucanthone	50	1	smp_2095	plate7
+Lucanthone	500	1	smp_2191	plate8
+Lucanthone	5000	1	smp_2287	plate9
+Lumateperone (tosylate)	50	1	smp_1853	plate4
+Lumateperone (tosylate)	500	1	smp_1949	plate5
+Lumateperone (tosylate)	5000	2	smp_2045;smp_2813	plate6;plate14
+MK-3903	50	1	smp_1550	plate1
+MK-3903	500	1	smp_1646	plate2
+MK-3903	5000	1	smp_1742	plate3
+MK-8353	50	1	smp_1512	plate1
+MK-8353	500	1	smp_1608	plate2
+MK-8353	5000	1	smp_1704	plate3
+ML264	50	1	smp_1520	plate1
+ML264	500	1	smp_1616	plate2
+ML264	5000	1	smp_1712	plate3
+Macitentan	50	1	smp_2157	plate7
+Macitentan	500	1	smp_2253	plate8
+Macitentan	5000	1	smp_2349	plate9
+Malotilate	50	2	smp_2412;smp_2663	plate10;plate13
+Malotilate	500	1	smp_2508	plate11
+Malotilate	5000	1	smp_2604	plate12
+Mebendazole	50	1	smp_2129	plate7
+Mebendazole	500	1	smp_2225	plate8
+Mebendazole	5000	1	smp_2321	plate9
+Medroxyprogesterone acetate	50	1	smp_1859	plate4
+Medroxyprogesterone acetate	500	1	smp_1955	plate5
+Medroxyprogesterone acetate	5000	2	smp_2051;smp_2819	plate6;plate14
+Megestrol	50	1	smp_1803	plate4
+Megestrol	500	1	smp_1899	plate5
+Megestrol	5000	2	smp_1995;smp_2763	plate6;plate14
+Meloxicam	50	1	smp_2407	plate10
+Meloxicam	500	1	smp_2503	plate11
+Meloxicam	5000	1	smp_2599	plate12
+Menadione	50	1	smp_2146	plate7
+Menadione	500	1	smp_2242	plate8
+Menadione	5000	1	smp_2338	plate9
+Methotrexate	50	1	smp_2436	plate10
+Methotrexate	500	1	smp_2532	plate11
+Methotrexate	5000	1	smp_2628	plate12
+Methyl aminolevulinate (hydrochloride)	50	1	smp_2399	plate10
+Methyl aminolevulinate (hydrochloride)	500	1	smp_2495	plate11
+Methyl aminolevulinate (hydrochloride)	5000	1	smp_2591	plate12
+Methylprednisolone succinate	50	2	smp_1576;smp_2656	plate1;plate13
+Methylprednisolone succinate	500	1	smp_1672	plate2
+Methylprednisolone succinate	5000	1	smp_1768	plate3
+Methylthiouracil	50	1	smp_2446	plate10
+Methylthiouracil	500	1	smp_2542	plate11
+Methylthiouracil	5000	1	smp_2638	plate12
+Mifepristone	50	1	smp_2159	plate7
+Mifepristone	500	1	smp_2255	plate8
+Mifepristone	5000	1	smp_2351	plate9
+Minodronic acid	50	1	smp_1586	plate1
+Minodronic acid	500	1	smp_1682	plate2
+Minodronic acid	5000	1	smp_1778	plate3
+Mitoxantrone (dihydrochloride)	50	1	smp_1838	plate4
+Mitoxantrone (dihydrochloride)	500	1	smp_1934	plate5
+Mitoxantrone (dihydrochloride)	5000	2	smp_2030;smp_2798	plate6;plate14
+Monocrotaline	50	1	smp_2110	plate7
+Monocrotaline	500	1	smp_2206	plate8
+Monocrotaline	5000	1	smp_2302	plate9
+Mozavaptan	50	1	smp_2151	plate7
+Mozavaptan	500	1	smp_2247	plate8
+Mozavaptan	5000	1	smp_2343	plate9
+NG25	50	1	smp_1572	plate1
+NG25	500	1	smp_1668	plate2
+NG25	5000	1	smp_1764	plate3
+NVP-BHG712	50	1	smp_1531	plate1
+NVP-BHG712	500	1	smp_1627	plate2
+NVP-BHG712	5000	1	smp_1723	plate3
+Nafamostat (mesylate)	50	1	smp_2409	plate10
+Nafamostat (mesylate)	500	1	smp_2505	plate11
+Nafamostat (mesylate)	5000	1	smp_2601	plate12
+Naproxen	50	2	smp_2094;smp_2706	plate7;plate13
+Naproxen	500	2	smp_2190;smp_2694	plate8;plate13
+Naproxen	5000	2	smp_2286;smp_2682	plate9;plate13
+Neratinib	50	1	smp_2406	plate10
+Neratinib	500	1	smp_2502	plate11
+Neratinib	5000	1	smp_2598	plate12
+Nevirapine	50	1	smp_2119	plate7
+Nevirapine	500	1	smp_2215	plate8
+Nevirapine	5000	1	smp_2311	plate9
+Nimesulide	50	1	smp_2666	plate13
+Nimesulide	500	1	smp_2665	plate13
+Nimesulide	5000	1	smp_2664	plate13
+Norepinephrine (hydrochloride)	50	1	smp_1834	plate4
+Norepinephrine (hydrochloride)	500	1	smp_1930	plate5
+Norepinephrine (hydrochloride)	5000	2	smp_2026;smp_2794	plate6;plate14
+OTS514	50	1	smp_1571	plate1
+OTS514	500	1	smp_1667	plate2
+OTS514	5000	1	smp_1763	plate3
+Olanzapine	50	1	smp_1850	plate4
+Olanzapine	500	1	smp_1946	plate5
+Olanzapine	5000	2	smp_2042;smp_2810	plate6;plate14
+Oleic acid	50	1	smp_1585	plate1
+Oleic acid	500	1	smp_1681	plate2
+Oleic acid	5000	1	smp_1777	plate3
+Omeprazole	50	1	smp_2365	plate10
+Omeprazole	500	1	smp_2461	plate11
+Omeprazole	5000	1	smp_2557	plate12
+Orlistat	50	1	smp_2108	plate7
+Orlistat	500	1	smp_2204	plate8
+Orlistat	5000	1	smp_2300	plate9
+Ornidazole	50	1	smp_2737	plate13
+Ornidazole	500	1	smp_2725	plate13
+Ornidazole	5000	1	smp_2713	plate13
+Osimertinib (mesylate)	50	1	smp_2392	plate10
+Osimertinib (mesylate)	500	1	smp_2488	plate11
+Osimertinib (mesylate)	5000	1	smp_2584	plate12
+Ouabain (Octahydrate)	50	1	smp_2444	plate10
+Ouabain (Octahydrate)	500	1	smp_2540	plate11
+Ouabain (Octahydrate)	5000	1	smp_2636	plate12
+Oxaprozin	50	1	smp_2385	plate10
+Oxaprozin	500	1	smp_2481	plate11
+Oxaprozin	5000	1	smp_2577	plate12
+PF-06260933	50	2	smp_1544;smp_2650	plate1;plate13
+PF-06260933	500	1	smp_1640	plate2
+PF-06260933	5000	1	smp_1736	plate3
+PH-797804	50	1	smp_1534	plate1
+PH-797804	500	1	smp_1630	plate2
+PH-797804	5000	1	smp_1726	plate3
+Paclitaxel	50	1	smp_1527	plate1
+Paclitaxel	500	1	smp_1623	plate2
+Paclitaxel	5000	1	smp_1719	plate3
+Palmatine (chloride)	50	1	smp_1792	plate4
+Palmatine (chloride)	500	1	smp_1888	plate5
+Palmatine (chloride)	5000	2	smp_1984;smp_2752	plate6;plate14
+Panobinostat	50	1	smp_2450	plate10
+Panobinostat	500	1	smp_2546	plate11
+Panobinostat	5000	1	smp_2642	plate12
+Pemetrexed	50	1	smp_2138	plate7
+Pemetrexed	500	1	smp_2234	plate8
+Pemetrexed	5000	1	smp_2330	plate9
+Pemigatinib	50	1	smp_1498	plate1
+Pemigatinib	500	1	smp_1594	plate2
+Pemigatinib	5000	1	smp_1690	plate3
+Penfluridol	50	1	smp_2136	plate7
+Penfluridol	500	1	smp_2232	plate8
+Penfluridol	5000	1	smp_2328	plate9
+Pentagastrin	50	1	smp_1852	plate4
+Pentagastrin	500	1	smp_1948	plate5
+Pentagastrin	5000	2	smp_2044;smp_2812	plate6;plate14
+Pentoxifylline	50	1	smp_2423	plate10
+Pentoxifylline	500	1	smp_2519	plate11
+Pentoxifylline	5000	1	smp_2615	plate12
+Peretinoin	50	1	smp_2162	plate7
+Peretinoin	500	1	smp_2258	plate8
+Peretinoin	5000	1	smp_2354	plate9
+Pexidartinib (hydrochloride)	50	1	smp_2102	plate7
+Pexidartinib (hydrochloride)	500	1	smp_2198	plate8
+Pexidartinib (hydrochloride)	5000	1	smp_2294	plate9
+Phenylephrine (hydrochloride)	50	1	smp_2376	plate10
+Phenylephrine (hydrochloride)	500	1	smp_2472	plate11
+Phenylephrine (hydrochloride)	5000	1	smp_2568	plate12
+Phenytoin (sodium)	50	1	smp_2107	plate7
+Phenytoin (sodium)	500	1	smp_2203	plate8
+Phenytoin (sodium)	5000	1	smp_2299	plate9
+Pimitespib	50	1	smp_1567	plate1
+Pimitespib	500	1	smp_1663	plate2
+Pimitespib	5000	1	smp_1759	plate3
+Pimozide	50	1	smp_2435	plate10
+Pimozide	500	1	smp_2531	plate11
+Pimozide	5000	1	smp_2627	plate12
+Pioglitazone	50	1	smp_2413	plate10
+Pioglitazone	500	1	smp_2509	plate11
+Pioglitazone	5000	1	smp_2605	plate12
+Piroxicam	50	1	smp_2408	plate10
+Piroxicam	500	1	smp_2504	plate11
+Piroxicam	5000	1	smp_2600	plate12
+Plicamycin	50	1	smp_2736	plate13
+Plicamycin	500	1	smp_2724	plate13
+Plicamycin	5000	1	smp_2712	plate13
+Ponatinib	50	1	smp_2369	plate10
+Ponatinib	500	1	smp_2465	plate11
+Ponatinib	5000	1	smp_2561	plate12
+Posaconazole	50	1	smp_2072	plate7
+Posaconazole	500	1	smp_2168	plate8
+Posaconazole	5000	1	smp_2264	plate9
+Pralsetinib	50	2	smp_1560;smp_2653	plate1;plate13
+Pralsetinib	500	1	smp_1656	plate2
+Pralsetinib	5000	1	smp_1752	plate3
+Pravastatin (sodium)	50	2	smp_2080;smp_2698	plate7;plate13
+Pravastatin (sodium)	500	2	smp_2176;smp_2686	plate8;plate13
+Pravastatin (sodium)	5000	2	smp_2272;smp_2674	plate9;plate13
+Procainamide (hydrochloride)	50	1	smp_2117	plate7
+Procainamide (hydrochloride)	500	1	smp_2213	plate8
+Procainamide (hydrochloride)	5000	1	smp_2309	plate9
+Proglumide	50	1	smp_2405	plate10
+Proglumide	500	1	smp_2501	plate11
+Proglumide	5000	1	smp_2597	plate12
+Pyridoxine	50	1	smp_1800	plate4
+Pyridoxine	500	1	smp_1896	plate5
+Pyridoxine	5000	2	smp_1992;smp_2760	plate6;plate14
+Quinestrol	50	1	smp_1808	plate4
+Quinestrol	500	1	smp_1904	plate5
+Quinestrol	5000	2	smp_2000;smp_2768	plate6;plate14
+Quinidine (15% dihydroquinidine)	50	1	smp_2133	plate7
+Quinidine (15% dihydroquinidine)	500	1	smp_2229	plate8
+Quinidine (15% dihydroquinidine)	5000	1	smp_2325	plate9
+RMC-6236	50	1	smp_1528	plate1
+RMC-6236	500	1	smp_1624	plate2
+RMC-6236	5000	1	smp_1720	plate3
+Radotinib	50	1	smp_1842	plate4
+Radotinib	500	1	smp_1938	plate5
+Radotinib	5000	2	smp_2034;smp_2802	plate6;plate14
+Ralimetinib dimesylate	50	2	smp_1532;smp_2649	plate1;plate13
+Ralimetinib dimesylate	500	1	smp_1628	plate2
+Ralimetinib dimesylate	5000	1	smp_1724	plate3
+Raltitrexed	50	1	smp_1794	plate4
+Raltitrexed	500	1	smp_1890	plate5
+Raltitrexed	5000	2	smp_1986;smp_2754	plate6;plate14
+Ranolazine	50	1	smp_2404	plate10
+Ranolazine	500	1	smp_2500	plate11
+Ranolazine	5000	1	smp_2596	plate12
+Rapamycin	50	1	smp_1821	plate4
+Rapamycin	500	1	smp_1917	plate5
+Rapamycin	5000	2	smp_2013;smp_2781	plate6;plate14
+Regorafenib	50	2	smp_1513;smp_2733	plate1;plate13
+Regorafenib	500	2	smp_1609;smp_2721	plate2;plate13
+Regorafenib	5000	2	smp_1705;smp_2709	plate3;plate13
+Relugolix	50	1	smp_1854	plate4
+Relugolix	500	1	smp_1950	plate5
+Relugolix	5000	2	smp_2046;smp_2814	plate6;plate14
+Resveratrol	50	1	smp_1820	plate4
+Resveratrol	500	1	smp_1916	plate5
+Resveratrol	5000	2	smp_2012;smp_2780	plate6;plate14
+Retinoic acid	50	1	smp_1787	plate4
+Retinoic acid	500	1	smp_1883	plate5
+Retinoic acid	5000	2	smp_1979;smp_2747	plate6;plate14
+Ribociclib	50	1	smp_2742	plate13
+Ribociclib	500	1	smp_2730	plate13
+Ribociclib	5000	1	smp_2718	plate13
+Rifaximin	50	1	smp_2143	plate7
+Rifaximin	500	1	smp_2239	plate8
+Rifaximin	5000	1	smp_2335	plate9
+Riluzole hydrochloride	50	1	smp_1791	plate4
+Riluzole hydrochloride	500	1	smp_1887	plate5
+Riluzole hydrochloride	5000	2	smp_1983;smp_2751	plate6;plate14
+Rimonabant	50	1	smp_1851	plate4
+Rimonabant	500	1	smp_1947	plate5
+Rimonabant	5000	2	smp_2043;smp_2811	plate6;plate14
+Ritonavir	50	1	smp_1830	plate4
+Ritonavir	500	1	smp_1926	plate5
+Ritonavir	5000	2	smp_2022;smp_2790	plate6;plate14
+Ropivacaine (hydrochloride monohydrate)	50	1	smp_1806	plate4
+Ropivacaine (hydrochloride monohydrate)	500	1	smp_1902	plate5
+Ropivacaine (hydrochloride monohydrate)	5000	2	smp_1998;smp_2766	plate6;plate14
+Rosiglitazone	50	1	smp_2132	plate7
+Rosiglitazone	500	1	smp_2228	plate8
+Rosiglitazone	5000	1	smp_2324	plate9
+Roxadustat	50	1	smp_2122	plate7
+Roxadustat	500	1	smp_2218	plate8
+Roxadustat	5000	1	smp_2314	plate9
+Rucaparib (phosphate)	50	1	smp_2083	plate7
+Rucaparib (phosphate)	500	1	smp_2179	plate8
+Rucaparib (phosphate)	5000	1	smp_2275	plate9
+Rutin (trihydrate)	50	1	smp_2101	plate7
+Rutin (trihydrate)	500	1	smp_2197	plate8
+Rutin (trihydrate)	5000	1	smp_2293	plate9
+S-Adenosyl-L-methionine (disulfate tosylate)	50	1	smp_1817	plate4
+S-Adenosyl-L-methionine (disulfate tosylate)	500	1	smp_1913	plate5
+S-Adenosyl-L-methionine (disulfate tosylate)	5000	2	smp_2009;smp_2777	plate6;plate14
+SBI-0640756	50	1	smp_1545	plate1
+SBI-0640756	500	1	smp_1641	plate2
+SBI-0640756	5000	1	smp_1737	plate3
+Salicylic acid	50	1	smp_1807	plate4
+Salicylic acid	500	1	smp_1903	plate5
+Salicylic acid	5000	2	smp_1999;smp_2767	plate6;plate14
+Sapanisertib	50	1	smp_1537	plate1
+Sapanisertib	500	1	smp_1633	plate2
+Sapanisertib	5000	1	smp_1729	plate3
+Saquinavir	50	1	smp_1822	plate4
+Saquinavir	500	1	smp_1918	plate5
+Saquinavir	5000	2	smp_2014;smp_2782	plate6;plate14
+Selinexor	50	1	smp_1869	plate4
+Selinexor	500	1	smp_1965	plate5
+Selinexor	5000	2	smp_2061;smp_2829	plate6;plate14
+Sildenafil	50	1	smp_2075	plate7
+Sildenafil	500	1	smp_2171	plate8
+Sildenafil	5000	1	smp_2267	plate9
+Silodosin	50	1	smp_2118	plate7
+Silodosin	500	1	smp_2214	plate8
+Silodosin	5000	1	smp_2310	plate9
+Simotinib	50	1	smp_2116	plate7
+Simotinib	500	1	smp_2212	plate8
+Simotinib	5000	1	smp_2308	plate9
+Sinomenine	50	1	smp_1861	plate4
+Sinomenine	500	1	smp_1957	plate5
+Sinomenine	5000	2	smp_2053;smp_2821	plate6;plate14
+Sivelestat (sodium tetrahydrate)	50	1	smp_2071	plate7
+Sivelestat (sodium tetrahydrate)	500	1	smp_2167	plate8
+Sivelestat (sodium tetrahydrate)	5000	1	smp_2263	plate9
+Sonidegib	50	2	smp_1548;smp_2651	plate1;plate13
+Sonidegib	500	1	smp_1644	plate2
+Sonidegib	5000	1	smp_1740	plate3
+Sulfatinib	50	1	smp_2153	plate7
+Sulfatinib	500	1	smp_2249	plate8
+Sulfatinib	5000	1	smp_2345	plate9
+Sulfisoxazole	50	1	smp_1833	plate4
+Sulfisoxazole	500	2	smp_1929;smp_2661	plate5;plate13
+Sulfisoxazole	5000	2	smp_2025;smp_2793	plate6;plate14
+Sunitinib	50	1	smp_2393	plate10
+Sunitinib	500	1	smp_2489	plate11
+Sunitinib	5000	1	smp_2585	plate12
+TAK-733	50	1	smp_1561	plate1
+TAK-733	500	1	smp_1657	plate2
+TAK-733	5000	1	smp_1753	plate3
+TAK-901	50	1	smp_1535	plate1
+TAK-901	500	1	smp_1631	plate2
+TAK-901	5000	1	smp_1727	plate3
+Tadalafil	50	1	smp_2088	plate7
+Tadalafil	500	1	smp_2184	plate8
+Tadalafil	5000	1	smp_2280	plate9
+Talc	50	1	smp_2422	plate10
+Talc	500	1	smp_2518	plate11
+Talc	5000	1	smp_2614	plate12
+Tazarotene	50	1	smp_2415	plate10
+Tazarotene	500	1	smp_2511	plate11
+Tazarotene	5000	1	smp_2607	plate12
+Temsirolimus	50	1	smp_1802	plate4
+Temsirolimus	500	1	smp_1898	plate5
+Temsirolimus	5000	2	smp_1994;smp_2762	plate6;plate14
+Temuterkib	50	1	smp_1519	plate1
+Temuterkib	500	1	smp_1615	plate2
+Temuterkib	5000	1	smp_1711	plate3
+Terfenadine	50	1	smp_1814	plate4
+Terfenadine	500	2	smp_1910;smp_2659	plate5;plate13
+Terfenadine	5000	2	smp_2006;smp_2774	plate6;plate14
+Tetracycline (hydrochloride)	50	1	smp_2073	plate7
+Tetracycline (hydrochloride)	500	1	smp_2169	plate8
+Tetracycline (hydrochloride)	5000	1	smp_2265	plate9
+Thymol	50	1	smp_1824	plate4
+Thymol	500	1	smp_1920	plate5
+Thymol	5000	2	smp_2016;smp_2784	plate6;plate14
+Thymopentin	50	1	smp_2126	plate7
+Thymopentin	500	1	smp_2222	plate8
+Thymopentin	5000	1	smp_2318	plate9
+Tirabrutinib	50	1	smp_2103	plate7
+Tirabrutinib	500	1	smp_2199	plate8
+Tirabrutinib	5000	1	smp_2295	plate9
+Tofacitinib	50	1	smp_1809	plate4
+Tofacitinib	500	1	smp_1905	plate5
+Tofacitinib	5000	2	smp_2001;smp_2769	plate6;plate14
+Tolcapone	50	1	smp_1813	plate4
+Tolcapone	500	1	smp_1909	plate5
+Tolcapone	5000	2	smp_2005;smp_2773	plate6;plate14
+Tolmetin	50	1	smp_2163	plate7
+Tolmetin	500	1	smp_2259	plate8
+Tolmetin	5000	1	smp_2355	plate9
+Tomivosertib	50	1	smp_1522	plate1
+Tomivosertib	500	1	smp_1618	plate2
+Tomivosertib	5000	1	smp_1714	plate3
+Topotecan (hydrochloride)	50	2	smp_2093;smp_2705	plate7;plate13
+Topotecan (hydrochloride)	500	2	smp_2189;smp_2693	plate8;plate13
+Topotecan (hydrochloride)	5000	2	smp_2285;smp_2681	plate9;plate13
+Torkinib	50	1	smp_1565	plate1
+Torkinib	500	1	smp_1661	plate2
+Torkinib	5000	1	smp_1757	plate3
+Trametinib	50	2	smp_1529;smp_2427	plate1;plate10
+Trametinib	500	2	smp_1625;smp_2523	plate2;plate11
+Trametinib	5000	2	smp_1721;smp_2619	plate3;plate12
+Tranilast	50	1	smp_2156	plate7
+Tranilast	500	1	smp_2252	plate8
+Tranilast	5000	1	smp_2348	plate9
+Triamcinolone	50	1	smp_1849	plate4
+Triamcinolone	500	1	smp_1945	plate5
+Triamcinolone	5000	2	smp_2041;smp_2809	plate6;plate14
+Triclosan	50	1	smp_1844	plate4
+Triclosan	500	1	smp_1940	plate5
+Triclosan	5000	2	smp_2036;smp_2804	plate6;plate14
+Trifluridine	50	1	smp_1785	plate4
+Trifluridine	500	1	smp_1881	plate5
+Trifluridine	5000	2	smp_1977;smp_2745	plate6;plate14
+Trimetrexate	50	1	smp_1810	plate4
+Trimetrexate	500	1	smp_1906	plate5
+Trimetrexate	5000	2	smp_2002;smp_2770	plate6;plate14
+Tubulin inhibitor 6	50	1	smp_1564	plate1
+Tubulin inhibitor 6	500	1	smp_1660	plate2
+Tubulin inhibitor 6	5000	1	smp_1756	plate3
+Tucatinib	50	1	smp_1514	plate1
+Tucatinib	500	1	smp_1610	plate2
+Tucatinib	5000	1	smp_1706	plate3
+Tucidinostat	50	1	smp_1845	plate4
+Tucidinostat	500	1	smp_1941	plate5
+Tucidinostat	5000	2	smp_2037;smp_2805	plate6;plate14
+ULK-101	50	1	smp_1552	plate1
+ULK-101	500	1	smp_1648	plate2
+ULK-101	5000	1	smp_1744	plate3
+Uridine	50	1	smp_2451	plate10
+Uridine	500	1	smp_2547	plate11
+Uridine	5000	1	smp_2643	plate12
+Valdecoxib	50	1	smp_2434	plate10
+Valdecoxib	500	1	smp_2530	plate11
+Valdecoxib	5000	1	smp_2626	plate12
+Vandetanib	50	1	smp_2416	plate10
+Vandetanib	500	1	smp_2512	plate11
+Vandetanib	5000	1	smp_2608	plate12
+Vemurafenib	50	1	smp_1515	plate1
+Vemurafenib	500	1	smp_1611	plate2
+Vemurafenib	5000	1	smp_1707	plate3
+Verapamil	50	1	smp_2134	plate7
+Verapamil	500	1	smp_2230	plate8
+Verapamil	5000	1	smp_2326	plate9
+Vilanterol	50	1	smp_1827	plate4
+Vilanterol	500	1	smp_1923	plate5
+Vilanterol	5000	2	smp_2019;smp_2787	plate6;plate14
+Vinblastine (sulfate)	50	1	smp_1789	plate4
+Vinblastine (sulfate)	500	1	smp_1885	plate5
+Vinblastine (sulfate)	5000	2	smp_1981;smp_2749	plate6;plate14
+Vismodegib	50	1	smp_2441	plate10
+Vismodegib	500	1	smp_2537	plate11
+Vismodegib	5000	1	smp_2633	plate12
+Vitamin K4	50	1	smp_2383	plate10
+Vitamin K4	500	1	smp_2479	plate11
+Vitamin K4	5000	1	smp_2575	plate12
+Volasertib	50	1	smp_1508	plate1
+Volasertib	500	1	smp_1604	plate2
+Volasertib	5000	1	smp_1700	plate3
+Voriconazole	50	1	smp_2401	plate10
+Voriconazole	500	1	smp_2497	plate11
+Voriconazole	5000	1	smp_2593	plate12
+Vortioxetine	50	1	smp_2378	plate10
+Vortioxetine	500	1	smp_2474	plate11
+Vortioxetine	5000	1	smp_2570	plate12
+XRK3F2	50	1	smp_1540	plate1
+XRK3F2	500	1	smp_1636	plate2
+XRK3F2	5000	1	smp_1732	plate3
+Zileuton	50	1	smp_2391	plate10
+Zileuton	500	1	smp_2487	plate11
+Zileuton	5000	1	smp_2583	plate12
+c-Kit-IN-1	50	2	smp_1509;smp_2648	plate1;plate13
+c-Kit-IN-1	500	1	smp_1605	plate2
+c-Kit-IN-1	5000	1	smp_1701	plate3
+olaparib	50	2	smp_1568;smp_2654	plate1;plate13
+olaparib	500	1	smp_1664	plate2
+olaparib	5000	1	smp_1760	plate3
+palbociclib	50	1	smp_1506	plate1
+palbociclib	500	1	smp_1602	plate2
+palbociclib	5000	1	smp_1698	plate3
+venetoclax	50	1	smp_1510	plate1
+venetoclax	500	1	smp_1606	plate2
+venetoclax	5000	1	smp_1702	plate3
+vincristine	50	1	smp_1578	plate1
+vincristine	500	1	smp_1674	plate2
+vincristine	5000	1	smp_1770	plate3
+γ-Oryzanol	50	1	smp_2430	plate10
+γ-Oryzanol	500	1	smp_2526	plate11
+γ-Oryzanol	5000	1	smp_2622	plate12

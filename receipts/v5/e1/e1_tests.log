@@ -1,0 +1,4 @@
+# started 2026-10-23T00:23:07.213552+00:00
+# /tmp/venvs/core/bin/python -m pytest -q -p no:cacheprovider tests/test_v5_design.py tests/test_v5_pipeline.py
+.......................                                                  [100%]
+23 passed in 59.36s

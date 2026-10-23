@@ -1,0 +1,4 @@
+# started 2026-10-23T03:02:37.042519+00:00
+# /tmp/venvs/cellmodels/bin/python -m pytest -q -p no:cacheprovider tests/test_v5_cellmodels.py tests/test_v4_cellmodels.py
+............                                                             [100%]
+12 passed in 135.61s (0:02:15)

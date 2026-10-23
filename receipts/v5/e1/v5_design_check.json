@@ -1,0 +1,464 @@
+{
+  "analysis": "v5_design_audit",
+  "mode": "check",
+  "inputs_verified": [
+    {
+      "role": "sample_metadata",
+      "bytes": 65636,
+      "sha256": "33167f0ce28cff8357c503cda67d1c7fea200bff6918ee1de3c4f3549175b9d3",
+      "revision": "349e2a55f5538a3e73b32a06c6bdd8e9e87011e8"
+    },
+    {
+      "role": "drug_metadata",
+      "bytes": 40475,
+      "sha256": "7a04c7a6611e74c92253163b994ff0a47191928ee7511f1c2ca508cee0e79f28",
+      "revision": "349e2a55f5538a3e73b32a06c6bdd8e9e87011e8"
+    },
+    {
+      "role": "cell_line_metadata",
+      "bytes": 19040,
+      "sha256": "67641f5bdd3fb077978ff1fec4d0d617490674bcd42850515ae3997194c29d4d",
+      "revision": "349e2a55f5538a3e73b32a06c6bdd8e9e87011e8"
+    },
+    {
+      "role": "obs_metadata",
+      "bytes": 2293981573,
+      "sha256": "e51b24f3666f5f433c59ff01dd6fa33934627091455e89d929f2c1ddc87401fe",
+      "revision": "349e2a55f5538a3e73b32a06c6bdd8e9e87011e8"
+    }
+  ],
+  "reads": {
+    "sample_metadata": [
+      "sample",
+      "plate",
+      "drug",
+      "drugname_drugconc"
+    ],
+    "drug_metadata": [
+      "drug",
+      "canonical_smiles",
+      "pubchem_cid"
+    ],
+    "cell_line_metadata": [
+      "cell_name",
+      "Cell_ID_Cellosaur",
+      "Organ"
+    ],
+    "obs_metadata": {
+      "columns": [
+        "sample",
+        "cell_line",
+        "pass_filter"
+      ],
+      "row_filter": "sample in the 28 vehicle samples"
+    }
+  },
+  "expression_read": false,
+  "compound_sample_cell_counts_read": false,
+  "split": {
+    "seed": 42,
+    "test_fraction": 0.25,
+    "validation_fraction": 0.15,
+    "required_test_compounds": 60,
+    "required_test_groups": 40,
+    "compound_count_unit": "unique_canonical_parent",
+    "train": {
+      "n_compound_ids": 202,
+      "n_compounds": 202,
+      "n_groups": 168
+    },
+    "validation": {
+      "n_compound_ids": 50,
+      "n_compounds": 50,
+      "n_groups": 45
+    },
+    "test": {
+      "n_compound_ids": 84,
+      "n_compounds": 84,
+      "n_groups": 77
+    },
+    "test_minimum_met": true
+  },
+  "design": {
+    "samples": 1344,
+    "plates": 14,
+    "roles": {
+      "compound": 1298,
+      "vehicle": 28,
+      "reference_control": 18
+    },
+    "vehicle_samples_per_plate": [
+      2
+    ],
+    "reference_control_samples": {
+      "50": 16,
+      "500": 1,
+      "5000": 1
+    },
+    "compound_samples_by_plate_and_dose_nM": {
+      "plate1": {
+        "50": 93,
+        "500": 0,
+        "5000": 0
+      },
+      "plate2": {
+        "50": 0,
+        "500": 93,
+        "5000": 0
+      },
+      "plate3": {
+        "50": 0,
+        "500": 0,
+        "5000": 93
+      },
+      "plate4": {
+        "50": 93,
+        "500": 0,
+        "5000": 0
+      },
+      "plate5": {
+        "50": 0,
+        "500": 93,
+        "5000": 0
+      },
+      "plate6": {
+        "50": 0,
+        "500": 0,
+        "5000": 93
+      },
+      "plate7": {
+        "50": 92,
+        "500": 0,
+        "5000": 0
+      },
+      "plate8": {
+        "50": 0,
+        "500": 92,
+        "5000": 0
+      },
+      "plate9": {
+        "50": 0,
+        "500": 0,
+        "5000": 92
+      },
+      "plate10": {
+        "50": 93,
+        "500": 0,
+        "5000": 0
+      },
+      "plate11": {
+        "50": 0,
+        "500": 93,
+        "5000": 0
+      },
+      "plate12": {
+        "50": 0,
+        "500": 0,
+        "5000": 93
+      },
+      "plate13": {
+        "50": 37,
+        "500": 30,
+        "5000": 25
+      },
+      "plate14": {
+        "50": 0,
+        "500": 0,
+        "5000": 93
+      }
+    },
+    "drugs_in_compound_samples": 378,
+    "compounds": {
+      "accepted": 336,
+      "excluded_structure": 22,
+      "excluded_duplicate_parent": 20,
+      "scaffold_groups": 290,
+      "acyclic_groups": 10,
+      "exclusions": [
+        {
+          "compound_id": "(R)-Verapamil (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Verapamil"
+        },
+        {
+          "compound_id": "Almonertinib (mesylate)",
+          "exclusion_reason": "duplicate_parent_represented_by:Almonertinib (hydrochloride)"
+        },
+        {
+          "compound_id": "Auranofin",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Belumosudil (mesylate)",
+          "exclusion_reason": "duplicate_parent_represented_by:Belumosudil"
+        },
+        {
+          "compound_id": "Berbamine (dihydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Berbamine"
+        },
+        {
+          "compound_id": "Bestatin (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Bestatin"
+        },
+        {
+          "compound_id": "Bisoprolol (hemifumarate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Cabozantinib (S-malate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Canagliflozin (hemihydrate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Chlorhexidine (diacetate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Crizotinib (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:(S)-Crizotinib"
+        },
+        {
+          "compound_id": "Cytarabine (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Cytarabine"
+        },
+        {
+          "compound_id": "Dapagliflozin ((2S)-1,2-propanediol, hydrate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Diammonium Glycyrrhizinate",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Docetaxel (Trihydrate)",
+          "exclusion_reason": "duplicate_parent_represented_by:Docetaxel"
+        },
+        {
+          "compound_id": "Epirubicin (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Doxorubicin (hydrochloride)"
+        },
+        {
+          "compound_id": "Fluvoxamine (maleate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Gallic acid (hydrate)",
+          "exclusion_reason": "duplicate_parent_represented_by:Gallic acid"
+        },
+        {
+          "compound_id": "Goserelin (acetate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Imiquimod (maleate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Indacaterol (maleate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Irinotecan (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Irinotecan"
+        },
+        {
+          "compound_id": "Lactate (calcium)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Larotrectinib sulfate",
+          "exclusion_reason": "duplicate_parent_represented_by:Larotrectinib"
+        },
+        {
+          "compound_id": "Lenalidomide (hemihydrate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Neratinib (maleate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Niclosamide (olamine)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Omeprazole (sodium)",
+          "exclusion_reason": "duplicate_parent_represented_by:Omeprazole"
+        },
+        {
+          "compound_id": "Oxaliplatin",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Pasireotide (acetate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Pentamidine (isethionate)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Perindopril (erbumine)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Pitavastatin (Calcium)",
+          "exclusion_reason": "unresolved active mixture: multiple non-counterion fragments"
+        },
+        {
+          "compound_id": "Pyridoxine (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Pyridoxine"
+        },
+        {
+          "compound_id": "Rimonabant (Hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Rimonabant"
+        },
+        {
+          "compound_id": "Sacubitril/Valsartan",
+          "exclusion_reason": "no SMILES in drug_metadata"
+        },
+        {
+          "compound_id": "Sodium Salicylate",
+          "exclusion_reason": "duplicate_parent_represented_by:Salicylic acid"
+        },
+        {
+          "compound_id": "Tirabrutinib (hydrochloride)",
+          "exclusion_reason": "duplicate_parent_represented_by:Tirabrutinib"
+        },
+        {
+          "compound_id": "Tofacitinib (citrate)",
+          "exclusion_reason": "duplicate_parent_represented_by:Tofacitinib"
+        },
+        {
+          "compound_id": "Trametinib (DMSO_TF solvate)",
+          "exclusion_reason": "duplicate_parent_represented_by:Trametinib"
+        },
+        {
+          "compound_id": "Verteporfin",
+          "exclusion_reason": "no SMILES in drug_metadata"
+        },
+        {
+          "compound_id": "crizotinib",
+          "exclusion_reason": "duplicate_parent_represented_by:(S)-Crizotinib"
+        }
+      ]
+    },
+    "replicate_samples_per_compound_dose": {
+      "1": 871,
+      "2": 134,
+      "3": 3
+    },
+    "plates_per_accepted_compound": {
+      "1": 10,
+      "3": 222,
+      "4": 98,
+      "5": 3,
+      "6": 2,
+      "7": 1
+    },
+    "overlap_with_scored": {
+      "sciplex3": {
+        "exact_parent": 17,
+        "exact_parent_by_split": {
+          "train": 9,
+          "validation": 4,
+          "test": 4
+        },
+        "stereo_free_parent": 24,
+        "compounds": [
+          "(S)-Crizotinib",
+          "5-Fluorouracil",
+          "Altretamine",
+          "Busulfan",
+          "Celecoxib",
+          "Fedratinib (hydrochloride hydrate)",
+          "Filgotinib",
+          "Fulvestrant",
+          "Lapatinib ditosylate",
+          "Raltitrexed",
+          "Regorafenib",
+          "Roxadustat",
+          "Rucaparib (phosphate)",
+          "TAK-901",
+          "Trametinib",
+          "Vandetanib",
+          "Zileuton"
+        ]
+      },
+      "op3": {
+        "exact_parent": 11,
+        "exact_parent_by_split": {
+          "train": 8,
+          "validation": 2,
+          "test": 1
+        },
+        "stereo_free_parent": 18,
+        "compounds": [
+          "Belumosudil",
+          "Clotrimazole",
+          "Filgotinib",
+          "Flutamide",
+          "LY2090314",
+          "Lapatinib ditosylate",
+          "Penfluridol",
+          "Trametinib",
+          "Vandetanib",
+          "palbociclib",
+          "venetoclax"
+        ]
+      }
+    },
+    "vehicle_cells": {
+      "rows_read": 2330156,
+      "samples_read": 28,
+      "cell_lines": 50,
+      "pass_filter": {
+        "full": 2205786,
+        "minimal": 124370
+      },
+      "counted_value": "full",
+      "unit_cells": {
+        "count": 700.0,
+        "mean": 3151.1,
+        "std": 2357.6,
+        "min": 13.0,
+        "25%": 1600.0,
+        "50%": 2811.0,
+        "75%": 4079.5,
+        "max": 15253.0
+      },
+      "units_below_30": 13,
+      "units_below_200": 43
+    },
+    "cell_line_rule": {
+      "min_median_cells": 200,
+      "n_lines": 10,
+      "seed": 42
+    }
+  },
+  "outputs": {
+    "manifests/v5/samples.tsv": "4aa1d3402dc9562e424e25a5debc982954c1f4df0ab707efee6155f2df84b236",
+    "manifests/v5/compounds.tsv": "05bdda99f630e3b489be0c8a6caa885cb1c27cff45a9081c3f750d54a567629a",
+    "manifests/v5/replicates.tsv": "79cc0282aa1258ca84816e94491593591ce4524a08daff8bc3223637411e944b",
+    "manifests/v5/vehicle_units.tsv": "fbdca37c4c742f1e7f43e6a7d6cd83c70db356ff4bd1cae6ba185b90eafc602f",
+    "manifests/v5/cell_lines.tsv": "7b810e71f4d4c2b7dc6fba9a62b3296e5d49135bd70dac7b2d6e8dd3e3a20456",
+    "manifests/v5/contexts.tsv": "30a063a4d44fb4ae43cbe38e888e89b44a33505d2a7016a4ba41f25cbc240c01"
+  },
+  "code_sha256": {
+    "scripts/v5_design_audit.py": "c7b6469ec424d374a190c0f0eb21391ae15fb20d4a2520e65b6c15055719874b",
+    "src/drugperturb/v5/design.py": "c248aa34da621e48b0af58fa199fe4f3c267a9d2f84419d1072ec259a98deb94",
+    "src/drugperturb/v4/design.py": "bb90ecaba863b34f951e2b911ab449dba73079f68bd625b2d5ef16f1bf515c88",
+    "src/drugperturb/chemistry.py": "0a059a1ec5528ff140ad5634a277f6fb96022acbfec4ab9aa8f3bb450698627b"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.0",
+    "rdkit": "2026.09.1"
+  },
+  "command": "python scripts/v5_design_audit.py --metadata-dir /tmp/meta --check --receipt /kaggle/working/receipts/v5_design_check.json"
+}

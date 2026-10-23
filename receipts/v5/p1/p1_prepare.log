@@ -1,0 +1,62 @@
+# started 2026-10-23T02:39:30.815827+00:00
+# /tmp/venvs/core/bin/python scripts/v5_prepare.py --extraction-root /kaggle/input/notebooks/ningyusunny/dp-v5-extract/extraction --output-root /kaggle/working/prepared
+{
+  "units": 11760,
+  "model_cells": 281856,
+  "frozen_genes": 2000,
+  "truth_pairs": {
+    "train": 5936,
+    "validation": 1462
+  },
+  "eligible_test_pairs": 2464,
+  "study_gate_G4": {
+    "gate_passing_contexts": [
+      "CVCL_0099_5000nM",
+      "CVCL_0099_500nM",
+      "CVCL_0099_50nM",
+      "CVCL_0131_5000nM",
+      "CVCL_0131_500nM",
+      "CVCL_0131_50nM",
+      "CVCL_0293_5000nM",
+      "CVCL_0293_500nM",
+      "CVCL_0293_50nM",
+      "CVCL_0428_5000nM",
+      "CVCL_0428_500nM",
+      "CVCL_0428_50nM",
+      "CVCL_1097_5000nM",
+      "CVCL_1097_500nM",
+      "CVCL_1097_50nM",
+      "CVCL_1239_5000nM",
+      "CVCL_1239_500nM",
+      "CVCL_1239_50nM",
+      "CVCL_1381_5000nM",
+      "CVCL_1381_500nM",
+      "CVCL_1381_50nM",
+      "CVCL_1550_5000nM",
+      "CVCL_1550_500nM",
+      "CVCL_1550_50nM",
+      "CVCL_1715_5000nM",
+      "CVCL_1715_500nM",
+      "CVCL_1715_50nM",
+      "CVCL_1717_5000nM",
+      "CVCL_1717_500nM",
+      "CVCL_1717_50nM"
+    ],
+    "n_contexts": 30,
+    "n_lines": 10,
+    "n_doses": 3,
+    "met": true
+  },
+  "checks": {
+    "shards": 3388,
+    "unit_cells_equal_obs_pass_filter": true,
+    "unit_library_equals_unit_sums": true,
+    "model_cells_found_once": true,
+    "model_cells_within_unit_sums": true,
+    "model_cells_equal_unit_sums_where_all_kept": true,
+    "model_library_equals_counts": true,
+    "truth_keys_exclude_test": true,
+    "model_cells_exclude_test": true,
+    "model_cells_per_unit_at_most_cap": true
+  }
+}
