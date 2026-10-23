@@ -6,6 +6,12 @@ scripts of a base commit and once with the scripts under test, both on the same
 src/ and prepared inputs. Prediction arrays, histories and evaluation tables must be
 identical; JSON records may differ only in wall-clock fields and file paths.
 Software check only; needs descriptastorus and torch (cell-model environment).
+
+For later script changes that add record fields (the descriptor gate), --additive
+names keys that only the new scripts write: they must be absent from the base
+records and are then left out of the comparison, and their paths are listed.
+--new-seal-option passes an option to the new v4_seal.py only. Without either
+option the check is the one recorded in receipts/v4_corrected/default_path_check.json.
 """
 from pathlib import Path
 import argparse
@@ -50,6 +56,21 @@ def differences(a, b, path=''):
         yield path
 
 
+def without(value, keys, found, path=''):
+    """Copy of a JSON value without the given keys at any depth; their paths are added to found."""
+    if isinstance(value, dict):
+        kept = {}
+        for key, item in value.items():
+            if key in keys:
+                found.add(re.sub(r'\[\d+\]', '[]', f'{path}/{key}'))
+            else:
+                kept[key] = without(item, keys, found, f'{path}/{key}')
+        return kept
+    if isinstance(value, list):
+        return [without(item, keys, found, f'{path}[{i}]') for i, item in enumerate(value)]
+    return value
+
+
 def arrays_equal(a, b):
     with np.load(a, allow_pickle=False) as x, np.load(b, allow_pickle=False) as y:
         return x.files == y.files and all(np.array_equal(x[k], y[k]) for k in x.files)
@@ -61,6 +82,10 @@ def main():
     parser.add_argument('--new', type=Path, required=True, help='scripts/ and configs/ under test')
     parser.add_argument('--work', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--additive', action='append', default=[],
+                        help='JSON key written only by the new scripts (repeatable); must be absent from base records')
+    parser.add_argument('--new-seal-option', action='append', default=[],
+                        help='Option for the new v4_seal.py only, e.g. --new-seal-option=--override-descriptor-gate')
     args = parser.parse_args()
     sys.path.insert(0, str(ROOT/'tests'))
     from test_v4_op3_pipeline import synthetic_op3
@@ -88,14 +113,16 @@ def main():
                 run(repo, 'v4_fit.py', '--setting', 'op3', '--arm', arm, '--seed', seed, '--prepared', w/'prep',
                     '--output-root', w/version, '--device', 'cpu', '--max-epochs', 2)
         run(repo, 'v4_seal.py', '--setting', 'op3', '--fit-root', w/version/'fits', '--prepared', w/'prep',
-            '--output-root', w/version/'sealed', '--allow-smoke')
+            '--output-root', w/version/'sealed', '--allow-smoke', *(args.new_seal_option if version == 'new' else []))
         run(repo, 'v4_evaluate_op3.py', '--extraction-root', w/'ext', '--prepared', w/'prep', '--sealed-root',
             w/'sealed_base', '--sealed-root', w/version/'sealed', '--sealed-root', w/'sealed_anchored',
             '--output-root', w/version/'eval')
-    checks, json_differences = {}, set()
+    checks, json_differences, additive_paths = {}, set(), set()
 
     def compare_json(name, a, b):
-        found = list(differences(json.loads(a.read_text()), json.loads(b.read_text())))
+        # Additive keys are removed from the new records only, so a base record that has one still differs.
+        new = without(json.loads(b.read_text()), set(args.additive), additive_paths)
+        found = list(differences(json.loads(a.read_text()), new))
         json_differences.update(re.sub(r'\[\d+\]', '[]', p) for p in found)
         # Paths of inputs differ (two repositories, two output roots); so do archive hashes, because
         # np.savez_compressed stamps the zip entries with the write time. Contents are compared directly.
@@ -122,6 +149,9 @@ def main():
     result = dict(unchanged=all(checks.values()), checks=checks, json_paths_that_differ=sorted(json_differences),
                   ignored_keys=sorted(WALL_CLOCK), fits_per_version=len(ARMS)*len(seeds), max_epochs=2,
                   python=sys.version, fixture='tests/test_v4_op3_pipeline.py synthetic_op3')
+    if args.additive or args.new_seal_option:
+        result.update(additive_keys=sorted(args.additive), additive_paths_in_new=sorted(additive_paths),
+                      new_seal_options=args.new_seal_option)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps(dict(unchanged=result['unchanged'], json_paths_that_differ=result['json_paths_that_differ']), indent=1))

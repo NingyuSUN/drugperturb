@@ -19,7 +19,7 @@ import yaml
 
 from drugperturb.v3 import runner as v3_runner
 from drugperturb.v3.cells import load_model_archive
-from drugperturb.v3.descriptors import NOISE_STD_TOLERANCE, VEHICLE_ID, compound_table
+from drugperturb.v3.descriptors import NOISE_STD_TOLERANCE, VEHICLE_ID, compound_table, scaling_diagnostics
 from drugperturb.v3.pseudobulk import normalize_counts
 from drugperturb.v4 import chemcpa_v4, counterfactual, diagnostics
 
@@ -128,6 +128,7 @@ def main():
     labels = CORRECTED if args.descriptor_tolerance else {}
     descriptors, kept = compound_table(compounds.compound_id.tolist(), compounds.canonical_smiles.tolist(), train_ids,
                                        min_std=labels.get('descriptor_min_std', 0.0))
+    scaling = scaling_diagnostics(descriptors, dict(zip(compounds.compound_id, compounds.split)))  # gated by v4_seal.py
     vocabulary = [VEHICLE_ID, *compounds.compound_id.tolist()]
     X = normalize_counts(sub_counts, sub_library)
     train_index = np.flatnonzero(train_mask[keep])
@@ -203,7 +204,7 @@ def main():
                   n_training_cells=int(train_index.size), n_validation_cells=int(validation_mask.sum()),
                   n_train_queries=len(queries['train']), n_validation_queries=len(queries['validation']),
                   n_test_queries=len(queries['test']), n_vehicle_wells=len(vehicles), descriptor_columns=len(kept),
-                  seconds=time.perf_counter()-started, device=args.device,
+                  descriptor_scaling=scaling, seconds=time.perf_counter()-started, device=args.device,
                   gpu=torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
                   torch=torch.__version__, cuda=torch.version.cuda, python=platform.python_version(),
                   test_outcomes_loaded=False, diagnostics=summary, latent=latent,

@@ -18,7 +18,7 @@ import yaml
 
 from drugperturb.v3 import runner
 from drugperturb.v3.cells import load_model_archive
-from drugperturb.v3.descriptors import VEHICLE_ID, compound_table
+from drugperturb.v3.descriptors import VEHICLE_ID, compound_table, scaling_diagnostics
 from drugperturb.v3.pseudobulk import normalize_counts
 from drugperturb.v4.counterfactual import load_truth
 
@@ -77,6 +77,7 @@ def main():
     split = pd.read_csv(ROOT/'manifests/split_manifest.tsv', sep='\t', keep_default_na=False)
     descriptors, kept = compound_table(split.compound_id.tolist(), split.canonical_smiles.tolist(),
                                        split.loc[split.split.eq('train'), 'compound_id'].tolist())
+    scaling = scaling_diagnostics(descriptors, dict(zip(split.compound_id, split.split)))  # recorded, not gated
     use_cell_type = args.protocol == 'Q2'
     X = normalize_counts(sub_counts, sub_library)
     train_index = np.flatnonzero(train_mask[keep])
@@ -122,7 +123,8 @@ def main():
                   max_epochs_override=args.max_epochs, engineering_smoke=args.max_epochs is not None,
                   n_training_cells=int(train_index.size), n_validation_cells=int(validation_mask.sum()),
                   n_validation_queries=len(val_keys), n_test_queries=len(test_keys),
-                  n_vehicle_wells=len(vehicles), descriptor_columns=len(kept), seconds=time.perf_counter()-started,
+                  n_vehicle_wells=len(vehicles), descriptor_columns=len(kept), descriptor_scaling=scaling,
+                  seconds=time.perf_counter()-started,
                   device=args.device, gpu=torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
                   torch=torch.__version__, cuda=torch.version.cuda, python=platform.python_version(),
                   test_outcomes_loaded=False, **result)
