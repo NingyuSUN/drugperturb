@@ -47,8 +47,13 @@ def write_tsv(frame, path):
     frame.to_csv(path, sep='\t', index=False)
 
 
-def make_dataset(root, perturb_test=False):
-    """Write synthetic metadata, shards and v5-style manifests; returns paths and the ground-truth cell table."""
+def make_dataset(root, perturb_test=False, cells=(34, 45), protocol_path='configs/protocol_v5.yaml'):
+    """Write synthetic metadata, shards and v5-style manifests; returns paths and the ground-truth cell table.
+
+    ``cells`` is the per-(sample, line) cell range; the v6 pipeline test raises it
+    because v6 splits every unit into two halves. ``protocol_path`` is the
+    protocol the synthetic ``protocol.yaml`` is derived from.
+    """
     rng = np.random.default_rng(7)
     root.mkdir(parents=True)
     samples, n = [], 0
@@ -71,7 +76,7 @@ def make_dataset(root, perturb_test=False):
     rows, truth = [], []
     for s in samples.itertuples(index=False):
         for line in ['L1', 'L2', 'L3']:
-            count = 12 if (s.drug == 'C12' and s.dose_uM == 0.5 and line == 'L2') else int(rng.integers(34, 45))
+            count = 12 if (s.drug == 'C12' and s.dose_uM == 0.5 and line == 'L2') else int(rng.integers(*cells))
             rate = base[line]*(np.exp(effect[s.drug]*s.dose_uM) if s.role == 'compound' else 1.0)
             for _ in range(count):
                 barcode = f'bc{n:06d}'
@@ -125,9 +130,11 @@ def make_dataset(root, perturb_test=False):
                                             bytes=(root/'gene_metadata.parquet').stat().st_size,
                                             sha256=sha256(root/'gene_metadata.parquet'))]).assign(url=''),
               manifests/'expression_source.tsv')
-    protocol = yaml.safe_load((REPO/'configs/protocol_v5.yaml').read_text())
+    protocol = yaml.safe_load((REPO/protocol_path).read_text())
     protocol['model_cells']['cap_per_well_and_line'] = CAP
     protocol['gene_space']['n_genes'] = 10
+    if 'response_endpoint' in protocol:
+        protocol['response_endpoint']['de_gene_set']['k'] = 4
     (root/'protocol.yaml').write_text(yaml.safe_dump(protocol))
     return pd.DataFrame(truth)
 
