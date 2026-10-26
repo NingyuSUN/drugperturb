@@ -275,13 +275,20 @@ residual_secondary:
     arm is fitted by least squares of measured on predicted residual over validation keys and clipped to
     [0, 1], and the lambda = 1 value is reported beside it.
 training:
-  as_v5: max_epochs 200, evaluate_every_epochs 10, early_stopping_patience_evaluations 5, checkpoint lowest_validation_rmse_evaluation, non_finite_validation scores +inf
+  as_v5: >-
+    The schedule is v5's, unchanged. The four values below were prose in the committed protocol and are now
+    spelled out so the fit script reads them rather than a sentence (amendment A2); no value changed.
+  max_epochs: 200
+  evaluate_every_epochs: 10
+  early_stopping_patience_evaluations: 5
+  checkpoint: lowest_validation_rmse_evaluation
+  non_finite_validation: scores +inf and is never the selected checkpoint (v4 A2)
   objective_unchanged: >-
     USER_DECISION D5. Both arms keep v5's pseudobulk MSE objective over all 2,000 genes, so the only thing that
     changes between v5 and v6 for M1 is the endpoint. That isolates the question this study asks. The
     alternative - re-weighting the loss toward responsive genes - would change the model and the endpoint at
     once and could not be read as an endpoint result.
-  max_minutes_per_fit: USER_DECISION D6 - 60 as in v5, or 120
+  max_minutes_per_fit: 60  # USER_DECISION D6 - the v5 value; the alternative was 120
   cap_evidence: >-
     9 of 10 v5 I2 fits stopped at the 60-minute cap while still improving, so the cap is a live confound. 120
     minutes doubles the GPU estimate and tests whether the cap mattered; 60 keeps v6 comparable to v5. Either
@@ -454,6 +461,19 @@ amendments:
       restricts the primary population to the clearest responders, which the per-context responder counts and
       S2 make visible.
     nulls_available: 140 (10 cell lines x 14 plates, each with exactly two DMSO_TF samples), against the committed rule's 20 per unit
+  A2_2026-10-26:
+    change: >-
+      Four training values that the committed protocol stated only in prose - max_epochs 200,
+      evaluate_every_epochs 10, early_stopping_patience_evaluations 5 and the D6 choice of
+      max_minutes_per_fit 60 - are spelled out as machine-readable keys under training. The prose sentence
+      stays beside them for the record.
+    reason: >-
+      The fit script reads the schedule from the protocol file, as the v5 script does, and cannot read a
+      sentence. Found while writing scripts/v6_fit.py.
+    information_used: the protocol text, protocol_v5.yaml and the v5 fit script. No measurement of any kind.
+    effect: >-
+      None on the study. Every value is the one the committed text and the D6 decision already stated, and no
+      endpoint, comparator, arm, gate or estimand is touched. A test asserts that each value equals v5's.
 compute:
   platform: Kaggle notebooks (each job approved by the user); CPU for extraction, preparation, comparators and evaluation; NVIDIA T4 x2 for fits
   extraction: >-

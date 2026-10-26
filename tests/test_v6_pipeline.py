@@ -274,3 +274,14 @@ def test_prepare_constants_match_the_protocol_text():
     assert str(prepare.MIN_TEST_RESPONDERS) in protocol['count_qc']['context_gate']
     assert protocol['status'] == 'PRESPECIFIED_BEFORE_V6_FITTING'
     assert 'A1_2026-10-26' in protocol['amendments'], 'the responder-null amendment must be logged'
+    assert 'A2_2026-10-26' in protocol['amendments'], 'the training-value amendment must be logged'
+
+
+def test_the_training_schedule_equals_v5s():
+    """Amendment A2 spelled these out as keys; a test pins them to v5's values."""
+    v5 = yaml.safe_load((REPO/'configs/protocol_v5.yaml').read_text())['training']
+    v6 = yaml.safe_load((REPO/'configs/protocol_v6.yaml').read_text())['training']
+    for key in ['max_epochs', 'evaluate_every_epochs', 'early_stopping_patience_evaluations', 'checkpoint',
+                'max_minutes_per_fit']:
+        assert v6[key] == v5[key], f'{key} must equal v5: {v6[key]} != {v5[key]}'
+    assert v6['seeds']['candidates'] == v5['seeds']['candidates']
