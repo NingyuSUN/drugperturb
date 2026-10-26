@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it together with the original data and model sources listed in the README."
+title: "DrugPerturb: prespecified benchmarks for predicting transcriptional responses to held-out compounds"
+type: software
+authors:
+  - family-names: Sun
+    given-names: Ningyu
+version: 5.0.0
+date-released: 2026-10-26
+repository-code: "https://github.com/NingyuSUN/drugperturb"
+url: "https://github.com/NingyuSUN/drugperturb"
+license: MIT
+abstract: "Compound-held-out benchmarks of transcriptional response prediction on sci-Plex3, OP3 and Tahoe-100M. Structure-based models (v1-v2) and the published single-cell models chemCPA and biolord (v3-v5) are compared with information-matched and vehicle-anchored simple baselines. Every version follows a protocol committed before any fit, and predictions are sealed before test truth is computed. Third-party data and model code retain their own terms."
+keywords:
+  - drug-discovery
+  - perturbation-modeling
+  - single-cell
+  - chemCPA
+  - biolord
+  - benchmark
+  - reproducibility

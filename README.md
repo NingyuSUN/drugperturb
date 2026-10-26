@@ -2,13 +2,21 @@
 
 [![CI](https://github.com/NingyuSUN/drugperturb/actions/workflows/ci.yml/badge.svg)](https://github.com/NingyuSUN/drugperturb/actions/workflows/ci.yml)
 
-**A reproducible benchmark for predicting compound-induced transcriptional responses from chemical structure.**
+**Prespecified benchmarks for predicting transcriptional responses to held-out compounds, from structure-based models to chemCPA and biolord.**
 
-Public sci-Plex3 data · structure-based models · held-out compounds · cross-cell and cross-dose evaluation
+sci-Plex3 · OP3 (human PBMCs) · Tahoe-100M · compound- and scaffold-level holdouts · predictions sealed before testing
 
-[Cross-condition results](reports/v2/report.md) · [中文报告](reports/v2/report.zh-CN.md) · [v2 methods](docs/V2_METHODS.md) · [v2 reproducibility](docs/V2_REPRODUCIBILITY.md) · [Original A549 report](reports/report.html)
+Reports: [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
 
-To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
+Each version answers one question under a protocol committed before any fit:
+
+| Version | Question | Data | Answer |
+|---|---|---|---|
+| v5 | Does an improved chemCPA beat vehicle-anchored baselines on data this project had never scored? | Tahoe-100M | No. It beats zero change but not the anchored baselines, and a plate-anchored mean beats every method |
+| v4 | Can chemCPA's collapse to zero change be fixed? | sci-Plex3, OP3 | Partly. The drug term comes alive, but no variant beats a per-context training mean on OP3 |
+| v3 | Do chemCPA and biolord beat information-matched simple baselines? | sci-Plex3 | No. Both are worse than a per-context Ridge, and chemCPA collapses to zero change |
+| v2 | Do A549-trained structure models transfer to other cell lines and doses? | sci-Plex3 | No. Zero change has the lowest error in all five conditions |
+| v1 | Do fingerprint and graph models beat simple baselines on held-out compounds? | sci-Plex3 A549 | No reliable advantage over the training mean or Ridge |
 
 ## v5: a confirmatory test on Tahoe-100M
 
@@ -69,7 +77,7 @@ See the [v4 report](reports/v4/report.md), the [pre-test diagnostics](reports/v4
 
 Given target-context training data, even the per-context training mean beats zero change in all 12 contexts, which reverses the v2 result below. A training/validation-only diagnostic shows chemCPA collapsing to zero change: its drug term is about 0.6% of the latent norm, even for training compounds and after 200 epochs. The fresh extraction reproduced v2's MCF7/K562 outputs byte-for-byte. Recomputed test truth matches published per-compound RMSE to 2×10⁻¹⁶. See the [v3 report](reports/v3/report.md) and [v3 methods](docs/V3_METHODS.md).
 
-## Cross-condition results
+## v2: cross-condition results
 
 **Models trained on A549 did not outperform zero-change predictions in any of the five evaluated target conditions.** The primary test is MCF7 at 24 hours and 1 µM, with **26 held-out compounds in 24 structure groups**. Original splits, gene outputs and predictions were frozen before scoring the new conditions.
 
@@ -106,6 +114,8 @@ All methods predict the same 2,000 genes for the same **26 held-out compounds**.
 The control definition matters: using the average of two separately normalized same-plate vehicle wells changes the point-estimate ranking in favor of zero-change and training-mean references. GNN also has higher error than Ridge in all three exploratory development folds. These findings are retained in the [sensitivity results](reports/sensitivity/metrics_summary.tsv) and [diagnostics](receipts/development_diagnostics.tsv).
 
 ![Held-out model comparison](reports/figures/03_model_comparison.png)
+
+To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
 ## What is implemented
 
@@ -169,7 +179,7 @@ The [historical hosted CI evidence](receipts/hosted_ci.json) records **108 Pytho
 
 ## Scope
 
-The project comprises an original single-context benchmark, a fixed-prediction transport evaluation across five additional conditions within the same study (v2), and context-aware published single-cell baselines (v3). The v1/v2 models receive chemical structure, not cell identity or dose; the v3 chemCPA and biolord models receive both. It does not establish drug efficacy, toxicity, target engagement, clinical benefit or antibody design. No pretrained foundation model, external validation dataset or paid AWS execution is claimed. v1 training used the Primary CPU host; v3 cell-level models were trained on Kaggle NVIDIA T4 GPUs (Kaggle notebooks, not AWS).
+The project comprises an original single-context benchmark (v1), a fixed-prediction transport evaluation across five additional conditions within the same study (v2), context-aware published single-cell baselines (v3), interventions on chemCPA's collapse tested on OP3 (v4) and a confirmatory test on Tahoe-100M (v5). The v1/v2 models receive chemical structure, not cell identity or dose; the v3 biolord and v3–v5 chemCPA models receive both. It does not establish drug efficacy, toxicity, target engagement, clinical benefit or antibody design. No pretrained foundation model or paid AWS execution is claimed. OP3 and Tahoe-100M are public datasets, untouched only in the sense that this project had not scored them before. v1 training used the Primary CPU host; v3–v5 cell-level models were trained on Kaggle NVIDIA T4 GPUs (Kaggle notebooks, not AWS).
 
 ## Sources
 
@@ -177,6 +187,8 @@ The project comprises an original single-context benchmark, a fixed-prediction t
 - [GEO GSE139944 / GSM4150378](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4150378)
 - [Pinned sci-Plex author preprocessing](https://github.com/cole-trapnell-lab/sci-plex/tree/079639c50811dd43a206a779ab2f0199a147c98f)
 - [Reactome 97](https://download.reactome.org/97/) and [HGNC](https://www.genenames.org/) for frozen biological annotation.
+- [GEO GSE279945](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE279945) (OP3, v4) and [Tahoe-100M](https://huggingface.co/datasets/tahoebio/Tahoe-100M) at revision `349e2a55…` (v5).
+- [chemCPA](https://github.com/theislab/chemCPA) (vendored model file in `src/drugperturb/third_party/`) and [biolord](https://github.com/nitzanlab/biolord).
 
 Raw third-party data and generated binary models are excluded from Git. Recreate fitted artifacts through the isolated workflow before using the inference CLI. Source terms and project implementation are documented separately.
 
