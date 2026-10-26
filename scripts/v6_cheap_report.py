@@ -16,6 +16,7 @@ evaluation-half test delta is read.
 """
 from pathlib import Path
 import argparse
+import itertools
 import json
 
 import numpy as np
@@ -35,6 +36,40 @@ METHODS = ('B0', 'B1c', 'B2c', 'M1c', 'B1a', 'M1a', 'B1p', 'B1r', 'B2r', 'M1r', 
 
 def by_key(keys, values):
     return {tuple(k.split('|')): values[i] for i, k in enumerate(np.asarray(keys, str))}
+
+
+def de_set_sharing(de_sets, responder, plate_of, *, max_pairs=4000, seed=0):
+    """How much two compounds' DE sets overlap, within a plate and across plates.
+
+    If a plate carried one dominant shared response, every compound on it would
+    pick nearly the same top-k genes and the endpoint would be asking about
+    plate-shared biology rather than compound-specific biology. This measures
+    that directly, from selection-half data only. Pairs are compared inside a
+    context, so the cell line and dose are held fixed.
+    """
+    genes = {tuple(k.split('|')): set(row) for k, row in zip(np.asarray(de_sets['keys'], str), de_sets['genes'])}
+    members = {}
+    for key in genes:
+        if bool(responder.get(key, False)) and key in plate_of:
+            members.setdefault(key[1], []).append(key)
+    rng = np.random.default_rng(seed)
+    same, across, concentration = [], [], []
+    for context, keys in members.items():
+        pairs = list(itertools.combinations(sorted(keys), 2))
+        if len(pairs) > max_pairs:
+            pairs = [pairs[i] for i in rng.choice(len(pairs), max_pairs, replace=False)]
+        for a, b in pairs:
+            overlap = len(genes[a] & genes[b])/len(genes[a] | genes[b])
+            (same if plate_of[a] == plate_of[b] else across).append(overlap)
+        if len(keys) >= 20:
+            counts = np.bincount([g for k in keys for g in genes[k]], minlength=1)
+            concentration.append(dict(context_id=context, responders=len(keys),
+                                      genes_in_most_sets=int((counts > 0.5*len(keys)).sum()),
+                                      union_size=int((counts > 0).sum())))
+    return dict(same_plate_overlap=float(np.mean(same)) if same else float('nan'),
+                across_plate_overlap=float(np.mean(across)) if across else float('nan'),
+                same_plate_pairs=len(same), across_plate_pairs=len(across),
+                concentration=sorted(concentration, key=lambda r: -r['responders'])[:5])
 
 
 def fmt(value, digits=4):
@@ -85,6 +120,10 @@ def main():
                     for name, values in comparators.items()}
     share = scoring.residual_share(measured, comparators['B1p'], [k for k in keys if k in comparators['B1p']])
     g8 = bool(np.isfinite(floor) and floor >= G8_FLOOR)
+    queries = pd.read_csv(args.prepared/'queries.tsv', sep='\t', keep_default_na=False)
+    plate_of = {(r.compound_id, r.context_id): r.plate for r in queries.itertuples(index=False)}
+    sharing = de_set_sharing(de_sets, responder, plate_of)
+    headroom = floor-accuracy.get('B1p', np.nan)
     structure = {f'{a}_minus_{b}': (accuracy[a]-accuracy[b]) for a, b in STRUCTURE_PAIRS
                  if a in accuracy and b in accuracy}
     any_structure = any(np.isfinite(v) and v > 0.01 for v in structure.values())
@@ -103,7 +142,24 @@ def main():
              f"{'above chance' if np.isfinite(accuracy.get('B1p', np.nan)) and accuracy['B1p'] > CHANCE else 'at or below chance'} |",
              f"| Zero change (B0) | {fmt(accuracy.get('B0'))} | exactly {CHANCE:.2f} by construction | "
              f"{'as expected' if np.isclose(accuracy.get('B0', np.nan), CHANCE) else 'UNEXPECTED'} |",
-             f'| Residual share over B1p | {fmt(share, 3)} | - | how much is left to predict |', '']
+             f'| Residual share over B1p | {fmt(share, 3)} | - | how much is left to predict |',
+             f'| **Headroom above B1p** | **{fmt(headroom)}** | - | the floor minus B1p: all any model can win |',
+             '',
+             '## Are the DE sets compound-specific, or one plate signature',
+             '',
+             'If a plate carried one dominant shared response, every compound on it would pick nearly the same '
+             'top genes, and the endpoint would be asking about plate-shared biology instead of '
+             'compound-specific biology. Mean Jaccard overlap of two responders\' DE sets, within a context:',
+             '',
+             '| Pair | Mean overlap | Pairs |', '|---|---:|---:|',
+             f"| Same plate | {fmt(sharing['same_plate_overlap'], 3)} | {sharing['same_plate_pairs']} |",
+             f"| Different plate | {fmt(sharing['across_plate_overlap'], 3)} | {sharing['across_plate_pairs']} |",
+             '']
+    for row in sharing['concentration'][:3]:
+        lines.append(f"- {row['context_id']}: {row['responders']} responders, their DE sets cover "
+                     f"{row['union_size']} genes, and only {row['genes_in_most_sets']} genes appear in more "
+                     f"than half of them.")
+    lines += ['']
     if not g8:
         lines += [f'**Gate G8 is not met.** The split leaves too little signal for the endpoint to separate '
                   f'methods, so the protocol reports that as the study result rather than comparing against '
@@ -155,10 +211,11 @@ def main():
                   g8_threshold=G8_FLOOR, residual_share=share, validation_keys=len(keys),
                   validation_responders=len(responders), accuracy=accuracy, accuracy_all_keys=accuracy_all,
                   structure_contrasts=structure, any_structure_helps=any_structure,
+                  headroom_above_b1p=headroom, de_set_sharing=sharing,
                   responder=receipt['responder'], study_gate_G4=receipt['study_gate_G4'],
                   contexts_passing_count_gate=int(summary.test_count_gate_met.sum()))
     (args.output.parent/'cheap_report.json').write_text(json.dumps(record, indent=2, default=float)+'\n')
-    print(json.dumps({k: record[k] for k in ['split_noise_floor', 'gate_G8_met', 'residual_share',
+    print(json.dumps({k: record[k] for k in ['split_noise_floor', 'gate_G8_met', 'headroom_above_b1p', 'residual_share',
                                              'validation_responders', 'any_structure_helps', 'accuracy']},
                      indent=2, default=float))
 
