@@ -194,10 +194,15 @@ response_endpoint:
       Many compounds, especially at 0.05 uM, do not measurably respond. Scoring them measures noise and dilutes
       every contrast. The gate is computed from the selection half only, so it never touches the scoring truth.
     null: >-
-      For each (context, plate) vehicle unit, 20 further disjoint random halvings (numpy default_rng(607)) give
-      vehicle-versus-vehicle deltas over the 2,000 frozen genes. Each halving is subsampled to the key's own
-      T_S cell count before the delta is formed, because the norm of a delta depends on depth.
-    rule: a key is a responder when ||delta_S(q)||_2 exceeds the 95th percentile of its cell-count-matched null
+      As committed - for each (context, plate) vehicle unit, 20 further disjoint random halvings (numpy
+      default_rng(607)) give vehicle-versus-vehicle deltas over the 2,000 frozen genes, each subsampled to the
+      key's own T_S cell count, because the norm of a delta depends on depth. REPLACED BY AMENDMENT A1, which
+      could not be avoided - see amendments.A1_2026-10-26. The amended null is one between-well statistic per
+      (plate, cell line) and the statistic is standardized, which removes the need for cell-count matching.
+    rule: >-
+      As committed - a key is a responder when ||delta_S(q)||_2 exceeds the 95th percentile of its
+      cell-count-matched null. Under amendment A1 the statistic is the standardized root-mean-square deviation
+      and the percentile is taken over the between-well nulls.
     primary_population: responder keys of the test split
     reported: the responder fraction per context, dose and cell line, and the primary endpoint over all eligible keys regardless of responder status (S2)
   metric:
@@ -416,6 +421,39 @@ amendments:
     Every change after the protocol commit is logged with its date, reason and the information it used. No
     change may use a v6 evaluation-half test response. After the evaluation kernel runs, every change is post
     hoc and is reported next to the prespecified result, never in its place.
+  A1_2026-10-26:
+    change: >-
+      The responder null is rebuilt. As committed it was 20 further disjoint random halvings of each vehicle
+      unit, each subsampled to the key's own T_S cell count. It is now ONE between-well statistic per (plate,
+      cell line) - the selection-half delta between that plate's two DMSO_TF samples for that line - and the
+      statistic itself is standardized, so it no longer needs cell-count matching. A key is a responder when
+      its standardized statistic exceeds the 95th percentile of those between-well statistics. The statistic is
+      the root-mean-square of delta divided by its own delta-method Poisson standard error over the 2,000
+      frozen genes (drugperturb.v6.endpoint.response_statistic), computed from pooled half counts and
+      libraries.
+    reason: >-
+      The committed rule cannot be implemented. Resampling a vehicle unit needs its cells one by one, and the
+      extraction keeps per-cell counts only for model cells - at most 32 per unit - because Tahoe cells carry
+      thousands of nonzero genes and retaining every vehicle cell's counts would run to several GB per run,
+      past what the pipeline carries between kernels. Nor can the null be formed at extraction time: the norm
+      is over the 2,000 frozen genes, and those are chosen in preparation, after extraction. Standardizing the
+      statistic achieves what the cell-count matching was for - a cut that does not move with the number of
+      cells behind a delta - from quantities the pipeline already has.
+    information_used: >-
+      The protocol text, the v5 extraction code and its output format, and the published Tahoe-100M cell
+      numbers. No Tahoe-100M expression value, expression summary or compound-sample cell count, and no v6
+      measurement of any kind. Found while writing the v6 extraction and preparation code.
+    effect: >-
+      The responder rule's intent is unchanged - a 95th-percentile noise cut - and no endpoint, metric,
+      comparator, arm, gate threshold or estimand definition changes. Two consequences are stated rather than
+      claimed away. The realised responder population may differ from what the committed rule would have
+      selected; S2 reports every endpoint over all eligible keys, so the gate-free view is always available.
+      And a between-well null is a larger noise reference than within-unit halvings, because it carries
+      well-to-well variation as a key's own delta does, so the cut is higher and fewer keys are called
+      responders. That is the more faithful reference, not a conservative choice in the endpoint's favour: it
+      restricts the primary population to the clearest responders, which the per-context responder counts and
+      S2 make visible.
+    nulls_available: 140 (10 cell lines x 14 plates, each with exactly two DMSO_TF samples), against the committed rule's 20 per unit
 compute:
   platform: Kaggle notebooks (each job approved by the user); CPU for extraction, preparation, comparators and evaluation; NVIDIA T4 x2 for fits
   extraction: >-
