@@ -1,0 +1,454 @@
+schema_version: 6
+status: PRESPECIFIED_BEFORE_V6_FITTING
+prespecified_date: '2026-10-26'
+revision_note: >-
+  The user decided D1 on 2026-10-26 - change the endpoint. The primary endpoint is the direction of change on
+  each compound's own differentially expressed genes; the residual target of the first draft is demoted to arm
+  M2 and endpoint S4. The first draft was superseded, not amended, because nothing had been prespecified,
+  drawn or run at that point.
+notes: >-
+  Committed with manifests/v6, the design-audit code and its receipt, after the user decided D1 and then
+  approved the draft defaults for D2-D10 on 2026-10-26. The design audit (scripts/v6_design_audit.py;
+  receipts/v6/design_audit.json) drew the cell lines from the committed v5 manifests and filled in
+  design_confirmed_by_audit. At this commit no fit has been run, no extraction has been run, and no expression
+  value, expression summary or compound-sample cell count of any v6 cell line has been read. Any later change
+  is an amendment.
+user_decisions:
+  date: '2026-10-26'
+  decided: D1 change the endpoint to DE-gene direction; D2-D10 the draft defaults
+  record: docs/V6_DESIGN_NOTE.md (decisions table)
+question: >-
+  On Tahoe-100M cell lines this project has never scored, does a chemCPA model predict the DIRECTION of change
+  of a held-out compound's own differentially expressed genes better than the strongest simple baselines?
+rationale: >-
+  v1-v5 all scored mean per-compound RMSE over 2,000 genes. In that metric most genes do not respond to most
+  compounds, so the error is dominated by genes carrying no compound-specific signal, and a method that
+  predicts a mean wins by not moving. v5 showed this at its limit - B1p, a plate mean using no chemistry, had
+  the lowest error in all 30 contexts. Two different things were hiding the question - a nuisance component
+  (plate-shared response) and dilution (unresponsive genes). The first draft removed the nuisance; this draft
+  removes the dilution, which is the larger of the two and asks the question a biologist asks - for this
+  compound, which genes moved and which way. Direction also makes scale irrelevant, so a model with the right
+  biology and the wrong magnitude is no longer penalised, and zero change scores exactly chance by
+  construction.
+scope:
+  public_data_only: true
+  wet_experiments: false
+  claims_excluded: [drug_efficacy, toxicity, target_engagement, clinical_benefit, mechanism_of_action]
+evidence_carried_from_v5:
+  sources: [reports/v5/report.md, reports/v5/diagnostics.md, configs/protocol_v5.yaml, docs/V5_DESIGN_NOTE.md]
+  facts:
+    - P1 was not met - the selected arm I2 (counterfactual pseudobulk) minus B1a was -0.0047 [-0.0104, +0.0011], pooled over 30 contexts
+    - mean compound RMSE over 30 contexts - B1p 0.3215, I2 0.3597, B1a 0.3643, M1a 0.3643, M1c 0.3652, B1c 0.3664, I3 0.3703, B0 0.3956, A0 0.3970, I1 0.4000, B2c 0.5007
+    - B1p - B1a was -0.0428 [-0.0472, -0.0386] and B1p had the lowest error in every one of the 30 contexts
+    - I2 beat zero change (-0.0359 [-0.0399, -0.0319]), the first chemCPA arm in this project to do so on untouched data
+    - structure added nothing beyond anchoring in delta space - M1a - B1a was -0.00002 [-0.0003, +0.0002]
+    - test-compound gene-wise r over all 2,000 genes - B1p 0.61, B1a 0.49, I2 0.42, I3 0.39; effect size ratio I2 0.83, I3 0.85
+    - A0 and I1 collapsed again (A0 - B0 +0.0014, I1 - B0 +0.0044), as in v3 and v4
+    - 9 of 10 I2 fits stopped at the 60-minute cap while still improving
+  what_v5_did_not_measure: >-
+    No v1-v5 endpoint restricted scoring to the genes a compound actually moved, and none scored direction
+    separately from magnitude. v5's gene-wise r was computed over all 2,000 genes, where plate-shared response
+    dominates, which is why B1p led it too. The v6 endpoint is new, so I2 has never been scored on it.
+  hypothesis_is_informed_by_open_outcomes: >-
+    v5's test outcomes are open, and they are the reason this protocol exists and the reason B1p is a primary
+    comparator. That is declared, not hidden - a follow-up study's hypothesis always comes from prior results.
+    What the information-flow rule forbids is a v6 test response informing a v6 choice, and no v6 test response
+    exists until the evaluation kernel runs.
+dataset:
+  choice: tahoe_100m
+  role: confirmatory
+  source:
+    name: Tahoe-100M (Tahoe Therapeutics; Zhang et al. 2025, bioRxiv 10.1101/2025.02.20.639398)
+    primary_copy: https://huggingface.co/datasets/tahoebio/Tahoe-100M
+    revision: 349e2a55f5538a3e73b32a06c6bdd8e9e87011e8  # the v5 revision; re-pinned at the audit if HEAD has moved
+    files: as protocol_v5.yaml dataset.source.files
+    never_read: metadata/pseudobulk_differential_expression/* (published per-condition DE; response information)
+    hashes: sha256 of every file read equals its Hugging Face LFS oid at the pinned revision; manifests/v6/source.tsv
+    licence: CC0-1.0
+  untouched_axis:
+    what_is_new: the cell lines, and therefore every response v6 scores
+    what_v5_opened: >-
+      The 10 v5 lines (SNU-1, A-172, HEC-1-A, MIA PaCa-2, C32, H4, LOX-IMVI, NCI-H2347, SW 1088, SW1417) at all
+      three doses, 30 contexts. Every test response v5 scored is in those contexts. No expression value of any
+      other line has been read by this project (receipts/v5/pre_protocol_reads.md, and the v6 audit receipt).
+    consequence: >-
+      A v6 context is (new cell line, dose). No compound's response in a v6 context has been read, whatever the
+      compound's v5 split role, so the v5 compound split can be reused unchanged.
+  exposure_before_this_protocol:
+    used_by_others: >-
+      Training data of Arc's State and Tahoe's Tahoe-x1; included in other benchmarks; per-condition pseudobulk
+      DE is published in the same repository. That published DE is never read, and v6's DE sets are computed
+      here from the selection half only. Untouched means untouched by this project, as in v4 and v5.
+    allowed_before_commit: >-
+      Design audit only, and only what v5 already read plus the vehicle-unit sizes of the candidate lines -
+      cell_line_metadata, obs_metadata rows of vehicle samples, and the committed manifests/v5. Not the mean_*
+      columns of sample_metadata, and no cell count of a compound sample in any line.
+    receipt: receipts/v6/design_audit.json
+contexts:
+  definition: (cell line, dose); the measurement unit is the cells of that line in one well
+  cell_line_pool:
+    rule: >-
+      The 38 lines that meet v5's 200-cell median vehicle rule and were not drawn for v5
+      (manifests/v5/cell_lines.tsv, eligible and not selected). NCI-H2122 (median 47) and NCI-H596 (24) stay
+      ineligible under the unchanged rule.
+    pool_listed: >-
+      A549, AN3 CA, SK-MEL-2, AsPC-1, BT-474, COLO 205, HCT15, HT-29, HS-578T, Hs 766T, J82, SNU-423,
+      KATO III, LS 180, LoVo, NCI-H460, PANC-1, RKO, SW480, A-427, A498, C-33 A, HepG2/C3A, CFPAC-1, CHP-212,
+      HOP62, NCI-H1573, NCI-H1792, NCI-H2030, NCI-H23, NCI-H661, Panc 03.27, RPMI-7951, SHP-77, SW 1271, SW48,
+      SW 900, hTERT-HPNE
+    pool_organs: {Lung: 12, Bowel: 8, Pancreas: 6, Skin: 2, Liver: 2, Breast: 2, Uterus: 1, PNS: 1, Kidney: 1, Esophagus_Stomach: 1, Cervix: 1, Bladder: 1}
+  cell_line_rule: >-
+    USER_DECISION D2 - draw 10 lines from the pool with numpy default_rng(6), the pool sorted by Cellosaurus ID.
+    Same count and draw mechanism as v5, so the 30 contexts are directly comparable; the seed differs because
+    the pool differs. Uses vehicle samples and the v5 manifests only.
+  cell_line_selection: {n_lines: 10, seed: 6, min_median_vehicle_cells: 200, counted_cells: obs_metadata pass_filter == full}
+  cell_lines:
+    CVCL_0359: J82 (bladder/urinary tract)
+    CVCL_0371: KATO III (esophagus/stomach)
+    CVCL_0397: LS 180 (bowel)
+    CVCL_0480: PANC-1 (pancreas)
+    CVCL_1119: CFPAC-1 (pancreas)
+    CVCL_1577: NCI-H661 (lung)
+    CVCL_1635: Panc 03.27 (pancreas)
+    CVCL_1693: SHP-77 (lung)
+    CVCL_1731: SW 900 (lung)
+    CVCL_C466: hTERT-HPNE (pancreas)
+  design_confirmed_by_audit:
+    receipt: receipts/v6/design_audit.json; manifests/v6/cell_lines.tsv, vehicle_units.tsv, contexts.tsv
+    inputs: >-
+      manifests/v5/cell_lines.tsv and manifests/v5/vehicle_units.tsv only, each verified against the SHA256
+      recorded in receipts/v5/design_audit.json. The v5 audit had already counted vehicle cells for all 50
+      lines on all 14 plates, so the v6 draw read no Tahoe-100M file at all.
+    pool: 38 of 48 eligible lines; the 10 v5 lines excluded
+    contexts: 30 (10 lines x 3 doses)
+    organs_drawn: {Pancreas: 4, Lung: 3, Bladder_Urinary_Tract: 1, Bowel: 1, Esophagus_Stomach: 1}
+    organ_coverage_note: >-
+      The draw gave 5 distinct organs against v5's 7, and 7 of the 10 lines are pancreas or lung. This is what
+      the prespecified random rule produced; it was not redrawn, because redrawing a seeded draw because its
+      spread looks unlucky is design tuning. The consequence is a narrower basis for any claim about
+      generalization across tissues, and it is reported with the result. The per-cell-line secondary analysis
+      shows any line that behaves differently.
+    split_gate_feasibility: >-
+      139 of the drawn lines' 140 (plate, line) vehicle units hold at least 120 cells, so the split leaves at
+      least 30 per half. The exception is NCI-H661 on plate 14, with 114 cells. 9 of the 10 lines have every
+      unit clearing the threshold. These are the committed v5 vehicle counts; the gate itself is computed by
+      the preparation kernel from the extracted cells.
+    small_vehicle_line: >-
+      NCI-H661 is the pool's smallest eligible line (median 224 cells against 2,590-6,892 for the other nine).
+      v5's lesson was that its own small-vehicle line, SW 1088, was where chemCPA's apparent pooled gain came
+      from. Having one such line here is informative rather than unfortunate - S6 and the per-line analysis
+      test that explanation again on new data - but every pooled estimate is reported with and without
+      NCI-H661 as a prespecified sensitivity.
+  doses: all three
+  covariates: [cell_line]
+  small_vehicle_lines_note: >-
+    The pool's smallest medians are NCI-H661 (224), SW 1271 (367), CHP-212 (725) and AN3 CA (950). The 200-cell
+    rule is not tightened, because tightening it after v5 showed SW 1088 driving a pooled gain would be tuning
+    the design on an open outcome. The raised count gate below handles the cell split; the per-line secondary
+    analysis shows any line that behaves differently.
+split:
+  reuse: configs/protocol_v5.yaml split, unchanged - manifests/v5/compounds.tsv, seed 42, whole scaffold groups
+  realized_in_v5: train 202 compounds in 168 scaffold groups, validation 50 in 45, test 84 in 77
+  reason: >-
+    No compound changes role between v5 and v6, so the two studies' numbers are comparable and no compound
+    moves from a scored to an unscored role. The v6 responses are untouched because the contexts are new.
+  chemistry: configs/protocol_v5.yaml chemistry, unchanged (336 accepted parents, 290 scaffold groups)
+  excluded_samples: as v5 - every Adagrasib reference-control sample and every sample of a drug excluded on structure
+measurement_split:
+  why: >-
+    The primary endpoint scores each compound on its own differentially expressed genes. Choosing those genes
+    from the same measurement that defines the truth would select on the outcome - a gene picked because its
+    measured delta happened to be large regresses toward the mean on re-measurement, which penalises methods
+    that predict a mean and flatters models. Splitting the cells removes that correlation entirely.
+  rule: >-
+    Within each replicate well, the cells of the selected line are partitioned into two disjoint halves, and
+    the matched vehicle unit is partitioned the same way - T_S, T_E, V_S, V_E, all disjoint. Odd counts give
+    the extra cell to the E half. The partition is drawn with numpy default_rng(606) before any model code and
+    is recorded per cell in the extraction output, so it is fixed for every method and every arm.
+  selection_half: delta_S = log1p CPM(T_S) - log1p CPM(V_S); defines each key's DE gene set and responder status; never used as truth
+  evaluation_half: delta_E = log1p CPM(T_E) - log1p CPM(V_E); the scoring truth for every method
+  independence: T_S, T_E, V_S and V_E are disjoint sets of cells, so delta_S and delta_E share no measurement noise
+  cost: >-
+    The truth is computed from about half the cells, so it is noisier than v5's. Every method faces the same
+    noise and the endpoint is a comparison between methods, so the comparison stays valid; what the split costs
+    is power, which the raised count gate and the responder gate bound.
+  model_inputs_unaffected: >-
+    Model cells are drawn from training- and validation-compound wells and from vehicle wells as in v5 and are
+    capped at 32 per well and line. The cap and the S/E partition are independent; a model never sees a test
+    compound's cells from either half.
+response_endpoint:
+  de_gene_set:
+    definition: >-
+      For each (compound, context) key q, D(q) is the k genes of the 2,000 frozen genes with the largest
+      |delta_S(q)|, where delta_S is the replicate-mean selection-half delta. Ties are broken by gene order in
+      the frozen list.
+    k: 50  # USER_DECISION D3
+    k_sensitivity: [20, 100]  # prespecified; reported beside k = 50, not a primary
+    computed_for: every eligible key of every split, by the preparation kernel, from the selection half only
+    note: >-
+      D(q) is a subset of the 2,000 frozen genes, which were ranked by the variance of TRAINING-compound deltas
+      in the v6 lines. A compound whose real DE genes fall outside those 2,000 cannot be scored on them; the
+      fraction of each key's selection-half response mass that falls inside the 2,000 is reported.
+  responder_gate:
+    why: >-
+      Many compounds, especially at 0.05 uM, do not measurably respond. Scoring them measures noise and dilutes
+      every contrast. The gate is computed from the selection half only, so it never touches the scoring truth.
+    null: >-
+      For each (context, plate) vehicle unit, 20 further disjoint random halvings (numpy default_rng(607)) give
+      vehicle-versus-vehicle deltas over the 2,000 frozen genes. Each halving is subsampled to the key's own
+      T_S cell count before the delta is formed, because the norm of a delta depends on depth.
+    rule: a key is a responder when ||delta_S(q)||_2 exceeds the 95th percentile of its cell-count-matched null
+    primary_population: responder keys of the test split
+    reported: the responder fraction per context, dose and cell line, and the primary endpoint over all eligible keys regardless of responder status (S2)
+  metric:
+    primary_metric: >-
+      Direction accuracy - over the genes of D(q), the fraction whose predicted sign equals the sign of
+      delta_E(q). A predicted value of exactly zero counts as 0.5, so zero change (B0) scores exactly 0.5, the
+      chance level, by construction. A gene whose delta_E is exactly zero is excluded and the count reported.
+      Higher is better; the per-compound value is the unit.
+    scale_free: >-
+      Direction ignores magnitude, so no calibration scalar is needed on the primary path. This is a direct
+      simplification over the first draft, which needed one.
+    secondary_metric: mean per-compound RMSE over D(q), against delta_E; comparable in form to v1-v5 but restricted to responsive genes
+    full_gene_metric: mean per-compound RMSE over all 2,000 genes against delta_E; reported so v6 connects to v5, not an endpoint
+count_qc:
+  rule: >-
+    A (compound, context) key is eligible when every replicate well holds at least 60 cells of the line and
+    each matched vehicle unit holds at least 120 cells, so each half of each has at least 30 - v5's threshold
+    per half.
+  changed_from_v5: v5 required 30 cells per well and per vehicle unit; the cell split doubles both
+  feasibility: >-
+    Confirmed by the audit on the drawn lines - 139 of 140 vehicle units hold at least 120 cells, the exception
+    being NCI-H661 on plate 14 (114). The source reports a median of 1,287 cells per cell line-drug-dose, so
+    the treated-well threshold of 60 is expected to bind only on the smallest wells; those counts are not read
+    before the preparation kernel. The realised eligible counts are reported per context before any fit.
+  context_gate: at least 20 eligible test compounds in at least 10 scaffold groups, and at least 10 of them responders
+  failed_gate: descriptive only, no interval, excluded from the pooled estimand
+  computed_by: the preparation kernel after this protocol is committed
+truth:
+  definition: >-
+    Per replicate well, log1p CPM (all-gene library) of the treated evaluation half minus its matched vehicle
+    evaluation half; equal-weight mean over the key's replicate wells. The estimand is v5's, computed on the E
+    half.
+  computed_for_test: only by the evaluation kernel after every prediction is sealed
+gene_space:
+  n_genes: 2000
+  rule: v5's rule re-run on the v6 lines - candidates with nonzero counts in at least 5% of vehicle cells of the selected lines, ranked by the population variance of training-compound strict deltas
+  information: training compounds and vehicle cells of the v6 lines only; the full cells of training compounds, not the S/E halves, as in v5
+  note: the v6 gene set will differ from v5's; the overlap is reported but is not an endpoint
+library: all-gene UMI total of each cell
+model_cells:
+  included: cells of training- and validation-compound wells and of vehicle wells, selected lines only; test-compound cells dropped before model code
+  cap_per_well_and_line: 32
+  reason: v5 value unchanged, which keeps a fit near the v5 size
+dose_input: dose_nM / 10000 - 0.005, 0.05, 0.5; vehicle 1.0
+descriptors: configs/protocol_v5.yaml descriptors, unchanged (RDKit2DNormalized, min_std 1e-8, label-free report, seal gate at |z| = 1e3)
+arms:
+  common: >-
+    v5 arms and hyperparameters unchanged - C1_repository_default, no hyperparameter search, amortized doser,
+    amendment A2 cap, v4 objectives (configs/protocol_v4.yaml arms). The training objective is NOT changed to
+    match the new endpoint; see training.objective_unchanged.
+  M1_pseudobulk_raw: {role: candidate, objective: I2 counterfactual pseudobulk, target: the measured full delta (v5's selected arm), seeds: 10}
+  M2_pseudobulk_residual: {role: candidate, objective: I2 counterfactual pseudobulk, target: the leave-one-out residual delta - B1p, seeds: 10}
+  arm_set: >-
+    USER_DECISION D4. A0, I1 and I3 are dropped - A0 and I1 collapsed in v3, v4 and v5, and I3 was worse than
+    I2 on Tahoe in delta space. M1 is v5's selected arm, which has never been scored on direction. M2 is the
+    first draft's residual idea, kept as a candidate so the residual question is still answered, at a secondary
+    level, within the same study.
+residual_secondary:
+  status: demoted from the first draft's primary to a secondary arm and a secondary analysis (USER_DECISION D1)
+  reference: B1p, the plate-anchored training mean (drugperturb.v5.baselines.plate_anchored)
+  definition: R(q) = delta(q) - B1p(q); arm M2 is trained on R, and its prediction of delta is B1p + R_hat
+  leave_one_out: >-
+    When q is itself a training compound, its own delta is removed from the plate mean before the residual is
+    formed, otherwise every training target is shrunk toward zero by about 1/(compounds on the plate). Test and
+    validation compounds are never in the training set.
+  computed_on: the full cells of training compounds, as B1p is in v5; the S/E split applies to the endpoint, not to the baselines' training inputs
+  fallback: v5's rule - a replicate whose (context, plate) holds fewer than 5 training compounds falls back to B1c + Vbar_train - V_r; the count is reported per split
+  rmse_calibration: >-
+    Direction needs no calibration. Where M2 is reported on the RMSE secondary metric, one scalar lambda per
+    arm is fitted by least squares of measured on predicted residual over validation keys and clipped to
+    [0, 1], and the lambda = 1 value is reported beside it.
+training:
+  as_v5: max_epochs 200, evaluate_every_epochs 10, early_stopping_patience_evaluations 5, checkpoint lowest_validation_rmse_evaluation, non_finite_validation scores +inf
+  objective_unchanged: >-
+    USER_DECISION D5. Both arms keep v5's pseudobulk MSE objective over all 2,000 genes, so the only thing that
+    changes between v5 and v6 for M1 is the endpoint. That isolates the question this study asks. The
+    alternative - re-weighting the loss toward responsive genes - would change the model and the endpoint at
+    once and could not be read as an endpoint result.
+  max_minutes_per_fit: USER_DECISION D6 - 60 as in v5, or 120
+  cap_evidence: >-
+    9 of 10 v5 I2 fits stopped at the 60-minute cap while still improving, so the cap is a live confound. 120
+    minutes doubles the GPU estimate and tests whether the cap mattered; 60 keeps v6 comparable to v5. Either
+    way the number of fits that stop at the cap while still improving is reported.
+  checkpoint_metric_note: >-
+    The checkpoint rule stays v5's validation RMSE over all 2,000 genes, not validation direction accuracy, for
+    the same reason as objective_unchanged. Validation direction accuracy is reported per checkpoint as a
+    diagnostic.
+  seeds: {candidates: [42, 123, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033]}
+  final_prediction: arithmetic mean over seeds of the predicted deltas (for M2, of the predicted residuals, then added to B1p)
+  failed_fit: rerun once with the same seed; an arm with fewer than 8 completed seeds is not a candidate
+comparators:
+  fitted_per_context_on: training compounds eligible in that context, using their full cells as in v5
+  B0: zero change; scores exactly 0.5 on direction accuracy by construction, which is the endpoint's chance level
+  B1c: context training mean
+  B2c: context nearest training compound (binary Tanimoto, Morgan r2 2048)
+  M1c: context fingerprint Ridge on 20 training-only principal components, alpha by context validation RMSE
+  B1a: B1c + Vbar_train(context) - mean_r V_r(query)
+  M1a: M1c + Vbar_train(context) - mean_r V_r(query)
+  B1p: plate-anchored training mean; v5's strongest method and a primary comparator
+  M1r: B1p + lambda * fingerprint Ridge on training residuals; the cheap structure-in-residual-space test
+  ridge_alphas: [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+  all_scored_on_the_same_endpoint: every comparator is scored on direction accuracy over the same D(q) and the same delta_E
+  sealed: before any arm is scored
+cheap_comparators_first:
+  rule: USER_DECISION D7
+  what: >-
+    Every comparator above is CPU-only. Their validation direction accuracies, the responder fractions and the
+    residual share are reported before any GPU fit is launched. Two cheap results are decisive on their own -
+    whether B1p beats chance on a compound's own DE genes, and whether M1c or M1r does.
+  consequence_if_no_signal: >-
+    If no CPU comparator that uses chemical structure (M1c, M1a, M2c-equivalent M1r, B2c) exceeds chance by
+    more than 0.01 on validation direction accuracy, the GPU budget is cut to M1 at 3 seeds and the study
+    reports that no structure-based method found directional signal. The endpoints do not change; only the
+    number of fits does.
+diagnostics_before_test_scoring:
+  as_v5: effect_size_ratio, mean_gene_pearson_r, rmse and zero-change rmse, least-squares scale, latent_ratio
+  new_for_v6:
+    validation_direction_accuracy: per arm and comparator, over validation responder keys, per context and pooled; the quantity the primary endpoint measures
+    de_overlap: >-
+      Jaccard overlap between D(q) from the selection half and the top-k genes of an arm's PREDICTED delta,
+      over validation keys. Says whether a model finds the right genes as well as the right directions.
+    responder_fraction: fraction of validation keys passing the responder gate, per context, dose and cell line
+    residual_share: variance of the measured residual as a fraction of the variance of the measured delta, over training and validation keys per context
+    split_noise_floor: >-
+      Direction accuracy of delta_S against delta_E over validation keys on D(q) - the accuracy a perfect model
+      of the underlying biology would reach given the split's measurement noise. It is the endpoint's practical
+      ceiling and is reported before any arm is scored.
+  computed_on: training and validation keys; best-checkpoint models; per seed and seed-averaged
+  non_collapse_criteria:
+    applied_to: seed-averaged validation predictions, pooled over the model contexts
+    all_required: {validation_direction_accuracy: '> 0.5 by at least 0.01', effect_size_ratio: '>= 0.10'}
+    changed_from_v5: >-
+      v5 required a validation RMSE below zero change. v6's criterion is on the endpoint's own scale - an arm
+      that cannot beat chance on validation direction cannot support P1.
+  report: reports/v6/diagnostics.md, committed before the evaluation kernel runs
+primary_arm_selection:
+  candidates: [M1_pseudobulk_raw, M2_pseudobulk_residual]
+  metric: mean over seeds of the per-seed validation direction accuracy over responder keys, pooled over contexts
+  rule: among non-collapsed candidates, the highest metric
+  near_tie_rule: >-
+    v5's rule, with the sign flipped for an accuracy - let d be the leader's metric minus the runner-up's and
+    se the Welch standard error from the per-seed values. If d < 1.96 se, both non-collapsed candidates are
+    co-primary, each tested at a Bonferroni-adjusted level (1 - 0.05/k), and the primary claim holds if either
+    meets it.
+  if_none_meets_criteria: the highest-metric candidate is still evaluated and the study reports that no arm met the non-collapse criteria
+  information: validation compounds only
+  record: receipts/v6/selection.json, committed with the diagnostics
+evaluation:
+  unit: compound
+  population: test-split responder keys in gate-passing contexts
+  bootstrap: {unit: scaffold_group, draws: 10000, seed: 2026, interval: percentile, pooled: one draw shared by every context}
+  pooled_estimand: mean over gate-passing contexts of the context mean per-compound difference in direction accuracy
+  primary:
+    P1_direction_beyond_simple_baselines: >-
+      primary arm minus B1p and primary arm minus M1a, pooled direction accuracy over D(q); supported if both
+      lower bounds are above zero (intersection-union test, no further adjustment). B1p is v5's strongest
+      method and M1a is the strongest method that uses chemical structure. A claim that chemCPA predicts
+      compound-specific response direction requires P1.
+  key_secondary:
+    S1_above_chance: primary arm minus 0.5, and primary arm minus B0, which are the same contrast by construction
+    S2_all_keys: P1 repeated over all eligible test keys, responders and non-responders together
+    S3_structure_baselines: M1c minus B1c, M1a minus B1a and M1r minus B1p - does chemical structure give direction at all, in any method
+    S4_residual_arm: M2 minus M1 - does training on the plate residual help on this endpoint (the first draft's question, at a secondary level)
+    S5_rmse_on_de_genes: every method's mean per-compound RMSE over D(q), and the primary arm minus B1p there
+    S6_replicates_v5: every method's full-gene RMSE on delta_E, and B1p minus B1a and B1a minus B1c, so v5's findings can be checked on new lines
+    labelled: secondary, unadjusted; reported whatever P1's result
+  other_secondary:
+    - every arm and comparator against every other, pooled, per context, per dose and per cell line
+    - k = 20 and k = 100 beside k = 50
+    - de_overlap on test keys per arm
+    - the split noise floor on test keys, as the endpoint's ceiling
+    - keys with no B1p fallback replicate only
+    - every pooled estimate with and without NCI-H661, the drawn small-vehicle line
+    - leave-one-plate-out pooled estimates of P1
+    - the 137 multi-sample compound-doses scored with one whole sample selecting D(q) and another as truth, as an independent check on the cell-split design
+    - contexts failing the count gate, descriptively
+truth_anchors:
+  - the regenerated design equals the committed manifests/v6
+  - per (sample, cell line), extracted cell counts equal obs_metadata counts after pass_filter
+  - the S and E halves of every well and vehicle unit are disjoint and together equal the full set of that unit's cells
+  - every key's S and E half each hold at least 30 cells of the line, for keys passing the count gate
+  - per-cell frozen-gene counts sum to the unit pseudobulk, with v5 amendment A1's bound for capped units
+  - an identity model reproduces zero change exactly, and zero change scores exactly 0.5 direction accuracy on a synthetic key with no zero deltas
+  - a model fed delta_E as its prediction scores direction accuracy 1.0
+  - leave-one-out B1p on a training key equals the plate mean recomputed without that key
+  - every expression shard's sha256 equals its LFS oid at the pinned revision
+gates:
+  G0_source: pinned revision; every file read hash-verified
+  G1_design: the audit's manifests regenerate exactly at extraction
+  G2_lines: the 10 drawn lines are all in the pool and none is a v5 line; otherwise stop and fix the draw before any read
+  G3_context: count gate per context (count_qc), including the responder minimum
+  G4_study: at least 6 gate-passing contexts covering at least 3 cell lines and 2 doses; otherwise nothing is confirmatory
+  G5_descriptor: the |z| = 1e3 seal gate
+  G6_software: truth_anchors pass before the evaluation kernel scores any arm
+  G7_fits: training.failed_fit and the non-collapse criteria
+  G8_split_power: >-
+    the split noise floor is reported before any fit; if delta_S against delta_E scores below 0.60 direction
+    accuracy on validation responder keys, the split leaves too little signal for the endpoint to separate
+    methods, and that is reported as the study's result rather than compared against
+  on_failure: a gate failure and its consequence are reported; thresholds are not relaxed after the protocol commit
+sealing: SHA256 of every prediction archive written before the evaluation kernel reads any evaluation-half test response; the evaluator verifies each seal
+order_of_operations:
+  - the user decides D1 (endpoint) - done 2026-10-26; then D2-D10 - done 2026-10-26
+  - design audit from the committed v5 manifests only; draw the lines; write manifests/v6 and receipts/v6/design_audit.json - done 2026-10-26
+  - fill in cell_lines and commit this protocol with status PRESPECIFIED_BEFORE_V6_FITTING and the manifests - done 2026-10-26
+  - Kaggle use approved by the user for each job - PENDING; nothing below has started
+  - extraction (CPU kernels), recording the S/E partition per cell
+  - preparation - gene space, D(q) and responder status from the selection half, residual targets, comparators sealed
+  - the cheap comparators, responder fractions and split noise floor reported on validation (D7 decision point for the GPU budget)
+  - fits of both arms and every seed (GPU kernels), training and validation outputs only; descriptor gate
+  - diagnostics report and selection record from training and validation outputs, committed
+  - seal arm predictions
+  - evaluation kernel computes evaluation-half test truth and scores sealed predictions
+amendments:
+  policy: >-
+    Every change after the protocol commit is logged with its date, reason and the information it used. No
+    change may use a v6 evaluation-half test response. After the evaluation kernel runs, every change is post
+    hoc and is reported next to the prespecified result, never in its place.
+compute:
+  platform: Kaggle notebooks (each job approved by the user); CPU for extraction, preparation, comparators and evaluation; NVIDIA T4 x2 for fits
+  extraction: >-
+    one pass over the pinned parquet shards (about 429 GB) keeping the 10 new lines, as v5 did, with the S/E
+    partition recorded per cell; v5's extraction code is reused with a different line list and that one addition
+    (docs/V5_EXTRACTION.md)
+  fits_estimate: >-
+    20 fits (2 candidates x 10 seeds) at 20-40 minutes each - about 7-13 T4 hours at a 60-minute cap, 14-27 at
+    120. v5 used 13.6 session-hours for 33 fits. Kaggle's free GPU quota is about 30 hours a week.
+  determinism: seeds fixed; cuDNN nondeterminism not eliminated
+  record: gpu_name, driver, cuda, torch and package versions, wall time, input and output sha256
+limits_stated_in_advance:
+  - >-
+    The endpoint change is not a second chance at v5's question; it is a different question. v5 asked whether a
+    model predicts the whole response better than a mean, and the answer was no. v6 asks whether it gets the
+    direction right on the genes that moved. A positive v6 with a negative v5 would mean the model carries
+    directional information that full-gene RMSE cannot see - useful, and much weaker than "predicts responses".
+  - >-
+    Direction accuracy ignores magnitude. An arm that beats P1 is not thereby usable for anything needing
+    effect sizes, and the RMSE secondaries are reported so the two are never conflated.
+  - >-
+    D(q) is defined from a noisy half-measurement, so it is an estimate of the compound's DE genes, not the
+    truth. The split noise floor states the resulting ceiling, and G8 stops the study from reading differences
+    the split cannot resolve.
+  - >-
+    The responder gate restricts the primary population using the selection half. That is prespecified and
+    label-free with respect to the scoring truth, and S2 reports the all-keys version, but the primary estimand
+    is still conditional on a measured response.
+  - >-
+    Dose and plate remain confounded (each Tahoe plate holds one dose), so per-dose differences cannot be
+    separated from plate differences, exactly as in v5.
+  - >-
+    The training objective and checkpoint rule still optimise full-gene MSE, so a negative v6 does not show
+    that no model can predict direction - only that this model, trained this way, does not. A loss re-weighted
+    toward responsive genes is the obvious next study and needs its own protocol and lines.
+  - A new scientific question after v6 needs a new protocol and cell lines v6 has not scored - 28 eligible lines would remain.

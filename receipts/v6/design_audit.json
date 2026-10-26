@@ -1,0 +1,212 @@
+{
+  "analysis": "v6_design_audit",
+  "mode": "write",
+  "inputs_verified": {
+    "manifests/v5/cell_lines.tsv": "7b810e71f4d4c2b7dc6fba9a62b3296e5d49135bd70dac7b2d6e8dd3e3a20456",
+    "manifests/v5/vehicle_units.tsv": "fbdca37c4c742f1e7f43e6a7d6cd83c70db356ff4bd1cae6ba185b90eafc602f"
+  },
+  "reads": "manifests/v5 cell_lines.tsv and vehicle_units.tsv only; no Tahoe-100M file",
+  "expression_read": false,
+  "compound_sample_cell_counts_read": false,
+  "draw": {
+    "seed": 6,
+    "n_lines": 10,
+    "rule": "v5 mechanism over the v5-eligible lines v5 did not select"
+  },
+  "design": {
+    "v5_lines": [
+      "CVCL_0099",
+      "CVCL_0131",
+      "CVCL_0293",
+      "CVCL_0428",
+      "CVCL_1097",
+      "CVCL_1239",
+      "CVCL_1381",
+      "CVCL_1550",
+      "CVCL_1715",
+      "CVCL_1717"
+    ],
+    "pool": 38,
+    "eligible": 48,
+    "drawn": [
+      {
+        "cell_line_id": "CVCL_0359",
+        "cell_name": "J82",
+        "organ": "Bladder/Urinary Tract",
+        "median_vehicle_cells": 3906.5
+      },
+      {
+        "cell_line_id": "CVCL_0371",
+        "cell_name": "KATO III",
+        "organ": "Esophagus/Stomach",
+        "median_vehicle_cells": 3898.0
+      },
+      {
+        "cell_line_id": "CVCL_0397",
+        "cell_name": "LS 180",
+        "organ": "Bowel",
+        "median_vehicle_cells": 3103.0
+      },
+      {
+        "cell_line_id": "CVCL_0480",
+        "cell_name": "PANC-1",
+        "organ": "Pancreas",
+        "median_vehicle_cells": 6891.5
+      },
+      {
+        "cell_line_id": "CVCL_1119",
+        "cell_name": "CFPAC-1",
+        "organ": "Pancreas",
+        "median_vehicle_cells": 3718.0
+      },
+      {
+        "cell_line_id": "CVCL_1577",
+        "cell_name": "NCI-H661",
+        "organ": "Lung",
+        "median_vehicle_cells": 224.0
+      },
+      {
+        "cell_line_id": "CVCL_1635",
+        "cell_name": "Panc 03.27",
+        "organ": "Pancreas",
+        "median_vehicle_cells": 2859.0
+      },
+      {
+        "cell_line_id": "CVCL_1693",
+        "cell_name": "SHP-77",
+        "organ": "Lung",
+        "median_vehicle_cells": 3257.5
+      },
+      {
+        "cell_line_id": "CVCL_1731",
+        "cell_name": "SW 900",
+        "organ": "Lung",
+        "median_vehicle_cells": 2814.5
+      },
+      {
+        "cell_line_id": "CVCL_C466",
+        "cell_name": "hTERT-HPNE",
+        "organ": "Pancreas",
+        "median_vehicle_cells": 2590.5
+      }
+    ],
+    "contexts": 30,
+    "split_gate": {
+      "min_half_cells": 30,
+      "min_well_cells": 60,
+      "min_vehicle_cells": 120,
+      "threshold": 120,
+      "units": 140,
+      "units_clearing_gate": 139,
+      "lines_with_every_unit_clearing": 9,
+      "per_line": [
+        {
+          "cell_line_id": "CVCL_0359",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 2416,
+          "median_vehicle_cells": 3906.5
+        },
+        {
+          "cell_line_id": "CVCL_0371",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 1764,
+          "median_vehicle_cells": 3898.0
+        },
+        {
+          "cell_line_id": "CVCL_0397",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 1332,
+          "median_vehicle_cells": 3103.0
+        },
+        {
+          "cell_line_id": "CVCL_0480",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 3353,
+          "median_vehicle_cells": 6891.5
+        },
+        {
+          "cell_line_id": "CVCL_1119",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 1900,
+          "median_vehicle_cells": 3718.0
+        },
+        {
+          "cell_line_id": "CVCL_1577",
+          "units": 14,
+          "units_clearing_gate": 13,
+          "min_vehicle_cells": 114,
+          "median_vehicle_cells": 224.0
+        },
+        {
+          "cell_line_id": "CVCL_1635",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 1497,
+          "median_vehicle_cells": 2859.0
+        },
+        {
+          "cell_line_id": "CVCL_1693",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 558,
+          "median_vehicle_cells": 3257.5
+        },
+        {
+          "cell_line_id": "CVCL_1731",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 1068,
+          "median_vehicle_cells": 2814.5
+        },
+        {
+          "cell_line_id": "CVCL_C466",
+          "units": 14,
+          "units_clearing_gate": 14,
+          "min_vehicle_cells": 808,
+          "median_vehicle_cells": 2590.5
+        }
+      ]
+    },
+    "organs": {
+      "Bladder/Urinary Tract": 1,
+      "Bowel": 1,
+      "Esophagus/Stomach": 1,
+      "Lung": 3,
+      "Pancreas": 4
+    }
+  },
+  "selected_lines": [
+    "CVCL_0359",
+    "CVCL_0371",
+    "CVCL_0397",
+    "CVCL_0480",
+    "CVCL_1119",
+    "CVCL_1577",
+    "CVCL_1635",
+    "CVCL_1693",
+    "CVCL_1731",
+    "CVCL_C466"
+  ],
+  "outputs": {
+    "manifests/v6/cell_lines.tsv": "3f37f55e73f9b598f82399df0cbe11e8873adbfa82e74e6168c2426e41dd45c4",
+    "manifests/v6/vehicle_units.tsv": "366210edcd8784e431ddab5982d8434e79a76aa43f21cdfa180b3aca667699b3",
+    "manifests/v6/contexts.tsv": "51b486fca54bdfe6d2b14c370ad893a5c5cc771231c4e2f9502a638f49efa6bc"
+  },
+  "code_sha256": {
+    "scripts/v6_design_audit.py": "d840d3a21d5194235c21488a7113f7a7889ce8965eb664fac7124cd5cb7880a0",
+    "src/drugperturb/v6/design.py": "8d298b5768e9ced014fdaccaf8e182b50e00bd368f93f97599f334711159a02b",
+    "src/drugperturb/v5/design.py": "c248aa34da621e48b0af58fa199fe4f3c267a9d2f84419d1072ec259a98deb94"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4"
+  },
+  "command": "python scripts/v6_design_audit.py"
+}
