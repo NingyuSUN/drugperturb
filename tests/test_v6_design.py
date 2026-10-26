@@ -88,3 +88,30 @@ def test_committed_manifests_match_the_protocol_and_the_v5_audit():
     assert receipt['draw'] == dict(seed=6, n_lines=10,
                                    rule='v5 mechanism over the v5-eligible lines v5 did not select')
     assert receipt['selected_lines'] == sorted(lines.loc[lines.selected, 'cell_line_id'])
+
+
+def test_the_reused_manifests_are_byte_copies_of_the_verified_v5_ones():
+    """v6 reuses v5's source tables, samples and compound split unchanged (protocol_v6 split.reuse)."""
+    import hashlib
+    import yaml
+    receipt = json.loads((ROOT/'receipts/v6/design_audit.json').read_text())
+    reused = receipt['reused_from_v5']
+    v5_receipt = json.loads((ROOT/'receipts/v5/design_audit.json').read_text())['outputs']
+    revision = str(yaml.safe_load((ROOT/'configs/protocol_v6.yaml').read_text())
+                   ['dataset']['source']['revision'])
+    assert reused['revision'] == revision
+    for name in reused['manifests']:
+        v6_path, v5_path = ROOT/f'manifests/v6/{name}.tsv', ROOT/f'manifests/v5/{name}.tsv'
+        assert v6_path.read_bytes() == v5_path.read_bytes(), f'{name} must be a byte copy of v5'
+        digest = hashlib.sha256(v6_path.read_bytes()).hexdigest()
+        assert reused['hashes'][f'manifests/v6/{name}.tsv'] == digest
+        anchor = reused['provenance'][name]
+        if f'manifests/v5/{name}.tsv' in v5_receipt:
+            assert v5_receipt[f'manifests/v5/{name}.tsv'] == digest
+            assert 'receipts/v5' in anchor
+        else:
+            # No receipt hashes these, so the anchor is the pinned revision every row names.
+            assert revision in anchor
+            assert set(pd.read_csv(v6_path, sep='\t').revision.astype(str)) == {revision}
+    assert set(pd.read_csv(ROOT/'manifests/v6/compounds.tsv', sep='\t')
+               .query('status == "accepted"').split) == {'train', 'validation', 'test'}

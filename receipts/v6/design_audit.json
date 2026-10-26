@@ -192,13 +192,43 @@
     "CVCL_1731",
     "CVCL_C466"
   ],
+  "reused_from_v5": {
+    "manifests": [
+      "samples",
+      "compounds",
+      "replicates",
+      "source",
+      "expression_source"
+    ],
+    "hashes": {
+      "manifests/v6/samples.tsv": "4aa1d3402dc9562e424e25a5debc982954c1f4df0ab707efee6155f2df84b236",
+      "manifests/v6/compounds.tsv": "05bdda99f630e3b489be0c8a6caa885cb1c27cff45a9081c3f750d54a567629a",
+      "manifests/v6/replicates.tsv": "79cc0282aa1258ca84816e94491593591ce4524a08daff8bc3223637411e944b",
+      "manifests/v6/source.tsv": "ae54e74322b74b370a31614f90622d4945c2f766cb32abd15350c14d30835782",
+      "manifests/v6/expression_source.tsv": "575732e0faf54c93563bb369730e0f6d744de3dfa748f4358098fdcfa70f5fc6"
+    },
+    "provenance": {
+      "samples": "sha256 in receipts/v5/design_audit.json",
+      "compounds": "sha256 in receipts/v5/design_audit.json",
+      "replicates": "sha256 in receipts/v5/design_audit.json",
+      "source": "every row pinned to revision 349e2a55f5538a3e73b32a06c6bdd8e9e87011e8",
+      "expression_source": "every row pinned to revision 349e2a55f5538a3e73b32a06c6bdd8e9e87011e8"
+    },
+    "revision": "349e2a55f5538a3e73b32a06c6bdd8e9e87011e8",
+    "reason": "protocol_v6 split.reuse: the source files, samples, chemistry and compound split are v5's, unchanged; copied byte for byte after verification"
+  },
   "outputs": {
     "manifests/v6/cell_lines.tsv": "3f37f55e73f9b598f82399df0cbe11e8873adbfa82e74e6168c2426e41dd45c4",
     "manifests/v6/vehicle_units.tsv": "366210edcd8784e431ddab5982d8434e79a76aa43f21cdfa180b3aca667699b3",
-    "manifests/v6/contexts.tsv": "51b486fca54bdfe6d2b14c370ad893a5c5cc771231c4e2f9502a638f49efa6bc"
+    "manifests/v6/contexts.tsv": "51b486fca54bdfe6d2b14c370ad893a5c5cc771231c4e2f9502a638f49efa6bc",
+    "manifests/v6/samples.tsv": "4aa1d3402dc9562e424e25a5debc982954c1f4df0ab707efee6155f2df84b236",
+    "manifests/v6/compounds.tsv": "05bdda99f630e3b489be0c8a6caa885cb1c27cff45a9081c3f750d54a567629a",
+    "manifests/v6/replicates.tsv": "79cc0282aa1258ca84816e94491593591ce4524a08daff8bc3223637411e944b",
+    "manifests/v6/source.tsv": "ae54e74322b74b370a31614f90622d4945c2f766cb32abd15350c14d30835782",
+    "manifests/v6/expression_source.tsv": "575732e0faf54c93563bb369730e0f6d744de3dfa748f4358098fdcfa70f5fc6"
   },
   "code_sha256": {
-    "scripts/v6_design_audit.py": "d840d3a21d5194235c21488a7113f7a7889ce8965eb664fac7124cd5cb7880a0",
+    "scripts/v6_design_audit.py": "192d62d8c0cd0cfebed2741a2fd55bcaa90c88521f117960fc2a1418dad46183",
     "src/drugperturb/v6/design.py": "8d298b5768e9ced014fdaccaf8e182b50e00bd368f93f97599f334711159a02b",
     "src/drugperturb/v5/design.py": "c248aa34da621e48b0af58fa199fe4f3c267a9d2f84419d1072ec259a98deb94"
   },
