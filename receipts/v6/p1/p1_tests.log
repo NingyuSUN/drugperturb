@@ -1,0 +1,4 @@
+# started 2026-10-26T12:38:11.968932+00:00
+# /tmp/venvs/core/bin/python -m pytest -q -p no:cacheprovider tests/test_v6_pipeline.py tests/test_v6_endpoint.py tests/test_v6_evaluate.py
+.......................................                                  [100%]
+39 passed in 74.26s (0:01:14)

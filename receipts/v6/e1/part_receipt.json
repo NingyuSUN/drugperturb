@@ -1,0 +1,64 @@
+{
+  "status": "EXTRACTED_PART_TEST_RESPONSES_NOT_COMPUTED",
+  "test_outcomes_computed": false,
+  "shard_start": 0,
+  "shard_stop": 3388,
+  "shards": 3388,
+  "units": 11760,
+  "half_units": 23520,
+  "design_cells": 17698679,
+  "split_seed": 606,
+  "half_label_sha256": "e33a4396eed7bd3827974c71dafca8e8ec6ffa31834355d05eca7ff6a0eb32c2",
+  "half_cells": {
+    "E": {
+      "count": 11760.0,
+      "min": 0.0,
+      "50%": 679.0,
+      "max": 5043.0
+    },
+    "S": {
+      "count": 11760.0,
+      "min": 0.0,
+      "50%": 678.0,
+      "max": 5042.0
+    }
+  },
+  "model_cells_selected": 282496,
+  "model_cell_cap": 32,
+  "model_cell_seed": 42,
+  "cells_found_in_part": 17698679,
+  "vehicle_cells_in_part": 464057,
+  "decoding": {
+    "rows": 95624334,
+    "matched_rows": 17698679,
+    "markers": 17698679,
+    "unknown_token_entries": 0,
+    "unknown_token_umi": 0,
+    "duplicate_token_entries": 0
+  },
+  "inputs": {
+    "obs_metadata": "e51b24f3666f5f433c59ff01dd6fa33934627091455e89d929f2c1ddc87401fe",
+    "gene_metadata": "d6104d1ca570d94832be0d27ffe8b7e4e54cfd366c9080239219f9c406eb751c",
+    "protocol": "095be2cbd520c4d963e19ac8e00153cd6455e1f6fa6af926f1f7ecbb3afa3320"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "26.0.0"
+  },
+  "seconds": 13003.515555307,
+  "command": "python scripts/v6_extract.py --obs /tmp/meta/obs_metadata.parquet --gene-metadata /tmp/meta/gene_metadata.parquet --download /tmp/shards --output-root /kaggle/working/extraction --shard-start 0 --shard-stop 3388",
+  "outputs": {
+    "expected_half_cells.tsv": "2af507d607011584bb1937ad7d9bfe8b250508caccbabc7ff8a1090034de98cf",
+    "genes.tsv": "efa1e09e0c68e2c1ce1ad39d7294f017012c665767f8cd723cc0da053170b065",
+    "half_units.tsv": "b9924e9b90a23676be1ed84c5458f5c89c8f5e2302e4c1a2f5dc3a71f7667acd",
+    "model_cells.npz": "9f96907c3a63cfe4cf27d465b9b3150bab4314dee72eef0b00ab0fcae8694746",
+    "model_selection.tsv": "0305f70d95174d4fec5b26b80f58a07a34707c0a4386d176725fd07a20c8f741",
+    "shards.tsv": "453bc815e811e55e3ba68e99d46840526a127ed1566ec254c616d28dbc432f49",
+    "unit_counts.npz": "623b4952dc0dd43daf88eff644381d27b995986ace5d1a2454ece6525f1a1dcd",
+    "units.tsv": "79c56c404de2b20a407dc1697a2a81063778ff3822682550b7319e911b350c03",
+    "vehicle_detection.npz": "d545fa839e4877ac90a0acfc501cef2057cdad92c2ae3b8e0da75d9480b1e502"
+  }
+}

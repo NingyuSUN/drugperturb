@@ -1,0 +1,915 @@
+{
+  "method": "baselines",
+  "protocol": "v6",
+  "status": "SEALED_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "predictions": {
+    "path": "baselines_v6_predictions.npz",
+    "sha256": "2b9be6ca944d82769821b1870b0559caaa631bb261673c92fd0e22f920e93e24"
+  },
+  "inputs": {
+    "protocol": {
+      "path": "/tmp/dp/configs/protocol_v6.yaml",
+      "sha256": "095be2cbd520c4d963e19ac8e00153cd6455e1f6fa6af926f1f7ecbb3afa3320"
+    },
+    "compounds": {
+      "path": "/tmp/dp/manifests/v6/compounds.tsv",
+      "sha256": "05bdda99f630e3b489be0c8a6caa885cb1c27cff45a9081c3f750d54a567629a"
+    },
+    "train_truth.npz": {
+      "path": "/kaggle/working/prepared/train_truth.npz",
+      "sha256": "cdb46cfe48713f13290b14744cb3cd640aa79bb9fd9eea62d186a72dfc246a22"
+    },
+    "validation_truth.npz": {
+      "path": "/kaggle/working/prepared/validation_truth.npz",
+      "sha256": "45b54a72ac0c889323fae982485cd67b3ea90a229386afb2f7dc003503688fe0"
+    },
+    "train_replicate_deltas.npz": {
+      "path": "/kaggle/working/prepared/train_replicate_deltas.npz",
+      "sha256": "07ac128baf1a7e336c0e3aadefb8d21c1d31efc33e7bbdcc03c16ecc9f06b65a"
+    },
+    "train_residual_targets.npz": {
+      "path": "/kaggle/working/prepared/train_residual_targets.npz",
+      "sha256": "70b6fab2f229d4b7a1863322aacf396b389f02dafce9ab205e331f9d952d8dcc"
+    },
+    "queries.tsv": {
+      "path": "/kaggle/working/prepared/queries.tsv",
+      "sha256": "f688fc4a77ff4819d78db6b1aad3847b130d2c6c62979b5037236e71c23c61d3"
+    },
+    "vehicle_levels.npz": {
+      "path": "/kaggle/working/prepared/vehicle_levels.npz",
+      "sha256": "1f710a7091f0374b0af328d979397624d00a95a217400bec09c9fc439b0588b8"
+    }
+  },
+  "selection": {
+    "CVCL_0359_50nM": {
+      "alpha": 10000.0,
+      "validation_rmse": [
+        0.2733697904848502,
+        0.26985646322323376,
+        0.25794978563877624,
+        0.24463307228433104,
+        0.2411569089434991,
+        0.24106890528649141
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.2732898667656575,
+        "B1": 0.24107791696680692,
+        "B2": 0.33424818330285166
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0359_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.26647894046110765,
+        0.2620184063968878,
+        0.2473742980586892,
+        0.23352615128162288,
+        0.23075440806703784,
+        0.2308466969747441
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.26406876505958693,
+        "B1": 0.2308805979019245,
+        "B2": 0.3175823884445194
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0359_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.29044731815423536,
+        0.2869600879157498,
+        0.2741153220531811,
+        0.2585744125828467,
+        0.254173220415729,
+        0.2544311838901686
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.276692058221275,
+        "B1": 0.2545118788994938,
+        "B2": 0.34332390522324396
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0371_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.27945647698804077,
+        0.27583749555856935,
+        0.2637447120759985,
+        0.2508904591251772,
+        0.2482050329961979,
+        0.24831089020119612
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.2856543637018424,
+        "B1": 0.24834475581021462,
+        "B2": 0.34346736856086374
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0371_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.293913050324106,
+        0.2889131725002843,
+        0.27438470502869927,
+        0.2610117531546108,
+        0.25882184084157184,
+        0.2591734065846697
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.2960060965020851,
+        "B1": 0.25924604115909,
+        "B2": 0.34391316132236716
+      },
+      "n_validation": 50,
+      "n_test_queries": 84
+    },
+    "CVCL_0371_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.31470221228245926,
+        0.31091801755069265,
+        0.29772112825801883,
+        0.2820613080667953,
+        0.2791450105494437,
+        0.27992735280018444
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.30203354348251693,
+        "B1": 0.28008093960839153,
+        "B2": 0.36805690800156354
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0397_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.2806238247774968,
+        0.276581265673538,
+        0.26352195752407154,
+        0.24979460931813582,
+        0.24705080561139153,
+        0.24719099975211106
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.2804146521318401,
+        "B1": 0.24723033368816696,
+        "B2": 0.3484528140354672
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0397_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.2883105535397714,
+        0.28315536106215083,
+        0.2680839983853234,
+        0.2544714446877098,
+        0.25234680906731766,
+        0.2527064204756234
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.28469932982424934,
+        "B1": 0.2527788601065516,
+        "B2": 0.33523290375016196
+      },
+      "n_validation": 50,
+      "n_test_queries": 84
+    },
+    "CVCL_0397_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.3045688008017215,
+        0.30072194228713967,
+        0.28757030921971205,
+        0.27260399232394766,
+        0.27029534495906077,
+        0.2712389823545241
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.28747204015078254,
+        "B1": 0.27141316460330855,
+        "B2": 0.3604811532480733
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0480_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.23488426394488068,
+        0.23159396088509407,
+        0.2209278305016544,
+        0.20961152941270386,
+        0.20687161988050748,
+        0.2069208492789941
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.24494552633018227,
+        "B1": 0.2069486754260686,
+        "B2": 0.28984644340646387
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0480_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.23681862397200754,
+        0.2319311586749123,
+        0.21773928966126835,
+        0.20434755348061187,
+        0.2013480365698982,
+        0.20148527931950702
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.23738345617710127,
+        "B1": 0.2015314044053599,
+        "B2": 0.2729723977040262
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_0480_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.2681470026928529,
+        0.26495188745273873,
+        0.25363040867702535,
+        0.23827959172618932,
+        0.23279901342439613,
+        0.23287139670684273
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.2530732759118547,
+        "B1": 0.23293253870236807,
+        "B2": 0.3140046239103502
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1119_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.26655597244925466,
+        0.2628046151785974,
+        0.24986671596242221,
+        0.2360119462106996,
+        0.23311194348065348,
+        0.2332458517697948
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.26614774450940415,
+        "B1": 0.23328734028927997,
+        "B2": 0.326923151402387
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1119_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.26095368857365814,
+        0.25555543976138617,
+        0.2400501086970403,
+        0.22748210841435024,
+        0.22635675275508366,
+        0.2269443818397473
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.2577225416929495,
+        "B1": 0.22704858293787789,
+        "B2": 0.30641148898229575
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1119_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.28877029943424304,
+        0.2848236155852543,
+        0.27132426033917795,
+        0.2572886969902268,
+        0.2558775182413054,
+        0.25696991142836356
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.2742708313697182,
+        "B1": 0.2571631688214573,
+        "B2": 0.3331787237983226
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1577_50nM": {
+      "alpha": 10000.0,
+      "validation_rmse": [
+        0.7090320989377508,
+        0.7050563061467512,
+        0.6888999112990538,
+        0.6684414656451311,
+        0.6636294062747021,
+        0.6635534882357003
+      ],
+      "n_components": 20,
+      "n_train": 153,
+      "validation_rmse_simple": {
+        "B0": 0.6942844898065789,
+        "B1": 0.6635685812587161,
+        "B2": 0.9396081946394654
+      },
+      "n_validation": 42,
+      "n_test_queries": 84
+    },
+    "CVCL_1577_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.6926313054682205,
+        0.6879364804956319,
+        0.6689499373851021,
+        0.6474342934160662,
+        0.6433096927932406,
+        0.6433103498859305
+      ],
+      "n_components": 20,
+      "n_train": 153,
+      "validation_rmse_simple": {
+        "B0": 0.6725563877464775,
+        "B1": 0.6433309618998636,
+        "B2": 0.8828658895358439
+      },
+      "n_validation": 38,
+      "n_test_queries": 84
+    },
+    "CVCL_1577_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.6380308759670037,
+        0.6340267465770947,
+        0.6161255188902357,
+        0.5951169970514537,
+        0.591059122920472,
+        0.5912174962705323
+      ],
+      "n_components": 20,
+      "n_train": 150,
+      "validation_rmse_simple": {
+        "B0": 0.61500078832277,
+        "B1": 0.5912639383593803,
+        "B2": 0.8542572020255447
+      },
+      "n_validation": 39,
+      "n_test_queries": 84
+    },
+    "CVCL_1635_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.2774181781659247,
+        0.2740608798277983,
+        0.26256861314569013,
+        0.24980613126766846,
+        0.24673235473154784,
+        0.24678592033606578
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.2818685798734056,
+        "B1": 0.2468161207254308,
+        "B2": 0.34202215554694704
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1635_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.2797460649075637,
+        0.2750043040507104,
+        0.26044189359456055,
+        0.2469497140226895,
+        0.24470504757377232,
+        0.24503744424188925
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.2751326829180452,
+        "B1": 0.24510791831524564,
+        "B2": 0.3284494504880101
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1635_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.30514258901708247,
+        0.30158788003650244,
+        0.2884509301504704,
+        0.2731817924408918,
+        0.2702123503293884,
+        0.27083404611497286
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.28885330512465074,
+        "B1": 0.27095965450031195,
+        "B2": 0.3539457398810519
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1693_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.3049367208682177,
+        0.3014856466019274,
+        0.28973230007025524,
+        0.2779743013965237,
+        0.2759966459772841,
+        0.27633839556168516
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.30812567570944754,
+        "B1": 0.2764088366693557,
+        "B2": 0.3930167443170056
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1693_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.30690147763736736,
+        0.3024952317416082,
+        0.2873296548328742,
+        0.2733841285823047,
+        0.27111745001773296,
+        0.27141710946906306
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.30760547052293435,
+        "B1": 0.27148392369063307,
+        "B2": 0.37891970920453544
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1693_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.35986852290222926,
+        0.3561503681277448,
+        0.3405110782650415,
+        0.3210004240622805,
+        0.3180731744101406,
+        0.31913660105998215
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.3350452593450424,
+        "B1": 0.31933468344459076,
+        "B2": 0.4209310295498753
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1731_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.29490575748682174,
+        0.29091313495555043,
+        0.2779769997805788,
+        0.26530089430173365,
+        0.26265154213480857,
+        0.26280752375266786
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.2950751559013476,
+        "B1": 0.2628526809155541,
+        "B2": 0.36927663394853555
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1731_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.29243427135758415,
+        0.28769744029871347,
+        0.2734516685405798,
+        0.26116114381068006,
+        0.25935344816553113,
+        0.2597896517942082
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.29197598284401843,
+        "B1": 0.2598763233817924,
+        "B2": 0.35192089399225523
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_1731_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.3399165555862422,
+        0.33617268441313725,
+        0.3223391056220446,
+        0.3052845466642087,
+        0.3007480244115434,
+        0.301173586310836
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.31901946076343835,
+        "B1": 0.3012831219109071,
+        "B2": 0.39480596624410236
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_C466_50nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.36615983372594596,
+        0.3615917132733422,
+        0.3467737161987645,
+        0.33277381575644593,
+        0.32996276855790213,
+        0.3301094614765885
+      ],
+      "n_components": 20,
+      "n_train": 196,
+      "validation_rmse_simple": {
+        "B0": 0.3657580914361178,
+        "B1": 0.33015352877380044,
+        "B2": 0.4611683636188852
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    },
+    "CVCL_C466_500nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.36347054905000775,
+        0.35803107044088445,
+        0.34190025598229107,
+        0.3287353347622575,
+        0.32693784317290886,
+        0.32736254665557796
+      ],
+      "n_components": 20,
+      "n_train": 200,
+      "validation_rmse_simple": {
+        "B0": 0.3617894526834548,
+        "B1": 0.32744562098957175,
+        "B2": 0.4483932645811196
+      },
+      "n_validation": 50,
+      "n_test_queries": 84
+    },
+    "CVCL_C466_5000nM": {
+      "alpha": 1000.0,
+      "validation_rmse": [
+        0.41882854733820124,
+        0.41427602248696477,
+        0.3974281754259638,
+        0.3763045120671603,
+        0.3705177592423479,
+        0.3707953469361222
+      ],
+      "n_components": 20,
+      "n_train": 202,
+      "validation_rmse_simple": {
+        "B0": 0.390367653214398,
+        "B1": 0.37088756032591086,
+        "B2": 0.49665030612665007
+      },
+      "n_validation": 49,
+      "n_test_queries": 84
+    }
+  },
+  "skipped_contexts": {},
+  "alphas": [
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0,
+    10000.0
+  ],
+  "anchoring": "delta baseline + Vbar_train(context) - mean_r V_r(query); V from all vehicle cells",
+  "b1p": {
+    "min_compounds": 5,
+    "plates_with_enough_compounds": 160,
+    "context_plates": 160,
+    "replicates_falling_back_to_B1a": {
+      "test": 0,
+      "validation": 0
+    }
+  },
+  "residual": {
+    "reference": "B1p, leave-one-out for training compounds",
+    "scale": "least squares on validation residuals, clipped to [0, 1]",
+    "per_context": {
+      "CVCL_0359_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.8180862793010617,
+        "validation_residual_rmse": 0.1969777912991262,
+        "zero_residual_rmse": 0.1970660462224249
+      },
+      "CVCL_0359_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.20270440976337223,
+        "zero_residual_rmse": 0.20309513739248808
+      },
+      "CVCL_0359_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.21183139274089458,
+        "zero_residual_rmse": 0.21265364424440442
+      },
+      "CVCL_0371_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.29615534205100497,
+        "validation_residual_rmse": 0.20753492681528216,
+        "zero_residual_rmse": 0.20754437385025873
+      },
+      "CVCL_0371_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.23192210878233038,
+        "zero_residual_rmse": 0.23218793356076348
+      },
+      "CVCL_0371_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.23657960404540906,
+        "zero_residual_rmse": 0.23697390221485118
+      },
+      "CVCL_0397_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.4430602786131635,
+        "validation_residual_rmse": 0.20692742553838514,
+        "zero_residual_rmse": 0.20694735643183176
+      },
+      "CVCL_0397_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.22979591929774867,
+        "zero_residual_rmse": 0.23012338417358813
+      },
+      "CVCL_0397_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.23010868612935131,
+        "zero_residual_rmse": 0.2308715046555935
+      },
+      "CVCL_0480_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.8977997738245935,
+        "validation_residual_rmse": 0.17067609798059585,
+        "zero_residual_rmse": 0.17076739549874237
+      },
+      "CVCL_0480_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.18120306641595602,
+        "zero_residual_rmse": 0.18150338580170258
+      },
+      "CVCL_0480_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.1943206059849076,
+        "zero_residual_rmse": 0.1950823067685743
+      },
+      "CVCL_1119_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.18764753829244243,
+        "zero_residual_rmse": 0.18783993770541063
+      },
+      "CVCL_1119_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.20088310186771727,
+        "zero_residual_rmse": 0.20150928528664167
+      },
+      "CVCL_1119_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.21967738976120588,
+        "zero_residual_rmse": 0.22073753971114568
+      },
+      "CVCL_1577_50nM": {
+        "training_residuals": 144,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 0.0,
+        "validation_residual_rmse": 0.5864558210930874,
+        "zero_residual_rmse": 0.5864558210930874
+      },
+      "CVCL_1577_500nM": {
+        "training_residuals": 143,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.8565398748716516,
+        "validation_residual_rmse": 0.5816245390711522,
+        "zero_residual_rmse": 0.5817218451098509
+      },
+      "CVCL_1577_5000nM": {
+        "training_residuals": 117,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 0.08571484044023044,
+        "validation_residual_rmse": 0.49861373569118284,
+        "zero_residual_rmse": 0.49861277832734974
+      },
+      "CVCL_1635_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.44912077523539873,
+        "validation_residual_rmse": 0.20448924380112563,
+        "zero_residual_rmse": 0.20451035427159742
+      },
+      "CVCL_1635_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.2164624386146317,
+        "zero_residual_rmse": 0.21684114151305628
+      },
+      "CVCL_1635_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.2283761062593624,
+        "zero_residual_rmse": 0.22888394572013662
+      },
+      "CVCL_1693_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.15738390754358975,
+        "validation_residual_rmse": 0.23455630905620128,
+        "zero_residual_rmse": 0.23455314556183723
+      },
+      "CVCL_1693_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.2450127510129364,
+        "zero_residual_rmse": 0.245223870672707
+      },
+      "CVCL_1693_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.2626519795359071,
+        "zero_residual_rmse": 0.2628626935393811
+      },
+      "CVCL_1731_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.800570301227768,
+        "validation_residual_rmse": 0.22131175403051595,
+        "zero_residual_rmse": 0.22140041426406964
+      },
+      "CVCL_1731_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.23194980021753295,
+        "zero_residual_rmse": 0.23244352397668028
+      },
+      "CVCL_1731_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 10000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.2514481756444046,
+        "zero_residual_rmse": 0.2520405706083063
+      },
+      "CVCL_C466_50nM": {
+        "training_residuals": 184,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 0.5519100138996352,
+        "validation_residual_rmse": 0.2834964907402851,
+        "zero_residual_rmse": 0.2835131600904993
+      },
+      "CVCL_C466_500nM": {
+        "training_residuals": 189,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.29615509769715137,
+        "zero_residual_rmse": 0.29667343172485083
+      },
+      "CVCL_C466_5000nM": {
+        "training_residuals": 147,
+        "fitted": true,
+        "alpha": 1000.0,
+        "scale": 1.0,
+        "validation_residual_rmse": 0.30650698246100283,
+        "zero_residual_rmse": 0.30703473197044817
+      }
+    },
+    "leave_one_out_plates": 160,
+    "leave_one_out_keys": 6621,
+    "training_keys_without_a_residual": 754
+  },
+  "n_training_pairs": 5838
+}

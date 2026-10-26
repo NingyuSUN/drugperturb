@@ -1,0 +1,133 @@
+{
+  "status": "CPU_ONLY_NO_ARM_FITTED",
+  "test_outcomes_computed": false,
+  "evaluation_half_test_delta_computed": false,
+  "de_k": 50,
+  "split_noise_floor": 0.8231834326651014,
+  "split_noise_floor_all_keys": 0.7324904709993048,
+  "gate_G8_met": true,
+  "g8_threshold": 0.6,
+  "residual_share": 0.6521508585238527,
+  "validation_keys": 1445,
+  "validation_responders": 678,
+  "accuracy": {
+    "B1c": 0.7710685690205286,
+    "M1c": 0.7728101860213111,
+    "B1a": 0.7978098850159533,
+    "M1a": 0.7980458732165432,
+    "B1p": 0.81899885617964,
+    "B1r": 0.8196767202456204,
+    "B2r": 0.7596032749382937,
+    "M1r": 0.8197941123351995,
+    "M1r_unscaled": 0.8202070916862318,
+    "B0": 0.5
+  },
+  "accuracy_all_keys": {
+    "B1c": 0.7006189350130141,
+    "M1c": 0.7019094701202386,
+    "B1a": 0.7293749847946651,
+    "M1a": 0.729942867600687,
+    "B1p": 0.7488287723462169,
+    "B1r": 0.7489467496998617,
+    "B2r": 0.6963864167168382,
+    "M1r": 0.7490193662308297,
+    "M1r_unscaled": 0.7492264027375475,
+    "B0": 0.5
+  },
+  "structure_contrasts": {
+    "M1c_minus_B1c": 0.0017416170007825693,
+    "M1a_minus_B1a": 0.00023598820058989833,
+    "M1r_minus_B1p": 0.0007952561555595317,
+    "B2r_minus_B1p": -0.05939558124134625,
+    "B1r_minus_B1p": 0.0006778640659804713
+  },
+  "any_structure_helps": false,
+  "headroom_above_b1p": 0.004184576485461444,
+  "de_set_sharing": {
+    "same_plate_overlap": 0.10960717388145994,
+    "across_plate_overlap": 0.06498229240097936,
+    "same_plate_pairs": 31056,
+    "across_plate_pairs": 74960,
+    "concentration": [
+      {
+        "context_id": "CVCL_0480_500nM",
+        "responders": 311,
+        "genes_in_most_sets": 6,
+        "union_size": 1357
+      },
+      {
+        "context_id": "CVCL_0480_5000nM",
+        "responders": 298,
+        "genes_in_most_sets": 4,
+        "union_size": 1469
+      },
+      {
+        "context_id": "CVCL_0480_50nM",
+        "responders": 294,
+        "genes_in_most_sets": 6,
+        "union_size": 1251
+      },
+      {
+        "context_id": "CVCL_1119_5000nM",
+        "responders": 252,
+        "genes_in_most_sets": 3,
+        "union_size": 1495
+      },
+      {
+        "context_id": "CVCL_1119_500nM",
+        "responders": 251,
+        "genes_in_most_sets": 5,
+        "union_size": 1396
+      }
+    ]
+  },
+  "responder": {
+    "threshold": 2.7718083229262893,
+    "nulls": 140,
+    "percentile": 95.0,
+    "null_statistic_median": 1.8658772571250475,
+    "responders": 4946,
+    "keys": 9700,
+    "by_split": {
+      "test": 1323,
+      "train": 2945,
+      "validation": 678
+    }
+  },
+  "study_gate_G4": {
+    "gate_passing_contexts": [
+      "CVCL_0359_5000nM",
+      "CVCL_0359_500nM",
+      "CVCL_0359_50nM",
+      "CVCL_0371_5000nM",
+      "CVCL_0371_500nM",
+      "CVCL_0371_50nM",
+      "CVCL_0397_5000nM",
+      "CVCL_0397_500nM",
+      "CVCL_0397_50nM",
+      "CVCL_0480_5000nM",
+      "CVCL_0480_500nM",
+      "CVCL_0480_50nM",
+      "CVCL_1119_5000nM",
+      "CVCL_1119_500nM",
+      "CVCL_1119_50nM",
+      "CVCL_1635_5000nM",
+      "CVCL_1635_500nM",
+      "CVCL_1635_50nM",
+      "CVCL_1693_5000nM",
+      "CVCL_1693_500nM",
+      "CVCL_1693_50nM",
+      "CVCL_1731_5000nM",
+      "CVCL_1731_500nM",
+      "CVCL_1731_50nM",
+      "CVCL_C466_5000nM",
+      "CVCL_C466_500nM",
+      "CVCL_C466_50nM"
+    ],
+    "n_contexts": 27,
+    "n_lines": 9,
+    "n_doses": 3,
+    "met": true
+  },
+  "contexts_passing_count_gate": 27
+}
