@@ -106,6 +106,8 @@ def study(tmp_path_factory):
         *common)
     run('v6_prepare.py', '--extraction-root', root/'extraction', '--output-root', root/'prepared', *common)
     run('v6_baselines.py', '--prepared', root/'prepared', '--output-root', root/'sealed', *common)
+    run('v6_cheap_report.py', '--prepared', root/'prepared', '--sealed', root/'sealed',
+        '--output', root/'reports'/'cheap_report.md', '--protocol', root/'protocol.yaml')
     seal_synthetic_arms(root, root/'prepared', root/'protocol.yaml')
     gated = switch_gates_on(root/'prepared', root/'prepared_gated')
     run('v6_diagnostics_report.py', '--prepared', gated, '--sealed', root/'sealed',
@@ -160,6 +162,24 @@ def test_the_diagnostics_report_leads_with_the_ceiling_and_hides_no_test_number(
         assert forbidden not in text, f'the pre-test report must not mention {forbidden}'
     per_seed = pd.read_csv(study/'reports'/'per_seed_validation.tsv', sep='\t')
     assert len(per_seed) == len(ACCURACY)*len(SEEDS) and set(per_seed.arm) == set(ACCURACY)
+
+
+def test_the_cheap_report_decides_g8_and_d7_without_any_arm(study):
+    record = json.loads((study/'reports'/'cheap_report.json').read_text())
+    assert record['status'] == 'CPU_ONLY_NO_ARM_FITTED'
+    assert record['test_outcomes_computed'] is False
+    assert record['evaluation_half_test_delta_computed'] is False
+    assert record['gate_G8_met'] is (record['split_noise_floor'] >= record['g8_threshold'])
+    assert record['accuracy']['B0'] == pytest.approx(0.5), 'zero change must sit exactly at chance'
+    assert 'B1p' in record['accuracy'] and 'M1r' in record['accuracy']
+    assert 'M1r_minus_B1p' in record['structure_contrasts']
+    assert isinstance(record['any_structure_helps'], bool)
+    assert record['validation_responders'] <= record['validation_keys']
+    text = (study/'reports'/'cheap_report.md').read_text()
+    assert 'No arm has been fitted' in text
+    assert 'Can the endpoint work at all' in text and 'Does chemical structure help' in text
+    for forbidden in ['TEST_SCORED', 'P1_direction']:
+        assert forbidden not in text, f'the CPU-only report must not mention {forbidden}'
 
 
 def test_the_evaluation_anchors_pin_the_metric(study):

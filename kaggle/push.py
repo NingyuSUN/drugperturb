@@ -57,8 +57,15 @@ KERNELS = {
                     sources=['dp-v5-fit-a', 'dp-v5-fit-b', 'dp-v5-prepare'], code='drugperturb-v5-code'),
     'v5-evaluate': dict(slug='dp-v5-evaluate', file='v5_evaluate.py', language='python', gpu=False,
                         sources=['dp-v5-extract', 'dp-v5-prepare', 'dp-v5-seal'], code='drugperturb-v5-code'),
+    # v6 (Tahoe-100M, new cell lines): its own code dataset. The CPU stages run to the cheap report; the GPU
+    # fits are not registered here, because they need their own approval and the report's D7 decision first.
+    'v6-e1': dict(slug='dp-v6-extract', file='v6_extract.py', language='python', gpu=False, sources=[],
+                  code='drugperturb-v6-code'),
+    'v6-p1': dict(slug='dp-v6-prepare', file='v6_prepare.py', language='python', gpu=False,
+                  sources=['dp-v6-extract'], code='drugperturb-v6-code'),
 }
-CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code', 'drugperturb-v5-code')
+CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code', 'drugperturb-v5-code',
+                 'drugperturb-v6-code')
 V5_SHARDS = 3388
 
 
@@ -106,7 +113,7 @@ def push_kernel(user, name, smoke, shards=None):
         text = text.replace("'__DATASET__'", repr(name.split('-')[-1])).replace('__SMOKE__', repr(smoke))
     if spec['file'] == 'v5_fit.py':
         text = text.replace("'__PART__'", repr(name.rsplit('-', 1)[1]))
-    if spec['file'] == 'v5_extract.py':
+    if spec['file'] in ('v5_extract.py', 'v6_extract.py'):
         start, stop = map(int, shards.split(':')) if shards else (0, V5_SHARDS)
         text = text.replace("'__SHARDS__'", repr((start, stop)))
         if shards:
@@ -129,7 +136,7 @@ def main():
     parser.add_argument('what', choices=['code', 'kernel'])
     parser.add_argument('name', nargs='?', choices=list(KERNELS))
     parser.add_argument('--smoke', type=int, help='engineering smoke epochs for k3 kernels')
-    parser.add_argument('--shards', help='v5-e1 only: START:STOP shard range pushed as its own kernel')
+    parser.add_argument('--shards', help='v5-e1 or v6-e1 only: START:STOP shard range pushed as its own kernel')
     parser.add_argument('--dataset', choices=CODE_DATASETS, default='drugperturb-v3-code', help='code dataset to version')
     args = parser.parse_args()
     user = username()
