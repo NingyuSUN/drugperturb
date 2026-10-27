@@ -461,36 +461,36 @@ amendments:
       restricts the primary population to the clearest responders, which the per-context responder counts and
       S2 make visible.
     nulls_available: 140 (10 cell lines x 14 plates, each with exactly two DMSO_TF samples), against the committed rule's 20 per unit
-  A3_2026-10-27:
-    change: >-
-      Three consequences of running decision D7, all about how many fits are made and none about an endpoint.
-      (1) D7's trigger is restated. As committed it fired when no structure-using comparator "exceeds chance by
-      more than 0.01"; it now fires when none "beats the method it extends by more than 0.01". (2) Under a
-      reduced plan, training.failed_fit's "fewer than 8 completed seeds" becomes "fewer than all the seeds the
-      reduced plan names", so M1 with 3 planned seeds needs all 3. (3) With one candidate fitted, arm selection
-      is single-candidate: M1 is the primary arm, k = 1 and the interval level is 0.95, and the near-tie rule
-      is not exercised.
-    reason: >-
-      The committed trigger does not measure what D7 was for. Exceeding chance says nothing about chemical
-      structure, because B1p exceeds chance by 0.32 on this endpoint while using no chemistry at all; on the
-      measured CPU report every structure-using comparator exceeds chance by 0.27 or more, so the committed
-      wording would never fire however little structure added. The quantity D7 needs is what a structure-using
-      method adds OVER the method it extends, which is what scripts/v6_cheap_report.py computed and reported:
-      M1c - B1c +0.0017, M1a - B1a +0.0002, M1r - B1p +0.0008, all far below 0.01. The seed and selection
-      consequences follow arithmetically from a 3-seed plan and were simply not written down.
+  A3_2026-10-27_RAISED_AND_WITHDRAWN:
+    status: >-
+      WITHDRAWN - nothing in the protocol changed. It is kept in the log because it was raised and acted on
+      for part of a day, and because the reason it was wrong is worth keeping.
+    what_was_proposed: >-
+      Restating decision D7s trigger. As committed D7 fires when no structure-using comparator "exceeds
+      chance by more than 0.01"; the proposal was to fire it when none "beats the method it extends by more
+      than 0.01", with two consequences of the reduced plan that would have followed - a seed rule for a
+      3-seed arm, and single-candidate selection.
+    why_it_was_raised: >-
+      The committed trigger arguably does not measure what D7 was for. Exceeding chance says nothing about
+      chemical structure, because B1p exceeds chance by 0.32 on this endpoint while using no chemistry at all,
+      and on the CPU report every structure-using comparator exceeds chance by 0.27 or more, so the committed
+      wording cannot fire however little structure adds. The quantity the proposal used is what a
+      structure-using method adds OVER the method it extends - M1c minus B1c +0.0017, M1a minus B1a +0.0002,
+      M1r minus B1p +0.0008.
+    why_it_was_withdrawn: >-
+      The user, told that the committed wording read literally requires the full 20 fits and that the proposed
+      reading is the cheaper one, chose the literal wording on 2026-10-27. D7 therefore does NOT fire. Both
+      candidate arms are fitted at all ten prespecified seeds; training.failed_fit keeps its "fewer than 8
+      completed seeds" rule as committed; arm selection keeps the near-tie rule over both candidates; and
+      endpoint S4 is estimable.
+    lesson_kept: >-
+      A decision rule must name the quantity it compares AND what it compares it against. D7 named a
+      threshold and a direction but no reference, which is why one sentence supported two budgets differing by
+      a factor of seven. A later protocol should write the reference into the rule.
     information_used: >-
-      reports/v6/cheap_report.json, which is validation-only, and the protocol text. No test response and no
+      reports/v6/cheap_report.json, which is validation only, and the protocol text. No test response and no
       evaluation-half delta of any key.
-    effect: >-
-      Fits only. D7 as committed already states that the endpoints do not change and only the number of fits
-      does, and that holds here: no endpoint, comparator, metric, gate threshold or estimand is touched. Two
-      costs are stated rather than hidden. The reading that fires the cut is the cheaper one - 3 fits instead
-      of 20 - and the committed wording, read literally, would have required the full 20; the substantive
-      finding is the same either way, because the headroom above B1p is 0.0042 and no structure-using method
-      claims more than 0.002 of it. And M2 is not fitted, so endpoint S4 (M2 minus M1, the residual arm's
-      question) is NOT ESTIMABLE in this study; the residual question is answered only for a linear model, by
-      M1r, at +0.0008. The report must say both.
-    user_decision: the user approved M1 at 3 seeds on 2026-10-27, after the CPU report
+    effect: none on the study; the full prespecified plan runs
   A2_2026-10-26:
     change: >-
       Four training values that the committed protocol stated only in prose - max_epochs 200,

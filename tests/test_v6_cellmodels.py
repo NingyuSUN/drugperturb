@@ -196,8 +196,11 @@ def test_the_residual_arm_predicts_in_delta_space_by_adding_b1p(fitted):
         assert np.allclose(z['test_contrast'], z['test_raw']), 'the raw arm adds no offset'
 
 
-def test_seal_accepts_the_d7_reduced_plan_and_records_what_was_not_fitted(fitted):
-    """Decision D7 fitted M1 only, at three seeds; amendment A3 says the record must say so."""
+def test_seal_records_what_a_reduced_arm_set_costs(fitted):
+    """A run that fits fewer arms than the protocol's candidates must say so, and that S4 is lost.
+
+    The v6 study itself fits both arms; this covers the path and keeps the cost visible.
+    """
     root, prepared, _ = fitted
     run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared, '--output-root', root/'sealed_d7',
         '--allow-smoke', '--override-descriptor-gate', '--protocol', root/'protocol.yaml',
@@ -213,7 +216,7 @@ def test_seal_accepts_the_d7_reduced_plan_and_records_what_was_not_fitted(fitted
     assert not (root/'sealed_d7'/'M2_pseudobulk_residual_v6_seal.json').exists()
 
 
-def test_seal_refuses_a_plan_whose_seeds_did_not_all_complete(fitted):
+def test_seal_refuses_an_arm_with_too_few_completed_seeds(fitted):
     root, prepared, _ = fitted
     unfitted = [s for s in protocol_seeds(root) if s not in SEEDS]
     assert unfitted, 'the fixture needs a candidate seed nobody fits'

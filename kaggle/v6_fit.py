@@ -1,9 +1,12 @@
-"""Kaggle kernel v6-fit (T4 x2): the v6 arm fits for one arm and its planned seeds; never reads a test outcome.
+"""Kaggle kernel v6-fit (T4 x2): one arm's fits at every prespecified seed; never reads a test outcome.
 
-Decision D7, taken on the CPU-only report, cut the GPU budget to M1 at three
-seeds (amendment A3), so ARM and SEEDS are set by kaggle/push.py. Each seed runs
-a one-epoch smoke fit first and the kernel stops if one fails, so a broken
-configuration costs minutes and not hours.
+ARM and SEEDS are set by kaggle/push.py: one kernel per candidate arm, at all
+ten seeds of protocol_v6 training.seeds.candidates. Decision D7's committed
+wording does not fire on the CPU report (see amendments
+A3_2026-10-27_RAISED_AND_WITHDRAWN), so the full plan runs.
+
+Each seed runs a one-epoch smoke fit first and the kernel stops if one fails, so
+a broken configuration costs minutes and not hours.
 """
 import glob
 import sys
