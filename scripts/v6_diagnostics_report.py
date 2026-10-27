@@ -107,6 +107,9 @@ def main():
     if not selection['any_passing']:
         lines += ['**No candidate met the non-collapse criteria.** The highest-metric candidate is still '
                   'evaluated, and the study reports that no arm met them.', '']
+    if selection.get('arms_not_fitted'):
+        lines += [f"**A reduced plan.** {selection['reduced_plan']} Seeds planned per arm: "
+                  f"{selection.get('seeds_planned')}.", '']
     for arm, c in selection['comparisons_to_leader'].items():
         lines.append(f"- {arm}: behind the leader by {fmt(c['d'])} with a Welch standard error of "
                      f"{fmt(c['se'])}, so it is {'within' if c['within'] else 'outside'} 1.96 standard errors.")

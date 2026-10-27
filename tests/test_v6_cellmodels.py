@@ -116,7 +116,8 @@ def prepared_dir(root):
                       canonical_smiles=list(SMILES.values()))).to_csv(manifests/'compounds.tsv', sep='\t',
                                                                        index=False)
     protocol = yaml.safe_load((REPO/'configs/protocol_v6.yaml').read_text())
-    protocol['training']['seeds'] = dict(candidates=list(SEEDS))
+    # A third candidate seed nobody fits, so the "every planned seed completed" guard is testable.
+    protocol['training']['seeds'] = dict(candidates=[*SEEDS, 3])
     protocol['response_endpoint']['de_gene_set']['k'] = DE_K
     (root/'protocol.yaml').write_text(yaml.safe_dump(protocol))
     return prepared, manifests, sealed
@@ -195,13 +196,50 @@ def test_the_residual_arm_predicts_in_delta_space_by_adding_b1p(fitted):
         assert np.allclose(z['test_contrast'], z['test_raw']), 'the raw arm adds no offset'
 
 
+def test_seal_accepts_the_d7_reduced_plan_and_records_what_was_not_fitted(fitted):
+    """Decision D7 fitted M1 only, at three seeds; amendment A3 says the record must say so."""
+    root, prepared, _ = fitted
+    run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared, '--output-root', root/'sealed_d7',
+        '--allow-smoke', '--override-descriptor-gate', '--protocol', root/'protocol.yaml',
+        '--arms', 'M1_pseudobulk_raw', '--seeds', *map(str, SEEDS))
+    record = json.loads((root/'sealed_d7'/'selection_v6.json').read_text())
+    assert record['fitted_candidates'] == ['M1_pseudobulk_raw']
+    assert record['arms_not_fitted'] == ['M2_pseudobulk_residual']
+    assert 'S4' in record['reduced_plan'] and 'not' in record['reduced_plan']
+    assert record['selected'] == 'M1_pseudobulk_raw'
+    assert record['bonferroni_k'] == 1 and record['interval_level'] == pytest.approx(0.95)
+    assert record['near_tie'] is False, 'one candidate cannot tie'
+    assert record['seeds_planned'] == sorted(SEEDS)
+    assert not (root/'sealed_d7'/'M2_pseudobulk_residual_v6_seal.json').exists()
+
+
+def test_seal_refuses_a_plan_whose_seeds_did_not_all_complete(fitted):
+    root, prepared, _ = fitted
+    unfitted = [s for s in protocol_seeds(root) if s not in SEEDS]
+    assert unfitted, 'the fixture needs a candidate seed nobody fits'
+    refused = run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared,
+                  '--output-root', root/'sealed_short', '--allow-smoke', '--override-descriptor-gate',
+                  '--protocol', root/'protocol.yaml', '--arms', 'M1_pseudobulk_raw',
+                  '--seeds', *map(str, [*SEEDS, *unfitted]), check=False)
+    assert refused.returncode != 0 and 'only' in refused.stderr
+    off_plan = run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared,
+                   '--output-root', root/'sealed_off', '--allow-smoke', '--override-descriptor-gate',
+                   '--protocol', root/'protocol.yaml', '--seeds', '9999', check=False)
+    assert off_plan.returncode != 0 and 'not prespecified candidates' in off_plan.stderr
+
+
+def protocol_seeds(root):
+    return yaml.safe_load((root/'protocol.yaml').read_text())['training']['seeds']['candidates']
+
+
 def test_seal_averages_seeds_selects_on_direction_and_refuses_smoke_by_default(fitted):
     root, prepared, _ = fitted
-    refused = run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared,
+    seeds = ['--seeds', *map(str, SEEDS)]  # the fixture leaves one candidate seed unfitted on purpose
+    refused = run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared, *seeds,
                   '--output-root', root/'sealed_refused', '--protocol', root/'protocol.yaml', check=False)
     assert refused.returncode != 0 and 'engineering smoke fit' in refused.stderr
     run('v6_seal.py', '--fit-root', root/'out', '--prepared', prepared, '--output-root', root/'sealed_arms',
-        '--allow-smoke', '--override-descriptor-gate', '--protocol', root/'protocol.yaml')
+        '--allow-smoke', '--override-descriptor-gate', '--protocol', root/'protocol.yaml', *seeds)
     record = json.loads((root/'sealed_arms'/'selection_v6.json').read_text())
     assert record['higher_is_better'] is True and record['selected'] in selection.ARMS
     assert record['test_outcomes_loaded'] is False and record['evaluation_half_test_delta_loaded'] is False

@@ -224,8 +224,13 @@ def main():
     endpoints['S2_all_keys'] = {b: pooled(arm, b, responders_only=False) for b in ['B1p', 'M1a']}
     endpoints['S3_structure_baselines'] = {f'{a}_minus_{b}': pooled(a, b)
                                            for a, b in [('M1c', 'B1c'), ('M1a', 'B1a'), ('M1r', 'B1p')]}
-    endpoints['S4_residual_arm'] = pooled('M2_pseudobulk_residual', 'M1_pseudobulk_raw') \
-        if {'M1_pseudobulk_raw', 'M2_pseudobulk_residual'} <= set(methods) else None
+    if {'M1_pseudobulk_raw', 'M2_pseudobulk_residual'} <= set(methods):
+        endpoints['S4_residual_arm'] = pooled('M2_pseudobulk_residual', 'M1_pseudobulk_raw')
+    else:
+        endpoints['S4_residual_arm'] = dict(
+            estimable=False, arms_not_fitted=selection.get('arms_not_fitted', []),
+            reason=selection.get('reduced_plan') or 'the residual arm M2 was not fitted',
+            answered_for_a_linear_model_by='M1r minus B1p, reported under S3')
     endpoints['S5_rmse_on_de_genes'] = {f'{arm}_minus_B1p': pooled(arm, 'B1p', metric='de_rmse'),
                                         'note': 'an error, so a NEGATIVE difference favours the candidate'}
     endpoints['S6_replicates_v5'] = {f'{a}_minus_{b}': pooled(a, b, metric='de_rmse')
