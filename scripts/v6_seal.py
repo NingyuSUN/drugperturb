@@ -31,6 +31,7 @@ PROTOCOL_STATUS = 'PRESPECIFIED_BEFORE_V6_FITTING'
 CHANCE = 0.5
 MIN_ACCURACY_MARGIN = 0.01  # protocol_v6 diagnostics_before_test_scoring non_collapse_criteria
 MIN_EFFECT_SIZE_RATIO = 0.10
+MIN_COMPLETED_SEEDS = 8  # protocol_v6 training.failed_fit
 
 
 def non_collapse(endpoint, summary):
@@ -52,8 +53,8 @@ def main():
     parser.add_argument('--allow-smoke', action='store_true', help='Engineering runs only')
     parser.add_argument('--override-descriptor-gate', action='store_true')
     parser.add_argument('--arms', nargs='+', choices=selection.ARMS,
-                        help='the arms this run fitted; fewer than all of them only under decision D7, which '
-                             'is recorded in the selection record (amendment A3)')
+                        help='the arms this run fitted; fewer than all of them is recorded in the selection '
+                             'record, and leaves endpoint S4 unestimable')
     parser.add_argument('--seeds', type=int, nargs='+',
                         help='the seeds the plan names for each arm; defaults to the protocol candidates')
     parser.add_argument('--protocol', type=Path, default=ROOT/'configs/protocol_v6.yaml')
@@ -82,9 +83,10 @@ def main():
         seeds = [s for s in seeds_of if (any((r/'fits'/f'{arm}_v6_s{s}.json').exists() for r in args.fit_root))]
         if not seeds:
             raise ValueError(f'{arm}: no fit found')
-        if set(seeds) != set(seeds_of):
-            # training.failed_fit under amendment A3: every seed the plan names must have completed.
-            raise ValueError(f'{arm}: the plan names seeds {sorted(seeds_of)} but only {seeds} completed')
+        if len(seeds) < min(MIN_COMPLETED_SEEDS, len(seeds_of)):
+            # protocol_v6 training.failed_fit: an arm with fewer than 8 completed seeds is not a candidate.
+            raise ValueError(f'{arm}: the plan names seeds {sorted(seeds_of)} but only {seeds} completed, '
+                             f'fewer than the {MIN_COMPLETED_SEEDS} a candidate needs')
         present[arm] = seeds
         for seed in seeds:
             name = f'{arm}_v6_s{seed}'
@@ -164,9 +166,8 @@ def main():
     chosen = selection.select(arms, candidates)
     reduced_note = None
     if reduced:
-        reduced_note = (f'decision D7 cut the GPU budget, so {reduced} were not fitted (amendment A3). '
-                        f'Selection is over the fitted candidates only, and endpoint S4 (M2 minus M1) is not '
-                        f'estimable in this study.')
+        reduced_note = (f'{reduced} were not fitted, so selection is over the fitted candidates only and '
+                        f'endpoint S4 (M2 minus M1) is not estimable in this study.')
     record = dict(status='SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING', test_outcomes_loaded=False,
                   evaluation_half_test_delta_loaded=False, metric=rule['metric'], rule=rule['rule'],
                   near_tie_rule=rule['near_tie_rule'], arms=arms, descriptor_gate=gate,

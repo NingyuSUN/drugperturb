@@ -1,9 +1,9 @@
 """Kaggle kernel v6-S (CPU): seal the v6 arms, select on validation, write the diagnostics; no test truth is read.
 
-Mounts the fit kernel's output (full fits only; the one-epoch smoke fits live
-under /tmp in that kernel and are never written out) and the P1 outputs. Under
-decision D7 only M1 was fitted, at three seeds, so --arms and --seeds name the
-reduced plan and the selection record states it (amendment A3).
+Mounts both fit kernels' outputs (full fits only; the one-epoch smoke fits live
+under /tmp in those kernels and are never written out) and the P1 outputs.
+--arms and --seeds name the plan that ran, and the selection record states it;
+with fewer arms than the protocol's candidates, endpoint S4 is not estimable.
 
 The seals, the selection and the diagnostics are committed before the
 evaluation kernel, which is the first thing to read a test response.
