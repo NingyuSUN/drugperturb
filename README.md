@@ -4,19 +4,59 @@
 
 **Prespecified benchmarks for predicting transcriptional responses to held-out compounds, from structure-based models to chemCPA and biolord.**
 
-sci-Plex3 · OP3 (human PBMCs) · Tahoe-100M · compound- and scaffold-level holdouts · predictions sealed before testing
+sci-Plex3 · OP3 (human PBMCs) · Tahoe-100M · compound-, scaffold- and cell-line-level holdouts · split-measurement endpoints · predictions sealed before testing
 
-Reports: [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
+Reports: [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
 
 Each version answers one question under a protocol committed before any fit:
 
 | Version | Question | Data | Answer |
 |---|---|---|---|
+| v6 | On an endpoint where predicting nothing scores chance by construction, does chemCPA beat a plate-anchored mean? | Tahoe-100M, ten new cell lines | No. It matches that mean (+0.0010 [−0.0007, +0.0039]) while beating chance by +0.31, and chemical structure adds nothing |
 | v5 | Does an improved chemCPA beat vehicle-anchored baselines on data this project had never scored? | Tahoe-100M | No. It beats zero change but not the anchored baselines, and a plate-anchored mean beats every method |
 | v4 | Can chemCPA's collapse to zero change be fixed? | sci-Plex3, OP3 | Partly. The drug term comes alive, but no variant beats a per-context training mean on OP3 |
 | v3 | Do chemCPA and biolord beat information-matched simple baselines? | sci-Plex3 | No. Both are worse than a per-context Ridge, and chemCPA collapses to zero change |
 | v2 | Do A549-trained structure models transfer to other cell lines and doses? | sci-Plex3 | No. Zero change has the lowest error in all five conditions |
 | v1 | Do fingerprint and graph models beat simple baselines on held-out compounds? | sci-Plex3 A549 | No reliable advantage over the training mean or Ridge |
+
+## v6: an endpoint that zero change cannot win
+
+**The prespecified primary endpoint was not met**, on an endpoint built so that the v5 criticism cannot apply.
+
+v5's result was weak for a structural reason: on an RMSE endpoint, predicting no change wins whenever the
+measurement is noisy. v6 replaces the endpoint with **direction accuracy on each compound's own top-50
+differentially expressed genes**, where a predicted zero counts as a tie and therefore scores exactly 0.5000 —
+chance, by construction. The genes are chosen from one half of a compound's cells and scored against the
+other, disjoint half, so no measurement both picks a compound's genes and grades it. The test set is ten
+Tahoe-100M cell lines v5 never used.
+
+| Pooled over 27 contexts, responder keys | Difference [95% interval] |
+|---|---|
+| **P1:** residual arm (M2) − plate-anchored training mean (B1p) | **+0.0010 [−0.0007, +0.0039]** |
+| **P1:** M2 − anchored Ridge (M1a) | +0.0280 [+0.0214, +0.0361] |
+| M2 − zero change (chance) | +0.3135 [+0.2999, +0.3265] |
+| **S4:** M2 − the same model trained on the raw delta (M1) | +0.0612 [+0.0490, +0.0750] |
+| **S3:** does structure help? M1c − B1c / M1a − B1a / M1r − B1p | +0.0013 / +0.0000 / −0.0004, all straddling zero |
+
+**What the secondary analyses show:**
+
+- **Predicting nothing no longer wins, and the answer is still no.** Zero change sits exactly on chance and
+  every method beats it by a wide margin, yet chemCPA still cannot separate itself from a mean that uses no
+  chemistry.
+- **The training target matters far more than the model.** Training chemCPA on the residual over the plate
+  mean rather than on the raw response is worth +0.0612 — the largest effect in the study. What it buys is
+  the plate mean back: the residual the model learns has about zero correlation with the real one.
+- **There is almost nothing left to win.** The measurement's accuracy against itself is 0.8232 and the plate
+  mean already reaches 0.8217, so a perfect model has roughly 0.0015 of room.
+- **No single plate or context carries the null.** Dropping each of the 14 plates in turn leaves the interval
+  straddling zero every time, and per context M2 is above the plate mean in 15 of 27 and below in 10.
+- **No method finds the right genes.** Overlap between a method's own top-50 predicted genes and the
+  compound's real ones is at most 0.13 for everything, the plate mean included. Direction is largely solved
+  on a given gene set; gene identity is not.
+
+See the [v6 report](reports/v6/report.md), the [pre-test diagnostics](reports/v6/diagnostics.md), the
+[CPU-only report written before any fit](reports/v6/cheap_report.md) and the
+[protocol](configs/protocol_v6.yaml).
 
 ## v5: a confirmatory test on Tahoe-100M
 

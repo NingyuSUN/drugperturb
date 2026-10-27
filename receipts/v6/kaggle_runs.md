@@ -9,6 +9,8 @@ The kernels and the code dataset are private, under the account `ningyusunny`. E
 | dp-v6-fit-m1 | 3 | GPU (Tesla T4 x2) | b52e1cfe… (drugperturb-v6-code, pushed from 76516f0) | 76516f0 | dp-v6-prepare v1 | complete; M1_pseudobulk_raw at all ten seeds; 441.8 min |
 | dp-v6-fit-m2 | 1 | GPU (Tesla T4 x2) | b52e1cfe… (drugperturb-v6-code, pushed from 76516f0) | 76516f0 | dp-v6-prepare v1 | complete; M2_pseudobulk_residual at all ten seeds; 347.6 min |
 | dp-v6-seal | 1 | CPU | b52e1cfe… (drugperturb-v6-code, pushed from 76516f0) | 76516f0 | dp-v6-fit-m1 v3, dp-v6-fit-m2 v1, dp-v6-prepare v1 | complete; both arms sealed; M2 selected on validation; pre-test diagnostics written |
+| dp-v6-evaluate | 1 | CPU | e39f2c7a… (drugperturb-v6-code, pushed from 5fcc3bf) | 5fcc3bf | dp-v6-extract v1, dp-v6-prepare v1, dp-v6-seal v1 | complete; the evaluation half's test truth computed for the first time; P1 not met |
+| dp-v6-evaluate | 2 | CPU | 03e88244… (drugperturb-v6-code, pushed from 7a0f1dc) | 7a0f1dc | the same three | complete; re-run only to correct a sign label; every estimate identical to version 1 |
 
 **Superseded GPU run.** `dp-v6-fit-m1` version 2 ran M1 at three seeds under the reduced plan of amendment A3, which was then withdrawn (see A3_2026-10-27_RAISED_AND_WITHDRAWN). Version 3 refits all ten seeds from scratch and is the one sealed; version 2's three fits are wasted GPU time and no number from them enters the study.
 
@@ -59,6 +61,7 @@ python kaggle/push.py code --dataset drugperturb-v6-code
 python kaggle/push.py kernel v6-fit-m1     # M1_pseudobulk_raw, ten seeds
 python kaggle/push.py kernel v6-fit-m2     # M2_pseudobulk_residual, ten seeds
 python kaggle/push.py kernel v6-seal       # seal, select, pre-test diagnostics
+python kaggle/push.py kernel v6-evaluate   # the first read of the evaluation-half test truth
 ```
 
 Kaggle allows two batch GPU sessions at a time, so the two arms ran in parallel; `dp-v6-fit-m2` waited about two and a quarter hours for the superseded version 2 session to release its slot.
@@ -83,4 +86,41 @@ Full text: [reports/v6/diagnostics.md](../../reports/v6/diagnostics.md); per-see
 
 - **Selected on validation: M2_pseudobulk_residual**, the single primary arm. M1 is 0.1334 behind with a Welch standard error of 0.0082, far outside the near-tie band, so `bonferroni_k` is 1.
 - `planned_candidates` equals `fitted_candidates`, `arms_not_fitted` is empty and `reduced_plan` is null: the plan that ran is the plan that was prespecified, so endpoint S4 (M2 minus M1) is estimable.
-- The selection record and the pre-test diagnostics are committed in this commit, before the evaluation kernel runs. Neither reads a test response or an evaluation-half delta.
+- The selection record and the pre-test diagnostics were committed and pushed as 5fcc3bf, before the evaluation kernel was launched. Neither reads a test response or an evaluation-half delta.
+
+## The evaluation
+
+Full text: [reports/v6/report.md](../../reports/v6/report.md); tables in [reports/v6/evaluation/](../../reports/v6/evaluation).
+
+This kernel is the first thing in the study to compute an evaluation-half test delta. It ran only after the
+seal, the selection record and the pre-test diagnostics were committed and pushed
+([PR #16](https://github.com/NingyuSUN/drugperturb/pull/16), commit 5fcc3bf).
+
+- **Seal hashes verified** before any test response was read: M1 `b8318176…`, M2 `4186534e…`, comparators
+  `2b9be6ca…`.
+- **Anchors, all passing:** zero change scores chance, the truth fed back as a prediction scores 1.0, B0 is
+  identically zero, the halves partition every unit, every model cell is found once.
+- **Protocol hash** `a40b56d2…`, recorded by the evaluator itself.
+- 20 `test_v6_evaluate.py` and `test_v6_endpoint.py` tests passed inside the kernel.
+
+| Endpoint | Contrast | Difference [95% interval] |
+|---|---|---|
+| **P1** (confirmatory) | M2 − B1p | **+0.0010 [−0.0007, +0.0039]** → not met |
+| **P1** (confirmatory) | M2 − M1a | +0.0280 [+0.0214, +0.0361] |
+| S1 | M2 − B0 | +0.3135 [+0.2999, +0.3265] |
+| S4 | M2 − M1 | +0.0612 [+0.0490, +0.0750] |
+
+### Why it ran twice
+
+Version 1 is the run the protocol's order of operations describes, and its record is kept in full at
+[evaluate/evaluation_v6_run1.json](evaluate/evaluation_v6_run1.json). It carried a wrong label:
+`pooled_bootstrap` hard-coded `positive_favors: "candidate"`, which is right for direction accuracy and
+backwards for S5 and S6, the two endpoints scored on restricted RMSE. S5 had a note saying so; S6 had none.
+
+Version 2 ran the same inputs with the field derived from the metric. Every estimate, interval, point estimate
+and gate is identical, `per_compound.tsv` and `summary.tsv` are byte-identical in both runs, and the only
+differences anywhere in the record are the three `positive_favors` strings and S6's added note — see
+[evaluate/run1_vs_run2.txt](evaluate/run1_vs_run2.txt) for the full machine comparison and the file hashes.
+
+This is a post-hoc change by the protocol's amendment policy, which is why both runs are kept. It changed a
+label, not an analysis: no number moved, and the primary endpoint was already not met in version 1.
