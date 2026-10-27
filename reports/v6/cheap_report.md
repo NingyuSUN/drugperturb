@@ -53,7 +53,21 @@ Direction accuracy over each validation key's top-50 selection-half genes. Chanc
 | B2r minus B1p | -0.0594 |
 | B1r minus B1p | 0.0007 |
 
-**No structure-using method beats its reference by more than 0.01.** Under decision D7 that cuts the GPU budget to M1 at 3 seeds.
+**No structure-using method beats the method it extends by more than 0.01.** That is the question a reader cares about, and it is NOT decision D7's committed trigger.
+
+## Decision D7 as committed
+
+D7 fires when no structure-using comparator exceeds CHANCE by more than 0.01 on validation direction accuracy. The margins over chance are:
+
+| Method | Accuracy minus chance |
+|---|---:|
+| M1r_unscaled | 0.3202 |
+| M1r | 0.3198 |
+| M1a | 0.2980 |
+| M1c | 0.2728 |
+| B2r | 0.2596 |
+
+**D7 does not fire.** The full prespecified plan runs: both candidate arms at all ten seeds. Every structure-using comparator clears chance by a wide margin because B1p, which uses no chemistry at all, already does; amendment A3_2026-10-27_RAISED_AND_WITHDRAWN records that this was raised before any GPU fit and that the committed wording was kept.
 
 ## The responder gate
 
@@ -105,5 +119,5 @@ Contexts passing the count gate: 27 of 30. Study gate G4: met (27 contexts, 9 li
 ## What happens next
 
 - Gate G8: **met**.
-- Decision D7: the GPU budget is cut to M1 at 3 seeds.
+- Decision D7: does not fire, so the full prespecified plan runs - both arms at all ten seeds.
 - No arm has been fitted. The GPU fits are the next step and need their own approval.

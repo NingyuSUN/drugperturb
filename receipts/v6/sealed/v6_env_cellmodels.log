@@ -1,0 +1,2 @@
+# started 2026-10-27T10:45:46.513791+00:00
+# /usr/local/bin/uv pip install -q --python /tmp/venvs/cellmodels/bin/python -r /tmp/dp/locks/cellmodels-cpu.txt --extra-index-url https://download.pytorch.org/whl/cpu --index-strategy unsafe-best-match

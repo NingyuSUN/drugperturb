@@ -41,7 +41,16 @@
     "B2r_minus_B1p": -0.05939558124134625,
     "B1r_minus_B1p": 0.0006778640659804713
   },
-  "any_structure_helps": false,
+  "structure_adds_over_reference": false,
+  "d7_margins_over_chance": {
+    "M1c": 0.27281018602131113,
+    "M1a": 0.2980458732165432,
+    "M1r": 0.3197941123351995,
+    "M1r_unscaled": 0.32020709168623185,
+    "B2r": 0.2596032749382937
+  },
+  "d7_fires": false,
+  "d7_margin": 0.01,
   "headroom_above_b1p": 0.004184576485461444,
   "de_set_sharing": {
     "same_plate_overlap": 0.10960717388145994,

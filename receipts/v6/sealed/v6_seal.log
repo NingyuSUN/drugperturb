@@ -1,0 +1,31 @@
+# started 2026-10-27T10:47:20.483292+00:00
+# /tmp/venvs/cellmodels/bin/python scripts/v6_seal.py --fit-root /kaggle/input/notebooks/ningyusunny/dp-v6-fit-m1 /kaggle/input/notebooks/ningyusunny/dp-v6-fit-m2 --prepared /kaggle/input/notebooks/ningyusunny/dp-v6-prepare/prepared --output-root /kaggle/working/sealed --arms M1_pseudobulk_raw M2_pseudobulk_residual --seeds 42 123 2026 2027 2028 2029 2030 2031 2032 2033 --protocol /tmp/dp/configs/protocol_v6.yaml
+{"arm": "M1_pseudobulk_raw", "validation_direction_accuracy": 0.6848309252904702, "validation_rmse": 0.31474204260203015, "non_collapsed": true}
+{"arm": "M2_pseudobulk_residual", "validation_direction_accuracy": 0.8182434531334659, "validation_rmse": 0.25678193551981676, "non_collapsed": true}
+{
+  "selected": "M2_pseudobulk_residual",
+  "primary_arms": [
+    "M2_pseudobulk_residual"
+  ],
+  "near_tie": false,
+  "bonferroni_k": 1,
+  "interval_level": 0.95,
+  "passing": [
+    "M1_pseudobulk_raw",
+    "M2_pseudobulk_residual"
+  ],
+  "any_passing": true,
+  "mean_seed_validation_direction_accuracy": {
+    "M1_pseudobulk_raw": 0.6848309252904702,
+    "M2_pseudobulk_residual": 0.8182434531334659
+  },
+  "comparisons_to_leader": {
+    "M1_pseudobulk_raw": {
+      "d": 0.13341252784299573,
+      "se": 0.008219805756627141,
+      "within": false
+    }
+  },
+  "z": 1.96,
+  "higher_is_better": true
+}

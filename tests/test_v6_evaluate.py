@@ -173,11 +173,19 @@ def test_the_cheap_report_decides_g8_and_d7_without_any_arm(study):
     assert record['accuracy']['B0'] == pytest.approx(0.5), 'zero change must sit exactly at chance'
     assert 'B1p' in record['accuracy'] and 'M1r' in record['accuracy']
     assert 'M1r_minus_B1p' in record['structure_contrasts']
-    assert isinstance(record['any_structure_helps'], bool)
+    assert isinstance(record['structure_adds_over_reference'], bool)
+    # D7 as committed compares each structure-using comparator against chance, not against what it
+    # extends, so the two readings can disagree; the report must carry the committed one.
+    margins = record['d7_margins_over_chance']
+    assert set(margins) <= set(record['accuracy']) and 'M1r' in margins
+    for name, margin in margins.items():
+        assert margin == pytest.approx(record['accuracy'][name]-0.5)
+    assert record['d7_fires'] is not any(m > record['d7_margin'] for m in margins.values())
     assert record['validation_responders'] <= record['validation_keys']
     text = (study/'reports'/'cheap_report.md').read_text()
     assert 'No arm has been fitted' in text
     assert 'Can the endpoint work at all' in text and 'Does chemical structure help' in text
+    assert 'Decision D7 as committed' in text
     for forbidden in ['TEST_SCORED', 'P1_direction']:
         assert forbidden not in text, f'the CPU-only report must not mention {forbidden}'
 

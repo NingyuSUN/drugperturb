@@ -1,0 +1,152 @@
+{
+  "status": "SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING",
+  "test_outcomes_loaded": false,
+  "evaluation_half_test_delta_loaded": false,
+  "metric": "mean over seeds of the per-seed validation direction accuracy over responder keys, pooled over contexts",
+  "rule": "among non-collapsed candidates, the highest metric",
+  "near_tie_rule": "v5's rule, with the sign flipped for an accuracy - let d be the leader's metric minus the runner-up's and se the Welch standard error from the per-seed values. If d < 1.96 se, both non-collapsed candidates are co-primary, each tested at a Bonferroni-adjusted level (1 - 0.05/k), and the primary claim holds if either meets it.",
+  "arms": {
+    "M1_pseudobulk_raw": {
+      "seed_direction_accuracy": [
+        0.6882370116188069,
+        0.6993173198482933,
+        0.7017888748419722,
+        0.6611504424778761,
+        0.6870639937390886,
+        0.7038790560471976,
+        0.7299093973872736,
+        0.6561128168081392,
+        0.6775910541207633,
+        0.643259286015291
+      ],
+      "seed_rmse": [
+        0.3119001245344436,
+        0.3154107977954749,
+        0.3140199331222294,
+        0.31769689880132534,
+        0.314540126987808,
+        0.31268194765481194,
+        0.31417153345045346,
+        0.31395099094065393,
+        0.3167581676338209,
+        0.3162899050992805
+      ],
+      "validation_direction_accuracy": 0.6848309252904702,
+      "validation_rmse": 0.31474204260203015,
+      "non_collapse": {
+        "non_collapsed": true,
+        "checks": {
+          "direction_above_chance": true,
+          "effect_size_ratio": true
+        },
+        "validation_direction_accuracy": 0.6848309252904702,
+        "effect_size_ratio": 0.6857112831197253,
+        "chance": 0.5,
+        "margin": 0.01,
+        "min_effect_size_ratio": 0.1
+      },
+      "sha256": "b8318176f4b7cdbf3c7c9b62a508c1295c7ffd0605687b624eb00184c35160a4"
+    },
+    "M2_pseudobulk_residual": {
+      "seed_direction_accuracy": [
+        0.8185280837998916,
+        0.8180561073987116,
+        0.8180536993558485,
+        0.816548070555656,
+        0.8190873517548611,
+        0.8187622659683341,
+        0.8182902895671542,
+        0.8173180422611523,
+        0.8186454758894709,
+        0.8191451447835771
+      ],
+      "seed_rmse": [
+        0.25732146146195656,
+        0.2586120504056348,
+        0.26035090322505117,
+        0.25711296556826996,
+        0.2545926581695651,
+        0.25650108256124665,
+        0.2548561723896411,
+        0.2576838854419222,
+        0.2548798097277664,
+        0.2559083662471133
+      ],
+      "validation_direction_accuracy": 0.8182434531334659,
+      "validation_rmse": 0.25678193551981676,
+      "non_collapse": {
+        "non_collapsed": true,
+        "checks": {
+          "direction_above_chance": true,
+          "effect_size_ratio": true
+        },
+        "validation_direction_accuracy": 0.8182434531334659,
+        "effect_size_ratio": 1.457180657724406,
+        "chance": 0.5,
+        "margin": 0.01,
+        "min_effect_size_ratio": 0.1
+      },
+      "sha256": "4186534e50d3ed8bb5476b69a65b15c0647d85f1ca45d703fd927853e7fbc529"
+    }
+  },
+  "descriptor_gate": {
+    "z_limit": 1000.0,
+    "max_abs_z": {
+      "train": 14.177447319030762,
+      "validation": 14.177447319030762,
+      "test": 14.177447319030762,
+      "vehicle": 3.5779318809509277
+    },
+    "above_limit": {},
+    "fits_without_diagnostics": [],
+    "passed": true,
+    "override": false
+  },
+  "planned_candidates": [
+    "M1_pseudobulk_raw",
+    "M2_pseudobulk_residual"
+  ],
+  "fitted_candidates": [
+    "M1_pseudobulk_raw",
+    "M2_pseudobulk_residual"
+  ],
+  "arms_not_fitted": [],
+  "reduced_plan": null,
+  "seeds_planned": [
+    42,
+    123,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033
+  ],
+  "selected": "M2_pseudobulk_residual",
+  "primary_arms": [
+    "M2_pseudobulk_residual"
+  ],
+  "near_tie": false,
+  "bonferroni_k": 1,
+  "interval_level": 0.95,
+  "passing": [
+    "M1_pseudobulk_raw",
+    "M2_pseudobulk_residual"
+  ],
+  "any_passing": true,
+  "mean_seed_validation_direction_accuracy": {
+    "M1_pseudobulk_raw": 0.6848309252904702,
+    "M2_pseudobulk_residual": 0.8182434531334659
+  },
+  "comparisons_to_leader": {
+    "M1_pseudobulk_raw": {
+      "d": 0.13341252784299573,
+      "se": 0.008219805756627141,
+      "within": false
+    }
+  },
+  "z": 1.96,
+  "higher_is_better": true
+}
