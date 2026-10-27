@@ -90,6 +90,28 @@ def test_committed_manifests_match_the_protocol_and_the_v5_audit():
     assert receipt['selected_lines'] == sorted(lines.loc[lines.selected, 'cell_line_id'])
 
 
+def test_every_v6_kernel_names_a_real_environment_and_lock():
+    """A wrong index name or lock path fails only once the kernel is already running on Kaggle."""
+    import ast
+    support = (ROOT/'kaggle/support.py').read_text()
+    indexes = next(ast.literal_eval(node.value) for node in ast.parse(support).body
+                   if isinstance(node, ast.Assign) and getattr(node.targets[0], 'id', None) == 'INDEXES')
+    kernels = sorted((ROOT/'kaggle').glob('v6_*.py'))
+    assert kernels, 'no v6 kernel found'
+    for path in kernels:
+        calls = [node for node in ast.walk(ast.parse(path.read_text()))
+                 if isinstance(node, ast.Call) and getattr(node.func, 'attr', None) == 'environment']
+        assert len(calls) == 1, f'{path.name} should set up exactly one environment'
+        name, lock, _, index = (ast.literal_eval(a) for a in calls[0].args)
+        assert index in indexes, f'{path.name} names index {index!r}, not one of {sorted(indexes)}'
+        assert (ROOT/lock).exists(), f'{path.name} names a missing lock file {lock}'
+        assert name in ('core', 'cellmodels'), f'{path.name} names an unexpected environment {name!r}'
+        if index == 'cpu':
+            assert 'cuda' not in lock, f'{path.name} pairs the CPU index with a CUDA lock'
+        else:
+            assert 'cuda' in lock, f'{path.name} pairs a GPU index with a CPU lock'
+
+
 def test_the_reused_manifests_are_byte_copies_of_the_verified_v5_ones():
     """v6 reuses v5's source tables, samples and compound split unchanged (protocol_v6 split.reuse)."""
     import hashlib
