@@ -220,7 +220,13 @@ def test_every_prespecified_secondary_is_reported(study):
         assert name in endpoints and endpoints[name], name
     assert set(endpoints['S2_all_keys']) == {'B1p', 'M1a'}
     assert 'M1r_minus_B1p' in endpoints['S3_structure_baselines']
-    assert 'an error' in endpoints['S5_rmse_on_de_genes']['note'], 'the RMSE secondary states its sign'
+    for name in ['S5_rmse_on_de_genes', 'S6_replicates_v5']:
+        assert 'an error' in endpoints[name]['note'], f'{name} must state its sign'
+        for key, estimate in endpoints[name].items():
+            if key != 'note':
+                assert estimate['positive_favors'] == 'baseline', f'{name}.{key} is an error, not an accuracy'
+    for key, estimate in endpoints['S3_structure_baselines'].items():
+        assert estimate['positive_favors'] == 'candidate', key
     secondary = record['secondary']
     for name in ['every_pair', 'without_small_vehicle_line', 'leave_one_plate_out', 'de_overlap', 'per_context']:
         assert name in secondary, name
