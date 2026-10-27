@@ -51,12 +51,23 @@ def main():
     parser.add_argument('--output-root', type=Path, required=True)
     parser.add_argument('--allow-smoke', action='store_true', help='Engineering runs only')
     parser.add_argument('--override-descriptor-gate', action='store_true')
+    parser.add_argument('--arms', nargs='+', choices=selection.ARMS,
+                        help='the arms this run fitted; fewer than all of them only under decision D7, which '
+                             'is recorded in the selection record (amendment A3)')
+    parser.add_argument('--seeds', type=int, nargs='+',
+                        help='the seeds the plan names for each arm; defaults to the protocol candidates')
     parser.add_argument('--protocol', type=Path, default=ROOT/'configs/protocol_v6.yaml')
     args = parser.parse_args()
     protocol = yaml.safe_load(args.protocol.read_text())
     if protocol['status'] != PROTOCOL_STATUS:
         raise ValueError('v6 protocol is not prespecified')
-    seeds_of = protocol['training']['seeds']['candidates']
+    planned = protocol['training']['seeds']['candidates']
+    seeds_of = args.seeds or planned
+    unknown = sorted(set(seeds_of)-set(planned))
+    if unknown:
+        raise ValueError(f'seeds {unknown} are not prespecified candidates')
+    fitted_arms = args.arms or selection.ARMS
+    reduced = sorted(set(selection.ARMS)-set(fitted_arms))
     truth = {s: load_truth(args.prepared/f'{s}_truth.npz') for s in ['train', 'validation']}
     reference = diagnostics.context_means(truth['train'])
 
@@ -67,10 +78,13 @@ def main():
         return found[0]
 
     fit_records, present = {}, {}
-    for arm in selection.ARMS:
+    for arm in fitted_arms:
         seeds = [s for s in seeds_of if (any((r/'fits'/f'{arm}_v6_s{s}.json').exists() for r in args.fit_root))]
         if not seeds:
             raise ValueError(f'{arm}: no fit found')
+        if set(seeds) != set(seeds_of):
+            # training.failed_fit under amendment A3: every seed the plan names must have completed.
+            raise ValueError(f'{arm}: the plan names seeds {sorted(seeds_of)} but only {seeds} completed')
         present[arm] = seeds
         for seed in seeds:
             name = f'{arm}_v6_s{seed}'
@@ -85,7 +99,7 @@ def main():
     gate = descriptor_gate(fit_records, override=args.override_descriptor_gate)
 
     arms = {}
-    for arm in selection.ARMS:
+    for arm in fitted_arms:
         seeds = present[arm]
         records = {s: fit_records[f'{arm}_v6_s{s}'] for s in seeds}
         arrays = {}
@@ -146,10 +160,18 @@ def main():
               flush=True)
 
     rule = protocol['primary_arm_selection']
-    chosen = selection.select(arms, rule['candidates'])
+    candidates = [a for a in rule['candidates'] if a in arms]
+    chosen = selection.select(arms, candidates)
+    reduced_note = None
+    if reduced:
+        reduced_note = (f'decision D7 cut the GPU budget, so {reduced} were not fitted (amendment A3). '
+                        f'Selection is over the fitted candidates only, and endpoint S4 (M2 minus M1) is not '
+                        f'estimable in this study.')
     record = dict(status='SELECTED_ON_VALIDATION_BEFORE_TEST_SCORING', test_outcomes_loaded=False,
                   evaluation_half_test_delta_loaded=False, metric=rule['metric'], rule=rule['rule'],
-                  near_tie_rule=rule['near_tie_rule'], arms=arms, descriptor_gate=gate, **chosen)
+                  near_tie_rule=rule['near_tie_rule'], arms=arms, descriptor_gate=gate,
+                  planned_candidates=rule['candidates'], fitted_candidates=candidates,
+                  arms_not_fitted=reduced, reduced_plan=reduced_note, seeds_planned=sorted(seeds_of), **chosen)
     (args.output_root/'selection_v6.json').write_text(json.dumps(diagnostics.finite(record), indent=2)+'\n')
     print(json.dumps(diagnostics.finite(chosen), indent=2))
 

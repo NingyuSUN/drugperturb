@@ -57,13 +57,21 @@ KERNELS = {
                     sources=['dp-v5-fit-a', 'dp-v5-fit-b', 'dp-v5-prepare'], code='drugperturb-v5-code'),
     'v5-evaluate': dict(slug='dp-v5-evaluate', file='v5_evaluate.py', language='python', gpu=False,
                         sources=['dp-v5-extract', 'dp-v5-prepare', 'dp-v5-seal'], code='drugperturb-v5-code'),
-    # v6 (Tahoe-100M, new cell lines): its own code dataset. The CPU stages run to the cheap report; the GPU
-    # fits are not registered here, because they need their own approval and the report's D7 decision first.
+    # v6 (Tahoe-100M, new cell lines): its own code dataset. The CPU report took decision D7, which cut the
+    # GPU budget to M1 at the three seeds in V6_SEEDS (amendment A3), so only one fit kernel is registered.
     'v6-e1': dict(slug='dp-v6-extract', file='v6_extract.py', language='python', gpu=False, sources=[],
                   code='drugperturb-v6-code'),
     'v6-p1': dict(slug='dp-v6-prepare', file='v6_prepare.py', language='python', gpu=False,
                   sources=['dp-v6-extract'], code='drugperturb-v6-code'),
+    'v6-fit-m1': dict(slug='dp-v6-fit-m1', file='v6_fit.py', language='python', gpu=True,
+                      sources=['dp-v6-prepare'], code='drugperturb-v6-code'),
+    'v6-seal': dict(slug='dp-v6-seal', file='v6_seal.py', language='python', gpu=False,
+                    sources=['dp-v6-fit-m1', 'dp-v6-prepare'], code='drugperturb-v6-code'),
+    'v6-evaluate': dict(slug='dp-v6-evaluate', file='v6_evaluate.py', language='python', gpu=False,
+                        sources=['dp-v6-extract', 'dp-v6-prepare', 'dp-v6-seal'], code='drugperturb-v6-code'),
 }
+V6_ARMS = ('M1_pseudobulk_raw',)  # decision D7; M2 was not fitted
+V6_SEEDS = (42, 123, 2026)
 CODE_DATASETS = ('drugperturb-v3-code', 'drugperturb-v4-code', 'drugperturb-v4c-code', 'drugperturb-v5-code',
                  'drugperturb-v6-code')
 V5_SHARDS = 3388
@@ -113,6 +121,10 @@ def push_kernel(user, name, smoke, shards=None):
         text = text.replace("'__DATASET__'", repr(name.split('-')[-1])).replace('__SMOKE__', repr(smoke))
     if spec['file'] == 'v5_fit.py':
         text = text.replace("'__PART__'", repr(name.rsplit('-', 1)[1]))
+    if spec['file'] == 'v6_fit.py':
+        text = text.replace("'__ARM__'", repr(V6_ARMS[0])).replace("'__SEEDS__'", repr(V6_SEEDS))
+    if spec['file'] == 'v6_seal.py':
+        text = text.replace("'__ARMS__'", repr(V6_ARMS)).replace("'__SEEDS__'", repr(V6_SEEDS))
     if spec['file'] in ('v5_extract.py', 'v6_extract.py'):
         start, stop = map(int, shards.split(':')) if shards else (0, V5_SHARDS)
         text = text.replace("'__SHARDS__'", repr((start, stop)))
