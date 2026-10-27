@@ -23,7 +23,7 @@ prepared = sorted(glob.glob('/kaggle/input/**/prepared/prepare_receipt.json', re
 sealed = sorted(glob.glob('/kaggle/input/**/sealed/baselines_v6_predictions.npz', recursive=True))
 assert len(prepared) == 1 and len(sealed) == 1, (prepared, sealed)
 prepared, baselines = prepared[0].rsplit('/', 1)[0], sealed[0]
-python = support.environment('cellmodels', 'locks/cellmodels-cuda.txt', '3.11.16', 'cuda')
+python = support.environment('cellmodels', 'locks/cellmodels-cuda.txt', '3.11', 'cu121')
 env = support.python_env()
 support.run([python, '-m', 'pytest', '-q', '-p', 'no:cacheprovider', 'tests/test_v6_cellmodels.py'],
             log='fit_tests.log', env=env)
