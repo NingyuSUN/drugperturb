@@ -6,7 +6,7 @@
 
 sci-Plex3 · OP3 (human PBMCs) · Tahoe-100M · compound-, scaffold- and cell-line-level holdouts · split-measurement endpoints · predictions sealed before testing
 
-Reports: [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
+Reports: [v1-v6 synthesis](reports/synthesis.md) · [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
 
 Each version answers one question under a protocol committed before any fit:
 
@@ -18,6 +18,10 @@ Each version answers one question under a protocol committed before any fit:
 | v3 | Do chemCPA and biolord beat information-matched simple baselines? | sci-Plex3 | No. Both are worse than a per-context Ridge, and chemCPA collapses to zero change |
 | v2 | Do A549-trained structure models transfer to other cell lines and doses? | sci-Plex3 | No. Zero change has the lowest error in all five conditions |
 | v1 | Do fingerprint and graph models beat simple baselines on held-out compounds? | sci-Plex3 A549 | No reliable advantage over the training mean or Ridge |
+
+The [cross-version synthesis](reports/synthesis.md) strings these six answers into one argument:
+which explanation each version removed, what the series established besides six nulls, and what it
+never tested.
 
 ## v6: an endpoint that zero change cannot win
 
