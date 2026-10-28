@@ -11,7 +11,7 @@ yet". v2 removed transport. v3 removed "our models are too small". v4 removed "t
 broken, not wrong". v5 removed scale. v6 removed the last one on the list — "the metric rewards predicting
 nothing" — and the answer did not change.
 
-This document is the through-line. Every number below is quoted from the version report it belongs to; the
+This document is the through-line. [中文版](synthesis.zh-CN.md) · Every number below is quoted from the version report it belongs to; the
 per-version reports hold the denominators, the gates and the limitations.
 
 | | Question | Data | Answer |

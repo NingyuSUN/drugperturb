@@ -6,7 +6,7 @@
 
 sci-Plex3 · OP3 (human PBMCs) · Tahoe-100M · compound-, scaffold- and cell-line-level holdouts · split-measurement endpoints · predictions sealed before testing
 
-Reports: [v1-v6 synthesis](reports/synthesis.md) · [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
+Reports: [v1-v6 synthesis](reports/synthesis.md) ([中文](reports/synthesis.zh-CN.md)) · [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
 
 Each version answers one question under a protocol committed before any fit:
 
