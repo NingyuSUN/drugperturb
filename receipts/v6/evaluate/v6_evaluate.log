@@ -1,0 +1,17 @@
+# started 2026-10-27T11:37:34.880041+00:00
+# /tmp/venvs/core/bin/python scripts/v6_evaluate.py --extraction-root /kaggle/input/notebooks/ningyusunny/dp-v6-extract/extraction --prepared /kaggle/input/notebooks/ningyusunny/dp-v6-prepare/prepared --sealed /kaggle/input/notebooks/ningyusunny/dp-v6-seal/sealed /kaggle/input/notebooks/ningyusunny/dp-v6-prepare/sealed --output-root /kaggle/working/evaluation --manifests /tmp/dp/manifests/v6 --protocol /tmp/dp/configs/protocol_v6.yaml
+{
+  "primary_arms": [
+    "M2_pseudobulk_residual"
+  ],
+  "P1": false,
+  "split_noise_floor": 0.8231834326651015,
+  "responder_test_keys": 1323,
+  "best": {
+    "method": "M2_pseudobulk_residual",
+    "direction_accuracy": 0.7591474544212568,
+    "responder_direction_accuracy": 0.8225935438423291,
+    "de_rmse": 0.6273609761186367,
+    "keys": 2417
+  }
+}

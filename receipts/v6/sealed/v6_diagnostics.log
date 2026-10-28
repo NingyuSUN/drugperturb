@@ -1,0 +1,3 @@
+# started 2026-10-27T10:59:28.999923+00:00
+# /tmp/venvs/cellmodels/bin/python scripts/v6_diagnostics_report.py --prepared /kaggle/input/notebooks/ningyusunny/dp-v6-prepare/prepared --sealed /kaggle/working/sealed /kaggle/input/notebooks/ningyusunny/dp-v6-prepare/sealed --output /kaggle/working/reports/diagnostics.md --protocol /tmp/dp/configs/protocol_v6.yaml
+{"report": "/kaggle/working/reports/diagnostics.md", "arms": ["M1_pseudobulk_raw", "M2_pseudobulk_residual"], "selected": "M2_pseudobulk_residual", "split_noise_floor": 0.8231834326651015, "b1p_direction_accuracy": 0.81899885617964, "responders": 4946}

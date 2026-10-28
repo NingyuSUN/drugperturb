@@ -1,0 +1,3775 @@
+{
+  "status": "TEST_SCORED",
+  "test_outcomes_computed": true,
+  "protocol": "a40b56d2441105dc76ed418df81ddae922c38994016fdf0a6e0273e574ce6c89",
+  "de_k": 50,
+  "anchors": {
+    "shards": 3388,
+    "half_cells_equal_obs_pass_filter": true,
+    "half_library_equals_half_sums": true,
+    "halves_partition_each_unit": true,
+    "model_cells_found_once": true,
+    "model_cells_within_unit_sums": true,
+    "model_cells_equal_unit_sums_where_all_kept": true,
+    "model_library_equals_counts": true,
+    "zero_change_scores_chance": true,
+    "truth_fed_as_prediction_scores_one": true,
+    "b0_equals_zero": true
+  },
+  "endpoints": {
+    "primary_arms": [
+      "M2_pseudobulk_residual"
+    ],
+    "interval_level": 0.95,
+    "near_tie": false,
+    "selection_any_passing": true,
+    "gate_passing_contexts": [
+      "CVCL_0359_5000nM",
+      "CVCL_0359_500nM",
+      "CVCL_0359_50nM",
+      "CVCL_0371_5000nM",
+      "CVCL_0371_500nM",
+      "CVCL_0371_50nM",
+      "CVCL_0397_5000nM",
+      "CVCL_0397_500nM",
+      "CVCL_0397_50nM",
+      "CVCL_0480_5000nM",
+      "CVCL_0480_500nM",
+      "CVCL_0480_50nM",
+      "CVCL_1119_5000nM",
+      "CVCL_1119_500nM",
+      "CVCL_1119_50nM",
+      "CVCL_1635_5000nM",
+      "CVCL_1635_500nM",
+      "CVCL_1635_50nM",
+      "CVCL_1693_5000nM",
+      "CVCL_1693_500nM",
+      "CVCL_1693_50nM",
+      "CVCL_1731_5000nM",
+      "CVCL_1731_500nM",
+      "CVCL_1731_50nM",
+      "CVCL_C466_5000nM",
+      "CVCL_C466_500nM",
+      "CVCL_C466_50nM"
+    ],
+    "study_gate_G4": {
+      "gate_passing_contexts": [
+        "CVCL_0359_5000nM",
+        "CVCL_0359_500nM",
+        "CVCL_0359_50nM",
+        "CVCL_0371_5000nM",
+        "CVCL_0371_500nM",
+        "CVCL_0371_50nM",
+        "CVCL_0397_5000nM",
+        "CVCL_0397_500nM",
+        "CVCL_0397_50nM",
+        "CVCL_0480_5000nM",
+        "CVCL_0480_500nM",
+        "CVCL_0480_50nM",
+        "CVCL_1119_5000nM",
+        "CVCL_1119_500nM",
+        "CVCL_1119_50nM",
+        "CVCL_1635_5000nM",
+        "CVCL_1635_500nM",
+        "CVCL_1635_50nM",
+        "CVCL_1693_5000nM",
+        "CVCL_1693_500nM",
+        "CVCL_1693_50nM",
+        "CVCL_1731_5000nM",
+        "CVCL_1731_500nM",
+        "CVCL_1731_50nM",
+        "CVCL_C466_5000nM",
+        "CVCL_C466_500nM",
+        "CVCL_C466_50nM"
+      ],
+      "n_contexts": 27,
+      "n_lines": 9,
+      "n_doses": 3,
+      "met": true
+    },
+    "split_noise_floor": 0.8231834326651015,
+    "gate_G8_met": true,
+    "P1_direction_beyond_simple_baselines": {
+      "per_arm": {
+        "M2_pseudobulk_residual": {
+          "estimates": {
+            "B1p": {
+              "point_estimate": 0.001005695357783496,
+              "ci_lower": -0.000742983785005347,
+              "ci_upper": 0.0039060460179709887,
+              "level": 0.95,
+              "contexts": 27,
+              "n_groups": 76,
+              "draws": 10000,
+              "valid_draws": 10000,
+              "seed": 2026,
+              "positive_favors": "candidate"
+            },
+            "M1a": {
+              "point_estimate": 0.028048035832449796,
+              "ci_lower": 0.02135308996702342,
+              "ci_upper": 0.03605605794074965,
+              "level": 0.95,
+              "contexts": 27,
+              "n_groups": 76,
+              "draws": 10000,
+              "valid_draws": 10000,
+              "seed": 2026,
+              "positive_favors": "candidate"
+            }
+          },
+          "supported": false
+        }
+      },
+      "supported": false,
+      "confirmatory": true,
+      "note": "supported needs every lower bound above zero, for one primary arm"
+    },
+    "S1_above_chance": {
+      "vs_B0": {
+        "point_estimate": 0.31347414698690407,
+        "ci_lower": 0.2998602776484317,
+        "ci_upper": 0.32648575194419704,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "chance": 0.5,
+      "mean_accuracy": 0.7591474544212568
+    },
+    "S2_all_keys": {
+      "B1p": {
+        "point_estimate": 0.00041804233508250344,
+        "ci_lower": -0.0007120251035151904,
+        "ci_upper": 0.002220082387662118,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 77,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1a": {
+        "point_estimate": 0.027972913340257064,
+        "ci_lower": 0.023092035140959307,
+        "ci_upper": 0.033363697730305106,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 77,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      }
+    },
+    "S3_structure_baselines": {
+      "M1c_minus_B1c": {
+        "point_estimate": 0.0012591591898549442,
+        "ci_lower": -0.0003054917389129461,
+        "ci_upper": 0.0027402567674154102,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1a_minus_B1a": {
+        "point_estimate": 2.318321677651837e-05,
+        "ci_lower": -0.0007556513483800761,
+        "ci_upper": 0.0007849335719931358,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1r_minus_B1p": {
+        "point_estimate": -0.0004109835386083253,
+        "ci_lower": -0.0011006649931165075,
+        "ci_upper": 0.00028913499641350203,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      }
+    },
+    "S4_residual_arm": {
+      "point_estimate": 0.06118549296997894,
+      "ci_lower": 0.04895085131883215,
+      "ci_upper": 0.07502186922789257,
+      "level": 0.95,
+      "contexts": 27,
+      "n_groups": 76,
+      "draws": 10000,
+      "valid_draws": 10000,
+      "seed": 2026,
+      "positive_favors": "candidate"
+    },
+    "S5_rmse_on_de_genes": {
+      "M2_pseudobulk_residual_minus_B1p": {
+        "point_estimate": -0.001962250971537163,
+        "ci_lower": -0.004859323906149698,
+        "ci_upper": -0.00018664299511415557,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "baseline"
+      },
+      "note": "an error, so a NEGATIVE difference favours the candidate"
+    },
+    "S6_replicates_v5": {
+      "B1p_minus_B1a": {
+        "point_estimate": -0.023893707223081595,
+        "ci_lower": -0.029292155671366515,
+        "ci_upper": -0.018596227153012686,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "baseline"
+      },
+      "B1a_minus_B1c": {
+        "point_estimate": -0.049185179854002045,
+        "ci_lower": -0.06171517039920511,
+        "ci_upper": -0.03743433402879924,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "baseline"
+      },
+      "note": "an error, so a NEGATIVE difference favours the candidate"
+    }
+  },
+  "secondary": {
+    "every_pair": {
+      "M1_pseudobulk_raw_minus_B1p": {
+        "point_estimate": -0.06017979761219544,
+        "ci_lower": -0.07458047839365725,
+        "ci_upper": -0.046622327701115296,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1_pseudobulk_raw_minus_B1c": {
+        "point_estimate": -0.01839437718256715,
+        "ci_lower": -0.027982389896236012,
+        "ci_upper": -0.009920978630145027,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1_pseudobulk_raw_minus_B0": {
+        "point_estimate": 0.2522886540169251,
+        "ci_lower": 0.23005362375790275,
+        "ci_upper": 0.2729425956608398,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M2_pseudobulk_residual_minus_B1p": {
+        "point_estimate": 0.001005695357783496,
+        "ci_lower": -0.000742983785005347,
+        "ci_upper": 0.0039060460179709887,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M2_pseudobulk_residual_minus_B1c": {
+        "point_estimate": 0.042791115787411786,
+        "ci_lower": 0.03567594629814579,
+        "ci_upper": 0.051013078607713126,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M2_pseudobulk_residual_minus_B0": {
+        "point_estimate": 0.31347414698690407,
+        "ci_lower": 0.2998602776484317,
+        "ci_upper": 0.32648575194419704,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1r_minus_B1p": {
+        "point_estimate": -0.0004109835386083253,
+        "ci_lower": -0.0011006649931165075,
+        "ci_upper": 0.00028913499641350203,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1r_minus_B1c": {
+        "point_estimate": 0.041374436891019974,
+        "ci_lower": 0.03285124085000801,
+        "ci_upper": 0.05035596282505431,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1r_minus_B0": {
+        "point_estimate": 0.3120574680905122,
+        "ci_lower": 0.29903274367990396,
+        "ci_upper": 0.3244928438898465,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      }
+    },
+    "unscaled_M1r": {
+      "point_estimate": -0.00034836071111962226,
+      "ci_lower": -0.0010984570632730688,
+      "ci_upper": 0.00043736488604253154,
+      "level": 0.95,
+      "contexts": 27,
+      "n_groups": 76,
+      "draws": 10000,
+      "valid_draws": 10000,
+      "seed": 2026,
+      "positive_favors": "candidate"
+    },
+    "without_small_vehicle_line": {
+      "B1p": {
+        "point_estimate": 0.001005695357783496,
+        "ci_lower": -0.000742983785005347,
+        "ci_upper": 0.0039060460179709887,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      },
+      "M1a": {
+        "point_estimate": 0.028048035832449796,
+        "ci_lower": 0.02135308996702342,
+        "ci_upper": 0.03605605794074965,
+        "level": 0.95,
+        "contexts": 27,
+        "n_groups": 76,
+        "draws": 10000,
+        "valid_draws": 10000,
+        "seed": 2026,
+        "positive_favors": "candidate"
+      }
+    },
+    "leave_one_plate_out": {
+      "plate1": {
+        "B1p": {
+          "point_estimate": 0.0008806023413867428,
+          "ci_lower": -0.0009021415716503174,
+          "ci_upper": 0.003668668874356207,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 75,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate10": {
+        "B1p": {
+          "point_estimate": 0.0008958968137599449,
+          "ci_lower": -0.0009609708712829259,
+          "ci_upper": 0.0038929600974327233,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate11": {
+        "B1p": {
+          "point_estimate": 2.0453272453101162e-05,
+          "ci_lower": -0.0007886047716367177,
+          "ci_upper": 0.0010701964445869092,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate12": {
+        "B1p": {
+          "point_estimate": 0.0004008088240223421,
+          "ci_lower": -0.0008197473080935365,
+          "ci_upper": 0.0022742673237404736,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate13": {
+        "B1p": {
+          "point_estimate": 0.0010410354025872973,
+          "ci_lower": -0.0007543160524493545,
+          "ci_upper": 0.0039830736987265854,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 73,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate14": {
+        "B1p": {
+          "point_estimate": 0.0013363083186153286,
+          "ci_lower": -0.0009232614112933467,
+          "ci_upper": 0.004825670543349958,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 75,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate2": {
+        "B1p": {
+          "point_estimate": 0.00193990976108132,
+          "ci_lower": -0.0009971038815394717,
+          "ci_upper": 0.006807333524834557,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 74,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate3": {
+        "B1p": {
+          "point_estimate": 0.0011680255918868898,
+          "ci_lower": -0.0007276946820341583,
+          "ci_upper": 0.00432297877599179,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate4": {
+        "B1p": {
+          "point_estimate": 0.0011545638756372564,
+          "ci_lower": -0.0005125982685208307,
+          "ci_upper": 0.003978943779948126,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate5": {
+        "B1p": {
+          "point_estimate": 0.0012359147419957485,
+          "ci_lower": -0.0007895602625787445,
+          "ci_upper": 0.004525096933350669,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate6": {
+        "B1p": {
+          "point_estimate": 0.0013363083186153286,
+          "ci_lower": -0.0009232614112933467,
+          "ci_upper": 0.004825670543349958,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 75,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate7": {
+        "B1p": {
+          "point_estimate": 0.0010514737754887895,
+          "ci_lower": -0.0006995914962999036,
+          "ci_upper": 0.00395491145423577,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate8": {
+        "B1p": {
+          "point_estimate": 0.0012722573013141656,
+          "ci_lower": -0.0005712919074164447,
+          "ci_upper": 0.004381953121377064,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      },
+      "plate9": {
+        "B1p": {
+          "point_estimate": 0.001105780793340069,
+          "ci_lower": -0.0007007972079137812,
+          "ci_upper": 0.004069742184654133,
+          "level": 0.95,
+          "contexts": 27,
+          "n_groups": 76,
+          "draws": 10000,
+          "valid_draws": 10000,
+          "seed": 2026,
+          "positive_favors": "candidate"
+        }
+      }
+    },
+    "de_overlap": {
+      "M1_pseudobulk_raw": 0.08023369907641575,
+      "M2_pseudobulk_residual": 0.1253716100673159,
+      "B1p": 0.12752000957355272,
+      "M1a": 0.09384155151308905
+    },
+    "per_context": [
+      {
+        "method": "B0",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.863356285579035,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7944922358362249,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7014270544062876,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.9263632370369312,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7918355805390039,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7115553290602129,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.9064208947864241,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7925696215852929,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7011581059612224,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.8610858910778928,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7792801729130449,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.6958178507335069,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.8926747599256905,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7753774596946241,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.6804375292668643,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 1.2207954899018372,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 1.1645837447918845,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 1.265300788906693,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.8851504718018703,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.785904849029657,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7059853580467632,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.9531835886506367,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.804701290584785,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7615089567664041,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.9373593339277917,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7899386839449266,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7032703206134431,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 1.012969848323796,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.8376454285935394,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B0",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.5,
+        "de_rmse": 0.7640370529092323,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.7850777453838679,
+        "de_rmse": 0.6299591395950495,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7588836980575363,
+        "de_rmse": 0.5540737404995673,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7644897959183674,
+        "de_rmse": 0.48068155197942897,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7676026555200394,
+        "de_rmse": 0.7146875337394081,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.756287189574625,
+        "de_rmse": 0.5791859759784166,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7373570392170528,
+        "de_rmse": 0.5355655718719421,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7539365625768379,
+        "de_rmse": 0.6986567996569398,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7309958200147528,
+        "de_rmse": 0.5955371819683709,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7460972537163013,
+        "de_rmse": 0.5079740381381962,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.8169047619047619,
+        "de_rmse": 0.6076912496891618,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.8144578313253011,
+        "de_rmse": 0.5208167660207275,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8323456790123457,
+        "de_rmse": 0.4362674554801227,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.7765840621963072,
+        "de_rmse": 0.6777494818979489,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.7710843373493976,
+        "de_rmse": 0.5312021663576536,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.7707382212144117,
+        "de_rmse": 0.4717760784469308,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.626511217019785,
+        "de_rmse": 1.1318257914855385,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5961581241588746,
+        "de_rmse": 1.1090995586199461,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5976570196620508,
+        "de_rmse": 1.195773208254093,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.736230841734284,
+        "de_rmse": 0.7037343076664744,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7291566265060241,
+        "de_rmse": 0.5792305426513479,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.741478751994625,
+        "de_rmse": 0.5159593129035636,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.6985314315695883,
+        "de_rmse": 0.8136804017589911,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6579690189328743,
+        "de_rmse": 0.6512874520869925,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6686390358612582,
+        "de_rmse": 0.6240777197489065,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7521379980563654,
+        "de_rmse": 0.7429241954385637,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.705301204819277,
+        "de_rmse": 0.6105356240340624,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7310002519526329,
+        "de_rmse": 0.5492687539688894,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.7143784418529316,
+        "de_rmse": 0.8441345313795372,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.6827046963363659,
+        "de_rmse": 0.6774156350576509,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B1a",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.6778975191794377,
+        "de_rmse": 0.6286296554543642,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.7629494655004859,
+        "de_rmse": 0.6880817594940164,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7679321367101057,
+        "de_rmse": 0.589024104826428,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7405492567397329,
+        "de_rmse": 0.5302030834064028,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7459159085320876,
+        "de_rmse": 0.7642385179893628,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7700073764445537,
+        "de_rmse": 0.6091230524810065,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7201096485350116,
+        "de_rmse": 0.5564251238094515,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7172117039586919,
+        "de_rmse": 0.7480867803156153,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7346299483648882,
+        "de_rmse": 0.6212718771335894,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7272461577223482,
+        "de_rmse": 0.5389014239488467,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.7966666666666666,
+        "de_rmse": 0.6759379306590573,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.8346987951807229,
+        "de_rmse": 0.5529660168743764,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.81679012345679,
+        "de_rmse": 0.48466140154289583,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.7753790087463557,
+        "de_rmse": 0.7248717392789413,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.787710843373494,
+        "de_rmse": 0.577106585709266,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.7556664147140338,
+        "de_rmse": 0.5079748342057449,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.5976934645444844,
+        "de_rmse": 1.1739691169508901,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5734271350538366,
+        "de_rmse": 1.1222056703843883,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5772603944445494,
+        "de_rmse": 1.2181090895308229,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7184189820506516,
+        "de_rmse": 0.742002772835001,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7332530120481927,
+        "de_rmse": 0.6129018241453621,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.717869740488788,
+        "de_rmse": 0.5454630520931615,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.6671199574054546,
+        "de_rmse": 0.8335638003364485,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6574625030735186,
+        "de_rmse": 0.6579165239894836,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6512530444276476,
+        "de_rmse": 0.6496855492564741,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.718041788143829,
+        "de_rmse": 0.7981895450509044,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7209638554216868,
+        "de_rmse": 0.6318577308127862,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7001108591584783,
+        "de_rmse": 0.5668328982151091,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.650331430191124,
+        "de_rmse": 0.8987531644312028,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.6778559134497173,
+        "de_rmse": 0.6967412833090784,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B1c",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.634875237803119,
+        "de_rmse": 0.656299622098209,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.8062827988338193,
+        "de_rmse": 0.6096973697425501,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7965724120973691,
+        "de_rmse": 0.5256446202696405,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7899521289997481,
+        "de_rmse": 0.4549324339505256,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7941332677649373,
+        "de_rmse": 0.6851203916953876,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7931546594541431,
+        "de_rmse": 0.5438427366888602,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7615751462129374,
+        "de_rmse": 0.5027465884313003,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7739562330956479,
+        "de_rmse": 0.6804312071621319,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7637472338332923,
+        "de_rmse": 0.5701306615365728,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.765578231292517,
+        "de_rmse": 0.4821162605699012,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.839047619047619,
+        "de_rmse": 0.5953713312261584,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.8578313253012049,
+        "de_rmse": 0.488080849650249,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8639506172839506,
+        "de_rmse": 0.41116614811969054,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.8225461613216716,
+        "de_rmse": 0.6352365370702989,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.8183132530120482,
+        "de_rmse": 0.5056029763003417,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.8164222726127488,
+        "de_rmse": 0.43622382663422415,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.6287817492947774,
+        "de_rmse": 1.1277636201905308,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5946324964107488,
+        "de_rmse": 1.102320187639481,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.6148180043004713,
+        "de_rmse": 1.1811810778990908,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7603567330546677,
+        "de_rmse": 0.6762192371214146,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7674698795180723,
+        "de_rmse": 0.5554321869935023,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7573927101704879,
+        "de_rmse": 0.4962186014537369,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.7124602700756087,
+        "de_rmse": 0.7913808572258467,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.688566510941726,
+        "de_rmse": 0.6299931864504991,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6928730998572269,
+        "de_rmse": 0.6091829807786083,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7652137998056366,
+        "de_rmse": 0.7171096730923047,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7513253012048192,
+        "de_rmse": 0.5864667932550615,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7534845049130763,
+        "de_rmse": 0.5144527242892409,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.716312358276644,
+        "de_rmse": 0.8103177397882048,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.7012589132038358,
+        "de_rmse": 0.657891871199801,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B1p",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.6915710981118159,
+        "de_rmse": 0.6086400192813838,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.8036686103012634,
+        "de_rmse": 0.6110277976145146,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7956085566756823,
+        "de_rmse": 0.5258934583946403,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7884656084656084,
+        "de_rmse": 0.45510624859279575,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7953430046717483,
+        "de_rmse": 0.6865026820035737,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7955741332677649,
+        "de_rmse": 0.5432366272276635,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7615701071602794,
+        "de_rmse": 0.5029610705035057,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7722645684779936,
+        "de_rmse": 0.6825187153350051,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7630243422670272,
+        "de_rmse": 0.569909623422636,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7653363567649282,
+        "de_rmse": 0.4826406436542796,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.8392857142857143,
+        "de_rmse": 0.5974947277700258,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.8580722891566265,
+        "de_rmse": 0.488264128420255,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8639506172839506,
+        "de_rmse": 0.41188451975064644,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.8244509232264334,
+        "de_rmse": 0.6370062877010312,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.8183132530120482,
+        "de_rmse": 0.505613948457393,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.8174099269337365,
+        "de_rmse": 0.4371799704426004,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.6314525293620378,
+        "de_rmse": 1.126984149116628,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5937707529291617,
+        "de_rmse": 1.1025240594819,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.6125332466474102,
+        "de_rmse": 1.1815281928505712,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7601155642980083,
+        "de_rmse": 0.6778300815374138,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7679518072289157,
+        "de_rmse": 0.5552599787826085,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7566570084824054,
+        "de_rmse": 0.4967083657374581,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.7117559049962436,
+        "de_rmse": 0.7916564667573863,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6892894025079911,
+        "de_rmse": 0.6293464120579447,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6931300915427899,
+        "de_rmse": 0.6094079928498776,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7640233236151603,
+        "de_rmse": 0.7188225735235084,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7513253012048192,
+        "de_rmse": 0.5864143577244934,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7529906777525825,
+        "de_rmse": 0.5147772580925085,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.716555312601231,
+        "de_rmse": 0.8106563934519112,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.6990902385050406,
+        "de_rmse": 0.6576571963804054,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B1r",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.6913342626368851,
+        "de_rmse": 0.608222776606761,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.6504713313896987,
+        "de_rmse": 0.7758743948488048,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.6703073518564052,
+        "de_rmse": 0.6792433447603405,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.61758629377677,
+        "de_rmse": 0.6667717086116597,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.6425374969264814,
+        "de_rmse": 0.8639453846271515,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.6613080895008606,
+        "de_rmse": 0.7142682630471975,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.6355228508529758,
+        "de_rmse": 0.6687288007506974,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.652156380624539,
+        "de_rmse": 0.8426172127144888,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.6502483402999754,
+        "de_rmse": 0.7156079613153719,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.6338271604938273,
+        "de_rmse": 0.6565331484404944,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.6738095238095239,
+        "de_rmse": 0.7644144333378213,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.7171084337349398,
+        "de_rmse": 0.6304649262147034,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.6871604938271605,
+        "de_rmse": 0.5888363439612002,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.6615646258503401,
+        "de_rmse": 0.8081708931436024,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.6804819277108434,
+        "de_rmse": 0.6530739476424087,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.6467724867724868,
+        "de_rmse": 0.6169229864635499,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.5405830253264837,
+        "de_rmse": 1.4139937199470158,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5238163763126501,
+        "de_rmse": 1.3552423170353558,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5099129575150481,
+        "de_rmse": 1.4552406559255844,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.6295154085730678,
+        "de_rmse": 0.8435346191729012,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.636144578313253,
+        "de_rmse": 0.7185796811461204,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.631771646930377,
+        "de_rmse": 0.6612608692884216,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.5913669368456602,
+        "de_rmse": 0.9766070395485895,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6015441357265798,
+        "de_rmse": 0.7744561852723643,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.5847908793146888,
+        "de_rmse": 0.7721455623287998,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.6296064139941691,
+        "de_rmse": 0.8970377229854646,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.6380722891566265,
+        "de_rmse": 0.7370368423981214,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.6094734189972285,
+        "de_rmse": 0.692934709451053,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.5923916828636216,
+        "de_rmse": 1.0291284849463387,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.6212343250553233,
+        "de_rmse": 0.8220066622087889,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B2c",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.5820381963842972,
+        "de_rmse": 0.808235745712743,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.7310301263362489,
+        "de_rmse": 0.7118004634710798,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7290041799852471,
+        "de_rmse": 0.629068991996463,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7267422524565381,
+        "de_rmse": 0.5661666075578038,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7146201131054832,
+        "de_rmse": 0.8087740129566754,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7295598721416278,
+        "de_rmse": 0.6590028745675178,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7058858055962075,
+        "de_rmse": 0.6061598162010616,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7013572657978854,
+        "de_rmse": 0.7934898702223582,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7090484386525695,
+        "de_rmse": 0.677029954963911,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7050340136054423,
+        "de_rmse": 0.5927111074749758,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.7497619047619049,
+        "de_rmse": 0.6987537935900472,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.7708433734939759,
+        "de_rmse": 0.5837894679740866,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.7977777777777778,
+        "de_rmse": 0.5069812809186736,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.7375413022351798,
+        "de_rmse": 0.7337529733949808,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.7501204819277109,
+        "de_rmse": 0.6041637416203742,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.7571680524061476,
+        "de_rmse": 0.5317410677721267,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.5927909181797226,
+        "de_rmse": 1.3077537990371884,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5694753878953458,
+        "de_rmse": 1.3084219322033226,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.579360344218631,
+        "de_rmse": 1.3859927091508555,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.6940420867142038,
+        "de_rmse": 0.7929909314780257,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.6990361445783133,
+        "de_rmse": 0.6652748832210688,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7133637776098093,
+        "de_rmse": 0.5950761536795766,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.6589037590720179,
+        "de_rmse": 0.9248416355017762,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6408556675682322,
+        "de_rmse": 0.7473844161651187,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6435840262030738,
+        "de_rmse": 0.7236668252987004,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.6948785228377065,
+        "de_rmse": 0.8320304579455404,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.6891566265060242,
+        "de_rmse": 0.7017502699317497,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.6902443940539179,
+        "de_rmse": 0.632842924387019,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.6632272432782637,
+        "de_rmse": 0.9549897392588436,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.6638947627243669,
+        "de_rmse": 0.7827836349133163,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "B2r",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.639216436440384,
+        "de_rmse": 0.7445736498966575,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.7318926141885326,
+        "de_rmse": 0.72648815108991,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7477575608556676,
+        "de_rmse": 0.6379224568918036,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7046359284454522,
+        "de_rmse": 0.5771107692030556,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.711790017211704,
+        "de_rmse": 0.8047079827153103,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7474797147774772,
+        "de_rmse": 0.6611731297608597,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.6909837789857209,
+        "de_rmse": 0.604752805806306,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7038185394639783,
+        "de_rmse": 0.7810062585689177,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.6985812638308335,
+        "de_rmse": 0.659576965763897,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.6969916855631141,
+        "de_rmse": 0.5840842313768903,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.7703571428571427,
+        "de_rmse": 0.7124218210531604,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.811566265060241,
+        "de_rmse": 0.6155986341504442,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.7813580246913581,
+        "de_rmse": 0.5531291250690674,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.7521865889212828,
+        "de_rmse": 0.7527183840211435,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.7598795180722892,
+        "de_rmse": 0.6203174206999393,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.7125673973293021,
+        "de_rmse": 0.5505504126992388,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.595232543714714,
+        "de_rmse": 1.1832370850525307,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5636030184771146,
+        "de_rmse": 1.136583196471081,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5726355731064396,
+        "de_rmse": 1.233089069581405,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7056753544791411,
+        "de_rmse": 0.7667460292142771,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7102409638554217,
+        "de_rmse": 0.6487433817137052,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.6938970773494583,
+        "de_rmse": 0.5934124779623678,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.662793035653978,
+        "de_rmse": 0.8606828276279276,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6414482419473814,
+        "de_rmse": 0.6957121374390999,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6131992735365751,
+        "de_rmse": 0.6824012641085329,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7023056365403304,
+        "de_rmse": 0.8199433952136344,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.6904819277108434,
+        "de_rmse": 0.6661461104363371,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.6604157218442933,
+        "de_rmse": 0.6062009656906034,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.6612886702299968,
+        "de_rmse": 0.912868293306112,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.668819768871404,
+        "de_rmse": 0.7281441700432465,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "M1_pseudobulk_raw",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.609259113199762,
+        "de_rmse": 0.683447448919871,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.7829446064139941,
+        "de_rmse": 0.6287797088936572,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7596016719940989,
+        "de_rmse": 0.5529850164164222,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7642428823381204,
+        "de_rmse": 0.4806338289567364,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7690631915416769,
+        "de_rmse": 0.7127518399884478,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7565281534300468,
+        "de_rmse": 0.5778093605273042,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7383396544853822,
+        "de_rmse": 0.5348380190841487,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7524956970740103,
+        "de_rmse": 0.6973606945298341,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7276223260388494,
+        "de_rmse": 0.5946141184811383,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7470798689846309,
+        "de_rmse": 0.5076679540352144,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.8192857142857142,
+        "de_rmse": 0.6067939428036839,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.815421686746988,
+        "de_rmse": 0.5192223881801352,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8333333333333334,
+        "de_rmse": 0.43596266952644697,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.7756316812439261,
+        "de_rmse": 0.6764550497557448,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.7703614457831325,
+        "de_rmse": 0.5296781546721472,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.7677802973041068,
+        "de_rmse": 0.47162242563331963,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.6295339365745956,
+        "de_rmse": 1.1336123550500585,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.599020078230843,
+        "de_rmse": 1.1096512945747394,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5973314988287174,
+        "de_rmse": 1.1958523767328981,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7367228096057701,
+        "de_rmse": 0.7041218201123088,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7298795180722891,
+        "de_rmse": 0.5790178726247355,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7434542705971278,
+        "de_rmse": 0.5158920226083725,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.6985466291379774,
+        "de_rmse": 0.8150540629493653,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6589377919842636,
+        "de_rmse": 0.6511994992656089,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6678829680020156,
+        "de_rmse": 0.6243450910916717,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7504616132167152,
+        "de_rmse": 0.7426476303379717,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7043373493975904,
+        "de_rmse": 0.6106928586575481,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7307482993197278,
+        "de_rmse": 0.5497291188249799,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.7160451085195984,
+        "de_rmse": 0.8460976711037025,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.6824637324809442,
+        "de_rmse": 0.6773559507658411,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "M1a",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.6781547208255283,
+        "de_rmse": 0.6290170520551053,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.7667541302235179,
+        "de_rmse": 0.6858258398009324,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7698598475534792,
+        "de_rmse": 0.5868775279796499,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.740050390526581,
+        "de_rmse": 0.5301105425448592,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7485665109417261,
+        "de_rmse": 0.7609236483684717,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7724219326284731,
+        "de_rmse": 0.6068511530372352,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.723072821458502,
+        "de_rmse": 0.5553926109123186,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7230095893779198,
+        "de_rmse": 0.7454120495867734,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7367986230636833,
+        "de_rmse": 0.619308467399837,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.724777021919879,
+        "de_rmse": 0.537760248279461,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.7978571428571428,
+        "de_rmse": 0.6739066889828349,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.8337349397590362,
+        "de_rmse": 0.5505489752275081,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8180246913580248,
+        "de_rmse": 0.4837270316996264,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.7727551020408163,
+        "de_rmse": 0.7224041079743048,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.7886746987951806,
+        "de_rmse": 0.574415383584547,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.7586293776769967,
+        "de_rmse": 0.5071348726003478,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.5965665443379531,
+        "de_rmse": 1.173143245314314,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5740155225563199,
+        "de_rmse": 1.1223608576076212,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.5772797928289031,
+        "de_rmse": 1.2180557628367128,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7182077288746824,
+        "de_rmse": 0.7409707227562075,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7387951807228915,
+        "de_rmse": 0.6109930587009302,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7168875451415134,
+        "de_rmse": 0.5445292835243601,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.6707610458063671,
+        "de_rmse": 0.8311476789175481,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6567396115072535,
+        "de_rmse": 0.6567597408412454,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6514848408499202,
+        "de_rmse": 0.6485884981597234,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7216326530612245,
+        "de_rmse": 0.7954243254020044,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.724578313253012,
+        "de_rmse": 0.6306628358310485,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7038196019148399,
+        "de_rmse": 0.5662488205281174,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.6529745707806933,
+        "de_rmse": 0.8965640939901315,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.68001967051881,
+        "de_rmse": 0.6954945292524232,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "M1c",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.634870198750461,
+        "de_rmse": 0.655604288730211,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.8053401360544218,
+        "de_rmse": 0.6108912798871954,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7939168920580281,
+        "de_rmse": 0.5255036733792127,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7884605694129503,
+        "de_rmse": 0.45524627160512,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7972707155151217,
+        "de_rmse": 0.6856647690009638,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7929186132284239,
+        "de_rmse": 0.5430627253520798,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7613282326326906,
+        "de_rmse": 0.50282854180861,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7720236046225719,
+        "de_rmse": 0.6824752120108156,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7627833784116056,
+        "de_rmse": 0.5699652681377354,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7653363567649282,
+        "de_rmse": 0.4823497226936587,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.8397619047619048,
+        "de_rmse": 0.5974663467338852,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.857590361445783,
+        "de_rmse": 0.48796179965624836,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8624691358024691,
+        "de_rmse": 0.4121504020015383,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.8242128279883383,
+        "de_rmse": 0.636823583264293,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.8187951807228915,
+        "de_rmse": 0.5052588884722943,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.8174099269337365,
+        "de_rmse": 0.4372543298975795,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.6291843257843104,
+        "de_rmse": 1.1276865522265265,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5940620551643414,
+        "de_rmse": 1.1026821129808861,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.6148180043004713,
+        "de_rmse": 1.1811810778990908,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7598746004425867,
+        "de_rmse": 0.6778626660130085,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7657831325301205,
+        "de_rmse": 0.5552977734738495,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7573927101704879,
+        "de_rmse": 0.4963940290277439,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.7129415221002281,
+        "de_rmse": 0.7916329162151595,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6883255470863044,
+        "de_rmse": 0.629270158258592,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6931250524901318,
+        "de_rmse": 0.6092034195791037,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7640233236151603,
+        "de_rmse": 0.718812476601436,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7501204819277109,
+        "de_rmse": 0.5865211068222136,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7529957168052406,
+        "de_rmse": 0.5150532974691308,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.7158410268869453,
+        "de_rmse": 0.8107605288044224,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.698362429309073,
+        "de_rmse": 0.6575969493970529,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "M1r",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.692080042430284,
+        "de_rmse": 0.6087024688139363,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.8053401360544218,
+        "de_rmse": 0.6108912798871954,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7939168920580281,
+        "de_rmse": 0.5255036733792127,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7884605694129503,
+        "de_rmse": 0.45534274814655634,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7972707155151217,
+        "de_rmse": 0.6856647690009638,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7929186132284239,
+        "de_rmse": 0.5430627253520798,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7600680495471107,
+        "de_rmse": 0.5031193265707228,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7720236046225719,
+        "de_rmse": 0.6824752120108156,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7627833784116056,
+        "de_rmse": 0.5699652681377354,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7648425296044343,
+        "de_rmse": 0.48272876906515355,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.8397619047619048,
+        "de_rmse": 0.5974663467338852,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.857590361445783,
+        "de_rmse": 0.48796179965624836,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8624691358024691,
+        "de_rmse": 0.41227776955995576,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.8242128279883383,
+        "de_rmse": 0.636823583264293,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.8187951807228915,
+        "de_rmse": 0.5052588884722943,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.8174099269337365,
+        "de_rmse": 0.4372543298975795,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.6310746004126803,
+        "de_rmse": 1.1270408407875359,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5949133671176942,
+        "de_rmse": 1.1027770368838634,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.6125332466474102,
+        "de_rmse": 1.1815075527721366,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7598746004425867,
+        "de_rmse": 0.6778626660130085,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7657831325301205,
+        "de_rmse": 0.5552977734738495,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7576345846980768,
+        "de_rmse": 0.49669744127112125,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.7129415221002281,
+        "de_rmse": 0.7916329162151595,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6883255470863044,
+        "de_rmse": 0.629270158258592,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6941127068111196,
+        "de_rmse": 0.6094275081149552,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7640233236151603,
+        "de_rmse": 0.718812476601436,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7501204819277109,
+        "de_rmse": 0.5865211068222136,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7544771982867221,
+        "de_rmse": 0.5152350544579355,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.7158410268869453,
+        "de_rmse": 0.8107605288044224,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.698362429309073,
+        "de_rmse": 0.6575969493970529,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "M1r_unscaled",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.6910823100039801,
+        "de_rmse": 0.6088376682386796,
+        "compounds": 81,
+        "responders": 18
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0359_5000nM",
+        "direction_accuracy": 0.8053304178814383,
+        "de_rmse": 0.6083722593114292,
+        "compounds": 84,
+        "responders": 55
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0359_500nM",
+        "direction_accuracy": 0.7972953036636341,
+        "de_rmse": 0.5246870440871744,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0359_50nM",
+        "direction_accuracy": 0.7889644746787604,
+        "de_rmse": 0.45465117450029074,
+        "compounds": 81,
+        "responders": 47
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0371_5000nM",
+        "direction_accuracy": 0.7953380870420457,
+        "de_rmse": 0.6836975447176372,
+        "compounds": 83,
+        "responders": 53
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0371_500nM",
+        "direction_accuracy": 0.7958052618637816,
+        "de_rmse": 0.5424470139566602,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0371_50nM",
+        "direction_accuracy": 0.7610762799997856,
+        "de_rmse": 0.5019592889094767,
+        "compounds": 81,
+        "responders": 55
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0397_5000nM",
+        "direction_accuracy": 0.7758790263093188,
+        "de_rmse": 0.6788426582361984,
+        "compounds": 83,
+        "responders": 54
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0397_500nM",
+        "direction_accuracy": 0.7651930169658224,
+        "de_rmse": 0.5683987206331179,
+        "compounds": 83,
+        "responders": 58
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0397_50nM",
+        "direction_accuracy": 0.7653413958175863,
+        "de_rmse": 0.48168134324310724,
+        "compounds": 81,
+        "responders": 53
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0480_5000nM",
+        "direction_accuracy": 0.8392857142857143,
+        "de_rmse": 0.5945044163782484,
+        "compounds": 84,
+        "responders": 70
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0480_500nM",
+        "direction_accuracy": 0.8571084337349397,
+        "de_rmse": 0.4870722758205198,
+        "compounds": 83,
+        "responders": 79
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_0480_50nM",
+        "direction_accuracy": 0.8619753086419752,
+        "de_rmse": 0.4108633775730785,
+        "compounds": 81,
+        "responders": 75
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1119_5000nM",
+        "direction_accuracy": 0.8232555879494654,
+        "de_rmse": 0.6340236371712058,
+        "compounds": 84,
+        "responders": 64
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1119_500nM",
+        "direction_accuracy": 0.8207228915662651,
+        "de_rmse": 0.5044147681219204,
+        "compounds": 83,
+        "responders": 67
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1119_50nM",
+        "direction_accuracy": 0.8171680524061476,
+        "de_rmse": 0.43567931877575733,
+        "compounds": 81,
+        "responders": 56
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1577_5000nM",
+        "direction_accuracy": 0.6291747954021092,
+        "de_rmse": 1.1275916514670001,
+        "compounds": 54,
+        "responders": 0
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1577_500nM",
+        "direction_accuracy": 0.5955519778414867,
+        "de_rmse": 1.1024032924704041,
+        "compounds": 70,
+        "responders": 0
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1577_50nM",
+        "direction_accuracy": 0.6125986165453693,
+        "de_rmse": 1.181811163139178,
+        "compounds": 64,
+        "responders": 0
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1635_5000nM",
+        "direction_accuracy": 0.7596338414884025,
+        "de_rmse": 0.6755226175133571,
+        "compounds": 83,
+        "responders": 40
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1635_500nM",
+        "direction_accuracy": 0.7696385542168676,
+        "de_rmse": 0.5544971557252727,
+        "compounds": 83,
+        "responders": 47
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1635_50nM",
+        "direction_accuracy": 0.7559011505836902,
+        "de_rmse": 0.49600558369242703,
+        "compounds": 81,
+        "responders": 28
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1693_5000nM",
+        "direction_accuracy": 0.7124748473350839,
+        "de_rmse": 0.7901544029706378,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1693_500nM",
+        "direction_accuracy": 0.6888074747971478,
+        "de_rmse": 0.6291454855995836,
+        "compounds": 83,
+        "responders": 36
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1693_50nM",
+        "direction_accuracy": 0.6938657932308726,
+        "de_rmse": 0.6089571463521493,
+        "compounds": 81,
+        "responders": 24
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1731_5000nM",
+        "direction_accuracy": 0.7652040816326531,
+        "de_rmse": 0.7154764773030139,
+        "compounds": 84,
+        "responders": 39
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1731_500nM",
+        "direction_accuracy": 0.7518072289156627,
+        "de_rmse": 0.5846614547646739,
+        "compounds": 83,
+        "responders": 46
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_1731_50nM",
+        "direction_accuracy": 0.7554698916603678,
+        "de_rmse": 0.5136616898887048,
+        "compounds": 81,
+        "responders": 32
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_C466_5000nM",
+        "direction_accuracy": 0.715850947521866,
+        "de_rmse": 0.8087406028493498,
+        "compounds": 84,
+        "responders": 32
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_C466_500nM",
+        "direction_accuracy": 0.7034275879026309,
+        "de_rmse": 0.6565288995386661,
+        "compounds": 83,
+        "responders": 38
+      },
+      {
+        "method": "M2_pseudobulk_residual",
+        "context_id": "CVCL_C466_50nM",
+        "direction_accuracy": 0.6908150302525734,
+        "de_rmse": 0.6084862166911558,
+        "compounds": 81,
+        "responders": 18
+      }
+    ],
+    "accuracy_k20": {
+      "k": 20,
+      "accuracy": {
+        "M1_pseudobulk_raw": 0.7679188049488802,
+        "M2_pseudobulk_residual": 0.8232247284878864,
+        "B1p": 0.8221665274296852,
+        "M1a": 0.8008234872896527,
+        "B0": 0.5
+      }
+    },
+    "accuracy_k100": {
+      "k": 100,
+      "accuracy": {
+        "M1_pseudobulk_raw": 0.7576332852021223,
+        "M2_pseudobulk_residual": 0.8240001243402603,
+        "B1p": 0.8232289950268571,
+        "M1a": 0.7875797448780928,
+        "B0": 0.5
+      }
+    }
+  },
+  "eligible_test_keys": 2417,
+  "responder_test_keys": 1323,
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 2026,
+    "unit": "scaffold_group"
+  },
+  "seals": {
+    "M1_pseudobulk_raw": "b8318176f4b7cdbf3c7c9b62a508c1295c7ffd0605687b624eb00184c35160a4",
+    "M2_pseudobulk_residual": "4186534e50d3ed8bb5476b69a65b15c0647d85f1ca45d703fd927853e7fbc529",
+    "baselines": "2b9be6ca944d82769821b1870b0559caaa631bb261673c92fd0e22f920e93e24"
+  },
+  "outputs": {
+    "per_compound.tsv": "3510d617c47f907eb377ca56361dc72b7a301ee75327f6612741d982873f41d3",
+    "summary.tsv": "182c2564a9bc564e2334a05520f0f495a2031229f4b237d867b0d1c5a2b8ed0f"
+  }
+}

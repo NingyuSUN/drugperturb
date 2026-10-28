@@ -1,0 +1,11 @@
+value differences (must be empty): 1
+   .endpoints.S6_replicates_v5.note: present in only one record
+label differences (expected): 3
+   .endpoints.S5_rmse_on_de_genes.M2_pseudobulk_residual_minus_B1p.positive_favors: 'candidate' -> 'baseline'
+   .endpoints.S6_replicates_v5.B1a_minus_B1c.positive_favors: 'candidate' -> 'baseline'
+   .endpoints.S6_replicates_v5.B1p_minus_B1a.positive_favors: 'candidate' -> 'baseline'
+# per-key and summary tables, both runs
+3510d617c47f907eb377ca56361dc72b7a301ee75327f6612741d982873f41d3  v6eval/evaluation/per_compound.tsv
+3510d617c47f907eb377ca56361dc72b7a301ee75327f6612741d982873f41d3  v6eval2/evaluation/per_compound.tsv
+182c2564a9bc564e2334a05520f0f495a2031229f4b237d867b0d1c5a2b8ed0f  v6eval/evaluation/summary.tsv
+182c2564a9bc564e2334a05520f0f495a2031229f4b237d867b0d1c5a2b8ed0f  v6eval2/evaluation/summary.tsv

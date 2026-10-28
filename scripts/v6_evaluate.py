@@ -47,7 +47,7 @@ def by_key(keys, values):
     return {tuple(k.split('|')): values[i] for i, k in enumerate(np.asarray(keys, str))}
 
 
-def pooled_bootstrap(differences, *, level=0.95, draws=DRAWS, seed=SEED):
+def pooled_bootstrap(differences, *, level=0.95, draws=DRAWS, seed=SEED, positive_favors='candidate'):
     """Mean over contexts of context-mean compound differences; one scaffold-group draw shared by all contexts."""
     groups = sorted({g for table in differences.values() for g in table.scaffold_group})
     position = {g: i for i, g in enumerate(groups)}
@@ -67,7 +67,7 @@ def pooled_bootstrap(differences, *, level=0.95, draws=DRAWS, seed=SEED):
     lower, upper = np.quantile(estimates[valid], [tail, 1-tail])
     return dict(point_estimate=float(np.mean(point)), ci_lower=float(lower), ci_upper=float(upper), level=level,
                 contexts=len(differences), n_groups=len(groups), draws=draws, valid_draws=int(valid.sum()),
-                seed=seed, positive_favors='candidate')
+                seed=seed, positive_favors=positive_favors)
 
 
 def main():
@@ -201,7 +201,10 @@ def main():
 
     def pooled(candidate, baseline, contexts=None, level=0.95, **kwargs):
         d = differences(candidate, baseline, contexts or gate_contexts, **kwargs)
-        return pooled_bootstrap(d, level=level) if d else None
+        # Direction accuracy is higher-is-better, so a positive difference favours the candidate. de_rmse is
+        # an error, so there a positive difference favours the BASELINE; the field must say which.
+        favours = 'baseline' if kwargs.get('metric') == 'de_rmse' else 'candidate'
+        return pooled_bootstrap(d, level=level, positive_favors=favours) if d else None
 
     confirmatory = bool(receipt['study_gate_G4']['met'])
     floor = seals[primary_arms[0]]['endpoint']['split_noise_floor']
@@ -235,6 +238,7 @@ def main():
                                         'note': 'an error, so a NEGATIVE difference favours the candidate'}
     endpoints['S6_replicates_v5'] = {f'{a}_minus_{b}': pooled(a, b, metric='de_rmse')
                                      for a, b in [('B1p', 'B1a'), ('B1a', 'B1c')]}
+    endpoints['S6_replicates_v5']['note'] = 'an error, so a NEGATIVE difference favours the candidate'
     secondary = dict(
         every_pair={f'{a}_minus_{b}': pooled(a, b) for a in [*selection['arms'], 'M1r']
                     for b in ['B1p', 'B1c', 'B0'] if a in methods},

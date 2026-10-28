@@ -11,6 +11,9 @@ Three numbers decide whether the primary endpoint can succeed:
 - whether B1p already beats chance on a compound's own DE genes;
 - whether any method that uses chemical structure beats the method it extends.
 
+Decision D7's committed trigger is the margin over CHANCE, not the margin over
+the method extended, so the report states both (amendment A3).
+
 Everything is computed on VALIDATION keys. No test response and no
 evaluation-half test delta is read.
 """
@@ -29,8 +32,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL_STATUS = 'PRESPECIFIED_BEFORE_V6_FITTING'
 G8_FLOOR = 0.60
 CHANCE = 0.5
+D7_MARGIN = 0.01  # protocol_v6 USER_DECISION D7 consequence_if_no_signal
 STRUCTURE_PAIRS = (('M1c', 'B1c'), ('M1a', 'B1a'), ('M1r', 'B1p'), ('B2c', 'B1c'), ('B2r', 'B1p'),
                    ('B1r', 'B1p'))
+USES_STRUCTURE = ('B2c', 'M1c', 'M1a', 'M1r', 'M1r_unscaled', 'B2r')
 METHODS = ('B0', 'B1c', 'B2c', 'M1c', 'B1a', 'M1a', 'B1p', 'B1r', 'B2r', 'M1r', 'M1r_unscaled')
 
 
@@ -126,7 +131,11 @@ def main():
     headroom = floor-accuracy.get('B1p', np.nan)
     structure = {f'{a}_minus_{b}': (accuracy[a]-accuracy[b]) for a, b in STRUCTURE_PAIRS
                  if a in accuracy and b in accuracy}
-    any_structure = any(np.isfinite(v) and v > 0.01 for v in structure.values())
+    structure_adds = any(np.isfinite(v) and v > D7_MARGIN for v in structure.values())
+    # Decision D7 as committed compares each structure-using comparator against CHANCE, not against the
+    # method it extends. Amendment A3_2026-10-27_RAISED_AND_WITHDRAWN records why the two readings differ.
+    d7_margins = {name: accuracy[name]-CHANCE for name in USES_STRUCTURE if name in accuracy}
+    d7_fires = not any(np.isfinite(v) and v > D7_MARGIN for v in d7_margins.values())
 
     order = sorted(accuracy, key=lambda n: -(accuracy[n] if np.isfinite(accuracy[n]) else -1))
     lines = ['# DrugPerturb v6: the CPU-only report, before any fit', '',
@@ -169,17 +178,29 @@ def main():
               f'Direction accuracy over each validation key\'s top-{de_k} selection-half genes. Chance is '
               f'{CHANCE:.2f}; B0 reaches it exactly because a zero prediction counts as a tie.', '',
               '| Method | Responders | All keys | Uses structure |', '|---|---:|---:|---|']
-    uses_structure = {'B2c', 'M1c', 'M1a', 'M1r', 'M1r_unscaled', 'B2r'}
     for name in order:
         lines.append(f'| {name} | {fmt(accuracy[name])} | {fmt(accuracy_all[name])} | '
-                     f"{'yes' if name in uses_structure else 'no'} |")
+                     f"{'yes' if name in USES_STRUCTURE else 'no'} |")
     lines += ['', '## Does chemical structure help (a preview of S3)', '',
               '| Contrast | Difference in direction accuracy |', '|---|---:|']
     for name, value in structure.items():
         lines.append(f'| {name.replace("_minus_", " minus ")} | {fmt(value)} |')
-    lines += ['', f"**{'At least one structure-using method beats its reference by more than 0.01.' if any_structure else 'No structure-using method beats its reference by more than 0.01.'}** "
-                  f"Under decision D7 that {'leaves' if any_structure else 'cuts'} the GPU budget "
-                  f"{'as planned (20 fits)' if any_structure else 'to M1 at 3 seeds'}.", '',
+    lines += ['', f"**{'At least one' if structure_adds else 'No'} structure-using method beats the method it "
+                  f"extends by more than {D7_MARGIN}.** That is the question a reader cares about, and it is "
+                  f"NOT decision D7's committed trigger.", '',
+              '## Decision D7 as committed', '',
+              f'D7 fires when no structure-using comparator exceeds CHANCE by more than {D7_MARGIN} on '
+              f'validation direction accuracy. The margins over chance are:', '',
+              '| Method | Accuracy minus chance |', '|---|---:|']
+    for name, value in sorted(d7_margins.items(), key=lambda kv: -(kv[1] if np.isfinite(kv[1]) else -1)):
+        lines.append(f'| {name} | {fmt(value)} |')
+    lines += ['', f"**D7 {'fires' if d7_fires else 'does not fire'}.** " + (
+        'The GPU budget is cut to M1 at 3 seeds and the study reports that no structure-based method found '
+        'directional signal.' if d7_fires else
+        'The full prespecified plan runs: both candidate arms at all ten seeds. Every structure-using '
+        'comparator clears chance by a wide margin because B1p, which uses no chemistry at all, already '
+        'does; amendment A3_2026-10-27_RAISED_AND_WITHDRAWN records that this was raised before any GPU '
+        'fit and that the committed wording was kept.'), '',
               '## The responder gate', '',
               f"Threshold {fmt(receipt['responder']['threshold'], 3)}, the "
               f"{receipt['responder']['percentile']:.0f}th percentile of {receipt['responder']['nulls']} "
@@ -201,7 +222,7 @@ def main():
     lines += ['',
               '## What happens next', '',
               f"- Gate G8: **{'met' if g8 else 'not met'}**.",
-              f"- Decision D7: the GPU budget is {'unchanged' if any_structure else 'cut to M1 at 3 seeds'}.",
+              f"- Decision D7: {'fires, so the GPU budget is cut to M1 at 3 seeds' if d7_fires else 'does not fire, so the full prespecified plan runs - both arms at all ten seeds'}.",
               '- No arm has been fitted. The GPU fits are the next step and need their own approval.', '']
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text('\n'.join(lines))
@@ -210,13 +231,15 @@ def main():
                   split_noise_floor=floor, split_noise_floor_all_keys=floor_all, gate_G8_met=g8,
                   g8_threshold=G8_FLOOR, residual_share=share, validation_keys=len(keys),
                   validation_responders=len(responders), accuracy=accuracy, accuracy_all_keys=accuracy_all,
-                  structure_contrasts=structure, any_structure_helps=any_structure,
+                  structure_contrasts=structure, structure_adds_over_reference=structure_adds,
+                  d7_margins_over_chance=d7_margins, d7_fires=d7_fires, d7_margin=D7_MARGIN,
                   headroom_above_b1p=headroom, de_set_sharing=sharing,
                   responder=receipt['responder'], study_gate_G4=receipt['study_gate_G4'],
                   contexts_passing_count_gate=int(summary.test_count_gate_met.sum()))
     (args.output.parent/'cheap_report.json').write_text(json.dumps(record, indent=2, default=float)+'\n')
     print(json.dumps({k: record[k] for k in ['split_noise_floor', 'gate_G8_met', 'headroom_above_b1p', 'residual_share',
-                                             'validation_responders', 'any_structure_helps', 'accuracy']},
+                                             'validation_responders', 'structure_adds_over_reference',
+                                             'd7_fires', 'accuracy']},
                      indent=2, default=float))
 
 
