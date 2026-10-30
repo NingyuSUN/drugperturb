@@ -16,7 +16,7 @@ per-version reports hold the denominators, the gates and the limitations.
 
 | | Question | Data | Answer |
 |---|---|---|---|
-| [v1](report.html) | Do fingerprint and graph models beat simple baselines on held-out compounds? | sci-Plex3 A549 | No reliable advantage over the training mean or Ridge |
+| [v1](v1/report.md) | Do fingerprint and graph models beat simple baselines on held-out compounds? | sci-Plex3 A549 | No reliable advantage over the training mean or Ridge |
 | [v2](v2/report.md) | Do A549-trained structure models transfer to other cell lines and doses? | sci-Plex3 | No. Zero change has the lowest error in all five conditions |
 | [v3](v3/report.md) | Do chemCPA and biolord beat information-matched simple baselines? | sci-Plex3 | No. Both are worse than a per-context Ridge, and chemCPA collapses to zero change |
 | [v4](v4/report.md) | Can chemCPA's collapse to zero change be fixed? | sci-Plex3, OP3 | Partly. The drug term comes alive, but no variant beats a per-context training mean |
@@ -197,7 +197,7 @@ plan of 20 fits ran.
 | v4 | [report](v4/report.md), [corrected](v4_corrected/report.md), [pre-test diagnostics](v4/diagnostics.md) | [protocol_v4.yaml](../configs/protocol_v4.yaml) | [V4_METHODS.md](../docs/V4_METHODS.md) |
 | v3 | [report](v3/report.md) | [protocol_v3.yaml](../configs/protocol_v3.yaml) | [V3_METHODS.md](../docs/V3_METHODS.md) |
 | v2 | [report](v2/report.md), [中文](v2/report.zh-CN.md) | [protocol_v2.yaml](../configs/protocol_v2.yaml) | [V2_METHODS.md](../docs/V2_METHODS.md) |
-| v1 | [report.html](report.html), [biologist summary](biologist_summary.html) | [protocol_v1.yaml](../configs/protocol_v1.yaml) | [RESEARCH_DECISIONS.md](../docs/RESEARCH_DECISIONS.md) |
+| v1 | [report](v1/report.md), [original HTML](report.html), [biologist summary](biologist_summary.html) | [protocol_v1.yaml](../configs/protocol_v1.yaml) | [RESEARCH_DECISIONS.md](../docs/RESEARCH_DECISIONS.md) |
 
 Cross-cutting: [DATA_CARD.md](../docs/DATA_CARD.md), [MODEL_CARD.md](../docs/MODEL_CARD.md),
 [REPRODUCIBILITY.md](../docs/REPRODUCIBILITY.md), [EXECUTION_EVIDENCE.md](../docs/EXECUTION_EVIDENCE.md).

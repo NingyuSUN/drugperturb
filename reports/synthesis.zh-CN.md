@@ -8,7 +8,7 @@
 
 | | 问题 | 数据 | 答案 |
 |---|---|---|---|
-| [v1](report.html) | 分子指纹和图模型能否在留出化合物上战胜简单基线？ | sci-Plex3 A549 | 不能。相对训练均值或 Ridge 没有可靠优势 |
+| [v1](v1/report.md) | 分子指纹和图模型能否在留出化合物上战胜简单基线？ | sci-Plex3 A549 | 不能。相对训练均值或 Ridge 没有可靠优势 |
 | [v2](v2/report.zh-CN.md) | A549 上训练的结构模型能否迁移到其他细胞系和剂量？ | sci-Plex3 | 不能。五个条件里零变化误差都最低 |
 | [v3](v3/report.md) | chemCPA 和 biolord 能否战胜信息量对等的简单基线？ | sci-Plex3 | 不能。两者都差于按条件拟合的 Ridge，而 chemCPA 坍缩成零变化 |
 | [v4](v4/report.md) | chemCPA 坍缩成零变化这件事能修好吗？ | sci-Plex3、OP3 | 部分能。药物项活了，但没有一个变体战胜按条件的训练均值 |
@@ -95,6 +95,6 @@
 | v4 | [报告](v4/report.md)、[修正后](v4_corrected/report.md)、[测试前诊断](v4/diagnostics.md) | [protocol_v4.yaml](../configs/protocol_v4.yaml) | [V4_METHODS.md](../docs/V4_METHODS.md) |
 | v3 | [报告](v3/report.md) | [protocol_v3.yaml](../configs/protocol_v3.yaml) | [V3_METHODS.md](../docs/V3_METHODS.md) |
 | v2 | [中文报告](v2/report.zh-CN.md)、[English](v2/report.md) | [protocol_v2.yaml](../configs/protocol_v2.yaml) | [V2_METHODS.md](../docs/V2_METHODS.md) |
-| v1 | [report.html](report.html)、[面向生物学读者的摘要](biologist_summary.html) | [protocol_v1.yaml](../configs/protocol_v1.yaml) | [RESEARCH_DECISIONS.md](../docs/RESEARCH_DECISIONS.md) |
+| v1 | [报告](v1/report.md)、[原始 HTML](report.html)、[面向生物学读者的摘要](biologist_summary.html) | [protocol_v1.yaml](../configs/protocol_v1.yaml) | [RESEARCH_DECISIONS.md](../docs/RESEARCH_DECISIONS.md) |
 
 贯穿各版：[DATA_CARD.md](../docs/DATA_CARD.md)、[MODEL_CARD.md](../docs/MODEL_CARD.md)、[REPRODUCIBILITY.md](../docs/REPRODUCIBILITY.md)、[EXECUTION_EVIDENCE.md](../docs/EXECUTION_EVIDENCE.md)。
