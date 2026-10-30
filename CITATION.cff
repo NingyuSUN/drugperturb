@@ -5,12 +5,12 @@ type: software
 authors:
   - family-names: Sun
     given-names: Ningyu
-version: 5.0.0
-date-released: 2026-10-26
+version: 6.0.0
+date-released: 2026-10-28
 repository-code: "https://github.com/NingyuSUN/drugperturb"
 url: "https://github.com/NingyuSUN/drugperturb"
 license: MIT
-abstract: "Compound-held-out benchmarks of transcriptional response prediction on sci-Plex3, OP3 and Tahoe-100M. Structure-based models (v1-v2) and the published single-cell models chemCPA and biolord (v3-v5) are compared with information-matched and vehicle-anchored simple baselines. Every version follows a protocol committed before any fit, and predictions are sealed before test truth is computed. Third-party data and model code retain their own terms."
+abstract: "Compound-held-out benchmarks of transcriptional response prediction on sci-Plex3, OP3 and Tahoe-100M. Structure-based models (v1-v2) and the published single-cell models chemCPA and biolord (v3-v6) are compared with information-matched, vehicle-anchored and plate-anchored simple baselines, on per-compound error (v1-v5) and on a split-measurement directional endpoint where predicting no change scores chance by construction (v6). Every version follows a protocol committed before any fit, and predictions are sealed before test truth is computed. Third-party data and model code retain their own terms."
 keywords:
   - drug-discovery
   - perturbation-modeling
