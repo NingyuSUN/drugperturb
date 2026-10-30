@@ -6,7 +6,7 @@
 
 sci-Plex3 · OP3 (human PBMCs) · Tahoe-100M · compound-, scaffold- and cell-line-level holdouts · split-measurement endpoints · predictions sealed before testing
 
-Reports: [v1-v6 synthesis](reports/synthesis.md) ([中文](reports/synthesis.zh-CN.md)) · [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/report.html)
+Reports: [v1-v6 synthesis](reports/synthesis.md) ([中文](reports/synthesis.zh-CN.md)) · [v6, held-out cell lines](reports/v6/report.md) · [v5, Tahoe-100M](reports/v5/report.md) · [v4, OP3](reports/v4/report.md) · [v4 corrected, post hoc](reports/v4_corrected/report.md) · [v3, sci-Plex3](reports/v3/report.md) · [v2, cross-condition](reports/v2/report.md) ([中文](reports/v2/report.zh-CN.md)) · [v1, A549](reports/v1/report.md)
 
 Each version answers one question under a protocol committed before any fit:
 
@@ -159,7 +159,7 @@ The control definition matters: using the average of two separately normalized s
 
 ![Held-out model comparison](reports/figures/03_model_comparison.png)
 
-To view the original v1 HTML reports, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
+The [v1 report](reports/v1/report.md) covers these results in markdown, with every paired interval, the control-definition sensitivity and the coverage gates. The original HTML reports carry the figures: to view them, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
 ## What is implemented
 
