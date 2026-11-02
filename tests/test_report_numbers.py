@@ -23,7 +23,10 @@ TRIPLE = re.compile(r'([+−-]?\d+\.\d+)\s*\[\s*([+−-]?\d+\.\d+)\s*,\s*([+−-
 REPORTS = ('reports/v1/report.md', 'reports/v2/report.md', 'reports/v2/report.zh-CN.md',
            'reports/v3/report.md', 'reports/v4/report.md', 'reports/v4_corrected/report.md',
            'reports/v5/report.md', 'reports/v6/report.md', 'reports/synthesis.md',
-           'reports/synthesis.zh-CN.md')
+           'reports/synthesis.zh-CN.md', 'docs/MODEL_CARD_V3_V6.md')
+# docs/MODEL_CARD.md is deliberately absent: it separates each estimate from its interval ("**−0.0286**,
+# paired 95% structure-group interval **[−0.0680,0.0087]**"), which the triple pattern cannot see.
+# reports/v1/report.md carries the same figures in a form this module and tests/test_v1_report.py bind.
 
 # The v4 report states these two OP3 baseline contrasts in prose as descriptive post hoc comparisons, and
 # no committed table carries them. test_the_untraced_v4_figures_are_recomputed checks their point estimates
@@ -134,6 +137,7 @@ def test_every_interval_a_report_prints_traces_to_a_receipt(relative):
 def test_the_reports_print_the_intervals_at_all():
     counts = {relative: sum(1 for _ in quoted(relative)) for relative in REPORTS}
     assert all(counts[r] for r in REPORTS if r != 'reports/v2/report.zh-CN.md'), counts
+    assert counts['docs/MODEL_CARD_V3_V6.md'] >= 15, 'the v3-v6 model card must quote its results'
     assert sum(counts.values()) > 150, counts
 
 

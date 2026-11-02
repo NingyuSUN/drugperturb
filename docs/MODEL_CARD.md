@@ -1,5 +1,7 @@
 # Model card: DrugPerturb v1
 
+This card covers v1's structure-only models. The published single-cell models that v3–v6 trained, chemCPA and biolord, have their own card: [model card, v3–v6](MODEL_CARD_V3_V6.md).
+
 ## Intended use
 A research benchmark and reproducible inference implementation for compound structure to transcriptional-response prediction. Supported context: **A549, 24 hours, 1,000 nM**. The CLI rejects other contexts. Predictions are changes in log1p counts-per-million on 2,000 training-selected human genes, averaged over two experimental replicates.
 

@@ -1,4 +1,6 @@
-# Data card
+# Data card: the v1/v2 sci-Plex3 benchmark
+
+This card covers the well-level sci-Plex3 benchmark that v1 and v2 use. The cell-level datasets of v3–v6 — sci-Plex3 per cell, OP3 and Tahoe-100M — have their own card: [data card, v3–v6](DATA_CARD_V3_V6.md).
 
 Public data qualification and the frozen benchmark are complete. Source measurements and derived model targets have separate provenance records.
 
