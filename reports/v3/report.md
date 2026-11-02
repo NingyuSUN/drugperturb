@@ -24,7 +24,7 @@ Error is the mean over compounds of per-compound RMSE across the 2,000 frozen ge
 | chemCPA − training mean | +0.052 [+0.046, +0.059] |
 | chemCPA − zero change | −0.0000 [−0.0001, +0.0000] |
 | biolord − Ridge | +0.022 [−0.012, +0.055] |
-| biolord − training mean | +0.049 [+0.033, +0.061] |
+| biolord − training mean | +0.048 [+0.033, +0.061] |
 | biolord − zero change | −0.004 [−0.016, +0.003] |
 
 Both models are reliably worse than the training mean and are not distinguishable from zero change.
