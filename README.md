@@ -215,12 +215,12 @@ The [historical hosted CI evidence](receipts/hosted_ci.json) records **108 Pytho
 
 | Question | Artifact |
 |---|---|
-| Where did the data come from? | [Data card](docs/DATA_CARD.md), [source hashes](manifests/source_manifest.tsv) |
+| Where did the data come from? | [Data card](docs/DATA_CARD.md), [v3–v6 data card](docs/DATA_CARD_V3_V6.md), [source hashes](manifests/source_manifest.tsv) |
 | Which compounds were excluded or held out? | [Eligibility](manifests/eligibility.tsv), [split manifest](manifests/split_manifest.tsv) |
 | What was actually trained? | [All 28 learned-model fits](receipts/training_runs.tsv), [model selection](receipts/model_selection.json) |
 | Can individual errors be checked? | [Every compound/seed metric](reports/final_test/metrics_by_compound.tsv), [paired intervals](reports/final_test/paired_comparisons.json) |
 | Are predictions linked to fixed artifacts? | [Prediction seal](receipts/prediction_seal.json), [final evaluation](receipts/final_evaluation.json) |
-| What can the model be used for? | [Model card](docs/MODEL_CARD.md) |
+| What can the model be used for? | [Model card](docs/MODEL_CARD.md), [v3–v6 model card](docs/MODEL_CARD_V3_V6.md) |
 
 ## Scope
 

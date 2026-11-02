@@ -199,5 +199,5 @@ plan of 20 fits ran.
 | v2 | [report](v2/report.md), [中文](v2/report.zh-CN.md) | [protocol_v2.yaml](../configs/protocol_v2.yaml) | [V2_METHODS.md](../docs/V2_METHODS.md) |
 | v1 | [report](v1/report.md), [original HTML](report.html), [biologist summary](biologist_summary.html) | [protocol_v1.yaml](../configs/protocol_v1.yaml) | [RESEARCH_DECISIONS.md](../docs/RESEARCH_DECISIONS.md) |
 
-Cross-cutting: [DATA_CARD.md](../docs/DATA_CARD.md), [MODEL_CARD.md](../docs/MODEL_CARD.md),
+Cross-cutting: [DATA_CARD.md](../docs/DATA_CARD.md) and [DATA_CARD_V3_V6.md](../docs/DATA_CARD_V3_V6.md), [MODEL_CARD.md](../docs/MODEL_CARD.md) and [MODEL_CARD_V3_V6.md](../docs/MODEL_CARD_V3_V6.md),
 [REPRODUCIBILITY.md](../docs/REPRODUCIBILITY.md), [EXECUTION_EVIDENCE.md](../docs/EXECUTION_EVIDENCE.md).
