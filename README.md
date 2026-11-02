@@ -159,7 +159,7 @@ The control definition matters: using the average of two separately normalized s
 
 ![Held-out model comparison](reports/figures/03_model_comparison.png)
 
-The [v1 report](reports/v1/report.md) covers these results in markdown, with every paired interval, the control-definition sensitivity and the coverage gates. The original HTML reports carry the figures: to view them, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
+The [v1 report](reports/v1/report.md) covers these results in markdown — every paired interval, all six figures, the control-definition sensitivity and the coverage gates — and renders on GitHub. The original HTML render adds the two-page biologist summary and the generated tables: to view it, clone this repository or choose **Code → Download ZIP** on GitHub and extract the complete archive. Keep the repository directory structure, then open `reports/report.html` or `reports/biologist_summary.html` in a browser. The full report loads figures and linked evidence from adjacent repository directories; downloading an HTML file alone will leave those resources unavailable. Viewing the reports does not require installing the analysis environment.
 
 ## What is implemented
 

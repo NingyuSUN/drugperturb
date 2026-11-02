@@ -19,7 +19,8 @@ This is the original single-context benchmark. What became of its conclusion ove
 in the [v1–v6 synthesis](../synthesis.md) ([中文](../synthesis.zh-CN.md)); this report covers v1 alone.
 
 - **Design:** [protocol_v1.yaml](../../configs/protocol_v1.yaml), [research decisions](../../docs/RESEARCH_DECISIONS.md), [model card](../../docs/MODEL_CARD.md), [data card](../../docs/DATA_CARD.md).
-- **The complete original report**, with every figure: [report.html](../report.html) and [biologist_summary.html](../biologist_summary.html) — both are HTML and need a local clone to render, which is why this markdown edition exists.
+- **Figures.** The six panels below are the ones [scripts/report.py](../../scripts/report.py) renders from the frozen tables; they are the same files the HTML report embeds.
+- **The original HTML render:** [report.html](../report.html) and [biologist_summary.html](../biologist_summary.html). Both are pipeline output that needs a local clone to display, which is why this markdown edition exists; it now carries the figures too.
 - **Tables:** [final_test/](../final_test), [sensitivity/](../sensitivity).
 - **Runs and hashes:** [training runs](../../receipts/training_runs.tsv), [model selection](../../receipts/model_selection.json), [prediction seal](../../receipts/prediction_seal.json), [final evaluation](../../receipts/final_evaluation.json).
 
@@ -42,6 +43,10 @@ and plate effects and retraining variability are not captured.
 - **Output genes.** 2,000 variable genes selected on the 119 training responses only; standardization and the 20-component PCA are also fitted on training only. Every model is scored against measured changes, never against a PCA reconstruction.
 - **Chemical novelty.** The maximum Tanimoto similarity to any training compound has median 0.2819 across the test set (range 0.1587–0.5957).
 
+![Left: compounds surviving each qualification step, from 188 source treatment labels to the 119 / 26 / 26 split. Right: author-QC nuclei per well across all 392 selected wells, 36,848 nuclei, with the 30-cell per-well minimum marked.](../figures/01_data_quality.png)
+
+![Left: how similar each test compound is to its nearest training compound, Morgan Tanimoto, n = 26. Right: that similarity against the GNN’s error on the same compound, coloured by the magnitude of the measured response.](../figures/02_chemical_support.png)
+
 ## Every method
 
 | Method | Mean compound RMSE ↓ | Mean compound MAE ↓ | Mean Spearman ↑ | Mean cosine ↑ | Sign agreement ↑ |
@@ -56,6 +61,8 @@ and plate effects and retraining variability are not captured.
 M2 and M3 are the arithmetic mean of three seeds. Individually: M3 gives 1.2195 (seed 42), 1.2086 (123) and
 1.2209 (2026); M2 gives 1.2649, 1.2483 and 1.2488. Zero change has no defined Spearman or cosine — it is a
 constant vector — and its sign agreement is 0 by construction, since only non-zero predictions count.
+
+![Left: the spread of per-compound RMSE for each of the six methods over the identical 26 held-out compounds and 2,000 genes. Right: the four paired differences against the GNN with their 95% structure-group intervals; the dashed line is zero, and only the contrast against zero change clears it.](../figures/03_model_comparison.png)
 
 ## Confirmatory contrasts
 
@@ -102,6 +109,8 @@ the nearest training compound is not a usable surrogate.
 error (abexinostat), lowest response (fluorouracil) and lowest training similarity (GSK-LSD1) — are retained
 in [fixed_rule_cases.tsv](../final_test/fixed_rule_cases.tsv) rather than selected after seeing the results.
 
+![Measured against GNN-predicted gene delta for the three fixed-rule compounds — highest GNN error, lowest measured response, lowest training similarity — all 2,000 output genes per panel, with the identity line. The predicted range is visibly narrower than the measured one in every panel.](../figures/05_fixed_rule_cases.png)
+
 ## The control definition changes the ranking
 
 The same frozen predictions, scored against a different vehicle definition. Nothing is retrained, no
@@ -144,6 +153,10 @@ original members — inside the 2,000-gene output space, so **no pathway-recover
 
 The full 43-gene S and 54-gene G2/M marker sets were used separately for descriptive single-cell scores with
 all-human-UMI denominators; those are descriptions, not phase assignments.
+
+![Coverage of each prespecified set inside the 2,000-gene output space, against the 25% gate; the label on each bar is selected genes over original members.](../figures/04_pathway_coverage.png)
+
+![Replicate 1 against replicate 2 for the single-cell marker medians, treated minus vehicle, for the S and G2/M sets. These describe marker-expression shifts across two experiments; they are not phase assignments and not evidence of pathway activity.](../figures/06_cell_state_replicates.png)
 
 ## What this does and does not show
 
